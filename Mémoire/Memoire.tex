@@ -90,7 +90,7 @@ Après avoir cherché sans succès un contre-exemple « malin », nous décidon
 
 Il est facile avec un outil de calcul formel de déterminer si un entier $n$ est de Carmichael dans un corps quadratique $\Q(\sqrt{d})$, $d$ étant sans facteurs carrés. Posons $K=\Q(\sqrt{d})$ et $\mathfrak{n} = \OK$. Le logiciel SageMath\footnote{Voir \url{https://www.sagemath.org} et plus particulièrement \url{http://doc.sagemath.org/html/en/reference/number_fields/sage/rings/number_field/number_field.html}.} est capable de donner la décomposition de $\mathfrak{n}$ en produit d'idéaux premiers de $\mathcal{O}_K$ et calculer des normes d'idéaux. Pour tester si $\mathfrak{n}$ est de Carmichael, on demande à SageMath sa décomposition, on regarde s'il est sans facteurs carrés et si c'est le cas on teste si $\Norm_\OK(\p) - 1$ divise $\Norm_\OK(\mathfrak{n}) - 1$ pour tout idéal premier $\p$ de $\OK$ divisant $\mathfrak{n}$. Comme l'extension considérée est quadratique, $\mathfrak{n}$ a au plus deux facteurs premiers. La norme $\Norm_\OK(\mathfrak{n})$ est quant à elle donnée par $n^2$. \\
 
-Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons pas chercher bien loin\footnote{Nous nous sommes limités à $d\in [\![-100, 100]\!]$ et $n\in [\![2, 10000]\!]$.} — plutôt que d'effectuer des calculs couteux et inutiles avec le critère de Korselt — il est préférable de regarder si $n$ est dans la (maigre) liste des entiers de Carmichael\footnote{La liste complète des entiers de Carmichael, à l'exception d'une infinité d'entre eux, est disponible ici : \url{https://oeis.org/A002997}.} inférieurs à $10000$ : $$\{561, 1105, 1729, 2465, 2821, 6601, 8911\}.$$ Pour l'implémentation, nous écrivons séparément une fonction testant si $\mathfrak{n}$ est de Carmichael et l'invoquons pour tout couple $(d, n)$. L'algorithme est donc le suivant ; son implémentation est disponible sur GitHub (\url{https://github.com/kryzar/TER-Carmichael/blob/master/Script/Script.sage}).
+Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons pas chercher bien loin\footnote{Nous nous sommes limités à $d\in [\![-100, 100]\!]$ et $n\in [\![2, 10000]\!]$.} — plutôt que d'effectuer des calculs couteux et inutiles avec le critère de Korselt — il est préférable de regarder si $n$ est dans la (maigre) liste des entiers de Carmichael\footnote{La liste complète des entiers de Carmichael, à l'exception d'une infinité d'entre eux, est disponible ici : \url{https://oeis.org/A002997}.} inférieurs à $10000$ : $$\{561, 1105, 1729, 2465, 2821, 6601, 8911\}.$$ Pour l'implémentation, nous écrivons séparément une fonction testant si $\mathfrak{n}$ est de Carmichael et l'invoquons pour tout couple $(d, n)$. L'algorithme est donc le suivant ; son implémentation est disponible sur le compte GitHub de l'auteur (\url{https://github.com/kryzar/TER-Carmichael/blob/master/Script/Script.sage}).
 
 \vspace{1em}
 \begin{algorithm}[H]
@@ -107,31 +107,6 @@ Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons 
 \vspace{1em}
 
 Nous avons pu exhiber de nombreux contre-exemples, comme le couple $$(d, n) = (11, 35).$$ L'entier $35$ n'est pas de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{11})$. Le couple $$(d, n) = (95,8029)$$ est un autre contre-exemple, avec la particularité que $8029 = 7\cdot 31\cdot 37$ est le produit de trois nombres premiers (on rappelle qu'un nombre de Carmichael a au moins trois facteurs premiers). De même, $8029$ n'est pas un entier de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{95})$.
-
-\section*{Addenda}
-
-\begin{fait*}
-Soient $n$ un entier qui soit une puissance non triviale d'un nombre premier et $ K$ un corps de nombres. Alors $n\OK$ n'est pas un idéal premier.
-\end{fait*}
-
-\begin{proof}
-Écrivons $n = p^r, r>1$ et supposons que $n\OK$ soit un idéal premier $\p$ de $\OK$. Alors $\Norm_K(n\OK)$ est une puissance de la caractéristique $\Car(\OK/\p)$, disons $$\Norm_K(n\OK) = \Car(\OK/\p)^f,$$ où $f \leq [K : \Q]$. Mais on a aussi que $$\Norm_K(n\OK) = \Norm_K(n) = (p^r)^{[K : \Q]}.$$ La caractéristique $\Car(\OK/\p)$ étant un nombre premier, il vient $p^f = p^{r[K : \Q]}$. Comme par ailleurs $$f \leq [K : \Q] < r[K : \Q],$$ l'égalité est impossible et nous avons une contradiction. $n\OK$ n'est donc pas un idéal premier.
-\end{proof}
-
-\begin{fait*}
-	Soient $\Q\subset K \subset L$ une tour de corps de nombres et $I$ un idéal non trivial de $\OL$. Si l'idéal restreint $I\cap \OK$ est non trivial, alors $$\Norm_{\OK}(I \cap \OK) \mid \Norm_{\OL}(I).$$
-\end{fait*}
-
-\begin{proof}
-C'est un résultat de théorie des groupes à peine déguisé. On a une suite de morphismes de groupes $$\OK\to \OL \to \OL/I.$$ En appelant $f$ la composée des deux flèches, on obtient $\Ker f = I\cap \OK$ et l'on en déduit l'existence d'un morphisme de groupes injectif $$\OK/I\cap \OK \hookrightarrow \OL/I.$$ Ainsi, $\OK/ I\cap \OK$ s'identifie à un sous-groupe de $\OL/I$. D'après le théorème de Lagrange, son cardinal divise donc celui de $\OL/I$. Or, comme nos idéaux sont non triviaux, nous pouvons en prendre les normes, qui sont exactement les cardinaux de ces quotients, par définition. D'où le résultat.
-\end{proof}
-
-\begin{fait*} Soient $K$ un corps de nombres et $\P$ un idéal premier de son anneau d'entiers. Alors $$\P\cap \Z = \Car(\OK/\P)\Z.$$
-\end{fait*}
-
-\begin{proof}
-	D'après, $\Norm_{\Q/\Q}(\P\cap\Z)\mid \Norm_{K/\Q}(\P)$. Or, $\N_{K/\Q}(\P)$ est la puissance d'un nombre premier et ce nombre premier n'est autre que la caractéristique du \textit{corps} $\OK/\P$. Or $\P\cap \Z$ est un idéal premier de $\Z$ et $\Z$ étant principal, $\P\cap \Z$ est engendré par un nombre premier $p\in \Z$. Ainsi, $$\Norm_{\Q/\Q}(\P\cap \Z) = |\Z/p\Z| = p,$$ et donc $$p\mid \Car(O_K/\P).$$ Comme ces deux nombres sont premiers, on a $p = \Car(O_K/\P)$.
-\end{proof}
 
 \nocite{*}
 \printbibliography
