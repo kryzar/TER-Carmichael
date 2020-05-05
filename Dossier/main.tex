@@ -22,8 +22,8 @@
 	\vspace{40px}
 	\large
 	travail encadré de recherche \\
-	encadré par Alain Kraus (IMJ-PRG) \\
-	soutenu le \NTS{date} \\
+	encadré par Alain Kraus\footnote{\url{https://webusers.imj-prg.fr/~alain.kraus/}} (IMJ-PRG) \\
+	de janvier à juin 2020 \\
 
 	\vspace{20px}
 	Sorbonne Université
@@ -42,16 +42,16 @@
 \end{titlepage}
 %% fin page de titre
 
-\section{Question 2}
+\section{Un nombre de Carmichael dans un anneau d'entiers ne l'est pas forcément dans un anneau plus petit}
 
-Soit $n\in \Z$ un entier. Peut on trouver une tour de corps de nombres $\Q \subset K \subset L$ telle que $n$ engendre un idéal de Carmichael dans $\OL$ et non dans $\OK$ ? Ce problème revient à se demander si le fait que $n\OL$ vérifie le critère de Korselt implique que $n\OK$ le vérifie. Nous affirmons que cette assertion est fausse en exhibant un contre exemple.
+Soient $\Q \subset K \subset L$ une tour de corps de nombres et $n\in \mathbb{Z}$ un entier. Si $n$ est de Carmichael dans $\OL$, l'est-il dans $\OK$ ? Nous affirmons que cette assertion est fausse en exhibant un contre exemple à l'aide du critère de Korselt généralisé (\cite{article}, théorème 2.2). Ce critère impose une condition sur les facteurs de $n\OK$ ($n\OK$ doit être sans facteurs carrés) et une condition sur les normes des diviseurs premiers de $n\OK$ ($\Norm(\p)$ doit diviser $\Norm(n\OK)$ pour tout idéal premier de $\OL$ divisant $n\OK$). L'enjeu est de comprendre si ces propriétés vraies dans $\OL$ sont transmises à $n\OK$.
+
+\begin{remarque}Si $n$ est premier, il peut très bien être de Carmichael dans un anneau d'entiers, mais ne le sera jamais dans l'anneau $\Z$, car un nombre de Carmichael est composé. Nous pouvons donc supposer $n$ composé. \end{remarque}
 
 \subsection{Étude des facteurs carrés}
 
-Commençons par ce résultat simple.
-
-\begin{fait}Soient $A$ un anneau commutatif, $B$ une $A$-algèbre commutative et $I$, $J$ deux idéaux de $A$. Alors $$(IJ) B = (IB)(JB).$$
-\end{fait}
+\begin{lemme}Soient $A$ un anneau commutatif, $B$ une $A$-algèbre commutative et $I$, $J$ deux idéaux de $A$. Alors $$(IJ) B = (IB)(JB).$$
+\end{lemme}
 
 \begin{proof}
 	Par double inclusion. L'inclusion $$(IJ)B \subset (IB)(JB)$$ est triviale, car $(IB)(JB)$ est un idéal contenant $IB$. Réciproquement, $(IB)(JB)$ est l'idéal de $B$ engendré par les produits $\alpha\beta$, où $\alpha \in IB$ et $\beta\in JB$. Montrons qu'un tel générateur $\alpha\beta$ est forcément dans $(IJ)B$. Nous savons que $\alpha$ et $\beta$ sont de la forme suivante :
@@ -64,8 +64,8 @@ Commençons par ce résultat simple.
 
 Nous en déduisons le très utile résultat suivant.
 
-\begin{fait}Soient $A$ un anneau de Dedekind, $B$ une $A$-algèbre qui soit elle aussi un anneau de Dedekind, $I$ un idéal de $A$ et $n\in \N^*$ un entier. Si $IB$ n'est pas divisé par un idéal premier à la puissance $n$, alors $I$ non plus.
-\end{fait}
+\begin{lemme}Soient $A$ un anneau de Dedekind, $B$ une $A$-algèbre qui soit elle aussi un anneau de Dedekind, $I$ un idéal de $A$ et $n\in \N^*$ un entier. Si $IB$ n'est pas divisé par un idéal premier à la puissance $n$, alors $I$ non plus.
+\end{lemme}
 
 \begin{proof}
 Supposons par l'absurde que $\p$ est un idéal premier de $A$ et que $\p^n$ divise $I$, autrement dit que I d'écrit $$I = \p^n J$$ pour un certain idéal $J$ de $A$. D'après le résultat précédent, on peut écrire $$IB = (\p B)^n J.$$ Soit $\P$ un idéal premier de $B$ au dessus de $\p$. On constate alors que $\P^n$ divise $IB$, contradiction. Il n'existe donc aucun idéal premier $\p$ de $A$ tel que $\p^n$ divise $I$.
@@ -77,7 +77,7 @@ Supposons par l'absurde que $\p$ est un idéal premier de $A$ et que $\p^n$ divi
 \begin{proof}Il suffit d'appliquer le fait précédent avec $A=\OK$, $B=\OL$ et $I = n\OK$.
 \end{proof}
 
-Reprenons les notations du préambule et supposons que $n\OL$ soit de Carmichael. Il vérifie alors le critère de Korselt et est sans facteurs carrés. Le corollaire précédent montre que $n\OK$ l'est aussi : il vérifie donc cette condition du critère de Korselt. Il faut donc étudier la norme de $n\OK$ et ses propriétés par rapport à celle de $n\OL$ pour répondre à notre question.
+En reprenant les notations du préambule, si $n\OL$ est de Carmichael dans $\OL$, il est sans facteurs carrés. Le corollaire précédent assure que $n\OK$ sera aussi sans facteurs carrés et il nous faut donc étudier la norme pour conclure.
 
 \subsection{Étude de la norme}
 
@@ -95,7 +95,7 @@ C'est un résultat de théorie des groupes à peine déguisé. On a une suite de
 
 Intuitivement, la condition imposée sur les normes par le critère de Korselt semble trop forte pour être transmise du grand anneau d'entiers au moyen anneau d'entiers. Reprenons les notations du premier paragraphe, supposons que $n\OL$ est de Carmichael, et admettons que $n\OK$ demeure sans facteur carré. Soit $\p$ un idéal premier de $\OK$ divisant $n\OK$. Alors $p=\P\cap \OK$, où $\P$ est un idéal premier de $\OL$ divisant $n\OL$. On sait d'après le fait \ref{fait1} que $$\Norm_K(\p) \mid \Norm_L(\P),$$ et même en cherchant longtemps, cette condition ne permet en aucun cas de conclure que $\Norm_K(\p) - 1\mid \Norm_K(n\OK) - 1$ en ayant pour seule hypothèse (critère de Korselt) que $\Norm_L(\P) - 1 \mid \Norm_L(n\OL) - 1$. \\
 
-Après avoir cherché sans succès un contre-exemple <<malin>>, nous décidons d'écrire un algorithme naïf pour chercher ledit contre-exemple. L'idée est simple : se restreindre aux corps quadratiques, passer en revue une liste d'entiers $d$ sans facteur carré qui engendrent ces corps, et pour chaque tel $d$, tester parmi un nombre arbitraire d'entiers naturels $n$, lesquels engendrent un idéal de Carmichael dans $\Q(\sqrt{d})$ sans être un nombre de Carmichael. Voici l'algorithme en pseudo code. \\
+Après avoir cherché sans succès un contre-exemple « malin », nous décidons d'écrire un algorithme naïf pour chercher ledit contre-exemple. L'idée est simple : se restreindre aux corps quadratiques, passer en revue une liste d'entiers $d$ sans facteur carré qui engendrent ces corps, et pour chaque tel $d$, tester parmi un nombre arbitraire d'entiers naturels $n$, lesquels engendrent un idéal de Carmichael dans $\Q(\sqrt{d})$ sans être un nombre de Carmichael. Voici l'algorithme en pseudo code. \\
 
 \begin{algorithm}[H]
 \KwIn{a, b, c}
@@ -129,8 +129,6 @@ Soient $n$ un entier qui soit une puissance non triviale d'un nombre premier et 
 	D'après \ref{fait1}, $\Norm_{\Q/\Q}(\P\cap\Z)\mid \Norm_{K/\Q}(\P)$. Or, $\N_{K/\Q}(\P)$ est la puissance d'un nombre premier, et ce nombre premier n'est autre que la caractéristique du \textit{corps} $\OK/\P$. Or $\P\cap \Z$ est un idéal premier de $\Z$, et $\Z$ étant principal, $\P\cap \Z$ est engendré par un nombre premier $p\in \Z$. Ainsi, $$\Norm_{\Q/\Q}(\P\cap \Z) = |\Z/p\Z| = p,$$ et donc $$p\mid \Car(O_K/\P).$$ Comme ces deux nombres sont premiers, on a $p = \Car(O_K/\P)$.
 \end{proof}
 
-
-\newpage
 \nocite{*}
 \printbibliography
 \end{document}
