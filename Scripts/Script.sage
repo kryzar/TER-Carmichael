@@ -1,26 +1,30 @@
 # Antoine Hugounet
-# main.sage
+# Script.sage
+# This SageMath script finds number that generate a Carmichael ideal
+# in the integer ring of a quadratic field but tht are not Carmichael numbers.
+# Usage: open SageMath in the directory of this file, run load("Script.sage")
+# and call the function find_carmichael_ideal.
 
 def ideal_is_carmichael(I) :
     """
-    - I : ideal
-    Return True if n is a carmichael integer.
-    Return False otherwise.
+    - I : ideal in a number field integer ring
+    Return True if n is a carmichael integer and False otherwise.
+
     We use the Korselt criterion.
     """
     
     prime_dec = I.prime_factors()
 
     # I is square free
-    for P in prime_dec :
-        if I.valuation(P) > 1 :
+    for p in prime_dec :
+        if I.valuation(p) > 1 :
             return False
 
     # second part of the Korselt Criterion
     NI = Integer(I.norm())
-    for P in I.prime_factors() :
-        NP = Integer(P.norm())
-        if not (NP - 1).divides(NI - 1) :
+    for p in I.prime_factors() :
+        Np = Integer(p.norm())
+        if not (Np - 1).divides(NI - 1) :
             return False
 
     return True
@@ -28,10 +32,13 @@ def ideal_is_carmichael(I) :
 def int_below_512461_is_carmichael(n) :
     """
     - n : int
-    Return True if n is a carmichael integer.
-    Return False otherwise.
+    Return True if n is a carmichael integer and False otherwise.
+
     We use a list to save calculations time.
     """
+
+    if (n > 512461) :
+        raise Exception("n must be <= 512461.")
     
     # from https://oeis.org/A002997
     carmichael_numbers = [561, 1105, 1729, 2465, 2821, 6601, 8911, 10585,
@@ -41,28 +48,32 @@ def int_below_512461_is_carmichael(n) :
     
     return n in carmichael_numbers
 
-def find_carmichael_ideal(gen_range, bound, condition) :
+def find_carmichael_ideal_below_512461(gen_range, bound, condition) :
     """
-    - gen_range (IntegerRange) : for the squarefree integers d 
-    such that K = Q(sqrt{d})
-    - bound (int) : the positive integers generators of the ideal
+    Find all couples (d, n) such that n is not a Carmichael number but generates
+    a Carmichael ideal in the integer ring of the quadratic field Q(\sqrt{d}).
+    n is chosen in [[2, bound]] and d is chosen in the interval given by gen_range.
+
+    - gen_range (IntegerRange) : the square free integers d such that
+    K = Q(\sqrt{d}) are chosen in the integer interval given by gen_range
+    - bound (int) : the generators of the ideal are chosen in [[2, bound]]
     - condition : a function which tests an arbitrary condition on n,
     for exemple if we want n to be the product of three distinct primes.
-    are below this bound
-    Rreturn a list of couples (d, n) where d is a squarefree integer
+    If you do not want any condition on n, simply define condition as
+    def no_condition(n) : return True.
+    Return a Results.txt file with couples (d, n) where d is a squarefree integer
     and n is a non-Carmichael number which generates a Carmichael ideal
     in the integers ring of Q(sqrt(d)).
     """
 
-    if (bound > 512461) :
-        raise Exception("To save calculation time, n must be <= 512461.")
-
+    # write meta stuff in Results.txt
     results_file = open("Results.txt", "w")
     meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
     meta += ("n in [2, " + str(bound - 1) + "]\n")  
     meta += ("Condition on n : " + condition.__name__ + "\n\n")
     results_file.write(meta)
 
+    # this is where the fun begins
     qf_generators = [d for d in gen_range if d!=1 and d.is_squarefree()]
     ideal_generators = [n for n in IntegerRange(2, bound) if condition(n)]
     for d in qf_generators :
@@ -77,7 +88,7 @@ def find_carmichael_ideal(gen_range, bound, condition) :
 
     results_file.close()
 
-# tests
+# Unit tests
 K.<a> = QuadraticField(23)
 I = K.ideal(77)
 assert ideal_is_carmichael(I) == False
