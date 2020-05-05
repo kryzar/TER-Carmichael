@@ -17,7 +17,7 @@
 	\large Antoine Hugounet \\
 
 	\vspace{40px}
-	\LARGE \textbf{Petits résultats sur les idéaux de Carmichael}
+	\LARGE \textbf{Sublime de Voituremichel}
 
 	\vspace{40px}
 	\large
@@ -79,30 +79,14 @@ Supposons par l'absurde que $\p$ est un idéal premier de $A$ et que $\p^n$ divi
 
 En reprenant les notations du préambule, si $n\OL$ est de Carmichael dans $\OL$, il est sans facteurs carrés. Le corollaire précédent assure que $n\OK$ sera aussi sans facteurs carrés et il nous faut donc étudier la norme pour conclure.
 
-\subsection{Étude de la norme}
+\subsection{Protoétude de la norme}
 
-Puisque la norme des éléments se comporte très bien avec les sous-extensions\footnote{Si l'on se donne $x$ un élément de $\OK$, alors $\Norm_{\OL}(x) = \Norm_{\OK}(x)^{[L : K]}$.}, il est raisonnable de penser que cela sera aussi le cas des normes d'idéaux. Nous avons alors ce premier résultat.
-
-\begin{fait}\label{fait1} 
-	Soient $\Q\subset K \subset L$ une tour de corps de nombres et $I$ un idéal non trivial de $\OL$. Si l'idéal restreint $I\cap \OK$ est non trivial, alors $$\Norm_{\OK}(I \cap \OK) \mid \Norm_{\OL}(I).$$
-\end{fait}
-
-\begin{proof}
-C'est un résultat de théorie des groupes à peine déguisé. On a une suite de morphismes de groupes $$\OK\to \OL \to \OL/I.$$ En appelant $f$ la composée des deux flèches, on obtient $\Ker f = I\cap \OK$ et l'on en déduit l'existence d'un morphisme de groupes injectif $$\OK/I\cap \OK \hookrightarrow \OL/I.$$ Ainsi, $\OK/ I\cap \OK$ s'identifie à un sous-groupe de $\OL/I$. D'après le théorème de Lagrange, son cardinal divise donc celui de $\OL/I$. Or, comme nos idéaux sont non triviaux, nous pouvons en prendre les normes, qui sont exactement les cardinaux de ces quotients, par définition. D'où le résultat.
-\end{proof}
-
-\begin{exemple}
-	Prenons $\Q \subset K \subset L$, avec $ K =\Q(\sqrt{2})$, $L = \Q(\sqrt{2}, \sqrt{3})$ puis posons enfin $I$ l'idéal de $\OL$ engendré par $\sqrt{3}$. Ce dernier étant principal, sa norme est celle de son générateur, et $\Norm_{L/\Q}(\sqrt{3})$ est par définition le déterminant de l'application $\Q$-linéaire de multiplication par $\sqrt{3}$ : \begin{align*} L &\to L \\ x &\mapsto \sqrt{3} x.\end{align*} Dans la base canonique $(1, \sqrt{2}, \sqrt{3}, \sqrt{2}\sqrt{3})$, cette application a pour matrice la matrice $$\begin{pmatrix} 0 & 0 & 3 & 0 \\ 0 & 0 & 0 & 3 \\ 1 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0\end{pmatrix},$$ dont le déterminant est $9$. Ainsi, $\Norm_{L/\Q}(\sqrt{3}) = 9$. \NTS{calculer l'autre norme}
-
-Finalement, nous obtenons $\Norm_{\OL}(I) = 9$, $\Norm_{\OK}(I\cap \OK)=1$... et rien de plus. Cet exemple montre en particulier que la norme dans le grand corps de nombre ne s'obtient pas en général comme une puissance de la norme dans le petit corps de nombres, et ce même quand l'idéal considéré est principal. C'est ce constat qui nous a amené à l'hypothèse qu'un idéal de Carmichael dans un grand corps de nombres ne l'est pas nécessairement dans un petit corps de nombres.
-\end{exemple}
+Reprenons les notations du préambule et supposons que $n$ est de Carmichael dans $\OL$. On a en particulier $$\Norm_\OL(\P) - 1 \mid \Norm_\OK(n\OL) - 1$$ pour tout idéal premier $\P\in \Spec(\OL)$ divisant $n\OK$. Écrivons $$n\OL = \p_1\cdots \p_r$$ la factorisation de $n$ en produit d'idéaux premiers de $\OK$ distincts ($n\OK$ est sans facteurs carrés d'après la sous-section précédente). Pour tout $i\in [\![1, r]\!]$ on voudrait $\Norm_\OK(\pi) - 1\mid \Norm_\OK(n) - 1$. On a bien\footnote{Si $[K : \Q]\mid [L:\Q]$ on a même $\Norm_\OK(n\OK) - 1\mid \Norm_\OL(n\OL) - 1$. C'est trivialement le cas lorsque l'on considère $K=\Q$ mais cela ne change rien.} $$\Norm_\OK(n\OK) = n^{[K : \Q} \mid \Norm_\OL(n\OL) = n^{[L : \Q]}$$ et $$\Norm_\OL(\p_i \OL) \mid \Norm_\OL(\P)$$ pour tout idéal premier $\P$ de $\OL$ au dessus de $\p_i$, mais il ne semble pas évident de recoller les morceaux pour avoir les divisions désirées.
 
 
 \subsection{Synthèse et contre-exemple}
 
-Intuitivement, la condition imposée sur les normes par le critère de Korselt semble trop forte pour être transmise du grand anneau d'entiers au moyen anneau d'entiers. Reprenons les notations du premier paragraphe, supposons que $n\OL$ est de Carmichael, et admettons que $n\OK$ demeure sans facteur carré. Soit $\p$ un idéal premier de $\OK$ divisant $n\OK$. Alors $p=\P\cap \OK$, où $\P$ est un idéal premier de $\OL$ divisant $n\OL$. On sait d'après le fait \ref{fait1} que $$\Norm_K(\p) \mid \Norm_L(\P),$$ et même en cherchant longtemps, cette condition ne permet en aucun cas de conclure que $\Norm_K(\p) - 1\mid \Norm_K(n\OK) - 1$ en ayant pour seule hypothèse (critère de Korselt) que $\Norm_L(\P) - 1 \mid \Norm_L(n\OL) - 1$. \\
-
-Après avoir cherché sans succès un contre-exemple « malin », nous décidons d'écrire un algorithme naïf pour chercher ledit contre-exemple. L'idée est simple : se restreindre aux corps quadratiques, passer en revue une liste d'entiers $d$ sans facteur carré qui engendrent ces corps, et pour chaque tel $d$, tester parmi un nombre arbitraire d'entiers naturels $n$, lesquels engendrent un idéal de Carmichael dans $\Q(\sqrt{d})$ sans être un nombre de Carmichael. Voici l'algorithme en pseudo code. \\
+Après avoir cherché sans succès un contre-exemple « malin », nous décidons d'écrire un algorithme naïf pour chercher ledit contre-exemple. L'idée est simple : se restreindre aux corps quadratiques, passer en revue une liste d'entiers $d$ sans facteur carré qui engendrent ces corps et pour chaque tel $d$, tester parmi une liste arbitraire d'entiers naturels, lesquels engendrent un idéal de Carmichael sans être un nombre de Carmichael. Voici l'algorithme en pseudo code. \\
 
 \begin{algorithm}[H]
 \KwIn{a, b, c}
@@ -117,23 +101,31 @@ Après avoir cherché sans succès un contre-exemple « malin », nous décidon
 \end{algorithm}
 
 \vspace{1em}
-La version implémentée dans Sage de cet algorithme est disponible sur GitHub (\NTS{lien}). Nous avons pu exhiber de nombreux contre-exemples, comme le couple $$(d, n) = (11, 35).$$ L'entier $35$ n'est pas de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{11})$. Le couple $$(d, n) = (95,8029)$$ est un autre contre-exemple, avec la particularité que $8029$ soit le produit de trois nombres premiers distincts ($7$, $31$ et $37$). De même, $8029$ n'est pas un entier de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{95})$.
+La version implémentée dans Sage de cet algorithme est disponible sur GitHub (\NTS{lien}). Nous avons pu exhiber de nombreux contre-exemples, comme le couple $$(d, n) = (11, 35).$$ L'entier $35$ n'est pas de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{11})$. Le couple $$(d, n) = (95,8029)$$ est un autre contre-exemple, avec la particularité que $8029 = 7\cdot 31\cdot 37$. De même, $8029$ n'est pas un entier de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{95})$.
 
-\section{Addenda}
+\section*{Addenda}
 
-\begin{fait}
+\begin{fait*}
 Soient $n$ un entier qui soit une puissance non triviale d'un nombre premier et $ K$ un corps de nombres. Alors $n\OK$ n'est pas un idéal premier.
-\end{fait}
+\end{fait*}
 
 \begin{proof}
-Écrivons $n = p^r, r>1$ et supposons que $n\OK$ soit un idéal premier $\p$ de $\OK$. Alors $\Norm_K(n\OK)$ est une puissance de la caractéristique $\Car(\OK/\p)$, disons $$\Norm_K(n\OK) = \Car(\OK/\p)^f,$$ où $f \leq [K : \Q]$. Mais on a aussi que $$\Norm_K(n\OK) = \Norm_K(n) = (p^r)^{[K : \Q]}.$$ La caractéristique $\Car(\OK/\p)$ étant un nombre premier, il vient $p^f = p^{r[K : \Q]}$. Comme par ailleurs $$f \leq [K : \Q] < r[K : \Q],$$ l'égalité est impossible, et nous avons une contradiction. $n\OK$ n'est donc pas un idéal premier.
+Écrivons $n = p^r, r>1$ et supposons que $n\OK$ soit un idéal premier $\p$ de $\OK$. Alors $\Norm_K(n\OK)$ est une puissance de la caractéristique $\Car(\OK/\p)$, disons $$\Norm_K(n\OK) = \Car(\OK/\p)^f,$$ où $f \leq [K : \Q]$. Mais on a aussi que $$\Norm_K(n\OK) = \Norm_K(n) = (p^r)^{[K : \Q]}.$$ La caractéristique $\Car(\OK/\p)$ étant un nombre premier, il vient $p^f = p^{r[K : \Q]}$. Comme par ailleurs $$f \leq [K : \Q] < r[K : \Q],$$ l'égalité est impossible et nous avons une contradiction. $n\OK$ n'est donc pas un idéal premier.
 \end{proof}
 
-\begin{fait} Soient $K$ un corps de nombres et $\P$ un idéal premier de son anneau d'entiers. Alors $$\P\cap \Z = \Car(\OK/\P)\Z.$$
-\end{fait}
+\begin{fait*}
+	Soient $\Q\subset K \subset L$ une tour de corps de nombres et $I$ un idéal non trivial de $\OL$. Si l'idéal restreint $I\cap \OK$ est non trivial, alors $$\Norm_{\OK}(I \cap \OK) \mid \Norm_{\OL}(I).$$
+\end{fait*}
 
 \begin{proof}
-	D'après \ref{fait1}, $\Norm_{\Q/\Q}(\P\cap\Z)\mid \Norm_{K/\Q}(\P)$. Or, $\N_{K/\Q}(\P)$ est la puissance d'un nombre premier, et ce nombre premier n'est autre que la caractéristique du \textit{corps} $\OK/\P$. Or $\P\cap \Z$ est un idéal premier de $\Z$, et $\Z$ étant principal, $\P\cap \Z$ est engendré par un nombre premier $p\in \Z$. Ainsi, $$\Norm_{\Q/\Q}(\P\cap \Z) = |\Z/p\Z| = p,$$ et donc $$p\mid \Car(O_K/\P).$$ Comme ces deux nombres sont premiers, on a $p = \Car(O_K/\P)$.
+C'est un résultat de théorie des groupes à peine déguisé. On a une suite de morphismes de groupes $$\OK\to \OL \to \OL/I.$$ En appelant $f$ la composée des deux flèches, on obtient $\Ker f = I\cap \OK$ et l'on en déduit l'existence d'un morphisme de groupes injectif $$\OK/I\cap \OK \hookrightarrow \OL/I.$$ Ainsi, $\OK/ I\cap \OK$ s'identifie à un sous-groupe de $\OL/I$. D'après le théorème de Lagrange, son cardinal divise donc celui de $\OL/I$. Or, comme nos idéaux sont non triviaux, nous pouvons en prendre les normes, qui sont exactement les cardinaux de ces quotients, par définition. D'où le résultat.
+\end{proof}
+
+\begin{fait*} Soient $K$ un corps de nombres et $\P$ un idéal premier de son anneau d'entiers. Alors $$\P\cap \Z = \Car(\OK/\P)\Z.$$
+\end{fait*}
+
+\begin{proof}
+	D'après, $\Norm_{\Q/\Q}(\P\cap\Z)\mid \Norm_{K/\Q}(\P)$. Or, $\N_{K/\Q}(\P)$ est la puissance d'un nombre premier et ce nombre premier n'est autre que la caractéristique du \textit{corps} $\OK/\P$. Or $\P\cap \Z$ est un idéal premier de $\Z$ et $\Z$ étant principal, $\P\cap \Z$ est engendré par un nombre premier $p\in \Z$. Ainsi, $$\Norm_{\Q/\Q}(\P\cap \Z) = |\Z/p\Z| = p,$$ et donc $$p\mid \Car(O_K/\P).$$ Comme ces deux nombres sont premiers, on a $p = \Car(O_K/\P)$.
 \end{proof}
 
 \nocite{*}
