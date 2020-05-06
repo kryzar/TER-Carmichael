@@ -7,6 +7,7 @@
 \usepackage{biblatex}
 \usepackage[tworuled, onelanguage, french]{algorithm2e}
 
+\renewcommand{\thetheoremcounter}{\arabic{theoremcounter}}
 
 \addbibresource{bi.bib}
 \begin{document}
@@ -42,7 +43,7 @@
 \end{titlepage}
 %% fin page de titre
 
-\section{Un nombre de Carmichael dans un anneau d'entiers ne l'est pas forcément dans un anneau plus petit}
+\section{Un nombre de Carmichael dans un anneau d'entiers ne l'est pas forcément dans un anneau plus petit \NTS{trouver plus court}}
 
 Soient $\Q \subset K \subset L$ une tour de corps de nombres et $n\in \mathbb{Z}$ un entier. Si $n$ est de Carmichael dans $\OL$, l'est-il dans $\OK$ ? Nous affirmons que cette assertion est fausse en exhibant un contre exemple à l'aide du critère de Korselt généralisé (\cite{article}, théorème 2.2). Ce critère impose une condition sur les facteurs de $n\OK$ ($n\OK$ doit être sans facteurs carrés) et une condition sur les normes des diviseurs premiers de $n\OK$ ($\Norm(\p)$ doit diviser $\Norm(n\OK)$ pour tout idéal premier de $\OL$ divisant $n\OK$). L'enjeu est de comprendre si ces propriétés vraies dans $\OL$ sont transmises à $n\OK$.
 
@@ -50,34 +51,16 @@ Soient $\Q \subset K \subset L$ une tour de corps de nombres et $n\in \mathbb{Z}
 
 \subsection{Étude des facteurs carrés}
 
-\begin{lemme}Soient $A$ un anneau commutatif, $B$ une $A$-algèbre commutative et $I$, $J$ deux idéaux de $A$. Alors $$(IJ) B = (IB)(JB).$$
-\end{lemme}
-
-\begin{proof}
-	Par double inclusion. L'inclusion $$(IJ)B \subset (IB)(JB)$$ est triviale, car $(IB)(JB)$ est un idéal contenant $IB$. Réciproquement, $(IB)(JB)$ est l'idéal de $B$ engendré par les produits $\alpha\beta$, où $\alpha \in IB$ et $\beta\in JB$. Montrons qu'un tel générateur $\alpha\beta$ est forcément dans $(IJ)B$. Nous savons que $\alpha$ et $\beta$ sont de la forme suivante :
-	$$\begin{cases}
-		\displaystyle \alpha = \sum_{i=1}^n x_i a_i, \quad x_i\in B, a_i \in I \\
-		\displaystyle\beta = \sum_{j=1}^m y_j b_j, \quad y_j\in B, b_j \in J.
-	\end{cases}$$
-	Quitte à rajouter des termes nuls dans l'une des deux sommes, nous pouvons supposer $m=n$. Cela permet d'écrire le produit $$\alpha\beta = \sum_{i,j=1}^n (x_iy_j) (a_i b_j).$$ Pour tout couple $(i, j) \in [\![ 1, n]\!] ^2$, $x_iy_j \in B$, $a_i b_j\in IJ$, d'où $$(x_i y_j)(a_i b_j) \in (IB)J.$$ La somme de ces éléments reste dans $(IB)J$ et donc $\alpha \beta \in (IJ)B$, d'où l'inclusion $$(IB)(JB) \subset (IJ)B,$$ et le résultat désiré.
-\end{proof}
-
-Nous en déduisons le très utile résultat suivant.
+Nous voyons ici que si $n\OL$ est sans facteur carré, $n\OK$ l'est également.
 
 \begin{lemme}Soient $A$ un anneau de Dedekind, $B$ une $A$-algèbre qui soit elle aussi un anneau de Dedekind, $I$ un idéal de $A$ et $n\in \N^*$ un entier. Si $IB$ n'est pas divisé par un idéal premier à la puissance $n$, alors $I$ non plus.
 \end{lemme}
 
 \begin{proof}
-Supposons par l'absurde que $\p$ est un idéal premier de $A$ et que $\p^n$ divise $I$, autrement dit que I d'écrit $$I = \p^n J$$ pour un certain idéal $J$ de $A$. D'après le résultat précédent, on peut écrire $$IB = (\p B)^n J.$$ Soit $\P$ un idéal premier de $B$ au dessus de $\p$. On constate alors que $\P^n$ divise $IB$, contradiction. Il n'existe donc aucun idéal premier $\p$ de $A$ tel que $\p^n$ divise $I$.
+	Supposons par l'absurde que $\p$ est un idéal premier de $A$ et que $\p^n$ divise $I$, autrement dit que I d'écrit $$I = \p^n J$$ pour un certain idéal $J$ de $A$. Comme $(JJ')B = (JB)(J'B)$ pour tout couple $J, J'$ d'idéaux de $A$, on a $$IB = (\p B)^n J.$$ Soit $\P$ un idéal premier de $B$ au dessus de $\p$. On constate alors que $\P^n$ divise $IB$, contradiction. Il n'existe donc aucun idéal premier $\p$ de $A$ tel que $\p^n$ divise $I$.
 \end{proof}
 
-\begin{corollaire}Soient $n\in \Z$ un entier et $\Q\subset K\subset L$ une tour de corps de nombres. Si $n\OL$ est sans facteurs carrés, alors $n\OK$ l'est également.
-\end{corollaire}
-
-\begin{proof}Il suffit d'appliquer le fait précédent avec $A=\OK$, $B=\OL$ et $I = n\OK$.
-\end{proof}
-
-En reprenant les notations du préambule, si $n\OL$ est de Carmichael dans $\OL$, il est sans facteurs carrés. Le corollaire précédent assure que $n\OK$ sera aussi sans facteurs carrés et il nous faut donc étudier la norme pour conclure.
+En reprenant les notations du préambule, si $n\OL$ est de Carmichael dans $\OL$, il est sans facteurs carrés. En appliquant le lemme précédent à $A=\OK$, $B=\OL$ et $I = n\OK$, on voit que $n\OK$ demeure lui aussi dans facteur carré. Il faut donc étudier la norme pour conclure.
 
 \subsection{Protoétude de la norme}
 
