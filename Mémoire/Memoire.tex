@@ -43,37 +43,17 @@
 \end{titlepage}
 %% fin page de titre
 
-\section{Un nombre de Carmichael dans un anneau d'entiers ne l'est pas forcément dans un anneau plus petit \NTS{trouver plus court}}
+\section{\NTS{placeholder}}
 
 Question : soient $\Q \subset K \subset L$ une tour de corps de nombres et $n\in \mathbb{Z}$ un entier, si $n$ est de Carmichael dans $\OL$, l'est-il dans $\OK$ ? Nous affirmons que cette assertion est fausse en exhibant un contre exemple à l'aide du critère de Korselt généralisé (\cite{article}, théorème 2.2). Ce critère impose une condition sur les facteurs de $n\OK$ ($n\OK$ doit être sans facteurs carrés) et une condition sur les normes des diviseurs premiers de $n\OK$ ($\Norm(\p)$ doit diviser $\Norm(n\OK)$ pour tout idéal premier de $\OL$ divisant $n\OK$). L'enjeu est de comprendre si ces propriétés vraies dans $\OL$ sont transmises à $n\OK$.
 
 \begin{remarque}Si $n$ est premier, il peut très bien être de Carmichael dans un anneau d'entiers, mais ne le sera jamais dans l'anneau $\Z$, car un nombre de Carmichael est composé. Nous pouvons donc supposer $n$ composé. \end{remarque}
 
-\subsection{Étude des facteurs carrés}
-
-Nous voyons ici que si $n\OL$ est sans facteur carré, $n\OK$ l'est également.
-
-\begin{lemme}Soient $A$ un anneau de Dedekind, $B$ une $A$-algèbre qui soit elle aussi un anneau de Dedekind, $I$ un idéal de $A$ et $n\in \N^*$ un entier. Si $IB$ n'est pas divisé par un idéal premier à la puissance $n$, alors $I$ non plus.
-\end{lemme}
-
-\begin{proof}
-	Par contraposée. Soit $\p$ un idéal premier de $A$ tel que $\p^n$ divise $I$. On a $$I \subset \p^n.$$ Comme $(JJ')B = (JB)(J'B)$ pour tout couple $J, J'$ d'idéaux de $A$, on a $$IB \subset (\p B)^n = \p^n B \subset \P^n,$$ pour tout idéal premier $\P$ de $\OL$ divisant $\p B$, d'où la division $\P^n \mid IB$ et la conclusion.
-\end{proof}
-
-En reprenant les notations du préambule, si $n\OL$ est de Carmichael dans $\OL$, il est sans facteurs carrés. En appliquant le lemme précédent à $A=\OK$, $B=\OL$ et $I = n\OK$, on voit que $n\OK$ demeure lui aussi dans facteur carré. Il faut donc étudier la norme pour conclure.
-
-\subsection{Protoétude de la norme}
-
-Reprenons les notations du préambule et supposons que $n$ est de Carmichael dans $\OL$. On a en particulier $$\Norm_\OL(\P) - 1 \mid \Norm_\OK(n\OL) - 1$$ pour tout idéal premier $\P\in \Spec(\OL)$ divisant $n\OK$. Écrivons $n\OL = \p_1\cdots \p_r$ la factorisation de $n$ en produit d'idéaux premiers de $\OK$ distincts ($n\OK$ est sans facteurs carrés d'après la sous-section précédente). Pour tout $i\in [\![1, r]\!]$ on voudrait $\Norm_\OK(\pi) - 1\mid \Norm_\OK(n) - 1$. On a bien\footnote{Si $[K : \Q]\mid [L:\Q]$ on a même $\Norm_\OK(n\OK) - 1\mid \Norm_\OL(n\OL) - 1$. C'est trivialement le cas lorsque l'on considère $K=\Q$ mais cela ne change rien.} $$\Norm_\OK(n\OK) = n^{[K : \Q]} \mid \Norm_\OL(n\OL) = n^{[L : \Q]}$$ et $$\Norm_\OL(\p_i \OL) \mid \Norm_\OL(\P)$$ pour tout idéal premier $\P$ de $\OL$ au dessus de $\p_i$, mais a priori pas recoller les morceaux pour avoir les divisions désirées. C'est ce constat qui nous amène à chercher un contre exemple.
-
-
-\subsection{Synthèse et contre-exemple}
-
-Après avoir cherché sans succès un contre-exemple « malin », nous décidons d'écrire un algorithme naïf pour chercher ledit contre-exemple dans des corps quadratiques. L'idée est simple : passer en revue une liste d'entiers $d$ sans facteur carré qui engendrent ces corps et pour chaque tel $d$, tester parmi une liste arbitraire d'entiers naturels, lesquels engendrent un idéal de Carmichael sans être un nombre de Carmichael. \\
+Se convainquant rapidement que les hypothèses demandées sont trop fortes pour être transmises, nous décidons d'écrire un algorithme naïf pour chercher ledit contre-exemple dans des corps quadratiques. L'idée est simple : passer en revue une liste d'entiers $d$ sans facteur carré qui engendrent ces corps et pour chaque tel $d$, tester parmi une liste arbitraire d'entiers naturels, lesquels engendrent un idéal de Carmichael sans être un nombre de Carmichael. \\
 
 Il est facile avec un outil de calcul formel de déterminer si un entier $n$ est de Carmichael dans un corps quadratique $\Q(\sqrt{d})$, $d$ étant sans facteurs carrés. Posons $K=\Q(\sqrt{d})$ et $I = \OK$. Le logiciel SageMath\footnote{Voir \url{https://www.sagemath.org} et plus particulièrement \url{http://doc.sagemath.org/html/en/reference/number_fields/sage/rings/number_field/number_field.html}.} est capable de donner la décomposition de $I$ en produit d'idéaux premiers de $\mathcal{O}_K$ et calculer des normes d'idéaux. Pour tester si $I$ est de Carmichael, on demande à SageMath sa décomposition, on regarde s'il est sans facteurs carrés et si c'est le cas on teste si $\Norm_\OK(\p) - 1$ divise $\Norm_\OK(I) - 1$ pour tout idéal premier $\p$ de $\OK$ divisant $I$. Comme l'extension considérée est quadratique, $I$ a au plus deux facteurs premiers. La norme $\Norm_\OK(I)$ est quant à elle donnée par $n^2$. \\
 
-Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons pas chercher bien loin\footnote{Nous nous sommes limités à $d\in [\![-100, 100]\!]$ et $n\in [\![2, 10000]\!]$.} — plutôt que d'effectuer des calculs couteux et inutiles avec le critère de Korselt — il est préférable de regarder si $n$ est dans la (maigre) liste des entiers de Carmichael\footnote{La liste complète des entiers de Carmichael, à l'exception d'une infinité d'entre eux, est disponible ici : \url{https://oeis.org/A002997}.} inférieurs à $10000$ : $$\{561, 1105, 1729, 2465, 2821, 6601, 8911\}.$$ Pour l'implémentation, nous écrivons séparément une fonction testant si $I$ est de Carmichael et l'invoquons pour tout couple $(d, n)$. L'algorithme est donc le suivant ; son implémentation est disponible sur le compte GitHub de l'auteur (\url{https://github.com/kryzar/TER-Carmichael/blob/master/Script/Script.sage}).
+Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons pas chercher bien loin\footnote{Nous nous sommes limités à $d\in [\![-100, 100]\!]$ et $n\in [\![2, 10000]\!]$.} — plutôt que d'effectuer des calculs couteux et inutiles avec le critère de Korselt — il est préférable de regarder si $n$ est dans la (maigre) liste des entiers de Carmichael\footnote{La liste des premiers entiers de Carmichael est disponible ici : \url{https://oeis.org/A002997}.} inférieurs à $10000$ : $$\{561, 1105, 1729, 2465, 2821, 6601, 8911\}.$$ Pour l'implémentation, nous écrivons séparément une fonction testant si $I$ est de Carmichael et l'invoquons pour tout couple $(d, n)$. L'algorithme est donc le suivant ; son implémentation est disponible sur le compte GitHub de l'auteur (\url{https://github.com/kryzar/TER-Carmichael/blob/master/Script/Script.sage}).
 
 \vspace{1em}
 \begin{algorithm}[H]
