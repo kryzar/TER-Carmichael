@@ -1,3 +1,6 @@
+# Antoine Hugounet
+# Is_Carmichael.sage
+
 # from https://oeis.org/A002997
 carmichael_numbers = [561, 1105, 1729, 2465, 2821, 6601, 8911, 
     10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973,
