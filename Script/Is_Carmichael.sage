@@ -7,6 +7,7 @@ carmichael_numbers = [561, 1105, 1729, 2465, 2821, 6601, 8911,
 def ideal_verifies_Korselt_criterion(I) :
     """
     - I : ideal in a number field integer ring
+
     We use the Korselt criterion.
     """
     
