@@ -1,6 +1,31 @@
+# Antoine Hugounet
+# Algorithms.sage
+
 load("Is_Carmichael.sage")
 
-def find_carmichael_ideal_below_512461(gen_range, bound, condition) :
+def Corollary_3_7(borne_q) :
+    """
+    For every Carmichael number n below 512461, find all cyclotomic
+    fields Q(zeta_q), q < borne_q, where q is prime and gcd(Disc(K), n)=1 
+    such that nOK is not Carmichael.
+    """
+
+    results_file = open("Results_Corollary_3-7.txt", "w")
+
+    for n in carmichael_numbers :
+        for q in prime_range(3, borne_q) :
+            K = CyclotomicField(q)
+            if gcd(n, q) == 1 :
+                nOK = K.ideal(n) 
+                if not ideal_verifies_Korselt_criterion(nOK) :
+                    output = str(n) + " is not Carmichael in Q(zeta" \
+                            + str(q) + ")\n"
+                    results_file.write(output)
+
+    results_file.close()
+
+
+def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
     """
     Find all couples (d, n) such that n is not a Carmichael number but generates
     a Carmichael ideal in the integer ring of the quadratic field Q(\sqrt{d}).
@@ -8,7 +33,8 @@ def find_carmichael_ideal_below_512461(gen_range, bound, condition) :
 
     - gen_range (IntegerRange) : the square free integers d such that
     K = Q(\sqrt{d}) are chosen in the integer interval given by gen_range
-    - bound (int) : the generators of the ideal are chosen in [[2, bound]]
+    - bound (int) : the generators of the ideal are chosen in [[2, bound]] with
+    bound < 512461
     - condition : a function which tests an arbitrary condition on n,
     for exemple if we want n to be the product of three distinct primes.
     If you do not want any condition on n, simply define condition as
@@ -19,7 +45,7 @@ def find_carmichael_ideal_below_512461(gen_range, bound, condition) :
     """
 
     # write meta stuff in Results.txt
-    results_file = open("Results_Find_Carmichael.txt", "w")
+    results_file = open("Results_find_n_is_not_Carmichael_but_nOK_is.txt", "w")
     meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
     meta += ("n in [2, " + str(bound - 1) + "]\n")  
     meta += ("Condition on n : " + condition.__name__ + "\n\n")
