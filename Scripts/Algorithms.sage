@@ -12,7 +12,7 @@ def Corollary_3_7(borne_q) :
 
     results_file = open("Results_Corollary_3-7.txt", "w")
 
-    for n in carmichael_numbers :
+    for n in Carmichael_numbers :
         for q in prime_range(3, borne_q) :
             K = CyclotomicField(q)
             if gcd(n, q) == 1 :
