@@ -19,7 +19,7 @@ def find_carmichael_ideal_below_512461(gen_range, bound, condition) :
     """
 
     # write meta stuff in Results.txt
-    results_file = open("Results.txt", "w")
+    results_file = open("Results_Find_Carmichael.txt", "w")
     meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
     meta += ("n in [2, " + str(bound - 1) + "]\n")  
     meta += ("Condition on n : " + condition.__name__ + "\n\n")
