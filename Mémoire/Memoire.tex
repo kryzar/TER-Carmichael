@@ -6,6 +6,7 @@
 \usepackage{csquotes}
 \usepackage{biblatex}
 \usepackage[tworuled, onelanguage, french]{algorithm2e}
+\usepackage[french]{babel}
 
 \renewcommand{\thetheoremcounter}{\arabic{theoremcounter}}
 
@@ -43,7 +44,8 @@
 \end{titlepage}
 %% fin page de titre
 
-\section{\NTS{placeholder}}
+\begin{appendix}
+\section{Produire des contre-exemples}
 
 Question : soient $\Q \subset K \subset L$ une tour de corps de nombres et $n\in \mathbb{Z}$ un entier, si $n$ est de Carmichael dans $\OL$, l'est-il dans $\OK$ ? Nous affirmons que cette assertion est fausse en exhibant un contre exemple à l'aide du critère de Korselt généralisé (\cite{article}, théorème 2.2). Ce critère impose une condition sur les facteurs de $n\OK$ ($n\OK$ doit être sans facteurs carrés) et une condition sur les normes des diviseurs premiers de $n\OK$ ($\Norm_{K/\Q}(\p)-1$ doit diviser $\Norm_{K/\Q}(n\OK) - 1$ pour tout idéal premier de $\OL$ divisant $n\OK$). L'enjeu est de comprendre si ces propriétés vraies dans $\OL$ sont transmises à $n\OK$.
 
@@ -70,6 +72,8 @@ Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons 
 \vspace{1em}
 
 Nous avons pu exhiber de nombreux contre-exemples, comme le couple $$(d, n) = (11, 35).$$ L'entier $35$ n'est pas de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{11})$. Le couple $$(d, n) = (95,8029)$$ est un autre contre-exemple, avec la particularité que $8029 = 7\cdot 31\cdot 37$ est le produit de trois nombres premiers (on rappelle qu'un nombre de Carmichael a au moins trois facteurs premiers). De même, $8029$ n'est pas un entier de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{95})$.
+
+\end{appendix}
 
 \nocite{*}
 \printbibliography
