@@ -4,6 +4,30 @@
 load("Is_Carmichael.sage")
 HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
+def Carmichael_not_Carmichael_in_quad_field(gen_range) :
+    """
+    For every Carmichael number below 512461, find quadratic fields Q(sqrt(d))
+    where d is squarefree and in gen_range such that n is not Carmichael in
+    the integers ring of this field.
+    """
+
+    # meta info
+    outfile = open("Results_Carmichael_not_Carmichael_in_quad_field.txt", "w")
+    meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
+    outfile.write(meta)
+
+    qf_generators = [d for d in gen_range if d!=1 and d.is_squarefree()]
+    for n in Carmichael_numbers :
+        for d in qf_generators :
+            K = QuadraticField(d)
+            nOK = K.ideal(n)
+            if not ideal_verifies_Korselt_criterion(nOK) : 
+                output = str(n) + " is not Carmichael in Q(sqrt(" + str(d) + ")\n"
+                outfile.write(output)
+
+    outfile.close()
+
+
 def Corollary_3_7(borne_q) :
     """
     For every Carmichael number n below 512461, find all cyclotomic
@@ -24,6 +48,7 @@ def Corollary_3_7(borne_q) :
                     outfile.write(output)
 
     outfile.close()
+
 
 def Howe_cyclotomic(borne_q) :
     """
@@ -74,7 +99,7 @@ def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
     qf_generators = [d for d in gen_range if d!=1 and d.is_squarefree()]
     ideal_generators = [n for n in IntegerRange(2, bound) if condition(n)]
     for d in qf_generators :
-        K.<a> = QuadraticField(d)
+        K = QuadraticField(d)
 
         for n in ideal_generators :
             I = K.ideal(n)
