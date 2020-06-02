@@ -2,6 +2,7 @@
 # Algorithms.sage
 
 load("Is_Carmichael.sage")
+ROWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
 def Corollary_3_7(borne_q) :
     """
@@ -10,7 +11,7 @@ def Corollary_3_7(borne_q) :
     such that nOK is not Carmichael.
     """
 
-    results_file = open("Results_Corollary_3-7.txt", "w")
+    outfile = open("Results_Corollary_3-7.txt", "w")
 
     for n in Carmichael_numbers :
         for q in prime_range(3, borne_q) :
@@ -20,10 +21,28 @@ def Corollary_3_7(borne_q) :
                 if not ideal_verifies_Korselt_criterion(nOK) :
                     output = str(n) + " is not Carmichael in Q(zeta" \
                             + str(q) + ")\n"
-                    results_file.write(output)
+                    outfile.write(output)
 
-    results_file.close()
+    outfile.close()
 
+def Rowe_cyclotomic(borne_q) :
+    """
+    Find cyclotomic field Q(zetaq) in which the Rowe integer is 
+    not Carmichael.
+    """
+
+    outfile = open("Results_Row_cyclotomic.txt", "w")
+
+    for q in prime_range(3, borne_q) :
+        K = CyclotomicField(q)
+        I = K.ideal(ROWE)
+        if not ideal_verifies_Korselt_criterion(I) :
+            output = "the Rowe integer is not Carmichael in Q(zeta" \
+                    + str(q) + ")\n"
+            outfile.write(output)
+
+    outfile.close()
+    
 
 def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
     """
@@ -39,17 +58,17 @@ def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
     for exemple if we want n to be the product of three distinct primes.
     If you do not want any condition on n, simply define condition as
     def no_condition(n) : return True.
-    Return a Results.txt file with couples (d, n) where d is a squarefree integer
+    Return an outfile with couples (d, n) where d is a squarefree integer
     and n is a non-Carmichael number which generates a Carmichael ideal
     in the integers ring of Q(sqrt(d)).
     """
 
-    # write meta stuff in Results.txt
-    results_file = open("Results_find_n_is_not_Carmichael_but_nOK_is.txt", "w")
+    # write meta stuff in the outfile
+    outfile = open("Results_find_n_is_not_Carmichael_but_nOK_is.txt", "w")
     meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
     meta += ("n in [2, " + str(bound - 1) + "]\n")  
     meta += ("Condition on n : " + condition.__name__ + "\n\n")
-    results_file.write(meta)
+    outfile.write(meta)
 
     # this is where the fun begins
     qf_generators = [d for d in gen_range if d!=1 and d.is_squarefree()]
@@ -62,6 +81,6 @@ def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
             
             if not int_below_512461_is_carmichael(n) and ideal_verifies_Korselt_criterion(I) : 
                 output = "(d, n) = (" + str(d) + ", " + str(n) + ")\n"
-                results_file.write(output)
+                outfile.write(output)
 
-    results_file.close()
+    outfile.close()
