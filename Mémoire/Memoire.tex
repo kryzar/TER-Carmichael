@@ -34,7 +34,53 @@
 \end{titlepage}
 %% fin page de titre
 
-\section*{Salvateurs corps cyclotomiques}
+\section{Introduction}
+
+\begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombre. Dans quel mesure $n$ est-il de Carmichael dans $K$ ?
+\end{question}
+
+\section{Salvateurs corps cyclotomiques}
+
+\subsection{Horizon}
+
+L'étude des idéaux de Carmichael dans les corps cyclotomiques est porteuse d'espoir et fournit de beaux résultats susceptibles d'être à la base de tests de primalité, notamment le théorème 3.6. Commençons par énoncer ce résultat théorique.
+
+\begin{theoreme}[3.1 dans l'article]
+	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} $K$ de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
+\end{theoreme}
+
+Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
+
+\begin{theoreme}[deuxième réciproque]
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abélien} $K$ de discriminant premier avec $n$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n\OK)} \equiv \alpha \pmod{n\OK}.$$
+\end{theoreme}
+
+Le résultat le plus à même d'aboutir à un test de primalité est le théorème suivant.
+
+\begin{theoreme}[3.6 dans l'article]
+	Soit $n$ un entier composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ est premier avec $n$ et $n$ \emph{n'est pas de Carmichael dans $K$}.
+\end{theoreme}
+
+Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts, il est aisé d'aboutir à ce corollaire.
+
+\begin{corollaire}[3.7 dans l'article]\label{corollaire-3.7}
+	Soit $n$ un entier composé. Il existe au moins un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, de discriminant premier avec $n$ dans lequel $n$ n'est pas de Carmichael.
+\end{corollaire}
+
+Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
+
+\begin{theoreme}[troisième réciproque]
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, et tout entier algébrique $\alpha\in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n\OK)} \equiv \alpha \pmod{n\OK}.$$
+\end{theoreme}
+
+\subsection{Pratique}
+
+Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme \og naïf \fg{} apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}).
+
+
+\subsection{Technique}
+
+
 
 \begin{appendix}
 \section{Produire des contre-exemples}
