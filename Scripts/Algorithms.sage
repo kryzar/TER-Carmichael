@@ -2,7 +2,7 @@
 # Algorithms.sage
 
 load("Is_Carmichael.sage")
-ROWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
+HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
 def Corollary_3_7(borne_q) :
     """
@@ -25,9 +25,9 @@ def Corollary_3_7(borne_q) :
 
     outfile.close()
 
-def Rowe_cyclotomic(borne_q) :
+def Howe_cyclotomic(borne_q) :
     """
-    Find cyclotomic field Q(zetaq) in which the Rowe integer is 
+    Find cyclotomic field Q(zetaq) in which the Howe integer is 
     not Carmichael.
     """
 
@@ -35,9 +35,9 @@ def Rowe_cyclotomic(borne_q) :
 
     for q in prime_range(3, borne_q) :
         K = CyclotomicField(q)
-        I = K.ideal(ROWE)
+        I = K.ideal(HOWE)
         if not ideal_verifies_Korselt_criterion(I) :
-            output = "the Rowe integer is not Carmichael in Q(zeta" \
+            output = "the Howe integer is not Carmichael in Q(zeta" \
                     + str(q) + ")\n"
             outfile.write(output)
 
