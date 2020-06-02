@@ -75,15 +75,40 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 
 \subsection{Pratique}
 
-Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme \og naïf \fg{} apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}).
+Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme \og naïf \fg{} apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}). Ici, nous nous donnons des nombres de Carmichael $n$ et cherchons des corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, dans lesquels $n$ \emph{n'est pas de Carmichael}. Nous étudions tous les nombres de Carmichael de la liste\footnote{La liste des premiers entiers de Carmichael est disponible à \url{https://oeis.org/A002997}.} 
+\begin{align*}
+	\{& 561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041,\\ 
+	& 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, \\ 
+	& 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, \\
+	& 399001, 410041, 449065, 488881, 512461\}
+\end{align*}
+avec l'algorithme suivant.
 
+\vspace{1em}
+\begin{algorithm}[H]
+\KwIn{borne\_q}
+\ForEach{$n$ dans liste\_entiers\_Carmichael}{
+	\ForEach{$q$ nombre premier dans $[\![3, \mathrm{borne\_q}]\!]$}{
+		$K = \Q(\zeta_q)$ \;
+		\If{$\pgcd(q, n) = 1$}{
+			\If{$n$ n'est pas de Carmichael dans $K$}{
+				exporter le couple $(n, q)$ dans un fichier texte \;
+			}
+		}
+	}
+}
+\end{algorithm}
+\vspace{1em}
+
+Pour tester si un nombre est de Carmichael dans un corps de nombres de donné, nous implémentons le critère de Korselt dans une fonction dédié. Pour plus de détails, nous invitons le lecteur à se référer à l'annexe \ref{annexe-ce}.
 
 \subsection{Technique}
 
 
 
+\newpage
 \begin{appendix}
-\section{Produire des contre-exemples}
+\section{Produire des contre-exemples}\label{annexe-ce}
 
 Question : soient $\Q \subset K \subset L$ une tour de corps de nombres et $n\in \mathbb{Z}$ un entier, si $n$ est de Carmichael dans $\OL$, l'est-il dans $\OK$ ? Nous affirmons que cette assertion est fausse en exhibant un contre exemple à l'aide du critère de Korselt généralisé (\cite{article}, théorème 2.2). Ce critère impose une condition sur les facteurs de $n\OK$ ($n\OK$ doit être sans facteurs carrés) et une condition sur les normes des diviseurs premiers de $n\OK$ ($\Norm_{K/\Q}(\p)-1$ doit diviser $\Norm_{K/\Q}(n\OK) - 1$ pour tout idéal premier de $\OL$ divisant $n\OK$). L'enjeu est de comprendre si ces propriétés vraies dans $\OL$ sont transmises à $n\OK$.
 
@@ -93,7 +118,7 @@ Se convainquant rapidement que les hypothèses demandées sont trop fortes pour 
 
 Il est facile avec un outil de calcul formel de déterminer si un entier $n$ est de Carmichael dans un corps quadratique $\Q(\sqrt{d})$, $d$ étant sans facteurs carrés. Posons $K=\Q(\sqrt{d})$ et $I = \OK$. Le logiciel SageMath\footnote{Voir \url{https://www.sagemath.org} et plus particulièrement \url{http://doc.sagemath.org/html/en/reference/number_fields/sage/rings/number_field/number_field.html}.} est capable de donner la décomposition de $I$ en produit d'idéaux premiers de $\mathcal{O}_K$ et calculer des normes d'idéaux. Pour tester si $I$ est de Carmichael, on demande à SageMath sa décomposition, on regarde s'il est sans facteurs carrés et si c'est le cas on teste si $\Norm_{K/\Q}(\p) - 1$ divise $\Norm_{K/\Q}(I) - 1$ pour tout idéal premier $\p$ de $\OK$ divisant $I$. Comme l'extension considérée est quadratique, $I$ a au plus deux facteurs premiers. La norme $\Norm_{K/\Q}(I)$ est quant à elle donnée par $n^2$. \\
 
-Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons pas chercher bien loin\footnote{Nous nous sommes limités à $d\in [\![-100, 100]\!]$ et $n\in [\![2, 10000]\!]$.} — plutôt que d'effectuer des calculs couteux et inutiles avec le critère de Korselt — il est préférable de regarder si $n$ est dans la (maigre) liste des entiers de Carmichael\footnote{La liste des premiers entiers de Carmichael est disponible ici : \url{https://oeis.org/A002997}.} inférieurs à $10000$ : $$\{561, 1105, 1729, 2465, 2821, 6601, 8911\}.$$ Pour l'implémentation, nous écrivons séparément une fonction testant si $I$ est de Carmichael et l'invoquons pour tout couple $(d, n)$. L'algorithme est donc le suivant ; son implémentation est disponible sur le compte GitHub de l'auteur (\url{https://github.com/kryzar/TER-Carmichael/blob/master/Script/Script.sage}).
+Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons pas chercher bien loin\footnote{Nous nous sommes limités à $d\in [\![-100, 100]\!]$ et $n\in [\![2, 10000]\!]$.} — plutôt que d'effectuer des calculs couteux et inutiles avec le critère de Korselt — il est préférable de regarder si $n$ est dans la (maigre) liste des entiers de Carmichael inférieurs à $10000$ : $$\{561, 1105, 1729, 2465, 2821, 6601, 8911\}.$$ Pour l'implémentation, nous écrivons séparément une fonction testant si $I$ est de Carmichael et l'invoquons pour tout couple $(d, n)$. L'algorithme est donc le suivant ; son implémentation est disponible sur le compte GitHub de l'auteur (\url{https://github.com/kryzar/TER-Carmichael/blob/master/Script/Script.sage}).
 
 \vspace{1em}
 \begin{algorithm}[H]
@@ -112,6 +137,11 @@ Il reste à déterminer si $n$ est un entier de Carmichael. Comme nous n'allons 
 Nous avons pu exhiber de nombreux contre-exemples, comme le couple $$(d, n) = (11, 35).$$ L'entier $35$ n'est pas de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{11})$. Le couple $$(d, n) = (95,8029)$$ est un autre contre-exemple, avec la particularité que $8029 = 7\cdot 31\cdot 37$ est le produit de trois nombres premiers (on rappelle qu'un nombre de Carmichael a au moins trois facteurs premiers). De même, $8029$ n'est pas un entier de Carmichael, mais il engendre un idéal de Carmichael dans $\Q(\sqrt{95})$.
 
 \end{appendix}
+
+\section{Todo}
+\begin{itemize}
+	\item Enlever les hypothèses $Disc(K)$ premier avec $n$ si Kraus est ok et rajotuer en lemme que c'est bon en introductoin
+\end{itemize}
 
 \nocite{*}
 \printbibliography
