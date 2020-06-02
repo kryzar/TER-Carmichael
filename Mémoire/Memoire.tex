@@ -34,12 +34,16 @@
 \end{titlepage}
 %% fin page de titre
 
-\section{Introduction}
+\section*{Introduction}
 
 \begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombre. Dans quel mesure $n$ est-il de Carmichael dans $K$ ?
 \end{question}
 
-\section{Salvateurs corps cyclotomiques}
+\section{Délices de la théorie}
+
+\section{Troublants corps quadratiques}
+
+\section{Salutaires corps cyclotomiques}
 
 \subsection{Horizon}
 
@@ -75,7 +79,7 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 
 \subsection{Pratique}
 
-Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme \og naïf \fg{} apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}). Ici, nous nous donnons des nombres de Carmichael $n$ et cherchons des corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, dans lesquels $n$ \emph{n'est pas de Carmichael}. Nous étudions tous les nombres de Carmichael de la liste\footnote{La liste des premiers entiers de Carmichael est disponible à \url{https://oeis.org/A002997}.} 
+Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme SageMath apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}). Ici, nous nous donnons des nombres de Carmichael $n$ et cherchons des corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, dans lesquels $n$ \emph{n'est pas de Carmichael}. Nous étudions tous les nombres de Carmichael de la liste\footnote{La liste des premiers entiers de Carmichael est disponible à \url{https://oeis.org/A002997}.} 
 \begin{align*}
 	\{& 561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041,\\ 
 	& 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, \\ 
@@ -100,7 +104,9 @@ avec l'algorithme suivant.
 \end{algorithm}
 \vspace{1em}
 
-Pour tester si un nombre est de Carmichael dans un corps de nombres de donné, nous implémentons le critère de Korselt dans une fonction dédié. Pour plus de détails, nous invitons le lecteur à se référer à l'annexe \ref{annexe-ce}.
+\begin{remarque}
+	Pour tester si un nombre est de Carmichael dans un corps de nombres de donné, nous implémentons le critère de Korselt dans une fonction dédiée. Pour plus de détails sur l'implémentation de ces algorithmes, nous invitons le lecteur à se référer à l'annexe \ref{annexe-ce}.
+\end{remarque}
 
 \subsection{Technique}
 
