@@ -52,19 +52,23 @@ Revenons un pas en arrière. Nous avons évoqué la réciproque du petit théor�
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
 \end{enoncefaux}
 
-Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'assurer pour tous les corps quadratiques de discriminant non divisé par $n$. Même si ces notions sont les mêmes lorsque $n$ est effectivement premier, cette condition est beaucoup plus forte~! Everett W. Howe a ainsi exhibé en 2000 un entier $h$ qui est de Carmichael non seulement dans $\Q$, mais aussi dans tout corps quadratique de discriminant premier avec $h$. Il est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331.$$ Un tel entier est appelé \emph{entier de Carmichael rigide d'ordre 2} ($2$ étant le degré d'un corps quadratique sur $\Q$). Plus généralement, l'auteur prouve même le résultat suivant.
+Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'assurer pour tous les corps quadratiques de discriminant non divisé par $n$. Même si ces notions sont les mêmes lorsque $n$ est effectivement premier, cette condition est beaucoup plus forte~! Il est même facile de démontrer le résultat suivant.
 
 \begin{theoreme}[2.7 dans l'article]\label{theoreme-2.7}
-	Soient $n$ un entier composé sans facteur carré et $d>1$ un entier. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans tout corps de nombres de degré $d$ de discriminant premier avec $n$.
+	Soient $n$ un entier composé sans facteur carré et $d\geq 1$ un entier. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans $\Q$ et tout corps de nombres de degré $d$ de discriminant premier avec $n$.
 \end{theoreme}
 
-\begin{remarque}
-	Ce résultat est en réalité une équivalence.
-\end{remarque}
-
 \begin{definition}
-	Un entier $n$ vérifiant les hypothèses du théorème \ref{theoreme-2.7} est dit \emph{rigide d'ordre $d$}.
+	Un entier $n$ vérifiant les hypothèses du théorème \ref{theoreme-2.7} pour un certain entier $d\geq 1$ est appelé \emph{nombre de Carmichael rigide d'ordre $d$}.
 \end{definition}
+
+Chose troublante, de tels nombres existent.
+
+\begin{theoreme}[Howe, 2000]
+	Il existe un couple $(n, d)$ d'entiers tel que $n$ soit un entier de Carmichael rigide d'ordre $d$.
+\end{theoreme}
+
+En guise de preuve, E. W. Howe exhibe un entier de Carmichael rigide d'ordre $2$. Il est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331$$ et est appelé \emph{entier de Howe}. \\
 
 À la lumière de ces troublants résultats, si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme (\ref{algo-quadratique-faible}) en la version suivante.
 
