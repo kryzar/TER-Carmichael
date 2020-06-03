@@ -34,14 +34,7 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 
 \subsection{Pratique}
 
-Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme SageMath apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}). Ici, nous nous donnons des nombres de Carmichael $n$ et cherchons des corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, dans lesquels $n$ \emph{n'est pas de Carmichael}. Nous étudions tous les nombres de Carmichael de la liste\footnote{La liste des premiers entiers de Carmichael est disponible à \url{https://oeis.org/A002997}.} 
-\begin{align*}
-	\mathfrak{C} = \{& 561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041,\\ 
-	& 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, \\ 
-	& 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, \\
-	& 399001, 410041, 449065, 488881, 512461\}
-\end{align*}
-avec l'algorithme suivant.
+Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme SageMath apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}). Ici, nous nous donnons des nombres de Carmichael $n$ et cherchons des corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, dans lesquels $n$ \emph{n'est pas de Carmichael}. Nous testons les entiers de Carmichael de la liste \ref{liste-carmichael} \NTS{ajouter référence} avec l'algorithme suivant.
 
 \vspace{1em}
 \begin{algorithm}[H]

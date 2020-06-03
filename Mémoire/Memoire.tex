@@ -8,40 +8,15 @@
 \usepackage[tworuled, onelanguage, french]{algorithm2e}
 \usepackage[french]{babel}
 
-\renewcommand{\thetheoremcounter}{\arabic{theoremcounter}}
 
 \addbibresource{bi.bib}
 \begin{document}
 
-% début page de titre
 \begin{titlepage}
-\begin{center}
-	\large Antoine Hugounet \\
-
-	\vspace{40px}
-	\LARGE \NTS{placeholder Titre}
-
-	\vspace{40px}
-	\large
-	travail encadré de recherche \\
-	encadré par Alain Kraus\footnote{\url{https://webusers.imj-prg.fr/~alain.kraus/}} (IMJ-PRG) \\
-	de janvier à juin 2020 \\
-
-	\vspace{20px}
-	Sorbonne Université
-\end{center}
-
+\input{titlepage}
 \end{titlepage}
-%% fin page de titre
 
-\section*{Introduction}
-
-\begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombre. Dans quel mesure $n$ est-il de Carmichael dans $K$ ?
-\end{question}
-
-\begin{equation}\label{eq-Carmichael}
-\alpha^{\Norm(I)} \equiv \alpha \pmod{I}, \quad \forall \alpha \in \OK.
-\end{equation}
+\input{Introduction}
 
 \input{section-DelicesTheorie}
 \input{section-CorpsQuadratiques}
@@ -55,7 +30,6 @@
 \section{Todo}
 \NTS{
 \begin{itemize}
-	\item Enlever les hypothèses $Disc(K)$ premier avec $n$ si A. Kraus est ok et rajouter en lemme que c'est bon en introduction
 	\item Rajouter des liens vers les fonctions implémentées depuis les algorithmes.
 \end{itemize}
 }

@@ -1,0 +1,19 @@
+\section{Troublants corps quadratiques}
+
+Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux reste de donner une réponse à la question \ref{question-centrale}. Le théorème 2.5 de l'article apporte de premiers éléments de réponse.
+
+\begin{theoreme}[2.5 dans l'article]
+	Soit $n$ un entier impair sans facteurs carrés. S'il existe un diviseur premier $p$ de $n$ tel que $$p^2 - 1 \nmid n^2 - 1,$$ alors il existe une infinité de corps quadratiques $K$ dans lesquels $n$ \emph{n'est pas} de Carmichael.
+\end{theoreme}
+
+\begin{remarque}
+	On présage dès l'énoncé la nature de la preuve : c'est le critère de Korselt. On demande déjà que $n$ soit sans facteurs carrés et comme la norme d'un idéal premier au dessus de $n\OK$ est un nombre premier $p$ divisant $n$, la partie réellement inventive de la preuve consiste à trouver les bons corps quadratiques. Cette partie est non triviale et est basée sur une savante utilisation du théorème chinois et la connaissance d'un nombre premier $p$ comme dans les hypothèses du théorème.
+\end{remarque}
+
+Bien que cet énoncé ne semble pas viable en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers, ce qui ne nous arrange pas. \NTS{sourcer}.}, certains nombres de Carmichael vérifient ces hypothèses. C'est le cas par exemple du nombre de $n=512461$ et de son facteur premier $p=271$ : il existe une infinité de corps quadratiques dans lequel $512461$ n'est pas de Carmichael. Mieux encore, nous avons numériquement vérifié que tous les entiers de Carmichael de la liste \NTS{ajouter référence} vérifiaient ces hypothèses, prouvant qu'ils sont effectivement composés. \\
+
+Il ne faut toutefois pas se réjouir trop vite. Revenons un peu en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf—reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
+
+\begin{enoncefaux}[mauvaise réciproque du petit théorème de Fermat généralisé]
+	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
+\end{enoncefaux}
