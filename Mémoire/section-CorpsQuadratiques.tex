@@ -17,9 +17,9 @@ Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce 
 L'algorithme que nous avons utilisé pour trouver ces corps n'est cependant probablement pas utilisable en pratique, puisqu'il utilise le critère de Korselt généralisé et impose de décomposer l'idéal $n\OK$ en produit d'idéaux premiers\footnote{\NTS{Si possible, donner un mot sur la complexité de l'algo de décomposition dans un extension}}. Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix bien plus intéressante. Il montre que $n = 561$ est composé en trouvant le corps quadratique $K = \Q(\sqrt{13})$ et l'élément $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$. Comme $$\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$$ et que $n$ et $13$ sont premiers entre eux, cela composition de $n$. Le point clé est que l'auteur ne semble pas utiliser le critère de Korselt. Il aurait besoin pour cela d'exhiber une décomposition en produit d'idéaux premiers de $n\OK$, ce qui est certainement prohibitif. Au lieu de cela, il exhibe un élément $\alpha\in \OK$ tel que $\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$. Étant donné un entier impair (potentiellement de Carmichael) dont on veut prouver la composition, cela donne envie d'étudier l'algorithme \emph{probabiliste} suivant.
 
 \vspace{1em}
-\begin{algorithm}[H]
+\begin{algorithm}[H]\label{algo-quadratique-faible}
 \KwIn{$b$ (borne coordonnées $\alpha$)}
-\ForEach{$d \in \N$ sans facteurs carrés dans $I$}{
+\ForEach{$d \in \N$ sans facteurs carrés}{
 	$K \leftarrow \Q(\sqrt{d})$ \\
 	$\theta\leftarrow$ un générateur de $\OK$ \\
 	\If{$d$ et $n$ sont premiers entre eux}{
@@ -34,15 +34,40 @@ L'algorithme que nous avons utilisé pour trouver ces corps n'est cependant prob
 \end{algorithm}
 \vspace{1em}
 
-Pour que cet algorithme soit viable en pratique, il conviendra de définir la notion de \textit{témoin de Carmichael} et d'étudier finement leur répartition, à la manière du test de primalité de Rabin-Miller (voir § 2.3.7, p.69 de \cite{Demazure}). L'auteur de ce présent mémoire est pleinement conscient du travail à accomplir. \\
+Pour que cet algorithme soit viable en pratique, il conviendra de définir la notion de \textit{témoin de Carmichael} et d'étudier finement leur répartition, à la manière du test de primalité de Rabin-Miller (voir § 2.3.7, p.69 de \cite{Demazure}). L'auteur de ce présent mémoire est pleinement conscient du travail à accomplir. Par ailleurs, il n'y aucune preuve que l'algorithme termine en l'état. \\
 
 Il peut en outre être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ avec une certitude morale, dans le même esprit que le test de primalité de Rabin-Miller. L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Mais l'existence d'entiers \emph{composés} $h$ qui sont de Carmichael dans tout corps quadratique de discriminant premier avec $h$ est un problème majeur qui empêche de considérer cette voie. C'est le propos de la prochaine sous-section.
 
-
-\subsection{Problèmes}
+\subsection{Problèmes \NTS{trouver meilleur titre}}
 
 Revenons un peu en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf—reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
 
 \begin{enoncefaux}[réciproque eronnée du petit théorème de Fermat généralisé]
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
 \end{enoncefaux}
+
+Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'en assurer pour tous les corps quadratiques de discriminant non divisé par $n$ — et il y en a beaucoup plus. Everett W. Howe a pu exhiber un entier $h$ qui soit à la fois composé et de Carmichael dans tout corps quadratique de discriminant premier avec $h$. Cet entier est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331.$$
+
+Si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme précédent (\ref{algo-quadratique-faible}) en la version suivante.
+
+
+\vspace{1em}
+\begin{algorithm}[H]\label{algo-quadratique-faible}
+\KwIn{$I$ (intervalle d'entiers $d$ sans facteurs carrés), $b$ (borne coordonnées $\alpha$)}
+\ForEach{$d \in \N$ sans facteurs carrés dans $I$}{
+	$K \leftarrow \Q(\sqrt{d})$ \\
+	$\theta\leftarrow$ un générateur de $\OK$ \\
+	\If{$n \nmid \Disc(K)$ sont premiers entre eux}{
+		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
+			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
+				\KwRet{$n$ est composé}	\\
+				\textbf{fin du programme}
+			}
+		}
+	}
+}
+\KwRet{$n$ a une certitude morale d'être premier}
+\end{algorithm}
+\vspace{1em}
+
+Il y a de nouveau un travail substantiel à faire pour s'assurer de la viabilité de cette direction. Nous partons donc avant toute chose étudier le cas des corps cyclotomiques, dont l'étude s'avérera empreinte d'optimisme.
