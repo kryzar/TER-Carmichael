@@ -52,7 +52,21 @@ Revenons un pas en arrière. Nous avons évoqué la réciproque du petit théor�
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
 \end{enoncefaux}
 
-Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'assurer pour tous les corps quadratiques de discriminant non divisé par $n$. Même si ces notions sont les mêmes lorsque $n$ est effectivement premier, cette condition est beaucoup plus forte~! Everett W. Howe a ainsi exhibé en 2000 un entier $h$ qui qui est de Carmichael dans tout corps quadratique de discriminant premier avec $h$. Il est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331.$$ Si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme (\ref{algo-quadratique-faible}) en la version suivante.
+Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'assurer pour tous les corps quadratiques de discriminant non divisé par $n$. Même si ces notions sont les mêmes lorsque $n$ est effectivement premier, cette condition est beaucoup plus forte~! Everett W. Howe a ainsi exhibé en 2000 un entier $h$ qui est de Carmichael non seulement dans $\Q$, mais aussi dans tout corps quadratique de discriminant premier avec $h$. Il est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331.$$ Un tel entier est appelé \emph{entier de Carmichael rigide d'ordre 2} ($2$ étant le degré d'un corps quadratique sur $\Q$). Plus généralement, l'auteur prouve même le résultat suivant.
+
+\begin{theoreme}[2.7 dans l'article]\label{theoreme-2.7}
+	Soient $n$ un entier composé sans facteur carré et $d>1$ un entier. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans tout corps de nombres de degré $d$ de discriminant premier avec $n$.
+\end{theoreme}
+
+\begin{remarque}
+	Ce résultat est en réalité une équivalence.
+\end{remarque}
+
+\begin{definition}
+	Un entier $n$ vérifiant les hypothèses du théorème \ref{theoreme-2.7} est dit \emph{rigide d'ordre $d$}.
+\end{definition}
+
+À la lumière de ces troublants résultats, si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme (\ref{algo-quadratique-faible}) en la version suivante.
 
 
 \vspace{1em}
@@ -78,33 +92,27 @@ Il y a de nouveau un travail substantiel à faire pour s'assurer de la viabilit�
 
 \subsection{Idéaux de Carmichael et extensions}
 
-Dans toute cette sous-section, nous nous donner $$\Q\subset K \subset L$$ une tour de corps de nombres et \begin{itemize}
+Dans toute cette sous-section, nous nous donnons $$\Q\subset K \subset L$$ une tour de corps de nombres et \begin{itemize}
 	\item $I\subset \OK$ un idéal de Carmichael de $K$ ~;
-	\item $J \subset \OL$ un idéal de Carmichael de $\OL$.
+	\item $J \subset \OL$ un idéal de Carmichael de $L$.
 \end{itemize}
 
 \begin{question}
-	L'idéal étendu $I\OL$ est-il de Carmichael dans $\OL$ et l'idéal restreint $J\cap\OK$ est-il de Carmichael dans $\OK$ ?
+	L'idéal étendu $I\OL$ est-il de Carmichael dans $L$ et l'idéal restreint $J\cap\OK$ est-il de Carmichael dans $K$ ?
 \end{question}
 
-\subsubsection{D'un petit corps vers un grand corps}
-
-Cela montre en particulier le résultat suivant et apporte une première réponse à la question \ref{question-centrale}.
+Nous avons déjà montré la première partie de la question sans la sous-section précédente ~! En prenant $K=\Q$ et un corps quadratique pour $L$, nous avons établi que pour tout entier $n$ de Carmichael de la liste \ref{liste-carmichael}, il existait plusieurs corps quadratiques dans lesquels $n$ n'est pas de Carmichael. 
 
 \begin{proposition}\label{premier-ce}
-	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $I$ de $K$ qui ne sont pas de Carmichael dans $L$.
+	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $I$ de $K$ pour lesquels l'idéal étendu $I\OL$ qui ne sont pas de Carmichael dans $L$.
 \end{proposition}
 
-\begin{remarque}
-	Il n'aura pas fallu aller chercher bien loin pour trouver des exemples de tels corps et idéaux. Prendre $K = \Q$ et un corps quadratique pour $L$ aura suffi. Si l'on dispose d'un idéal de Carmichael dans un corps de nombres donné et d'une extension finie de ce corps de nombres, il s'avère difficile de déterminer si l'idéal reste de Carmichael dans le grand corps de nombres.
-\end{remarque}
-
-\subsubsection{D'un grand corps vers un petit corps}
-
-Revenons un peu en arrière et reposons nous la question centrale \ref{question-centrale}. Nous avons déjà prouvé qu'un idéal de Carmichael dans un corps de nombres donné ne l'est pas forcément dans une extension finie de ce dernier : c'est la proposition \ref{premier-ce}. Réciproquement, étant donnés une tour de corps de nombres $\Q\subset K \subset L$ et $J$ un idéal de Carmichael de $L$, l'idéal restreint $J\cap \OK$ est-il de Carmichael dans $K$ ? Là encore, ce n'est pas forcément le cas.
+Intéressons nous à la deuxième partie de la question.
 
 \begin{proposition}\label{deuxieme-ce}
 	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $J$ de $L$ pour lesquels l'idéal restreint $J\cap \OK$ n'est pas de Carmichael dans $K$.
 \end{proposition}
 
 Avant de se lancer dans cette étude, il convient d'aller explorer le royaume des corps cyclotomiques, ce qui s'avérera porteur d'espoir pour l'élaboration d'un test de primalité. 
+
+Il n'aura pas fallu aller chercher bien loin pour trouver des exemples de tels corps et idéaux. Prendre $K = \Q$ et un corps quadratique pour $L$ aura suffi. Si l'on dispose d'un idéal de Carmichael dans un corps de nombres donné et d'une extension finie de ce corps de nombres, il s'avère difficile de déterminer si l'idéal reste de Carmichael dans le grand corps de nombres.
