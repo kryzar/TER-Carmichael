@@ -20,7 +20,7 @@ Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce 
 	Une liste bien plus dense exhibée par l'auteur de ce mémoire est disponible sur sa page GitHub : \url{https://github.com/kryzar/ter-carmichael/blob/master/scripts/results_carmichael_not_carmichael_in_quad_field.txt}. \\
 \end{Complement}
 
-L'algorithme que nous avons utilisé pour trouver ces corps n'est en revanche probablement très sous-optimal en pratique, puisqu'il utilise le critère de Korselt généralisé et impose de décomposer l'idéal $n\OK$ en produit d'idéaux premiers\footnote{\NTS{Si possible, donner un mot sur la complexité de l'algo de décomposition dans un extension}}. Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix bien plus intéressante. Il montre que $n = 561$ est composé en exhibant le corps quadratique $K = Q(\sqrt{13})$ puis l'entier algébrique $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$. Comme $$\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$$ et que $n$ et $13$ sont premiers entre eux, cela prouve la composition de $n$. Le point clé est que l'auteur ne semble pas utiliser le critère de Korselt (il n'a pas donné les détails et nous ne pouvons en conséquence pas en être sûrs). Cette approche nous invite à étudier l'algorithme \emph{probabiliste} suivant. Soit $n$ un entier impair (potentiellement de Carmichael).
+Malgré cela, l'algorithme que nous avons utilisé pour trouver ces corps est sans doute très sous-optimal. Utilisant le critère de Korselt généralisé \ref{korselt-generalise}, il impose de décomposer l'idéal $n\OK$ en produit d'idéaux premiers\footnote{\NTS{Si possible, donner un mot sur la complexité de l'algo de décomposition dans un extension}}. Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix bien plus intéressante. Il montre que $n = 561$ est composé en exhibant le corps quadratique $K = Q(\sqrt{13})$ puis l'entier algébrique $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$. Comme $$\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$$ et que $n$ et $13$ sont premiers entre eux, cela prouve la composition de $n$. Le point clé est que l'auteur ne semble pas utiliser le critère de Korselt (il n'a pas donné les détails et nous ne pouvons en conséquence pas en être sûrs). Cette approche nous invite à étudier l'algorithme \emph{probabiliste} suivant. Soit $n$ un entier impair (potentiellement de Carmichael).
 
 \vspace{1em}
 \begin{algorithm}[H]\label{algo-quadratique-faible}
@@ -42,19 +42,17 @@ L'algorithme que nous avons utilisé pour trouver ces corps n'est en revanche pr
 
 Pour que cet algorithme soit viable en pratique, il conviendra de définir la notion de \textit{témoin de Carmichael} et d'étudier finement leur répartition, à la manière du test de primalité de Rabin-Miller (voir § 2.3.7, p.69 de \cite{Demazure}). L'auteur de ce présent mémoire est pleinement conscient du travail à accomplir. Par ailleurs, il n'y aucune preuve que l'algorithme termine en l'état. \\
 
-Il peut en outre être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ avec une certitude morale, toujours dans l'esprit test de primalité de Rabin-Miller. L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Mais l'existence d'entiers \emph{composés} $h$ qui sont de Carmichael dans tout corps quadratique de discriminant premier avec $h$ est un problème majeur qui empêche de considérer cette voie. C'est le propos de la prochaine sous-section.
+Il peut en outre être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ avec une certitude morale, toujours dans l'esprit test de primalité de Rabin-Miller. L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Mais l'existence d'entiers $h$ qui sont de Carmichael \emph{dans tout corps quadratique de discriminant premier avec $h$} est un problème majeur qui empêche de considérer cette voie. C'est le propos de la prochaine sous-section.
 
-\subsubsection{Un piège}
+\subsubsection{Un pas en arrière}
 
-Revenons un peu en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf—reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
+Revenons un pas en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf—reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
 
 \begin{enoncefaux}[réciproque eronnée du petit théorème de Fermat généralisé]
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
 \end{enoncefaux}
 
-Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'en assurer pour tous les corps quadratiques de discriminant non divisé par $n$ — et il y en a beaucoup plus. Everett W. Howe a pu exhiber un entier $h$ qui soit à la fois composé et de Carmichael dans tout corps quadratique de discriminant premier avec $h$. Cet entier est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331.$$
-
-Si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme précédent (\ref{algo-quadratique-faible}) en la version suivante.
+Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'assurer pour tous les corps quadratiques de discriminant non divisé par $n$. Même si ces notions sont les mêmes lorsque $n$ est effectivement premier, cette condition est beaucoup plus forte~! Everett W. Howe a ainsi exhibé en 2000 un entier $h$ qui qui est de Carmichael dans tout corps quadratique de discriminant premier avec $h$. Il est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331.$$ Si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme (\ref{algo-quadratique-faible}) en la version suivante.
 
 
 \vspace{1em}
@@ -76,11 +74,20 @@ Si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comm
 \end{algorithm}
 \vspace{1em}
 
-Il y a de nouveau un travail substantiel à faire pour s'assurer de la viabilité de cette direction. Nous partons donc avant toute chose étudier le cas des corps cyclotomiques, dont l'étude s'avérera empreinte d'optimisme.
+Il y a de nouveau un travail substantiel à faire pour s'assurer de la viabilité de cette direction. Enchaînons désormais avec deux résultats nous renseignant beaucoup sur la question \ref{question-centrale}.
 
-\subsection{Éléments de réponse à la question \ref{question-centrale}}
+\subsection{Idéaux de Carmichael et extensions}
 
-\subsubsection{D'un moyen corps vers un grand corps}
+Dans toute cette sous-section, nous nous donner $$\Q\subset K \subset L$$ une tour de corps de nombres et \begin{itemize}
+	\item $I\subset \OK$ un idéal de Carmichael de $K$ ~;
+	\item $J \subset \OL$ un idéal de Carmichael de $\OL$.
+\end{itemize}
+
+\begin{question}
+	L'idéal étendu $I\OL$ est-il de Carmichael dans $\OL$ et l'idéal restreint $J\cap\OK$ est-il de Carmichael dans $\OK$ ?
+\end{question}
+
+\subsubsection{D'un petit corps vers un grand corps}
 
 Cela montre en particulier le résultat suivant et apporte une première réponse à la question \ref{question-centrale}.
 
@@ -92,10 +99,12 @@ Cela montre en particulier le résultat suivant et apporte une première répons
 	Il n'aura pas fallu aller chercher bien loin pour trouver des exemples de tels corps et idéaux. Prendre $K = \Q$ et un corps quadratique pour $L$ aura suffi. Si l'on dispose d'un idéal de Carmichael dans un corps de nombres donné et d'une extension finie de ce corps de nombres, il s'avère difficile de déterminer si l'idéal reste de Carmichael dans le grand corps de nombres.
 \end{remarque}
 
-\subsubsection{D'un grand corps vers un moyen corps}
+\subsubsection{D'un grand corps vers un petit corps}
 
 Revenons un peu en arrière et reposons nous la question centrale \ref{question-centrale}. Nous avons déjà prouvé qu'un idéal de Carmichael dans un corps de nombres donné ne l'est pas forcément dans une extension finie de ce dernier : c'est la proposition \ref{premier-ce}. Réciproquement, étant donnés une tour de corps de nombres $\Q\subset K \subset L$ et $J$ un idéal de Carmichael de $L$, l'idéal restreint $J\cap \OK$ est-il de Carmichael dans $K$ ? Là encore, ce n'est pas forcément le cas.
 
 \begin{proposition}\label{deuxieme-ce}
 	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $J$ de $L$ pour lesquels l'idéal restreint $J\cap \OK$ n'est pas de Carmichael dans $K$.
 \end{proposition}
+
+Avant de se lancer dans cette étude, il convient d'aller explorer le royaume des corps cyclotomiques, ce qui s'avérera porteur d'espoir pour l'élaboration d'un test de primalité. 
