@@ -1,0 +1,78 @@
+\section{Salutaires corps cyclotomiques}
+
+\subsection{Horizon}
+
+L'étude des idéaux de Carmichael dans les corps cyclotomiques est porteuse d'espoir et fournit de beaux résultats susceptibles d'être à la base de tests de primalité, notamment le théorème 3.6. Commençons par un résultat théorique.
+
+\begin{theoreme}[3.1 dans l'article]
+	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} $K$ de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
+\end{theoreme}
+
+Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
+
+\begin{theoreme}[deuxième réciproque]
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abélien} $K$ de discriminant premier avec $n$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n\OK)} \equiv \alpha \pmod{n\OK}.$$
+\end{theoreme}
+
+Le résultat le plus à même d'aboutir à un test de primalité est le théorème suivant.
+
+\begin{theoreme}[3.6 dans l'article]
+	Soit $n$ un entier composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ est premier avec $n$ et $n$ \emph{n'est pas de Carmichael dans $K$}.
+\end{theoreme}
+
+Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts, il est aisé d'aboutir à ce corollaire.
+
+\begin{corollaire}[3.7 dans l'article]\label{corollaire-3.7}
+	Soit $n$ un entier composé. Il existe au moins un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, de discriminant premier avec $n$ dans lequel $n$ n'est pas de Carmichael.
+\end{corollaire}
+
+Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
+
+\begin{theoreme}[troisième réciproque]
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, et tout entier algébrique $\alpha\in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n\OK)} \equiv \alpha \pmod{n\OK}.$$
+\end{theoreme}
+
+\subsection{Pratique}
+
+Armé du corollaire \ref{corollaire-3.7}, l'auteur a pu implémenter un algorithme SageMath apportant dans certains cas une réponse à la question centrale de l'article (\ref{question-centrale}). Ici, nous nous donnons des nombres de Carmichael $n$ et cherchons des corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, dans lesquels $n$ \emph{n'est pas de Carmichael}. Nous étudions tous les nombres de Carmichael de la liste\footnote{La liste des premiers entiers de Carmichael est disponible à \url{https://oeis.org/A002997}.} 
+\begin{align*}
+	\mathfrak{C} = \{& 561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041,\\ 
+	& 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, \\ 
+	& 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, \\
+	& 399001, 410041, 449065, 488881, 512461\}
+\end{align*}
+avec l'algorithme suivant.
+
+\vspace{1em}
+\begin{algorithm}[H]
+\KwIn{borne\_q}
+\ForEach{$n$ dans liste\_entiers\_Carmichael}{
+	\ForEach{$q$ nombre premier dans $[\![3, \mathrm{borne\_q}]\!]$}{
+		$K = \Q(\zeta_q)$ \;
+		\If{$\pgcd(q, n) = 1$}{
+			\If{$n$ n'est pas de Carmichael dans $K$}{
+				exporter le couple $(n, q)$ dans un fichier texte \;
+			}
+		}
+	}
+}
+\end{algorithm}
+\vspace{1em}
+
+\begin{remarque}
+	Pour tester si un nombre est de Carmichael dans un corps de nombres de donné, nous implémentons le critère de Korselt dans une fonction dédiée. Pour plus de détails sur l'implémentation de ces algorithmes, nous invitons le lecteur à se référer à l'annexe \ref{annexe-ce}.
+\end{remarque}
+
+Pour chacun des nombres $n$ de la liste $\mathfrak{C}$, cet algorithme a pu exhiber de nombreux corps cyclotomiques dans lesquels $n$ n'est pas de Carmichael, prouvant que $n$ est composé~! Par exemple,
+\begin{itemize}
+	\item $561$ n'est pas de Carmichael dans $\Q(\zeta_5)$ ; 
+	\item $1729$ n'est pas de Carmichael dans $\Q(\zeta_{17})$ ;
+	\item $512461$ n'est pas de Carmichael dans $\Q(\zeta_{83})$.
+\end{itemize}
+
+Nombre d'autres résultats sont disponibles sur la page GitHub de l'auteur : \url{https://github.com/kryzar/TER-Carmichael/blob/master/Scripts/Results_Corollary_3-7.txt}. \\
+
+Cet algorithme permet aussi de prouver que l'entier de Howe est composé ! Notons $h$ cet entier. Mentionné après le théorème 2.7 de l'article, $h$ vaut $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331$$ et est de Carmichael non seulement dans $\Q$, mais aussi dans tout corps quadratique dont le discriminant est premier avec $h$ (on dit que $h$ est un nombre de Carmichael \emph{rigide d'ordre 2}). Notre algorithme exhibe toutefois de nombreux corps cyclotomiques dans lesquels $h$ n'est pas de Carmichael, comme $\Q(\zeta_{199})$. La liste complète des résultats trouvés est cette fois disponible à \url{https://github.com/kryzar/TER-Carmichael/blob/master/Scripts/Results_Howe_cyclotomic.txt}.
+
+
+\subsection{Technique}

@@ -1,0 +1,32 @@
+\section{Délices de la théorie}
+
+Fort heureusement, certaines propriétés fondamentales des \emph{entiers} de Carmichael sont transportées au cadre plus général des \emph{idéaux} de Carmichael. Tout d'abord, dans une extension \emph{galoisienne}, un idéal premier est soit premier, soit de Carmichael. Plus formellement, vient ceci.
+\begin{theoreme}[2.3 dans l'article]
+	Soient $p$ un nombre premier et $K$ un corps de nombre abélien tel que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
+\end{theoreme}
+
+Vu autrement, on retrouve le petit théorème de Fermat dans les extensions finies abéliennes de $\Q$. Fait tout à fait remarquable, G. A. Steele fournit — dans ce nouveau cadre des idéaux de Carmichael — une réciproque au petit théorème de Fermat.
+
+\begin{theoreme}[2.3 dans l'article]
+	Soit $n>2$ un entier composé. Alors il existe un corps \emph{quadratique} $K$ vérifiant $n\nmid \Disc(K)$ et un entier algébrique $\alpha \in \OK$ tels que $$\alpha^{\Norm_{K/\Q}(n)} \not\equiv \alpha \pmod{n\OK}.$$
+\end{theoreme}
+
+Ainsi, vient l'équivalence suivante.
+
+\begin{theoreme}[petit théorème de Fermat généralisé et sa réciproque]
+	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $n\nmid \Disc(K)$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
+\end{theoreme}
+
+Au delà de sa force théorique, cette énoncé semble porter une valeur historique majeure. Le test de Fermat était le seul à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Il aura certes fallu la chercher dans les corps de nombres, mais les corps quadratiques suffisent. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà. Quant à la preuve, elle repose — comme la plupart des énoncés de la section 2 de l'article — sur des outils classiques de théorie algébrique des nombres. Son apparente complexité technique raisonnable dissimule un réel savoir-faire. Il semble indispensable de louer la créativité de l'auteur pour l'élaboration de son formalisme, ainsi que la conception de ses preuves. \\
+
+Un autre résultat d'importance (démontré avant le petit théorème de Fermat généralisé dans l'article) est la généralisation du critère de Korselt. C'est ce résultat que l'on utilise en premier lieu pour déterminer si un entier est de Carmichael.
+
+\begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]
+	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On prend garde à supposer que $I$ est composé. Alors $I$ est de Carmichael \ssi $I$ est sans facteurs carrés et pour tout idéal premier $\P$ divisant $I$, on a $$\Norm(\P) - 1 \mid \Norm(I) - 1.$$
+\end{theoreme}
+
+\begin{remarque}
+	Il faut ici se montrer vigilant avec la nomenclature. Un idéal $I$ est de Carmichael dans un corps de nombres $K$ si $I$ est un idéal \textbf{composé} qui en plus de cela, vérifie l'identité \ref{eq-Carmichael}. Si l'on a un corps de nombres $L$ et un idéal $J$ de $\OK$, montrer que $\Norm(\P) - 1\mid \Norm(J) - 1,\; \forall \P\in \Spec(\OK) : \P\mid J$ ne suffit pas. La preuve du critère de Korselt généralisé nous enseigne que si $J$ est premier, $J$ vérifie également cette identité. Il faut donc indépendamment montrer que $J$ est composé, là est le cœur du problème. L'auteur de l'article fait lui-même une petite erreur en oubliant cette hypothèse dans l'énoncé du théorème 2.7 : il doit y supposer $n$ composé.
+\end{remarque}
+
+Ces résultats fournissent un début de théorie confortable, qui nous laisse envisager l'avenir avec espoir. Nous pouvons dès à présent nous confronter à une étude plus spécifique, celle des corps quadratiques.
