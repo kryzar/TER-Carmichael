@@ -1,18 +1,29 @@
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 
+Ce mémoire s'applique à étudier les idéaux de Carmichael dans les corps de nombres et évaluer la viabilité de cette jeune théorie pour fournir un test de primalité. Le point de départ est l'article de G.A. Steele \textit{Carmichael numbers in number rings} \cite{article}. Commençons par quelque énoncés. \\
+
+Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. Il existe cependant des entiers $n$ \textbf{composés} vérifiant $$a^n \equiv a\pmod{n}$$ pour tout entier $a$. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers. On peut les caractériser ainsi.
+
+\begin{proposition} Soit $n$ un entier. Les assertions suivantes sont équivalentes :
+	\begin{enumerate}
+		\item $n$ est un entier de Carmichael ~;
+		\item $n$ est composé, sans facteur carré et pour tout nombre premier $p$ divisant $n$, on a $$p-1 \mid n-1 ~;$$
+		\item on a $$ \lambda(n) \mid n-1 ,$$ la fonction $\lambda$ étant l'indicatrice de Carmichael.
+	\end{enumerate}
+\end{proposition}
+
+L'assertion (b) de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer au \textit{cours d'algèbre} de M. Demazure \cite{Demazure} §3.3, p. 89. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres.
+
+\begin{definition} Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael si pour tout entier algébrique $\alpha \in \OK$, la congruence
+	\begin{equation}\label{congruence-Carmichael}\tag{$\star$}
+		\alpha^{\Norm(I)} \equiv \alpha \pmod{I}
+	\end{equation}
+est vérifiée.
+\end{definition}
+
+Cette définition est le point de départ d'un formalisme fructueux. Ce dernier donne naissance à une réciproque au petit théorème de Fermat \ref{ptf—reciproque} et à plusieurs tests de primalité théoriques. L'auteur de l'article, après quelques énoncés généraux, s'intéresse spécifiquement aux corps quadratiques et aux corps cyclotomiques ~; nous suivrons ces traces. Tout en assurant une base solide à sa théorie, l'auteur soulève de nombreuses questions, notamment la question fondamentale suivante.
+
 \begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombre. Dans quel mesure $n$ est-il de Carmichael dans $K$ ?
 \end{question}
-
-\begin{equation}\label{eq-Carmichael}
-\alpha^{\Norm(I)} \equiv \alpha \pmod{I}, \quad \forall \alpha \in \OK.
-\end{equation}
-
-Nous étudions tous les nombres de Carmichael de la liste\footnote{La liste des premiers entiers de Carmichael est disponible à \url{https://oeis.org/A002997}.} 
-\begin{align*}
-	\mathfrak{C} = \{& 561, 1105, 1729, 2465, 2821, 6601, 8911, 10585, 15841, 29341, 41041,\\ 
-	& 46657, 52633, 62745, 63973, 75361, 101101, 115921, 126217, 162401, \\ 
-	& 172081, 188461, 252601, 278545, 294409, 314821, 334153, 340561, \\
-	& 399001, 410041, 449065, 488881, 512461\}
-\end{align*}
 
