@@ -6,7 +6,7 @@ Ce mémoire s'applique à étudier les idéaux de Carmichael dans les corps de n
 Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. Il existe cependant des entiers $n$ \textbf{composés} vérifiant $$a^n \equiv a\pmod{n}$$ pour tout entier $a$. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers. On peut les caractériser ainsi.
 
 \begin{proposition}\label{korselt} Soit $n$ un entier. Les assertions suivantes sont équivalentes :
-	\begin{enumerate}
+	\begin{enumerate}[font=\normalshape]
 		\item $n$ est un entier de Carmichael ~;
 		\item $n$ est composé, sans facteur carré et pour tout nombre premier $p$ divisant $n$, on a $$p-1 \mid n-1 ~;$$
 		\item on a $$ \lambda(n) \mid n-1 ,$$ la fonction $\lambda$ étant l'indicatrice de Carmichael.
