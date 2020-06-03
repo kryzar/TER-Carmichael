@@ -1,4 +1,6 @@
-\section{Troublants corps quadratiques}
+\section{Corps quadratiques}
+
+\subsection{Vers un possible test de primalité}
 
 Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux reste de donner une réponse à la question \ref{question-centrale}. Le théorème 2.5 de l'article apporte de premiers éléments de réponse.
 
@@ -10,10 +12,36 @@ Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux 
 	On présage dès l'énoncé la nature de la preuve : c'est le critère de Korselt. On demande déjà que $n$ soit sans facteurs carrés et comme la norme d'un idéal premier au dessus de $n\OK$ est un nombre premier $p$ divisant $n$, la partie réellement inventive de la preuve consiste à trouver les bons corps quadratiques. Cette partie est non triviale et est basée sur une savante utilisation du théorème chinois et la connaissance d'un nombre premier $p$ comme dans les hypothèses du théorème.
 \end{remarque}
 
-Bien que cet énoncé ne semble pas viable en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers, ce qui ne nous arrange pas. \NTS{sourcer}.}, certains nombres de Carmichael vérifient ces hypothèses. C'est le cas par exemple du nombre de $n=512461$ et de son facteur premier $p=271$ : il existe une infinité de corps quadratiques dans lequel $512461$ n'est pas de Carmichael. Mieux encore, nous avons numériquement vérifié que tous les entiers de Carmichael de la liste \NTS{ajouter référence} vérifiaient ces hypothèses, prouvant qu'ils sont effectivement composés. \\
+Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers, ce qui ne nous arrange pas. \NTS{sourcer}.}, certains nombres de Carmichael vérifient ces hypothèses. C'est le cas par exemple du nombre de $n=512461$ et de son facteur premier $p=271$ : il existe une infinité de corps quadratiques dans lequel $512461$ n'est pas de Carmichael. Mieux encore, nous avons numériquement exhibé pour chaque entier de Carmichael de la liste \NTS{ajouter référence} une liste de corps quadratiques dans lequel ledit entier n'est pas de Carmichael. \NTS{ajouter liste} \\
+
+L'algorithme que nous avons utilisé pour trouver ces corps n'est cependant probablement pas utilisable en pratique, puisqu'il utilise le critère de Korselt généralisé et impose de décomposer l'idéal $n\OK$ en produit d'idéaux premiers\footnote{\NTS{Si possible, donner un mot sur la complexité de l'algo de décomposition dans un extension}}. Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix bien plus intéressante. Il montre que $n = 561$ est composé en trouvant le corps quadratique $K = \Q(\sqrt{13})$ et l'élément $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$. Comme $$\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$$ et que $n$ et $13$ sont premiers entre eux, cela composition de $n$. Le point clé est que l'auteur ne semble pas utiliser le critère de Korselt. Il aurait besoin pour cela d'exhiber une décomposition en produit d'idéaux premiers de $n\OK$, ce qui est certainement prohibitif. Au lieu de cela, il exhibe un élément $\alpha\in \OK$ tel que $\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$. Étant donné un entier impair (potentiellement de Carmichael) dont on veut tester la primalité, cela donne envie d'étudier l'algorithme \emph{probabiliste} suivant.
+
+\vspace{1em}
+\begin{algorithm}[H]
+\KwIn{$I$ (intervalle d'entiers sans facteurs carrés), $b$ (borne coordonnées)}
+\ForEach{$d$ sans facteurs carrés dans $I$}{
+	$K \leftarrow \Q(\sqrt{d})$ \\
+	$\theta\leftarrow$ un générateur de $\OK$ \\
+	\If{$d$ et $n$ sont premiers entre eux}{
+		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
+			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
+				\KwRet{$n$ est composé}	\\
+				\textbf{fin du programme}
+			}
+		}
+	}
+}
+\KwRet{$n$ est probablement premier}
+\end{algorithm}
+\vspace{1em}
+
+Ce potentiel algorithme est dans le même esprit que le test de primalité de Rabin-Miller. L'idée est que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurons une certitude morale de la primalité de $n$. Bien entendu, la \og certitude morale \fg est finement quantifiée dans le test de Rabin-Miller (voir § 2.3.7, p. 69 de \cite{Demazure}). Pour que l'algorithme décrit ici soit viable, il conviendrait de définir une notion de \emph{témoin de Carmichael} et d'étudier finement la répartition ou la répartition de tels témoins. \\
+
+
+\subsection{Problèmes}
 
 Il ne faut toutefois pas se réjouir trop vite. Revenons un peu en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf—reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
 
-\begin{enoncefaux}[mauvaise réciproque du petit théorème de Fermat généralisé]
-	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
+\begin{enoncefaux}[réciproque eronnée du petit théorème de Fermat généralisé]
+	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
 \end{enoncefaux}
