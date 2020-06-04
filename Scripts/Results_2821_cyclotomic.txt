@@ -1,0 +1,21 @@
+2821 is Carmichael in Q(zeta3), 2821 and 3 are coprime
+2821 is not Carmichael in Q(zeta5), 2821 and 5 are coprime
+2821 is not Carmichael in Q(zeta11), 2821 and 11 are coprime
+2821 is not Carmichael in Q(zeta17), 2821 and 17 are coprime
+2821 is not Carmichael in Q(zeta19), 2821 and 19 are coprime
+2821 is not Carmichael in Q(zeta23), 2821 and 23 are coprime
+2821 is not Carmichael in Q(zeta29), 2821 and 29 are coprime
+2821 is not Carmichael in Q(zeta37), 2821 and 37 are coprime
+2821 is not Carmichael in Q(zeta41), 2821 and 41 are coprime
+2821 is not Carmichael in Q(zeta43), 2821 and 43 are coprime
+2821 is not Carmichael in Q(zeta47), 2821 and 47 are coprime
+2821 is not Carmichael in Q(zeta53), 2821 and 53 are coprime
+2821 is not Carmichael in Q(zeta59), 2821 and 59 are coprime
+2821 is not Carmichael in Q(zeta61), 2821 and 61 are coprime
+2821 is not Carmichael in Q(zeta67), 2821 and 67 are coprime
+2821 is not Carmichael in Q(zeta71), 2821 and 71 are coprime
+2821 is not Carmichael in Q(zeta73), 2821 and 73 are coprime
+2821 is not Carmichael in Q(zeta79), 2821 and 79 are coprime
+2821 is not Carmichael in Q(zeta83), 2821 and 83 are coprime
+2821 is not Carmichael in Q(zeta89), 2821 and 89 are coprime
+2821 is not Carmichael in Q(zeta97), 2821 and 97 are coprime

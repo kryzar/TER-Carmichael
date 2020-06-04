@@ -1,0 +1,20 @@
+63973 is Carmichael in Q(zeta3), 63973 and 3 are coprime
+63973 is not Carmichael in Q(zeta5), 63973 and 5 are coprime
+63973 is not Carmichael in Q(zeta11), 63973 and 11 are coprime
+63973 is not Carmichael in Q(zeta17), 63973 and 17 are coprime
+63973 is not Carmichael in Q(zeta23), 63973 and 23 are coprime
+63973 is not Carmichael in Q(zeta29), 63973 and 29 are coprime
+63973 is not Carmichael in Q(zeta31), 63973 and 31 are coprime
+63973 is not Carmichael in Q(zeta41), 63973 and 41 are coprime
+63973 is not Carmichael in Q(zeta43), 63973 and 43 are coprime
+63973 is not Carmichael in Q(zeta47), 63973 and 47 are coprime
+63973 is not Carmichael in Q(zeta53), 63973 and 53 are coprime
+63973 is not Carmichael in Q(zeta59), 63973 and 59 are coprime
+63973 is not Carmichael in Q(zeta61), 63973 and 61 are coprime
+63973 is not Carmichael in Q(zeta67), 63973 and 67 are coprime
+63973 is not Carmichael in Q(zeta71), 63973 and 71 are coprime
+63973 is not Carmichael in Q(zeta73), 63973 and 73 are coprime
+63973 is not Carmichael in Q(zeta79), 63973 and 79 are coprime
+63973 is not Carmichael in Q(zeta83), 63973 and 83 are coprime
+63973 is not Carmichael in Q(zeta89), 63973 and 89 are coprime
+63973 is not Carmichael in Q(zeta97), 63973 and 97 are coprime

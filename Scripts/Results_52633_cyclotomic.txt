@@ -1,0 +1,22 @@
+52633 is Carmichael in Q(zeta3), 52633 and 3 are coprime
+52633 is not Carmichael in Q(zeta5), 52633 and 5 are coprime
+52633 is not Carmichael in Q(zeta11), 52633 and 11 are coprime
+52633 is not Carmichael in Q(zeta13), 52633 and 13 are coprime
+52633 is not Carmichael in Q(zeta17), 52633 and 17 are coprime
+52633 is not Carmichael in Q(zeta19), 52633 and 19 are coprime
+52633 is not Carmichael in Q(zeta23), 52633 and 23 are coprime
+52633 is not Carmichael in Q(zeta29), 52633 and 29 are coprime
+52633 is not Carmichael in Q(zeta31), 52633 and 31 are coprime
+52633 is not Carmichael in Q(zeta37), 52633 and 37 are coprime
+52633 is not Carmichael in Q(zeta41), 52633 and 41 are coprime
+52633 is not Carmichael in Q(zeta43), 52633 and 43 are coprime
+52633 is not Carmichael in Q(zeta47), 52633 and 47 are coprime
+52633 is not Carmichael in Q(zeta53), 52633 and 53 are coprime
+52633 is not Carmichael in Q(zeta59), 52633 and 59 are coprime
+52633 is not Carmichael in Q(zeta61), 52633 and 61 are coprime
+52633 is not Carmichael in Q(zeta67), 52633 and 67 are coprime
+52633 is not Carmichael in Q(zeta71), 52633 and 71 are coprime
+52633 is not Carmichael in Q(zeta79), 52633 and 79 are coprime
+52633 is not Carmichael in Q(zeta83), 52633 and 83 are coprime
+52633 is not Carmichael in Q(zeta89), 52633 and 89 are coprime
+52633 is not Carmichael in Q(zeta97), 52633 and 97 are coprime

@@ -1,0 +1,21 @@
+15841 is Carmichael in Q(zeta3), 15841 and 3 are coprime
+15841 is not Carmichael in Q(zeta5), 15841 and 5 are coprime
+15841 is not Carmichael in Q(zeta11), 15841 and 11 are coprime
+15841 is not Carmichael in Q(zeta13), 15841 and 13 are coprime
+15841 is not Carmichael in Q(zeta17), 15841 and 17 are coprime
+15841 is not Carmichael in Q(zeta19), 15841 and 19 are coprime
+15841 is not Carmichael in Q(zeta23), 15841 and 23 are coprime
+15841 is not Carmichael in Q(zeta29), 15841 and 29 are coprime
+15841 is not Carmichael in Q(zeta37), 15841 and 37 are coprime
+15841 is not Carmichael in Q(zeta41), 15841 and 41 are coprime
+15841 is not Carmichael in Q(zeta43), 15841 and 43 are coprime
+15841 is not Carmichael in Q(zeta47), 15841 and 47 are coprime
+15841 is not Carmichael in Q(zeta53), 15841 and 53 are coprime
+15841 is not Carmichael in Q(zeta59), 15841 and 59 are coprime
+15841 is not Carmichael in Q(zeta61), 15841 and 61 are coprime
+15841 is not Carmichael in Q(zeta67), 15841 and 67 are coprime
+15841 is not Carmichael in Q(zeta71), 15841 and 71 are coprime
+15841 is not Carmichael in Q(zeta79), 15841 and 79 are coprime
+15841 is not Carmichael in Q(zeta83), 15841 and 83 are coprime
+15841 is not Carmichael in Q(zeta89), 15841 and 89 are coprime
+15841 is not Carmichael in Q(zeta97), 15841 and 97 are coprime

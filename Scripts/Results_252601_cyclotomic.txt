@@ -1,0 +1,22 @@
+252601 is not Carmichael in Q(zeta3), 252601 and 3 are coprime
+252601 is Carmichael in Q(zeta5), 252601 and 5 are coprime
+252601 is not Carmichael in Q(zeta7), 252601 and 7 are coprime
+252601 is not Carmichael in Q(zeta11), 252601 and 11 are coprime
+252601 is not Carmichael in Q(zeta13), 252601 and 13 are coprime
+252601 is not Carmichael in Q(zeta17), 252601 and 17 are coprime
+252601 is not Carmichael in Q(zeta19), 252601 and 19 are coprime
+252601 is not Carmichael in Q(zeta23), 252601 and 23 are coprime
+252601 is not Carmichael in Q(zeta29), 252601 and 29 are coprime
+252601 is not Carmichael in Q(zeta31), 252601 and 31 are coprime
+252601 is not Carmichael in Q(zeta37), 252601 and 37 are coprime
+252601 is not Carmichael in Q(zeta43), 252601 and 43 are coprime
+252601 is not Carmichael in Q(zeta47), 252601 and 47 are coprime
+252601 is not Carmichael in Q(zeta53), 252601 and 53 are coprime
+252601 is not Carmichael in Q(zeta59), 252601 and 59 are coprime
+252601 is not Carmichael in Q(zeta67), 252601 and 67 are coprime
+252601 is not Carmichael in Q(zeta71), 252601 and 71 are coprime
+252601 is not Carmichael in Q(zeta73), 252601 and 73 are coprime
+252601 is not Carmichael in Q(zeta79), 252601 and 79 are coprime
+252601 is not Carmichael in Q(zeta83), 252601 and 83 are coprime
+252601 is not Carmichael in Q(zeta89), 252601 and 89 are coprime
+252601 is not Carmichael in Q(zeta97), 252601 and 97 are coprime

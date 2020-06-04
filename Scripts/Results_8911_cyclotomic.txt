@@ -1,0 +1,21 @@
+8911 is Carmichael in Q(zeta3), 8911 and 3 are coprime
+8911 is not Carmichael in Q(zeta5), 8911 and 5 are coprime
+8911 is not Carmichael in Q(zeta11), 8911 and 11 are coprime
+8911 is not Carmichael in Q(zeta13), 8911 and 13 are coprime
+8911 is not Carmichael in Q(zeta17), 8911 and 17 are coprime
+8911 is not Carmichael in Q(zeta23), 8911 and 23 are coprime
+8911 is not Carmichael in Q(zeta29), 8911 and 29 are coprime
+8911 is not Carmichael in Q(zeta31), 8911 and 31 are coprime
+8911 is not Carmichael in Q(zeta37), 8911 and 37 are coprime
+8911 is not Carmichael in Q(zeta41), 8911 and 41 are coprime
+8911 is not Carmichael in Q(zeta43), 8911 and 43 are coprime
+8911 is not Carmichael in Q(zeta47), 8911 and 47 are coprime
+8911 is not Carmichael in Q(zeta53), 8911 and 53 are coprime
+8911 is not Carmichael in Q(zeta59), 8911 and 59 are coprime
+8911 is not Carmichael in Q(zeta61), 8911 and 61 are coprime
+8911 is not Carmichael in Q(zeta71), 8911 and 71 are coprime
+8911 is not Carmichael in Q(zeta73), 8911 and 73 are coprime
+8911 is not Carmichael in Q(zeta79), 8911 and 79 are coprime
+8911 is not Carmichael in Q(zeta83), 8911 and 83 are coprime
+8911 is not Carmichael in Q(zeta89), 8911 and 89 are coprime
+8911 is not Carmichael in Q(zeta97), 8911 and 97 are coprime

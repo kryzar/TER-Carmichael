@@ -1,0 +1,20 @@
+126217 is Carmichael in Q(zeta3), 126217 and 3 are coprime
+126217 is not Carmichael in Q(zeta5), 126217 and 5 are coprime
+126217 is not Carmichael in Q(zeta11), 126217 and 11 are coprime
+126217 is not Carmichael in Q(zeta17), 126217 and 17 are coprime
+126217 is not Carmichael in Q(zeta23), 126217 and 23 are coprime
+126217 is not Carmichael in Q(zeta29), 126217 and 29 are coprime
+126217 is not Carmichael in Q(zeta31), 126217 and 31 are coprime
+126217 is not Carmichael in Q(zeta37), 126217 and 37 are coprime
+126217 is not Carmichael in Q(zeta41), 126217 and 41 are coprime
+126217 is not Carmichael in Q(zeta43), 126217 and 43 are coprime
+126217 is not Carmichael in Q(zeta47), 126217 and 47 are coprime
+126217 is not Carmichael in Q(zeta53), 126217 and 53 are coprime
+126217 is not Carmichael in Q(zeta59), 126217 and 59 are coprime
+126217 is not Carmichael in Q(zeta61), 126217 and 61 are coprime
+126217 is not Carmichael in Q(zeta67), 126217 and 67 are coprime
+126217 is not Carmichael in Q(zeta71), 126217 and 71 are coprime
+126217 is not Carmichael in Q(zeta79), 126217 and 79 are coprime
+126217 is not Carmichael in Q(zeta83), 126217 and 83 are coprime
+126217 is not Carmichael in Q(zeta89), 126217 and 89 are coprime
+126217 is not Carmichael in Q(zeta97), 126217 and 97 are coprime

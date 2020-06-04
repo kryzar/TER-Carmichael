@@ -1,0 +1,22 @@
+512461 is Carmichael in Q(zeta3), 512461 and 3 are coprime
+512461 is Carmichael in Q(zeta5), 512461 and 5 are coprime
+512461 is not Carmichael in Q(zeta7), 512461 and 7 are coprime
+512461 is not Carmichael in Q(zeta11), 512461 and 11 are coprime
+512461 is not Carmichael in Q(zeta13), 512461 and 13 are coprime
+512461 is not Carmichael in Q(zeta17), 512461 and 17 are coprime
+512461 is not Carmichael in Q(zeta19), 512461 and 19 are coprime
+512461 is not Carmichael in Q(zeta23), 512461 and 23 are coprime
+512461 is not Carmichael in Q(zeta29), 512461 and 29 are coprime
+512461 is not Carmichael in Q(zeta37), 512461 and 37 are coprime
+512461 is not Carmichael in Q(zeta41), 512461 and 41 are coprime
+512461 is not Carmichael in Q(zeta43), 512461 and 43 are coprime
+512461 is not Carmichael in Q(zeta47), 512461 and 47 are coprime
+512461 is not Carmichael in Q(zeta53), 512461 and 53 are coprime
+512461 is not Carmichael in Q(zeta59), 512461 and 59 are coprime
+512461 is not Carmichael in Q(zeta67), 512461 and 67 are coprime
+512461 is not Carmichael in Q(zeta71), 512461 and 71 are coprime
+512461 is not Carmichael in Q(zeta73), 512461 and 73 are coprime
+512461 is not Carmichael in Q(zeta79), 512461 and 79 are coprime
+512461 is not Carmichael in Q(zeta83), 512461 and 83 are coprime
+512461 is not Carmichael in Q(zeta89), 512461 and 89 are coprime
+512461 is not Carmichael in Q(zeta97), 512461 and 97 are coprime
