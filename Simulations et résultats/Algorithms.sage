@@ -56,8 +56,8 @@ def Carmichael_quadratic(n, gen_range) :
                 is_or_isnot = " is not "
 
             output = str(n) + " is not Carmichael in Q(sqrt(" \
-                    + str(d) + "), " + str(n) + " and " \
-                    + "Disc(Q(sqrt(d))) are coprime\n"
+                    + str(d) + ")), " + str(n) + " and " \
+                    + "Disc(Q(sqrt(" + str(d) + "))) are coprime\n"
             outfile.write(output)
 
     outfile.close()
