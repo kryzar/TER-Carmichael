@@ -19,3 +19,12 @@
 1729 is not Carmichael in Q(zeta83), 1729 and 83 are coprime
 1729 is not Carmichael in Q(zeta89), 1729 and 89 are coprime
 1729 is not Carmichael in Q(zeta97), 1729 and 97 are coprime
+1729 is not Carmichael in Q(zeta101), 1729 and 101 are coprime
+1729 is not Carmichael in Q(zeta103), 1729 and 103 are coprime
+1729 is not Carmichael in Q(zeta107), 1729 and 107 are coprime
+1729 is not Carmichael in Q(zeta109), 1729 and 109 are coprime
+1729 is not Carmichael in Q(zeta113), 1729 and 113 are coprime
+1729 is not Carmichael in Q(zeta127), 1729 and 127 are coprime
+1729 is not Carmichael in Q(zeta131), 1729 and 131 are coprime
+1729 is not Carmichael in Q(zeta137), 1729 and 137 are coprime
+1729 is not Carmichael in Q(zeta139), 1729 and 139 are coprime

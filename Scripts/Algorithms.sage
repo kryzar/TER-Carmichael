@@ -33,29 +33,32 @@ def Carmichael_cyclotomic(n, borne_q) :
     outfile.close()
 
 
-def Carmichael_not_Carmichael_in_quad_field(gen_range) :
+def Carmichael_quadratic(n, gen_range) :
     """
-    For every Carmichael number below 512461, find quadratic fields Q(sqrt(d))
+    Given an integer n, find quadratic fields Q(sqrt(d))
     where d is squarefree and in gen_range such that n is not Carmichael in
     the integers ring of this field.
     """
 
-    # meta info
-    outfile = open("Results_Carmichael_not_Carmichael_in_quad_field.txt", "w")
-    meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
-    outfile.write(meta)
+    outfile = open("Results_" + str(n) + "_quadratic.txt", "w")
+    is_or_isnot = ""
 
-    qf_generators = [d for d in gen_range if d!=1 and d.is_squarefree()]
-    for n in Carmichael_numbers :
-        for d in qf_generators :
-            if gcd(n, d) == 1 :
-                K = QuadraticField(d)
-                nOK = K.ideal(n)
-                if not ideal_verifies_Korselt_criterion(nOK) : 
-                    output = str(n) + " is not Carmichael in Q(sqrt(" \
-                            + str(d) + "), " + str(n) + " and " \
-                            + "Disc(Q(sqrt(d)) are coprime\n"
-                    outfile.write(output)
+    for d in gen_range :
+        if d.is_squarefree() and \
+                d not in [-1, 0, 1] and \
+                gcd(n, d) == 1 :
+            K = QuadraticField(d)
+            nOK = K.ideal(n)
+
+            if ideal_verifies_Korselt_criterion(nOK) :
+                is_or_isnot = " is " 
+            else :
+                is_or_isnot = " is not "
+
+            output = str(n) + " is not Carmichael in Q(sqrt(" \
+                    + str(d) + "), " + str(n) + " and " \
+                    + "Disc(Q(sqrt(d))) are coprime\n"
+            outfile.write(output)
 
     outfile.close()
 
