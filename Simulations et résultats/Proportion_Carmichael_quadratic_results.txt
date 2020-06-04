@@ -1,0 +1,4 @@
+Field type: quadratic
+Number of tests: 143524
+Number of Carmichael ideals: 34138
+Proportion of Carmichael ideals: 0.23785568964075696

@@ -37,7 +37,7 @@ def Carmichael_cyclotomic(n, borne_q) :
     n is Carmichael in Q(zetaq) or not
     """
 
-    outfile = open("Results_" + str(n) + "_cyclotomic.txt", "w")
+    outfile = open(str(n) + "_cyclotomic.txt", "w")
     is_or_isnot = ""
 
     for q in prime_range(3, borne_q) :
@@ -45,14 +45,9 @@ def Carmichael_cyclotomic(n, borne_q) :
             K = CyclotomicField(q)
             nOK = K.ideal(n)
 
-            if KorseltCriterion_Ideal(nOK) :
-                is_or_isnot = " is " 
-            else :
-                is_or_isnot = " is not "
-
-            output = str(n) + is_or_isnot + "Carmichael in " \
-                    + "Q(zeta" + str(q) + "), " \
-                    + str(n) + " and " + str(q) + " are coprime\n"
+            output = str(n) + " is Carmichael in Q(zeta" + str(q) + "): " \
+                    + str(KorseltCriterion_Ideal(nOK)) \
+                    + ", " + str(n) + " and " + str(q) + " are coprime\n"
             outfile.write(output)
 
     outfile.close()
@@ -65,7 +60,7 @@ def Carmichael_quadratic(n, gen_range) :
     the integers ring of this field.
     """
 
-    outfile = open("Results_" + str(n) + "_quadratic.txt", "w")
+    outfile = open(str(n) + "_quadratic.txt", "w")
     is_or_isnot = ""
 
     for d in gen_range :
@@ -75,14 +70,9 @@ def Carmichael_quadratic(n, gen_range) :
             K = QuadraticField(d)
             nOK = K.ideal(n)
 
-            if KorseltCriterion_Ideal(nOK) :
-                is_or_isnot = " is " 
-            else :
-                is_or_isnot = " is not "
-
-            output = str(n) + " is not Carmichael in Q(sqrt(" \
-                    + str(d) + ")), " + str(n) + " and " \
-                    + "Disc(Q(sqrt(" + str(d) + "))) are coprime\n"
+            output = str(n) + " is Carmichael in Q(sqrt(" + str(d) + ")): " \
+                    + str(KorseltCriterion_Ideal(nOK)) \
+                    + ", Disc(Q(sqrt(" + str(d) + "))) are coprime\n"
             outfile.write(output)
 
     outfile.close()
