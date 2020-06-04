@@ -72,7 +72,7 @@ def Carmichael_quadratic(n, gen_range) :
 
             output = str(n) + " is Carmichael in Q(sqrt(" + str(d) + ")): " \
                     + str(KorseltCriterion_Ideal(nOK)) \
-                    + ", Disc(Q(sqrt(" + str(d) + "))) are coprime\n"
+                    + ", " + str(n) + " and Disc(Q(sqrt(" + str(d) + "))) are coprime\n"
             outfile.write(output)
 
     outfile.close()
