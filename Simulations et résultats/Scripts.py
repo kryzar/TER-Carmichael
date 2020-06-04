@@ -2,18 +2,6 @@
 # Scripts.py
 # https://www.newbedev.com/python/howto/how-to-iterate-over-files-in-a-given-directory/
 
-"""
-Après avoir effectué plein de simulations numériques pour regarder 
-si des entiers de Carmichael sont de Carmichael dans tel ou tel corps 
-quadratique ou cyclotomique, on se rend compte qu'ils sont majoritairement
-pas de Carmichael. Ce script extrait des fichiers résultats les nombres
-qui sont de Carmichael dans un certain type de corps.
-
-Par exemple
-find_Carmichael_in_Results_files("cyclotomic")
-écrit dans un fichiers les couples (n, q) tels que n est 
-de Carmichael dans Q(zetaq)
-"""
 
 import os
 
@@ -22,7 +10,18 @@ import os
 cwd = os.getcwd()
 
 def find_Carmichael_in_Results_files(field_type) :
-    
+    """
+    Après avoir effectué plein de simulations numériques pour regarder 
+    si des entiers de Carmichael sont de Carmichael dans tel ou tel corps 
+    quadratique ou cyclotomique, on se rend compte qu'ils sont majoritairement
+    pas de Carmichael. Ce script extrait des fichiers résultats les nombres
+    qui sont de Carmichael dans un certain type de corps.
+
+    Par exemple
+    find_Carmichael_in_Results_files("cyclotomic")
+    écrit dans un fichiers les couples (n, q) tels que n est 
+    de Carmichael dans Q(zetaq)
+    """
     outfile = open("Find_Carmichael_in_Results_files_" + field_type + ".txt", "w")
 
     for filename in os.listdir(cwd) :
@@ -37,6 +36,19 @@ def find_Carmichael_in_Results_files(field_type) :
     outfile.close()
 
 def proportion_carmichael(field_type) :
+    """
+    On regarde, après avoir effectué des simulations les proportions d'idéaux
+    qui sont de Carmichael ou pas de Carmichael dans un corps de nombre de type
+    field_type.
+
+    Par exemple
+    proportion_carmichael("cyclotomic")
+    peut retourner
+    Field type: cyclotomic
+    Number of tests: 744
+    Number of Carmichael ideals: 18
+    Proportion of Carmichael ideals: 0.024193548387096774
+    """
 
     outfile = open("Proportion_Carmichael_" + field_type + "_results.txt", "w")
     number_of_tests = 0
