@@ -4,6 +4,34 @@
 load("Is_Carmichael.sage")
 HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
+def Carmichael_cyclotomic(n, borne_q) :
+    """
+    Given an integer n, for each cyclotomic field Q(zetaq) with 
+    q in [[3, borne_q]] and if q and n are coprime, tell if 
+    n is Carmichael in Q(zetaq) or not
+    """
+
+    outfile = open("Results_" + str(n) + "_cyclotomic.txt", "w")
+    is_or_isnot = ""
+
+    for q in prime_range(3, borne_q) :
+        if gcd(n, q) == 1 :
+            K = CyclotomicField(q)
+            nOK = K.ideal(n)
+
+            if ideal_verifies_Korselt_criterion(nOK) :
+                is_or_isnot = " is " 
+            else :
+                is_or_isnot = " is not "
+
+            output = str(n) + is_or_isnot + "Carmichael in " \
+                    + "Q(zeta" + str(q) + "), " \
+                    + str(n) + " and " + str(q) + " are coprime\n"
+            outfile.write(output)
+
+    outfile.close()
+
+
 def Carmichael_not_Carmichael_in_quad_field(gen_range) :
     """
     For every Carmichael number below 512461, find quadratic fields Q(sqrt(d))
@@ -27,47 +55,6 @@ def Carmichael_not_Carmichael_in_quad_field(gen_range) :
 
     outfile.close()
 
-
-def Corollary_3_7(borne_q) :
-    """
-    For every Carmichael number n below 512461, find all cyclotomic
-    fields Q(zeta_q), q < borne_q, where q is prime and gcd(Disc(K), n)=1 
-    such that nOK is not Carmichael.
-    """
-
-    outfile = open("Results_Corollary_3-7.txt", "w")
-
-    for n in Carmichael_numbers :
-        for q in prime_range(3, borne_q) :
-            K = CyclotomicField(q)
-            if gcd(n, q) == 1 :
-                nOK = K.ideal(n) 
-                if not ideal_verifies_Korselt_criterion(nOK) :
-                    output = str(n) + " is not Carmichael in Q(zeta" \
-                            + str(q) + ")\n"
-                    outfile.write(output)
-
-    outfile.close()
-
-
-def Howe_cyclotomic(borne_q) :
-    """
-    Find cyclotomic field Q(zetaq) in which the Howe integer is 
-    not Carmichael.
-    """
-
-    outfile = open("Results_Row_cyclotomic.txt", "w")
-
-    for q in prime_range(3, borne_q) :
-        K = CyclotomicField(q)
-        I = K.ideal(HOWE)
-        if not ideal_verifies_Korselt_criterion(I) :
-            output = "the Howe integer is not Carmichael in Q(zeta" \
-                    + str(q) + ")\n"
-            outfile.write(output)
-
-    outfile.close()
-    
 
 def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
     """
