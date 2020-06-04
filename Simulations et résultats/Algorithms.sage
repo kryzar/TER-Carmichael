@@ -1,8 +1,33 @@
 # Antoine Hugounet
 # Algorithms.sage
 
-load("Is_Carmichael.sage")
-HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
+load("Utilities.sage")
+
+def CarmichaelInQzeta5_NotCarmichaelInt_PrimeFactorsNot1mod5(bound) :
+    """ 
+    Find all integers (they may not exist) in [[2, bound]]
+    which are Carmichael in Q(zeta5) but there prime factors
+    are not 1 mod. 5.
+    """
+
+    outfile = open("CarmichaelInQzeta5_NotCarmichaelInt_PrimeFactorsNot1mod5.txt", "w")
+    outfile.write("search for n in [[2, " + str(bound) + "]]\n\n")
+
+    Qzeta5 = QuadraticField(5)
+    nOK = Qzeta5.ideal(0)
+    
+    for n in IntegerRange(2, bound + 1) :
+        if not PrimeFactors_1mod5(n) \
+                and not n.is_prime() \
+                and KorseltCriterion_Ideal(Qzeta5.ideal(n)) :
+            output = str(n) + " is Carmichael in Q(zeta5)" \
+                    + ", its prime factors are not 1 mod. 5.\n"
+            output += str(n) + " is carmichael in Q: " + \
+                    str(KorseltCriterion_Int(n)) + "\n\n"
+
+            outfile.write(output)
+
+    outfile.close()
 
 
 def Carmichael_cyclotomic(n, borne_q) :
@@ -20,7 +45,7 @@ def Carmichael_cyclotomic(n, borne_q) :
             K = CyclotomicField(q)
             nOK = K.ideal(n)
 
-            if ideal_verifies_Korselt_criterion(nOK) :
+            if KorseltCriterion_Ideal(nOK) :
                 is_or_isnot = " is " 
             else :
                 is_or_isnot = " is not "
@@ -50,7 +75,7 @@ def Carmichael_quadratic(n, gen_range) :
             K = QuadraticField(d)
             nOK = K.ideal(n)
 
-            if ideal_verifies_Korselt_criterion(nOK) :
+            if KorseltCriterion_Ideal(nOK) :
                 is_or_isnot = " is " 
             else :
                 is_or_isnot = " is not "
@@ -63,7 +88,7 @@ def Carmichael_quadratic(n, gen_range) :
     outfile.close()
 
 
-def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
+def IntBelow512461IsNotCarmichael_nOKIsCarmichael(gen_range, bound, condition) :
     """
     Find all couples (d, n) such that n is not a Carmichael number but generates
     a Carmichael ideal in the integer ring of the quadratic field Q(\sqrt{d}).
@@ -82,8 +107,11 @@ def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
     in the integers ring of Q(sqrt(d)).
     """
 
+    if not n <= 512461 :
+        raise Exception("n must be <= 512461")
+
     # write meta stuff in the outfile
-    outfile = open("Results_find_n_is_not_Carmichael_but_nOK_is.txt", "w")
+    outfile = open("IntBelow512461IsNotCarmichael_nOKIsCarmichael.txt", "w")
     meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
     meta += ("n in [2, " + str(bound - 1) + "]\n")  
     meta += ("Condition on n : " + condition.__name__ + "\n\n")
@@ -98,7 +126,8 @@ def find_n_is_not_Carmichael_but_nOK_is(gen_range, bound, condition) :
         for n in ideal_generators :
             I = K.ideal(n)
             
-            if not int_below_512461_is_carmichael(n) and ideal_verifies_Korselt_criterion(I) : 
+            if not n in CARMICHAEL_NUMBERS_BELOW_512461 \
+                    and KorseltCriterion_Ideal(I) : 
                 output = "(d, n) = (" + str(d) + ", " + str(n) + ")\n"
                 outfile.write(output)
 

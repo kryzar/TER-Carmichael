@@ -1,13 +1,16 @@
 # Antoine Hugounet
-# Is_Carmichael.sage
+# Utilities.sage
 
 # from https://oeis.org/A002997
-Carmichael_numbers = [561, 1105, 1729, 2465, 2821, 6601, 8911, 
+CARMICHAEL_NUMBERS_BELOW_512461 = [561, 1105, 1729, 2465, 2821, 6601, 8911, 
     10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973,
     75361, 101101, 115921, 126217, 162401, 172081, 188461,
     252601, 278545, 294409, 410041, 449065, 488881, 512461]
 
-def ideal_verifies_Korselt_criterion(I) :
+HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
+
+
+def KorseltCriterion_Ideal(I) :
     """
     - I : ideal in a number field integer ring
 
@@ -30,23 +33,37 @@ def ideal_verifies_Korselt_criterion(I) :
 
     return True
 
-def int_below_512461_is_carmichael(n) :
+def KorseltCriterion_Int(n) :
     """
-    - n : int
-    Return True if n is a carmichael integer and False otherwise.
-
-    We use a list to save calculations time.
     """
 
-    if (n > 512461) :
-        raise Exception("n must be <= 512461.")
-    
-    return n in Carmichael_numbers
+    if not n.is_squarefree() :
+        return False
+
+    for p in n.prime_factors() :
+        if not (p - 1).divides(n - 1) :
+            return False
+
+    return True
+
+
+def PrimeFactors_1mod5(n) :
+    for p in n.prime_factors() :
+        if Mod(p, 5) != 1 :
+            return False
+
+    return True
+
 
 # Unit tests
 K.<a> = QuadraticField(23)
 I = K.ideal(77)
-assert ideal_verifies_Korselt_criterion(I) == False
+assert KorseltCriterion_Ideal(I) == False
 K.<a> = QuadraticField(11)
 I = K.ideal(35)
-assert ideal_verifies_Korselt_criterion(I) == True
+assert KorseltCriterion_Ideal(I) == True
+for n in CARMICHAEL_NUMBERS_BELOW_512461 :
+    assert KorseltCriterion_Int(n) == True
+
+for n in [4, 6, 10, 27, 46, 51] :
+    assert KorseltCriterion_Int(n) == False

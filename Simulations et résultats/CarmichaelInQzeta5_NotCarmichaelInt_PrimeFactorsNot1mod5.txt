@@ -1,0 +1,374 @@
+search for n in [[2, 600000]]
+
+377 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+377 is carmichael in Q: False
+
+1189 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+1189 is carmichael in Q: False
+
+2047 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+2047 is carmichael in Q: False
+
+2059 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+2059 is carmichael in Q: False
+
+3439 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+3439 is carmichael in Q: False
+
+4879 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+4879 is carmichael in Q: False
+
+6119 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+6119 is carmichael in Q: False
+
+6479 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+6479 is carmichael in Q: False
+
+6601 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+6601 is carmichael in Q: True
+
+7743 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+7743 is carmichael in Q: False
+
+8149 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+8149 is carmichael in Q: False
+
+8569 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+8569 is carmichael in Q: False
+
+10349 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+10349 is carmichael in Q: False
+
+12209 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+12209 is carmichael in Q: False
+
+17081 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+17081 is carmichael in Q: False
+
+17711 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+17711 is carmichael in Q: False
+
+19459 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+19459 is carmichael in Q: False
+
+20591 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+20591 is carmichael in Q: False
+
+21449 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+21449 is carmichael in Q: False
+
+27379 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+27379 is carmichael in Q: False
+
+29459 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+29459 is carmichael in Q: False
+
+29539 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+29539 is carmichael in Q: False
+
+35929 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+35929 is carmichael in Q: False
+
+39689 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+39689 is carmichael in Q: False
+
+41159 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+41159 is carmichael in Q: False
+
+43739 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+43739 is carmichael in Q: False
+
+44099 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+44099 is carmichael in Q: False
+
+47519 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+47519 is carmichael in Q: False
+
+51271 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+51271 is carmichael in Q: False
+
+54839 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+54839 is carmichael in Q: False
+
+58829 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+58829 is carmichael in Q: False
+
+58969 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+58969 is carmichael in Q: False
+
+61541 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+61541 is carmichael in Q: False
+
+61699 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+61699 is carmichael in Q: False
+
+64079 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+64079 is carmichael in Q: False
+
+68381 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+68381 is carmichael in Q: False
+
+71639 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+71639 is carmichael in Q: False
+
+73151 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+73151 is carmichael in Q: False
+
+74359 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+74359 is carmichael in Q: False
+
+78089 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+78089 is carmichael in Q: False
+
+78409 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+78409 is carmichael in Q: False
+
+84419 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+84419 is carmichael in Q: False
+
+88199 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+88199 is carmichael in Q: False
+
+96049 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+96049 is carmichael in Q: False
+
+98671 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+98671 is carmichael in Q: False
+
+101179 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+101179 is carmichael in Q: False
+
+102719 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+102719 is carmichael in Q: False
+
+112529 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+112529 is carmichael in Q: False
+
+112897 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+112897 is carmichael in Q: False
+
+117569 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+117569 is carmichael in Q: False
+
+122417 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+122417 is carmichael in Q: False
+
+130759 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+130759 is carmichael in Q: False
+
+139469 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+139469 is carmichael in Q: False
+
+142883 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+142883 is carmichael in Q: False
+
+147041 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+147041 is carmichael in Q: False
+
+157079 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+157079 is carmichael in Q: False
+
+164399 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+164399 is carmichael in Q: False
+
+165509 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+165509 is carmichael in Q: False
+
+168299 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+168299 is carmichael in Q: False
+
+174269 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+174269 is carmichael in Q: False
+
+175319 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+175319 is carmichael in Q: False
+
+179171 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+179171 is carmichael in Q: False
+
+180499 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+180499 is carmichael in Q: False
+
+185179 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+185179 is carmichael in Q: False
+
+191351 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+191351 is carmichael in Q: False
+
+191959 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+191959 is carmichael in Q: False
+
+195889 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+195889 is carmichael in Q: False
+
+197209 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+197209 is carmichael in Q: False
+
+206119 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+206119 is carmichael in Q: False
+
+215209 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+215209 is carmichael in Q: False
+
+220669 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+220669 is carmichael in Q: False
+
+239249 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+239249 is carmichael in Q: False
+
+240577 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+240577 is carmichael in Q: False
+
+244019 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+244019 is carmichael in Q: False
+
+246559 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+246559 is carmichael in Q: False
+
+247969 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+247969 is carmichael in Q: False
+
+248443 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+248443 is carmichael in Q: False
+
+249049 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+249049 is carmichael in Q: False
+
+250879 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+250879 is carmichael in Q: False
+
+284171 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+284171 is carmichael in Q: False
+
+286937 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+286937 is carmichael in Q: False
+
+296191 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+296191 is carmichael in Q: False
+
+301279 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+301279 is carmichael in Q: False
+
+323839 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+323839 is carmichael in Q: False
+
+330929 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+330929 is carmichael in Q: False
+
+334109 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+334109 is carmichael in Q: False
+
+341531 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+341531 is carmichael in Q: False
+
+364007 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+364007 is carmichael in Q: False
+
+364211 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+364211 is carmichael in Q: False
+
+369799 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+369799 is carmichael in Q: False
+
+376309 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+376309 is carmichael in Q: False
+
+377719 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+377719 is carmichael in Q: False
+
+380393 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+380393 is carmichael in Q: False
+
+388367 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+388367 is carmichael in Q: False
+
+390049 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+390049 is carmichael in Q: False
+
+417589 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+417589 is carmichael in Q: False
+
+417601 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+417601 is carmichael in Q: False
+
+426329 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+426329 is carmichael in Q: False
+
+430199 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+430199 is carmichael in Q: False
+
+432821 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+432821 is carmichael in Q: False
+
+434449 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+434449 is carmichael in Q: False
+
+434609 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+434609 is carmichael in Q: False
+
+447719 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+447719 is carmichael in Q: False
+
+450631 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+450631 is carmichael in Q: False
+
+463079 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+463079 is carmichael in Q: False
+
+478109 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+478109 is carmichael in Q: False
+
+492929 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+492929 is carmichael in Q: False
+
+500569 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+500569 is carmichael in Q: False
+
+506399 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+506399 is carmichael in Q: False
+
+522349 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+522349 is carmichael in Q: False
+
+536129 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+536129 is carmichael in Q: False
+
+540959 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+540959 is carmichael in Q: False
+
+544159 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+544159 is carmichael in Q: False
+
+551449 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+551449 is carmichael in Q: False
+
+556649 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+556649 is carmichael in Q: False
+
+564719 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+564719 is carmichael in Q: False
+
+569059 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+569059 is carmichael in Q: False
+
+570779 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+570779 is carmichael in Q: False
+
+575599 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+575599 is carmichael in Q: False
+
+578579 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+578579 is carmichael in Q: False
+
+585089 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+585089 is carmichael in Q: False
+
+585311 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+585311 is carmichael in Q: False
+
+587489 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+587489 is carmichael in Q: False
+
+594229 is Carmichael in Q(zeta5), its prime factors are not 1 mod. 5.
+594229 is carmichael in Q: False
+
