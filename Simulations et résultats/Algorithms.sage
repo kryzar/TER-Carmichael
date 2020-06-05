@@ -8,7 +8,7 @@ import numpy
 load("Utilities.sage")
 
 
-def find_element_no_fermat_in_OK(n, K, coordinates_range) :
+def Fermat_test_number_field(n, K, coordinates_range) :
     """
     n : integer
     K : cyclotomic field
