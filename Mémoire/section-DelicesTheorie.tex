@@ -29,9 +29,14 @@ Un autre résultat d'importance (démontré avant le petit théorème de Fermat 
 	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On prend garde à supposer que $I$ est composé. Alors $I$ est de Carmichael \ssi $I$ est sans facteurs carrés et pour tout idéal premier $\P$ divisant $I$, on a $$\Norm(\P) - 1 \mid \Norm(I) - 1.$$
 \end{theoreme}
 
-\begin{MotSurPreuve}
-	La preuve du critère de Korselt généralisé est étonnamment proche de celle du critère de Korselt dans $\Q$. Une savante utilisation du théorème chinois permet de prouver que $I$ est sans facteurs carrés. L'auteur se sert en suite de cela pour montrer l'identité sur les normes.
-\end{MotSurPreuve}
+\begin{proof}
+	Commençons par le sens réciproque. Soit $\alpha\in \OK$ un entier algébrique et $\p$ un idéal premier de $\OK$ divisant $I$. Si $\alpha \notin \OK$, viennent $\alpha^{\Norm(\p) - 1} \equiv \alpha \pmod{p}$ et donc $$\alpha^{\Norm(I) - 1} \equiv \alpha \pmod{p},$$ car $\Norm(\p) - 1\mid \Norm(I) - 1$ par hypothèse. Si désormais $\alpha\in \p$, la dernière congruence est toujours vérifiée. L'idéal $I$ étant de plus sans facteurs carrés (hypothèse), il est de la forme $I = \p_1 \cdots \p_r,$ les $\p_i$ étant des idéaux premiers distincts de $\OK$. Ces idéaux sont même maximaux (anneau de Dedekind) et donc comaximaux, d'où un isomorphisme d'anneaux $$\OK \big/\left(\p_1\cdot \dots \cdot \p_r\right) \simeq \OK\big/\p_1\times \dots \times \OK\big/ \p_r$$ et la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}.\]
+
+	Démontrons cette fois le sens direct. La preuve se fait en deux temps, on montre les relations de divisibilité puis que $I$ est sans facteur carré. Écrivons $I = \p_1^{e_1} \cdot \dots \cdot \p_r^{e_r}$, les $\p_i$ étant des idéaux premiers de $\OK$ distincts. Pour tout indice $1\leqslant i \leqslant r$ donnons nous $\alpha_i\in \OK$ un élément dont la classe modulo $\p_i$ engendre le groupe quotient $(\OK/\p_i)^\times$. Un tel élément existe car $\OK/\p_i$ est un corps fini et que le groupe des inversibles d'un corps fini est cyclique. En particulier, $\alpha_i$ n'est \emph{pas} dans $\p_i$. On a alors \[\alpha_i^{\Norm(I) - 1} \equiv \alpha_i \pmod{\p_i}\] (comme dans le paragraphe précédent) puis que l'ordre de $\alpha_i$ modulo $\p_i$ divise $\Norm(I) - 1$ (théorème de Lagrange). Cet ordre étant $\Norm(\p_i) - 1$, on en déduit la division désirée. 
+
+	Démontrons désormais que $I$ est sans facteurs carrés. Supposons qu'il existe un idéal premier $\p$ de $\OK$ tel que $p^2\mid \OK$ et posons \[H = \left(\OK\big/\p^2\right)^\times.\] On a \[\left|H\right| = \Norm(\p)(\Norm(\p) - 1).\] Soit $p\in \Z$ l'unique nombre premier tel que $p\Z = \p\cap \Z$. L'entier $\Norm(\p)$ est une puissance de $\p$, d'où $p\mid \Norm(\p)$ et \[p\mid \left| H \right|.\] Le théorème de Cauchy abélien assure alors qu'il existe un élément $\alpha \in H$ d'ordre $p$. Comme $I$ est de Carmichael par hypothèse et que $\alpha\notin \p^2$, on a $\alpha^{\Norm(I)-1} \equiv 1 \pmod{\p^2}$ puis $\alpha^{\Norm(I) - 1} \equiv 1 \pmod{\p^2}$ et \[p \mid \Norm(I) - 1.\] Comme $p\mid \Norm(I)$, cela constitue une contradiction. L'idéal $I$ est donc sans facteur carré.
+
+\end{proof}
 
 \begin{remarque}
 	Le critère de Korselt que nous connaissons dans le cadre de l'arithmétique se déduit immédiatement du critère de Korselt généralisé en prenant $K=\Q$.
