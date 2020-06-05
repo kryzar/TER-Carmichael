@@ -5,6 +5,10 @@ Fort heureusement, certaines propriétés fondamentales des \emph{entiers} de Ca
 	Soient $p$ un nombre premier et $K$ un corps de nombre galoisien tel que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
 \end{theoreme}
 
+\begin{proof}
+	Comme $p\nmid \Disc(K)$, le nombre premier $p$ n'est pas ramifié dans $\OK$. Comme l'extension $K/\Q$ est galoisienne, les indices de ramifications et degrés résiduels des idéaux de $\OK$ au dessus de $\p$ sont égaux. L'idéal $p\OK$ est donc de la forme \[p\OK = \p_1\cdot \dots \p_r.\] Soit donc $f$ ce degré résiduel. On a $ef = [K : \Q]$ et surtout que $f$ divise $[ K : \Q ]$. Ainsi, pour tout indice $1\leq i \leq r$, il vient \[ \Norm(\p_i) - 1 = p^f - 1 \mid p^{[K : \Q]} - 1 = \Norm(p\OK) - 1.\] L'idéal $\OK$ vérifie donc le critère de Korselt généralisé \ref{korselt-generalise}. Il est donc soit premier, soit de Carmichael.
+\end{proof}
+
 Fait tout à fait remarquable, l'auteur de l'article fournit une réciproque au petit théorème de Fermat dans ce nouveau cadre des idéaux de Carmichael.
 
 \begin{theoreme}[réciproque du petit théorème de Fermat généralisé, 2.3 dans l'article]
