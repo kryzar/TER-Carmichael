@@ -8,22 +8,30 @@ import numpy
 load("Utilities.sage")
 
 
-def Fermat_test_number_field(n, K, coordinates_range) :
+def Fermat_test_number_field(n, K, coordinates_range, K_custom_name) :
     """
     n : integer
     K : cyclotomic field
     coordinates_range : a container containing integers
 
+    Implementation of the Fermat test.
     Search for algebraic integers alpha such that 
         alpha^{N(nOK)} \not \equiv alpha mod. nOK.
     They are of the form 
         alpha = a_0 + a_1*theta + … + a_{p-1}*theta^{p-1}
     and the integers a_i are chosen in coordinates_range.
+    Write results to a file.
     """
 
     integer_basis = K.integral_basis()
     nOK =           K.ideal(n)
     N =             nOK.norm()
+
+    outfile = open(str(n) + "_Fermat_test_in_" + K_custom_name + "_.txt", "w")
+    outfile.write("Number field: " + str(K) + "\n")
+    outfile.write("n: " + str(n) + "\n")
+    outfile.write("List of coordonates of elements alpha " \
+            + "such that alpha^Norm(nOK) != alpha mod. (nOK).\n\n")
 
     # make the set of all possible coordoninates with
     # elements in coordinates_range
@@ -33,8 +41,9 @@ def Fermat_test_number_field(n, K, coordinates_range) :
         alpha = numpy.dot(coordinates, integer_basis) # a0 + a1·theta^1 + …
         verifies_Fermat = (alpha^N - alpha) in nOK
         if not verifies_Fermat :
-            print("alpha = " + str(coordinates) + " does not verify "\
-                + "the Fermat property")
+            outfile.write(str(coordinates) + "\n")
+
+    outfile.close()
 
  
 def CarmichaelInQzeta5_NotCarmichaelInt_PrimeFactorsNot1mod5(bound) :
