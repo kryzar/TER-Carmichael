@@ -1,11 +1,10 @@
-Number field: Number Field in a with defining polynomial x^2 + 7 with a = 2.645751311064591?*I
-n: 29341
+Number field: Number Field in a with defining polynomial x^2 - 7 with a = 2.645751311064591?
+n: 1105
 List of coordonates of elements alpha such that alpha^Norm(nOK) != alpha mod. (nOK).
 
 (-2, -2)
 (-2, -1)
-(-2, 0)
+(-2, 1)
 (-1, -1)
-(-1, 0)
 (-1, 1)
 (1, 1)

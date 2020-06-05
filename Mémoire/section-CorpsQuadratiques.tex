@@ -1,6 +1,6 @@
 \section{Corps quadratiques}
 
-\subsection{Test de Fermat}
+\subsection{Vers le test de Fermat}
 
 Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux de répondre à la question \ref{question-centrale}. Le théorème 2.5 de l'article y apporte de premiers éléments de réponse.
 
@@ -12,23 +12,19 @@ Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux 
 	On présage dès l'énoncé la nature de la preuve : c'est le critère de Korselt généralisé \ref{korselt-generalise}. On commence par s'assurer que $n$ est sans facteurs carrés de sorte de contrôler la décomposition de $n\OK$ dans un corps quadratique $K$ donné. Du reste, comme la norme d'un idéal premier au dessus de $n\OK$ est un nombre premier $p$ divisant $n$, on sent bien que la condition de non-divisibilité va empêcher être $n$ d'être de Carmichael dans les corps quadratiques\footnote{Les carrés ne sont ni plus ni moins que les normes de $p$ et de $n$ dans toute extension quadratique.} bien choisis. La partie réellement inventive de la preuve consiste à trouver les bons corps quadratiques. Cette partie est hautement non triviale et est basée sur la connaissance d'un nombre premier $p$ comme dans les hypothèses du théorème et sur une savante utilisation du théorème chinois. Les techniques de base de la ramification permettent encore une fois de s'assurer que les corps construits vérifient bien ce qu'on leur demande de vérifier. \\
 \end{MotSurPreuve}
 
-Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers, ce qui ne nous arrange pas. \NTS{sourcer}.}, certains nombres de Carmichael vérifient ces hypothèses. C'est même le cas de tous les nombres de Carmichael de la liste \ref{liste-Carmichael} ~! On peut par exemple prendre l'entier de Carmichael $512461$ de son facteur premier $271$ : il existe ainsi une infinité de corps quadratiques dans lequel $512461$ n'est pas de Carmichael. Mieux encore, nous avons numériquement exhibé pour chaque entier de Carmichael de la liste \ref{liste-carmichael} une liste de corps quadratiques dans lequel ledit entier n'est pas de Carmichael. \NTS{ajouter liste} \\
+Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers, ce qui ne nous arrange pas. \NTS{sourcer}.}, certains nombres de Carmichael vérifient ces hypothèses. On vérifie numériquement que c'est même le cas de tous les nombres de Carmichael de la liste \ref{liste-carmichael} ~! On peut par exemple prendre l'entier de Carmichael $512461$ de son facteur premier $271$ : il existe ainsi une infinité de corps quadratiques dans lequel $512461$ n'est pas de Carmichael. \\
 
-\begin{Complement}
-	Une liste bien plus dense exhibée par l'auteur de ce mémoire est disponible sur sa page GitHub : \url{https://github.com/kryzar/ter-carmichael/blob/master/scripts/results_carmichael_not_carmichael_in_quad_field.txt}. \\
-\end{Complement}
-
-Malgré cela, l'algorithme que nous avons utilisé pour trouver ces corps est sans doute très sous-optimal. Utilisant le critère de Korselt généralisé \ref{korselt-generalise}, il impose de décomposer l'idéal $n\OK$ en produit d'idéaux premiers. Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix bien plus intéressante. Il montre que $n = 561$ est composé en exhibant le corps quadratique $K = Q(\sqrt{13})$ puis l'entier algébrique $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$. Comme $$\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$$ et que $n$ et $13$ sont premiers entre eux, cela prouve la composition de $n$. Le point clé est que l'auteur ne semble pas utiliser le critère de Korselt (il n'a pas donné les détails et nous ne pouvons en conséquence pas en être sûrs). Cette approche nous invite à étudier l'algorithme \emph{probabiliste} suivant. Soit $n$ un entier impair (potentiellement de Carmichael).
+Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle du test de Fermat dans les corps quadratiques. Il montre que $n = 561$ est composé en exhibant le corps quadratique $K = Q(\sqrt{13})$ puis l'entier algébrique $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$. Comme $$\alpha^{\Norm_{K/\Q}(n)} \not \equiv \alpha \pmod{n\OK}$$ et que $n$ et $13$ sont premiers entre eux, cela prouve la composition de $n$, d'après le théorème \ref{ptf}. Bien qu'il ne donne pas les détails, cela laisse penser que plutôt que d'utiliser le critère de Korselt\footnote{Ce qui nécessiterait de décomposer l'idéal $561\mathcal{O}_{\Q(\sqrt{13})}$.}, ce dernier a directement cherché un entier algébrique $\alpha$ ne vérifiant pas la congruence \ref{congruence-Carmichael}. Cet algorithme est appelé \emph{test de Fermat dans les corps quadratiques} et est un critère de composition. Étant donné un entier $n$ dont on veut prouver la composition, une version simple du test est la suivante.
 
 \vspace{1em}
-\begin{algorithm}[H]\label{algo-quadratique-faible}\label{algo-1}
-\caption{Test de Fermat dans les corps quadratiques (version $n$ et $\Disc(K)$ premiers entre eux)}
-\KwIn{$b$ (borne coordonnées $\alpha$)}
+\begin{algorithm}[H]\label{test-Fermat-quadratique}\label{algo-1}
+\caption{Test de Fermat dans les corps quadratiques}
+\KwIn{S (ensemble coordonnées $\alpha$)}
 \ForEach{$d \in \N$ sans facteurs carrés}{
 	$K \leftarrow \Q(\sqrt{d})$ \\
 	$\theta\leftarrow$ un générateur de $\OK$ \\
 	\If{$d$ et $n$ sont premiers entre eux}{
-		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
+		\ForEach{$\alpha = x+ y\theta$, $x, y\in S$}{
 			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
 				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé}	\\
 				\textbf{fin du programme}
@@ -39,9 +35,9 @@ Malgré cela, l'algorithme que nous avons utilisé pour trouver ces corps est sa
 \end{algorithm}
 \vspace{1em}
 
-Pour que cet algorithme soit viable en pratique, il conviendra de définir la notion de \textit{témoin de Carmichael} et d'étudier finement leur répartition, à la manière du test de primalité de Rabin-Miller (voir § 2.3.7, p.69 de \cite{Demazure}). L'auteur de ce présent mémoire est pleinement conscient du travail à accomplir. Par ailleurs, il n'y aucune preuve que l'algorithme termine en l'état. \\
+L'auteur du présent texte a donc implémenté\footnote{\NTS{dire que détails dans annexe}} cet algorithme et l'a testé sur tous les entiers de la liste \ref{liste-carmichael}, en choisissant\footnote{L'entier $43$ est le premier nombre premier impair qui ne soit facteur d'aucun entier de la liste \ref{liste-carmichael}. Le discriminant de $\Q(\sqrt{43})$ sera donc premier à tout tel entier, ce qui est nécessaire pour appliquer le théorème \ref{ptf}.} le corps quadratique \[K = \Q(\sqrt{43}).\] En reprenant les notations de l'algorithme \ref{test-Fermat-quadratique}, on se fixe $$ S = [\![-3, +3]\!]$$ et $\theta = \sqrt{43}$. Nous avons pu exhiber des $K$-témoins de Fermat pour beaucoup d'entiers de la liste : pour $561$ nous trouvons $\alpha = 1 + 2\theta$, pour 2821 nous trouvons $\alpha = -3 + 2\theta$. Il y a toutefois des entiers pour lesquels nous ne trouvons aucun témoin avec ces paramètres. C'est le cas de $6601$. En changeant de corps et en prenant arbitrairement $K = \Q(\sqrt{-7})$, nous trouvons un $K$-témoin de Fermat pour $6601$ mais pas pour $2465$. Utiliser le test de Fermat—quadratique nécessiterait donc plus de finesse que cette version naïve de l'algorithme. \NTS{rajouter temps de calcul} \\
 
-Il peut en outre être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ avec une certitude morale, toujours dans l'esprit test de primalité de Rabin-Miller. L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Mais l'existence d'entiers $h$ qui sont de Carmichael \emph{dans tout corps quadratique de discriminant premier avec $h$} est un problème majeur qui empêche de considérer cette voie. C'est le propos de la prochaine sous-section.
+Il peut enfin être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons voir dans la prochaine sous-section qu'un tel test ne peut exister.
 
 \subsection{Un pas en arrière}
 
