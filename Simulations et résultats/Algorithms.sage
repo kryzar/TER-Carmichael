@@ -3,6 +3,7 @@
 
 load("Utilities.sage")
 
+
 def CarmichaelInQzeta5_NotCarmichaelInt_PrimeFactorsNot1mod5(bound) :
     """ 
     Find all integers (they may not exist) in [[2, bound]]
