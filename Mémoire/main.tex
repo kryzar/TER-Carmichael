@@ -15,33 +15,30 @@
 \newtheorem*{Complement}{Complément}
 
 \addbibresource{bi.bib}
+
 \begin{document}
 
-\begin{titlepage}
-	\input{titlepage}
-\end{titlepage}
+	\begin{titlepage}
+		\input{titlepage}
+	\end{titlepage}
+	\stepcounter{page}
+	\input{Introduction}
+	\input{ListeCarmichael}
+	\newpage
+	\input{section-DelicesTheorie}
+	\input{section-CorpsQuadratiques}
+	\input{section-CorpsCyclotomiques}
+	\input{section-IdeauxExtensionsSimulation}
+	\input{Conclusion}
 
-\stepcounter{page}
-\input{Introduction}
-\input{ListeCarmichael}
-\newpage
+	\newpage
+	\begin{appendix}
+	\input{annexe-ProduireContreExemples}
+	\end{appendix}
 
-\input{section-DelicesTheorie}
-\input{section-CorpsQuadratiques}
-\input{section-CorpsCyclotomiques}
-\input{section-IdeauxExtensionsSimulation}
-
-\input{Conclusion}
-
-\newpage
-\begin{appendix}
-\input{annexe-ProduireContreExemples}
-\end{appendix}
-
-\nocite{*}
-\printbibliography
-
-\newpage
-\input{Todo}
+	\nocite{*}
+	\printbibliography
+	\newpage
+	\input{Todo}
 
 \end{document}

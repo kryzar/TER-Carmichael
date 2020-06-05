@@ -4,7 +4,7 @@
 
 Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux de répondre à la question \ref{question-centrale}. Le théorème 2.5 de l'article y apporte de premiers éléments de réponse.
 
-\begin{theoreme}[2.5 dans l'article]
+\begin{theoreme}[2.5 dans l'article]\label{theoreme-2.5}
 	Soit $n$ un entier impair sans facteurs carrés. S'il existe un diviseur premier $p$ de $n$ tel que $$p^2 - 1 \nmid n^2 - 1,$$ alors il existe une infinité de corps quadratiques $K$ dans lesquels $n$ \emph{n'est pas} de Carmichael.
 \end{theoreme}
 
@@ -29,7 +29,7 @@ Malgré cela, l'algorithme que nous avons utilisé pour trouver ces corps est sa
 	\If{$d$ et $n$ sont premiers entre eux}{
 		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
 			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
-				\KwRet{$n$ est composé}	\\
+				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé}	\\
 				\textbf{fin du programme}
 			}
 		}
@@ -44,7 +44,7 @@ Il peut en outre être tentant d'utiliser cet algorithme pour déterminer la pri
 
 \subsection{Un pas en arrière}
 
-Revenons un pas en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf—reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
+Revenons un pas en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
 
 \begin{enoncefaux}[réciproque eronnée du petit théorème de Fermat généralisé]
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
@@ -66,7 +66,11 @@ Chose troublante, de tels nombres existent.
 	Il existe un couple $(n, d)$ d'entiers tel que $n$ soit un entier de Carmichael rigide d'ordre $d$.
 \end{theoreme}
 
-En guise de preuve, E. W. Howe exhibe un entier de Carmichael rigide d'ordre $2$. Il est donné par $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331$$ et est appelé \emph{entier de Howe}. \\
+En guise de preuve, E. W. Howe exhibe un entier de Carmichael rigide d'ordre $2$. Il est donné par 
+	\begin{equation}\label{Howe}
+		h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331 = 443372888629441
+	\end{equation}
+et est appelé \emph{entier de Howe}. \\
 
 À la lumière de ces troublants résultats, si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme (\ref{algo-quadratique-faible}) en la version suivante.
 
@@ -80,7 +84,7 @@ En guise de preuve, E. W. Howe exhibe un entier de Carmichael rigide d'ordre $2$
 	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
 		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
 			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
-				\KwRet{$n$ est composé}	\\
+				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé}	\\
 				\textbf{fin du programme}
 			}
 		}
