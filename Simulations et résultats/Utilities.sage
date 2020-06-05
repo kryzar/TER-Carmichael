@@ -12,7 +12,7 @@ HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
 def KorseltCriterion_Ideal(I) :
     """
-    - I : ideal in a number field integer ring
+    I : ideal in a number field integer ring
 
     We use the Korselt criterion.
     """
@@ -56,14 +56,17 @@ def PrimeFactors_1mod5(n) :
 
 
 # Unit tests
-K.<a> = QuadraticField(23)
-I = K.ideal(77)
-assert KorseltCriterion_Ideal(I) == False
-K.<a> = QuadraticField(11)
-I = K.ideal(35)
-assert KorseltCriterion_Ideal(I) == True
-for n in CARMICHAEL_NUMBERS_BELOW_512461 :
-    assert KorseltCriterion_Int(n) == True
+def unit_tests() :
+    K.<a> = QuadraticField(23)
+    I = K.ideal(77)
+    assert KorseltCriterion_Ideal(I) == False
+    K.<a> = QuadraticField(11)
+    I = K.ideal(35)
+    assert KorseltCriterion_Ideal(I) == True
+    for n in CARMICHAEL_NUMBERS_BELOW_512461 :
+        assert KorseltCriterion_Int(n) == True
 
-for n in [4, 6, 10, 27, 46, 51] :
-    assert KorseltCriterion_Int(n) == False
+    for n in [4, 6, 10, 27, 46, 51] :
+        assert KorseltCriterion_Int(n) == False
+
+unit_tests()
