@@ -1,4 +1,4 @@
 Field type: cyclotomic
-Number of tests: 744
+Number of tests: 1857
 Number of Carmichael ideals: 18
-Proportion of Carmichael ideals: 0.024193548387096774
+Proportion of Carmichael ideals: 0.009693053311793215
