@@ -2,11 +2,34 @@
 
 \subsection{Horizon}
 
-L'étude des idéaux de Carmichael dans les corps cyclotomiques est porteuse d'espoir et fournit de beaux résultats susceptibles d'être à la base de tests de primalité, notamment le théorème 3.6. Commençons par un résultat théorique.
+L'étude des idéaux de Carmichael dans les corps cyclotomiques est porteuse d'espoir et fournit de beaux résultats susceptibles d'être à la base de tests de primalité, notamment le théorème 3.6. Notons que les seuls corps qui nous intéressent ici sont les corps cyclotomiques engendrés par des racines primitive $p$-ième de l'unité, où $p$ est premier. Commençons par un résultat théorique.
 
 \begin{theoreme}[3.1 dans l'article]
 	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} $K$ de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
 \end{theoreme}
+
+\begin{MotSurPreuve}
+	Les preuves des énoncés sur les corps cyclotomiques sont autrement plus sophistiquées que celles sur les corps quadratiques ~; l'auteur utilise à volonté des résultats de théorie analytique des nombres. Ces derniers assurent de l'existence d'objets mais ne les construisent pas, à l'image des lemmes 3.3 et 3.4 de l'article. La construction des corps se fait avec la correspondance de Galois et la vérification que ces corps fonctionnent nécessitent des arguments sophistiqués de ramification (groupes de décomposition et d'inertie, Frobenius d'un élément). Nous verrons ces arguments plus en détails dans la preuve du théorème 3.6 de l'article \ref{theoreme-3.6}. \\
+\end{MotSurPreuve}
+
+\iffalse
+\begin{MotSurPreuve}
+	Les preuves des énoncés sur les corps cyclotomiques sont autrement plus sophistiquées que celles sur les corps quadratiques ~; l'auteur utilise à volonté des résultats de théorie analytique des nombres. Ces derniers assurent de l'existence d'objets mais ne les construisent pas, à l'image des lemmes 3.3 et 3.4 de l'article. Pour construire les corps donc, l'auteur procède en deux étapes.
+	\begin{itemize}
+		\item Soit $p$ un facteur premier de $n$ (donc distinct de $n$ par hypothèse). Le lemme 3.3 donne un entier $d_0$ tel que \[p^d - 1 \nmid n^d - 1\] pour tout entier $d>d_0$. Le lemme 3.4 donne quant à lui l'existence d'une infinité de nombres premiers $q> p^{d_0} - 1$ pour lesquels $q-1$ est sans facteurs carrés. L'auteur pose désormais $E = \Q(\zeta_q)$ pour tout tel nombre premier $q$.
+		\item En posant $G$ le groupe de Galois de $E/\Q$ et $d$ l'ordre de $p$ modulo $q$, l'auteur pose $H$ l'unique sous-groupe d'ordre $\frac{p-1}{d}$ du groupe cyclique $G$. Le corps désiré est alors la sous-extension $E^H$ de $E/\Q$ constituée des éléments de $E$ fixés par tout élément de $H$ ~; c'est la sous-extension de $E/\Q$ correspondant à $G/H$ dans la correspondance de Galois et on la note $K$.
+	\end{itemize}
+Exhiber ces corps est déjà difficile en soi. La vérification qu'ils fonctionnent ne l'est pas moins. Celle-ci est basée sur le fait que $p$\footnote{Il faut ici considérer l'isomorphisme de groupes $$G\simeq \Fp^*$$ et voir $H$ comme l'image de l'unique sous-groupe d'ordre $\frac{p-1}{d}$ du groupe cyclique $\Fp^*$ par notre isomorphisme.} engendre $G/H$ et que $p$ reste inerte dans $K$\footnote{Cela utilise le Frobenius de $p$, nous donnerons les détails de ce passage dans la preuve du théorème 3.6 de l'article \NTS{mettre référence}.}. Cela permet en effet d'affirmer $\Norm_{K/Q}(p) = p^d
+Il faut tout d'abord exhiber l'isomorphisme entre $G$ et $\Fp^*$. Celui-ci est donné par 
+	\begin{align*}
+		f : G &\to \Fp^* \\
+		\sigma &\mapsto \overline{a},
+	\end{align*}
+	où $a$ est un entier tel que \[\sigma(\zeta_p) = \zeta_p^a.\] Un tel entier $a$ existe car $\sigma(\zeta_p)$ est une racine $p$-ième de l'unité et que $\zeta_p$ est un générateur du groupe des racines $p$-ième de l'unité.
+
+ Comme $p$ engendre engendre (lemme 3.2) $G/H$, 
+\end{MotSurPreuve}
+\fi
 
 Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
 
@@ -16,7 +39,7 @@ Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorè
 
 Le résultat le plus à même d'aboutir à un test de primalité est le théorème suivant.
 
-\begin{theoreme}[3.6 dans l'article]
+\begin{theoreme}[3.6 dans l'article]\label{theoreme-3.6}
 	Soit $n$ un entier composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ est premier avec $n$ et $n$ \emph{n'est pas de Carmichael dans $K$}.
 \end{theoreme}
 
@@ -31,6 +54,10 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 \begin{theoreme}[troisième réciproque]
 	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, et tout entier algébrique $\alpha\in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n\OK)} \equiv \alpha \pmod{n\OK}.$$
 \end{theoreme}
+
+\begin{remarque}
+	Dans ces deux réciproques, l'hypothèse sur les discriminants n'est plus que $n$ ne doit pas diviser $\Disc(K)$ comme dans \ref{ptf-reciproque} mais bien que $\Disc(n)$ et $\Disc(K)$ soient premiers entre eux.
+\end{remarque}
 
 \subsection{Pratique}
 
