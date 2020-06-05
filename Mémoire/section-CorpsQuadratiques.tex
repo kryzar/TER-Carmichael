@@ -77,7 +77,7 @@ En guise de preuve, E. W. Howe exhibe un entier de Carmichael rigide d'ordre $2$
 \ForEach{$d \in \N$ sans facteurs carrés dans $I$}{
 	$K \leftarrow \Q(\sqrt{d})$ \\
 	$\theta\leftarrow$ un générateur de $\OK$ \\
-	\If{$n \nmid \Disc(K)$ sont premiers entre eux}{
+	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
 		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
 			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
 				\KwRet{$n$ est composé}	\\
