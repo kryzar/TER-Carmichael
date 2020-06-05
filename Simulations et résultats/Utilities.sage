@@ -13,8 +13,6 @@ HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 def KorseltCriterion_Ideal(I) :
     """
     I : ideal in a number field integer ring
-
-    We use the Korselt criterion.
     """
     
     prime_dec = I.prime_factors()
@@ -35,6 +33,7 @@ def KorseltCriterion_Ideal(I) :
 
 def KorseltCriterion_Int(n) :
     """
+    n : Integer
     """
 
     if not n.is_squarefree() :
@@ -48,6 +47,11 @@ def KorseltCriterion_Int(n) :
 
 
 def PrimeFactors_1mod5(n) :
+    """
+    Return True if the prime factors of n 
+    are 1 mod. 5, False otherwise.
+    """
+
     for p in n.prime_factors() :
         if Mod(p, 5) != 1 :
             return False
