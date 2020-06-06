@@ -22,10 +22,10 @@ Nous étendons alors la notion de témoin de Fermat.
 	Soient $n$ un entier et $K$ un corps de nombres galoisien. Si $n$ admet un $K$-témoin de Fermat, alors $n$ est composé.
 \end{theoreme}
 
-Le critère de Korselt \ref{korselt} si utile pour l'étude des nombres de Carmichael dans $\Q$ trouve une généralisation dans ce nouveau cadre.
+le critère de korselt \ref{korselt} si utile pour l'étude des nombres de carmichael dans $\Q$ trouve une généralisation dans ce nouveau cadre.
 
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
-	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On prend garde à supposer que $I$ est composé. Alors $I$ est de Carmichael \ssi $I$ est sans facteurs carrés et pour tout idéal premier $\P$ divisant $I$, on a $$\Norm(\P) - 1 \mid \Norm(I) - 1.$$
+	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Alors $I$ n'a aucun $K$-témoin de Fermat \ssi $I$ est sans facteurs carrés et pour tout idéal premier $\P$ divisant $I$, on a $$\Norm(\P) - 1 \mid \Norm(I) - 1.$$
 \end{theoreme}
 
 \begin{proof}
@@ -34,17 +34,21 @@ Le critère de Korselt \ref{korselt} si utile pour l'étude des nombres de Carmi
 	Démontrons cette fois le sens direct. La preuve se fait en deux temps, on montre les relations de divisibilité puis que $I$ est sans facteur carré. Écrivons $I = \p_1^{e_1} \cdot \dots \cdot \p_r^{e_r}$, les $\p_i$ étant des idéaux premiers de $\OK$ distincts. Pour tout indice $1\leqslant i \leqslant r$ donnons nous $\alpha_i\in \OK$ un élément dont la classe modulo $\p_i$ engendre le groupe quotient $(\OK/\p_i)^\times$. Un tel élément existe car $\OK/\p_i$ est un corps fini et que le groupe des inversibles d'un corps fini est cyclique. En particulier, $\alpha_i$ n'est \emph{pas} dans $\p_i$. On a alors \[\alpha_i^{\Norm(I) - 1} \equiv \alpha_i \pmod{\p_i}\] (comme dans le paragraphe précédent) puis que l'ordre de $\alpha_i$ modulo $\p_i$ divise $\Norm(I) - 1$ (théorème de Lagrange). Cet ordre étant $\Norm(\p_i) - 1$, on en déduit la division désirée. 
 
 	Démontrons désormais que $I$ est sans facteurs carrés. Supposons qu'il existe un idéal premier $\p$ de $\OK$ tel que $p^2\mid \OK$ et posons \[H = \left(\OK\big/\p^2\right)^\times.\] On a \[\left|H\right| = \Norm(\p)(\Norm(\p) - 1).\] Soit $p\in \Z$ l'unique nombre premier tel que $p\Z = \p\cap \Z$. L'entier $\Norm(\p)$ est une puissance de $\p$, d'où $p\mid \Norm(\p)$ et \[p\mid \left| H \right|.\] Le théorème de Cauchy abélien assure alors qu'il existe un élément $\alpha \in H$ d'ordre $p$. Comme $I$ est de Carmichael par hypothèse et que $\alpha\notin \p^2$, on a $\alpha^{\Norm(I)-1} \equiv 1 \pmod{\p^2}$ puis $\alpha^{\Norm(I) - 1} \equiv 1 \pmod{\p^2}$ et \[p \mid \Norm(I) - 1.\] Comme $p\mid \Norm(I)$, cela constitue une contradiction. L'idéal $I$ est donc sans facteur carré.
-
 \end{proof}
+
 
 \begin{remarque}
 	Le critère de Korselt que nous connaissons dans le cadre de l'arithmétique se déduit immédiatement du critère de Korselt généralisé en prenant $K=\Q$.
 \end{remarque}
 
-\begin{remarque}
-	Il faut ici se montrer vigilant avec la nomenclature. Un idéal $I$ est de Carmichael dans un corps de nombres $K$ si $I$ est un idéal \textbf{composé} qui \emph{en plus de cela}, vérifie l'identité \ref{congruence-Carmichael} pour tout entier algébrique $\alpha \in \OK$. \\ 
+On a alors la caractérisation suivante.
 
-	Si l'on a un corps de nombres $L$ et un idéal $J$ de $\OK$, montrer que $\Norm(\P) - 1\mid \Norm(J) - 1$ pour tout idéal premier $\P$ de $\OL$ divisant $J$ ne suffit pas. La preuve du critère de Korselt généralisé \ref{korselt-generalise} nous enseigne que si $J$ est premier, $J$ vérifie également cette identité. Il faut donc indépendamment montrer que $J$ est composé si l'on veut montrer que $J$ est un idéal de Carmichael. Là est le cœur du problème. L'auteur de l'article fait lui-même une petite erreur en oubliant cette hypothèse dans l'énoncé du théorème 2.7 : il doit y supposer $n$ composé.
+\begin{corollaire}
+	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. Alors $I$ est de Carmichael \ssi $I$ est composé et $I$ vérifie les hypothèses du critère de Korselt.
+\end{corollaire}
+
+\begin{remarque}
+	Il faut ici se montrer vigilant avec la nomenclature. Pour montrer qu'un idéal est de Carmichael, montrer qu'il vérifie le critère de Korselt ne suffit pas. Il faut aussi montrer qu'il est composé. Dans la littérature, on dit en général qu'un idéal vérifie le critère de Korselt s'il vérifie les hypothèses du théorème \ref{korselt-generalise} et en plus qu'il est composé. 
 \end{remarque}
 
 Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
