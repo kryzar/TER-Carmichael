@@ -1,6 +1,8 @@
 # Antoine Hugounet
 # Utilities.sage
 
+import time
+
 # from https://oeis.org/A002997
 CARMICHAEL_NUMBERS_BELOW_512461 = [561, 1105, 1729, 2465, 2821, 6601, 8911, 
     10585, 15841, 29341, 41041, 46657, 52633, 62745, 63973,
@@ -9,6 +11,10 @@ CARMICHAEL_NUMBERS_BELOW_512461 = [561, 1105, 1729, 2465, 2821, 6601, 8911,
 
 HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
+LIST_CYCLOTOMIC_FIELDS = [CyclotomicField(7),
+        CyclotomicField(101),
+        CyclotomicField(199),
+        CyclotomicField(293)]
 
 def KorseltCriterion_Ideal(I) :
     """
@@ -57,6 +63,23 @@ def PrimeFactors_1mod5(n) :
             return False
 
     return True
+
+
+def time_KorseltCriterion_Ideal(n, fields_list) :
+    """
+    Given n an integer and fields_list a list of fields,
+    print the time required to compute KorseltCriterion_Ideal
+    for n and each field in fields_list.
+    """
+
+    for K in fields_list :
+        nOK = K.ideal(n)
+        start = time.clock()
+        KorseltCriterion_Ideal(nOK)
+        elapsed_time = time.clock() - start
+        print("===")
+        print(K)
+        print(elapsed_time)
 
 
 # Unit tests
