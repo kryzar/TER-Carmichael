@@ -1,6 +1,7 @@
 \section{Délices de la théorie}
 
-Fort heureusement, certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Tout d'abord, le petit théorème de Fermat se généralise aux corps de nombres galoisiens : dans une telle extension, un nombre premier engendre un idéal qui est soit premier, soit de Carmichael. Plus formellement, vient ceci.
+Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Tout d'abord, le petit théorème de Fermat se généralise aux corps de nombres galoisiens : dans une telle extension, un nombre premier engendre un idéal qui est soit premier, soit de Carmichael. Plus formellement, vient ceci.
+
 \begin{theoreme}[petit théorème de Fermat généralisé, 2.3 dans l'article]\label{ptf}
 	Soient $p$ un nombre premier et $K$ un corps de nombre galoisien tel que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
 \end{theoreme}
@@ -9,44 +10,19 @@ Fort heureusement, certaines propriétés fondamentales des \emph{entiers} de Ca
 	Comme $p\nmid \Disc(K)$, le nombre premier $p$ n'est pas ramifié dans $\OK$. Comme l'extension $K/\Q$ est galoisienne, les indices de ramifications et degrés résiduels des idéaux de $\OK$ au dessus de $\p$ sont égaux. L'idéal $p\OK$ est donc de la forme \[p\OK = \p_1\cdot \dots \p_r.\] Soit donc $f$ ce degré résiduel. On a $ef = [K : \Q]$ et surtout que $f$ divise $[ K : \Q ]$. Ainsi, pour tout indice $1\leq i \leq r$, il vient \[ \Norm(\p_i) - 1 = p^f - 1 \mid p^{[K : \Q]} - 1 = \Norm(p\OK) - 1.\] L'idéal $\OK$ vérifie donc le critère de Korselt généralisé \ref{korselt-generalise}. Il est donc soit premier, soit de Carmichael.
 \end{proof}
 
-Fait tout à fait remarquable, l'auteur de l'article fournit une réciproque au petit théorème de Fermat dans ce nouveau cadre des idéaux de Carmichael.
+Nous étendons alors la notion de témoin de Fermat.
 
-\begin{theoreme}[réciproque du petit théorème de Fermat généralisé, 2.3 dans l'article]
-	Soit $n>2$ un entier composé. Alors il existe un corps \emph{quadratique} $K$ vérifiant $n\nmid \Disc(K)$ et un entier algébrique $\alpha \in \OK$ tels que $$\alpha^{\Norm_{K/\Q}(n)} \not\equiv \alpha \pmod{n\OK}.$$
+\begin{definition}
+	Soient $K$ un corps de nombres galoisien, $I$ un idéal de $\OK$ et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $I$ si l'on a \[\alpha^{\Norm(I)} \not \equiv \alpha \pmod{n\OK}.\]
+\end{definition}
+
+Étant donnés $n$ un entier et $K$ un corps de nombres, nous appellerons $K$-témoin de Fermat pour $n$ tout $K$-témoin de Fermat pour l'idéal $n\OK$. Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Galoisien et un idéal de Carmichael est un idéal n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. La réciproque du théorème \ref{ptf} s'énonce alors ainsi.
+
+\begin{theoreme}\label{ptf-contraposee}
+	Soient $n$ un entier et $K$ un corps de nombres galoisien. Si $n$ admet un $K$-témoin de Fermat, alors $n$ est composé.
 \end{theoreme}
 
-\begin{MotSurPreuve}
-	À l'instar de beaucoup d'autres résultats de l'article, la preuve de cet énoncé jouit à la fois d'une complexité technique raisonnable et d'une grande ingéniosité. Connaissant un diviseur $p$ premier de $n$, l'auteur construit un corps quadratique $K = \Q\left(\sqrt{(-1)^\frac{p-1}{2} p}\right)$ dans lequel $n$ n'est pas de Carmichael. Ce dernier point se démontre avec des techniques de base de la ramification. \\
-\end{MotSurPreuve}
-
-Nous pouvons de plus mettre à bout ces deux résultats pour fournir cette délicieuse équivalence.
-
-\begin{theoreme}[petit théorème de Fermat généralisé et sa réciproque]\label{ptf-reciproque}
-	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $n\nmid \Disc(K)$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
-\end{theoreme}
-
-Au delà de sa force théorique, cette énoncé semble porter une valeur historique majeure. Le test de primalité de Fermat était le seul test de primalité à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Cette absence de réciproque semblait bien être le prix à payer pour sa simplicité et son efficacité. Il aura certes fallu aller chercher la réciproque dans les corps de nombres, mais l'énoncé prouve que les corps quadratiques. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà. \\
-
-Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt. Le petit théorème de Fermat généralisé \ref{ptf} nous permet donc d'écrire le critère de composition suivant, basé sur le critère de Korselt.
-
-\vspace{1em}
-\begin{algorithm}[H]\label{test-primalite-korselt}
-\caption{Critère de composition de Korselt dans les corps de nombres galoisiens}
-\KwIn{$n$ (entier à tester) \\
-	$\mathscr{L}$ (liste de corps de nombres galoisiens)}
-\ForEach{$K$ dans $\mathscr{L}$}{
-	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
-		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
-			\KwRet{$n\OK$ n'est pas de Carmichael et $n$ est composé} \\
-			\textbf{arrêter le programme.}
-		}
-	}
-}
-\end{algorithm}
-\vspace{1em}
-
-
-Un autre résultat d'importance (démontré avant le petit théorème de Fermat généralisé dans l'article) est la généralisation du critère de Korselt \ref{korselt}. C'est ce résultat que l'on utilise en premier lieu pour déterminer si un entier est de Carmichael.
+Le critère de Korselt \ref{korselt} si utile pour l'étude des nombres de Carmichael dans $\Q$ trouve une généralisation dans ce nouveau cadre.
 
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
 	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On prend garde à supposer que $I$ est composé. Alors $I$ est de Carmichael \ssi $I$ est sans facteurs carrés et pour tout idéal premier $\P$ divisant $I$, on a $$\Norm(\P) - 1 \mid \Norm(I) - 1.$$
@@ -70,6 +46,42 @@ Un autre résultat d'importance (démontré avant le petit théorème de Fermat 
 
 	Si l'on a un corps de nombres $L$ et un idéal $J$ de $\OK$, montrer que $\Norm(\P) - 1\mid \Norm(J) - 1$ pour tout idéal premier $\P$ de $\OL$ divisant $J$ ne suffit pas. La preuve du critère de Korselt généralisé \ref{korselt-generalise} nous enseigne que si $J$ est premier, $J$ vérifie également cette identité. Il faut donc indépendamment montrer que $J$ est composé si l'on veut montrer que $J$ est un idéal de Carmichael. Là est le cœur du problème. L'auteur de l'article fait lui-même une petite erreur en oubliant cette hypothèse dans l'énoncé du théorème 2.7 : il doit y supposer $n$ composé.
 \end{remarque}
+
+Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
+
+\begin{theoreme}[réciproque du petit théorème de Fermat généralisé, 2.3 dans l'article]
+	Soit $n>2$ un entier composé. Alors il existe un corps \emph{quadratique} $K$ vérifiant $n\nmid \Disc(K)$ dans lequel $n$ admet un $K$-témoin de Fermat.
+\end{theoreme}
+
+\begin{MotSurPreuve}
+	À l'instar de beaucoup d'autres résultats de l'article, la preuve de cet énoncé jouit à la fois d'une complexité technique raisonnable et d'une grande ingéniosité. Connaissant un diviseur $p$ premier de $n$, l'auteur construit un corps quadratique $K = \Q\left(\sqrt{(-1)^\frac{p-1}{2} p}\right)$ dans lequel $n$ n'est pas de Carmichael. Ce dernier point se démontre avec des techniques de base de la ramification. \\
+\end{MotSurPreuve}
+
+Nous pouvons de plus mettre à bout ces deux résultats pour fournir cette délicieuse équivalence.
+
+\begin{theoreme}[petit théorème de Fermat généralisé et sa réciproque]\label{ptf-reciproque}
+	Soit $n>2$ un entier. Alors $n$ est premier \ssi il n'a de $K$-témoin de Fermat dans aucun corps quadratique $K$ vérifiant $n\nmid \Disc(K)$.
+\end{theoreme}
+
+Au delà de sa force théorique, cette énoncé semble porter une valeur historique majeure. Le test de primalité de Fermat était le seul test de primalité à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Cette absence de réciproque semblait bien être le prix à payer pour sa simplicité et son efficacité. Il aura certes fallu aller chercher la réciproque dans les corps de nombres, mais l'énoncé prouve que les corps quadratiques. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà. \\
+
+Nous avons déjà des outils suffisamment robustes pour fournir un test de primalité naïf. Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt. Le petit théorème de Fermat généralisé \ref{ptf} nous permet donc d'écrire le critère de composition suivant, basé sur le critère de Korselt.
+
+\vspace{1em}
+\begin{algorithm}[H]\label{test-primalite-korselt}
+\caption{Critère de composition de Korselt dans les corps de nombres galoisiens}
+\KwIn{$n$ (entier à tester) \\
+	$\mathscr{L}$ (liste de corps de nombres galoisiens)}
+\ForEach{$K$ dans $\mathscr{L}$}{
+	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
+		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
+			\KwRet{$n\OK$ n'est pas de Carmichael et $n$ est composé} \\
+			\textbf{arrêter le programme.}
+		}
+	}
+}
+\end{algorithm}
+\vspace{1em}
 
 Avant de poursuivre, donnons un lemme qui permettra d'alléger les énoncés de l'article.
 

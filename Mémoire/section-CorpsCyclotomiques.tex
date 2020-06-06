@@ -15,7 +15,7 @@ Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $
 Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
 
 \begin{theoreme}[deuxième réciproque]
-	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abélien} $K$ de discriminant premier avec $n$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abélien} $K$ de discriminant premier avec $n$, $n$ n'admet aucun $K$-témoin de Fermat.
 \end{theoreme}
 
 Le résultat le plus à même d'aboutir à un test de primalité est le crucial théorème suivant. Il nous enseigne qu'il faut aller chercher du côté des corps cyclotomiques. Nous en donnons la démonstration.
@@ -46,7 +46,7 @@ Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distinc
 Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 
 \begin{theoreme}[troisième réciproque]
-	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, et tout entier algébrique $\alpha\in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, $n$ n'admet aucun $K$-témoin de Fermat.
 \end{theoreme}
 
 \begin{remarque}
@@ -81,8 +81,6 @@ Revenons au théorème \ref{theoreme-3.6}, duquel nous voulons tirer un critère
 
 L'auteur du présent texte a — comme pour les corps quadratiques — implémenté et testé cet algorithme. Force est de constater que cet algorithme s'est montré extrêmement lent et semble inutilisable. En posant $n=561$, $K = \Q(\zeta_5)$ et $S_\alpha = \{-1, 0, +1\}$, l'algorithme n'a toujours pas terminé après avoir tourné pendant une heure sur l'ordinateur personnel de l'auteur. Ce n'est finalement pas si étonnant. On aura \[\Norm(n\OK) = 561^4 = 99049307841\] et si l'on prend par exemple l'entier algébrique de coordonnées $(1, 1, 0, 0)$ \[\alpha =1 + \zeta,\] l'ordinateur portable de l'auteur n'a toujours pas su calculer $alpha^{\Norm(n\OK)}$ après trente minutes de calculs\footnote{Wolfram alpha n'a pas fait mieux.}. Les coordonnées ont pourtant été choisies pour être les plus petites possibles, mais le coût du calcul de $\alpha^{\Norm(n\OK)}$ est prohibitif. Plus généralement, si $n$ est un nombre dont on veut prouver la composition avec le test de Fermat cyclotomique et $q$ un nombre premier, on a \[\Norm(n\mathcal{O}_{\Q(\zeta_q)}) = n^{q-1},\] un nombre qui sort rapidement des capacités d'un ordinateur personnel standard. 
 \subsubsection{Critère de Korselt}
-
-\paragraph{Résultats}
 
 Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael. Nous reprenons donc l'algorithme \ref{test-primalite-korselt} et l'utilisons avec les paramètres suivants.
 
