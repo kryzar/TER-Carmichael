@@ -1,0 +1,10 @@
+Number field: Number Field in a with defining polynomial x^2 - 43 with a = 6.557438524302001?
+n: 29341
+List of coordonates of elements alpha such that alpha^Norm(nOK) != alpha mod. (nOK).
+
+(-2, -2)
+(-2, -1)
+(-2, 1)
+(-1, -1)
+(-1, 1)
+(1, 1)
