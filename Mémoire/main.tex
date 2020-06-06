@@ -9,10 +9,18 @@
 \usepackage[french]{babel}
 \usepackage{pgfornament}
 \usepackage{changepage}
+\usepackage{fancyvrb}
+\usepackage{fvextra} % https://tex.stackexchange.com/questions/14342/verbatim-environment-that-can-break-long-lines
+
+\RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{
+	fontsize=\footnotesize,
+	frame=single,
+	framesep=3mm,
+	numbers=left,
+}
 
 \theoremstyle{remark}
 \newtheorem*{MotSurPreuve}{Un mot sur la preuve}
-\newtheorem*{Complement}{Complément}
 
 \addbibresource{bi.bib}
 

@@ -1,11 +1,11 @@
 \section{Corps cyclotomiques}
 
-\subsection{Deux théorèmes}
+\subsection{Théorie}
 
-L'étude des idéaux de Carmichael dans les corps cyclotomiques est porteuse d'espoir et fournit de beaux résultats susceptibles d'être à la base de tests de primalité, notamment le théorème 3.6. Notons que les seuls corps qui nous intéressent ici sont les corps cyclotomiques engendrés par des racines primitive $p$-ième de l'unité, où $p$ est premier. Commençons par un résultat théorique.
+Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $\Q(\zeta_q)$, $q$ étant un nombre premier. Commençons par un résultat théorique.
 
 \begin{theoreme}[3.1 dans l'article]
-	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} $K$ de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
+	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
 \end{theoreme}
 
 \begin{MotSurPreuve}
@@ -28,11 +28,7 @@ Le résultat le plus à même d'aboutir à un test de primalité est le crucial 
 	\NTS{placeholder}
 \end{proof}
 
-Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts (voir \cite{Demazure}, Proposition 3.35, p. 90), il vérifiera toujours les hypothèses du théorème. Ce résultat est donc en théorie bien plus puissant que le théorème \ref{theoreme-2.5}, puisque nous avons vu que le test de primalité naïf qui en découlait ne détectait pas tous les entiers de Carmichael, comme par exemple l'entier de Howe \ref{Howe}. Nous allons donc essayer de construire un test de primalité avec ce théorème.
-
-\subsection{Une application}
-
-Commençons par un très joli corollaire, qui lui aussi montre la supériorité théorique des corps cyclotomiques par rapport aux corps quadratiques pour détecter des corps de nombres dans lesquels un entier de Carmichael n'est pas de Carmichael.
+Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts (voir \cite{Demazure}, Proposition 3.35, p. 90), il vérifiera toujours les hypothèses du théorème. Ce résultat est donc en théorie bien plus puissant que le théorème \ref{theoreme-2.5} (2.5 dans l'article), puisque nous avons vu que le test de primalité naïf qui en découlait ne détectait pas tous les entiers de Carmichael, comme par exemple l'entier de Howe \ref{Howe}. Nous avons par ailleurs le corollaire suivant, qui montre lui aussi la supériorité des corps cyclotomiques pour détecter des corps dans lesquels un entier de Carmichael n'est pas de Carmichael.
 
 \begin{corollaire}[3.7 dans l'article]\label{corollaire-3.7}
 	Soit $n$ un entier composé. Il existe au moins un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, de discriminant premier avec $n$ dans lequel $n$ n'est pas de Carmichael.
@@ -57,34 +53,46 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 	Dans les deux réciproques que nous venons de donner, l'hypothèse sur le discriminants est que $n$ et $K$ doivent être premiers entre eux. C'est une hypothèse bien plus forte que de demander à ce que $n$ ne divise pas le discriminant de $K$ comme dans les corps quadratiques (\ref{ptf-reciproque}). Cela permet de tester beaucoup moins de corps.
 \end{remarque}
 
-Mais revenons au théorème \ref{theoreme-3.6}, duquel nous voulons tirer un critère de primalité. Étant donné un entier de Carmichael $n$, nous proposons l'algorithme suivant.
+Passons désormais aux simulations numérique.
+
+\subsection{Simulation}
+
+\subsubsection{Test de Fermat}
+
+Revenons au théorème \ref{theoreme-3.6}, duquel nous voulons tirer un critère de primalité. Étant donné un entier de Carmichael $n$, la version \og cyclotomique \fg{} du test de Fermat serait la suivante.
 
 \vspace{1em}
-\begin{algorithm}[H]
-\KwIn{borne\_q}
-\ForEach{$q$ nombre premier dans $[\![3, \mathrm{borne\_q}]\!]$}{
-	$K \leftarrow \Q(\zeta_q)$ \;
-	\If{$\pgcd(q, n) = 1$}{
-		\If{$n$ n'est pas de Carmichael dans $K$}{
-			\KwRet{$n$ n'est pas de Carmichael dans $\Q(\zeta_q)$ et est composé}	\\
-			\textbf{fin du programme}
+\begin{algorithm}[H]\label{test-Fermat-cyclotomique}\label{algo-1}
+\caption{Test de Fermat dans les corps cyclotomiques}
+\KwIn{$S_q$ (ensemble de nombres premiers $q$), $S_\alpha$ (ensemble coordonnées $\alpha$)}
+\ForEach{$q \in S_q$}{
+	\If{$n$ et $q$ sont premiers entre eux}{
+		$K \leftarrow \Q(\zeta_q)$ \;
+		\ForEach{$\alpha = x_0 + x_1\zeta + \dots + x_{p-1}\zeta^{p-1}$, $x_0, \dots, x_{p-1}\in S_\alpha$}{
+			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
+				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé} \\
+				\textbf{arrêter le programme}
+			}
+
 		}
 	}
 }
 \end{algorithm}
 \vspace{1em}
 
-\begin{remarque}
-	Pour tester si un nombre est de Carmichael dans un corps de nombres de donné, nous implémentons le critère de Korselt dans une fonction dédiée. Pour plus de détails sur l'implémentation de ces algorithmes, nous invitons le lecteur à se référer à l'annexe \ref{annexe-ce}.
-\end{remarque}
+L'auteur du présent texte a — comme pour les corps quadratiques — implémenté et testé cet algorithme. Force est de constater que cet algorithme s'est montré extrêmement lent et semble inutilisable. En posant $n=561$, $K = \Q(\zeta_5)$ et $S_\alpha = \{-1, 0, +1\}$, l'algorithme n'a toujours pas terminé après avoir tourné pendant une heure sur l'ordinateur personnel de l'auteur. Ce n'est finalement pas si étonnant. On aura \[\Norm(n\OK) = 561^4 = 99049307841\] et si l'on prend par exemple l'entier algébrique de coordonnées $(1, 1, 0, 0)$ \[\alpha =1 + \zeta,\] l'ordinateur portable de l'auteur n'a toujours pas su calculer $alpha^{\Norm(n\OK)}$ après trente minutes de calculs\footnote{Wolfram alpha n'a pas fait mieux.}. Les coordonnées ont pourtant été choisies pour être les plus petites possibles, mais le coût du calcul de $\alpha^{\Norm(n\OK)}$ est prohibitif. Plus généralement, si $n$ est un nombre dont on veut prouver la composition avec le test de Fermat cyclotomique et $q$ un nombre premier, on a \[\Norm(n\mathcal{O}_{\Q(\zeta_q)}) = n^{q-1},\] un nombre qui sort rapidement des capacités d'un ordinateur personnel standard. 
+\subsubsection{Critère de Korselt}
 
-Pour chacun des nombres $n$ de la liste $\mathfrak{C}$, cet algorithme a pu exhiber de nombreux corps cyclotomiques dans lesquels $n$ n'est pas de Carmichael, prouvant que $n$ est composé~! Par exemple,
-\begin{itemize}
-	\item $561$ n'est pas de Carmichael dans $\Q(\zeta_5)$ ; 
-	\item $1729$ n'est pas de Carmichael dans $\Q(\zeta_{17})$ ;
-	\item $512461$ n'est pas de Carmichael dans $\Q(\zeta_{83})$.
-\end{itemize}
+Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael. Nous reprenons donc l'algorithme \ref{algo-Korselt}. Cet algorithme est en mesure de donner très rapidement, et pour \emph{tout} élément $n$ de la liste, plusieurs corps cyclotomiques dans lesquels $n$ n'est pas de Carmichael, prouvant sa composition. Voici les résultats pour l'entier $n = 561$.
 
-Nombre d'autres résultats sont disponibles sur la page GitHub de l'auteur : \url{https://github.com/kryzar/TER-Carmichael/blob/master/Scripts/Results_Corollary_3-7.txt}. \\
+\vspace{1em}
+\VerbatimInput[label=Fichier \normalsize561\_cyclotomic.txt]{561cyclotomic.txt}
 
-Cet algorithme permet aussi de prouver que l'entier de Howe est composé ! Notons $h$ cet entier. Mentionné après le théorème 2.7 de l'article, $h$ vaut $$h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331$$ et est de Carmichael non seulement dans $\Q$, mais aussi dans tout corps quadratique dont le discriminant est premier avec $h$ (on dit que $h$ est un nombre de Carmichael \emph{rigide d'ordre 2}). Notre algorithme exhibe toutefois de nombreux corps cyclotomiques dans lesquels $h$ n'est pas de Carmichael, comme $\Q(\zeta_{199})$. La liste complète des résultats trouvés est cette fois disponible à \url{https://github.com/kryzar/TER-Carmichael/blob/master/Scripts/Results_Howe_cyclotomic.txt}.
+Nous avons testé $561$ dans les corps cyclotomiques $\Q(\zeta_q)$ où $q$ parcourt l'ensemble des nombres premiers compris entre $1$ et $300$. Il n'y a qu'un seul corps cyclotomique pour lequel $561$ reste de Carmchael : c'est $\Q(\zeta_3)$ ~! Dans tous les autres, il n'est pas de Carmichael. Le fichier présenté ici correspond au fichier \texttt{561\_cyclotomic.txt}, disponible à \NTS{url}. \\
+
+Cet algorithme permet aussi de prouver que l'entier de Howe \ref{Howe} est composé ! Voici le fichier avec les résultats.
+
+\vspace{1em}
+\VerbatimInput[label=\normalsize443372888629441\_cyclotomic.txt (entier de Howe), breaklines=true]{443372888629441cyclotomic.txt}
+
+Nous avons cette fois testé l'entier de Howe dans les corps cyclotomiques $\Q(\zeta_q)$ où $q$ parcourt l'ensemble des nombres premiers compris entre $1$ et $600$. Comme pour $561$, $Q(\zeta_3)$ est l'unique corps testé dans lequel il reste de Carmichael~!

@@ -19,15 +19,15 @@ Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle d
 \vspace{1em}
 \begin{algorithm}[H]\label{test-Fermat-quadratique}\label{algo-1}
 \caption{Test de Fermat dans les corps quadratiques}
-\KwIn{S (ensemble coordonnées $\alpha$)}
-\ForEach{$d \in \N$ sans facteurs carrés}{
-	$K \leftarrow \Q(\sqrt{d})$ \\
-	$\theta\leftarrow$ un générateur de $\OK$ \\
+	\KwIn{$S_d$ (ensemble générateurs des $\Q(\sqrt{d})$, $S_\alpha$ (ensemble coordonnées $\alpha$)}
+\ForEach{$d \in S_d$}{
 	\If{$d$ et $n$ sont premiers entre eux}{
-		\ForEach{$\alpha = x+ y\theta$, $x, y\in S$}{
+		$K \leftarrow \Q(\sqrt{d})$ \\
+		$\theta\leftarrow$ un générateur de $\OK$ \\
+		\ForEach{$\alpha = x+ y\theta$, $x, y\in S_\alpha$}{
 			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
 				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé}	\\
-				\textbf{fin du programme}
+				\textbf{arrêter le programme}
 			}
 		}
 	}
@@ -35,13 +35,13 @@ Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle d
 \end{algorithm}
 \vspace{1em}
 
-L'auteur du présent texte a donc implémenté\footnote{\NTS{dire que détails dans annexe}} cet algorithme et l'a testé sur tous les entiers de la liste \ref{liste-carmichael}, en choisissant\footnote{L'entier $43$ est le premier nombre premier impair qui ne soit facteur d'aucun entier de la liste \ref{liste-carmichael}. Le discriminant de $\Q(\sqrt{43})$ sera donc premier à tout tel entier, ce qui est nécessaire pour appliquer le théorème \ref{ptf}.} le corps quadratique \[K = \Q(\sqrt{43}).\] En reprenant les notations de l'algorithme \ref{test-Fermat-quadratique}, on se fixe $$ S = [\![-3, +3]\!]$$ et $\theta = \sqrt{43}$. Nous avons pu exhiber des $K$-témoins de Fermat pour beaucoup d'entiers de la liste : pour $561$ nous trouvons $\alpha = 1 + 2\theta$, pour 2821 nous trouvons $\alpha = -3 + 2\theta$. Il y a toutefois des entiers pour lesquels nous ne trouvons aucun témoin avec ces paramètres. C'est le cas de $6601$. En changeant de corps et en prenant arbitrairement $K = \Q(\sqrt{-7})$, nous trouvons un $K$-témoin de Fermat pour $6601$ mais pas pour $2465$. Utiliser le test de Fermat—quadratique nécessiterait donc plus de finesse que cette version naïve de l'algorithme. \NTS{rajouter temps de calcul} \\
+L'auteur du présent texte a donc implémenté\footnote{\NTS{dire que détails dans annexe}} cet algorithme et l'a testé sur tous les entiers de la liste \ref{liste-carmichael}, en choisissant\footnote{L'entier $43$ est le premier nombre premier impair qui ne soit facteur d'aucun entier de la liste \ref{liste-carmichael}. Le discriminant de $\Q(\sqrt{43})$ sera donc premier à tout tel entier, ce qui est nécessaire pour appliquer le théorème \ref{ptf}.} le corps quadratique \[K = \Q(\sqrt{43}).\] En reprenant les notations de l'algorithme \ref{test-Fermat-quadratique}, on se fixe $$ S_\alpha = [\![-3, +3]\!]$$ et $\theta = \sqrt{43}$. Nous avons pu exhiber des $K$-témoins de Fermat pour beaucoup d'entiers de la liste : pour $561$ nous trouvons $\alpha = 1 + 2\theta$, pour 2821 nous trouvons $\alpha = -3 + 2\theta$. Il y a toutefois des entiers pour lesquels nous ne trouvons aucun témoin avec ces paramètres. C'est le cas de $6601$. En changeant de corps et en prenant arbitrairement $K = \Q(\sqrt{-7})$, nous trouvons un $K$-témoin de Fermat pour $6601$ mais pas pour $2465$. Utiliser le test de Fermat—quadratique nécessiterait donc plus de finesse que cette version naïve de l'algorithme. \NTS{rajouter temps de calcul} \\
 
 Il peut enfin être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons voir dans la prochaine sous-section qu'un tel test ne peut exister.
 
 \subsection{Un pas en arrière}
 
-Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ soient premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
+Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ sont premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
 
 \begin{theoreme}[Howe, 200]
 	Il existe un entier $h$ qui soit à la fois \emph{composé} et de Carmichael dans tout corps quadratique de discriminant premier avec $h$.
