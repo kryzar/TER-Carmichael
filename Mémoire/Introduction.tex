@@ -1,21 +1,21 @@
 \section*{Introduction}
 \addcontentsline{toc}{section}{Introduction}
 
-Ce mémoire s'applique à étudier les idéaux de Carmichael dans les corps de nombres et évaluer la viabilité de cette jeune théorie pour fournir un test de primalité. Le point de départ est l'article de G.A. Steele \textit{Carmichael numbers in number rings} \cite{article}. Commençons par quelque énoncés. \\
+Ayant pour point de départ l'article \textit{Carmichael numbers in number rings} \cite{article} de G.A. Steele, ce mémoire s'applique à étudier les idéaux de Carmichael dans les corps de nombres, répondre à quelques questions soulevées par l'article et essayer d'en tirer un critère de composition. \\
 
-Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. Il existe cependant des entiers $n$ \textbf{composés} vérifiant $$a^n \equiv a\pmod{n}$$ pour tout entier $a$. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers. On peut les caractériser ainsi.
+Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. Un tel entier $a$ est appelé \emph{témoin de Fermat pour $n$}. Il existe cependant des entiers $n$ \textbf{composés} vérifiant n'ayant aucun témoin de Fermat. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers, que l'on peut caractériser ainsi.
 
 \begin{proposition}\label{korselt} Soit $n$ un entier. Les assertions suivantes sont équivalentes :
 	\begin{enumerate}[font=\normalshape]
 		\item $n$ est un entier de Carmichael ~;
-		\item $n$ est composé, sans facteur carré et pour tout nombre premier $p$ divisant $n$, on a $$p-1 \mid n-1 ~;$$
-		\item on a $$ \lambda(n) \mid n-1 ,$$ la fonction $\lambda$ étant l'indicatrice de Carmichael.
+		\item $n$ est composé, sans facteur carré et pour tout nombre premier $p$ divisant $n$, l'identité \[p-1 \mid n-1 ~;\] est vérifiée
+		\item l'identité \[\lambda(n) \mid n-1\] est vérifiée, la fonction $\lambda$ étant l'indicatrice de Carmichael.
 	\end{enumerate}
 \end{proposition}
 
 L'assertion (b) de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer au \textit{cours d'algèbre} de M. Demazure \cite{Demazure} §3.3, p. 89. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres.
 
-\begin{definition} Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael si pour tout entier algébrique $\alpha \in \OK$, la congruence
+\begin{definition} Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael si \textbf{$I$ est composé} et pour tout entier algébrique $\alpha \in \OK$, la congruence
 	\begin{equation}\label{congruence-Carmichael}
 		\alpha^{\Norm(I)} \equiv \alpha \pmod{I}
 	\end{equation}
@@ -26,11 +26,11 @@ est vérifiée.
 	Un entier de Carmichael peut donc être vu comme un idéal de Carmichael du corps de nombres $\Q$.
 \end{remarque}
 
-Cette définition est le point de départ d'un formalisme fructueux. Ce dernier donne naissance à une réciproque au petit théorème de Fermat \ref{ptf—reciproque} et à plusieurs tests de primalité théoriques. L'auteur de l'article, après quelques énoncés généraux, s'intéresse spécifiquement aux corps quadratiques et aux corps cyclotomiques ~; nous suivrons ces traces. Tout en assurant une base solide à sa théorie, l'auteur soulève de nombreuses questions, notamment la question fondamentale suivante.
+Cette définition est le point de départ d'un formalisme fructueux. L'auteur de l'article commence par généraliser le petit théorème de Fermat et le critère de Korselt. Il donne en suite une fameuse réciproque à ladite généralisation du petit théorème de Fermat et poursuit sa démarcher en étudiant les corps quadratiques puis cyclotomiques. Nous verrons que ces deux types de corps se comportent très différemment avec les idéaux de Carmichael et que l'un comme l'autre peuvent fournir des critères de composition. Enfin, de nombreuses questions sont soulevées par l'article, notamment la suivante. \\
 
 \begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombre. Dans quel mesure $n$ est-il de Carmichael dans $K$ ?
 \end{question}
 
-	Nous nous proposons de répondre nous même à une partie de ces questions au fil de ce mémoire. \\
+Nous nous proposons de répondre à une partie de cette question au cours de ce mémoire, que nous abordons avec une vision aussi bien théorique que pratique. Au delà des résultats de l'article, l'auteur du présent texte a implémenté et testé plusieurs algorithmes y étant suggérés, dont les résultats permettent de se familiariser avec le formalisme. \\
 
-À noter que l'auteur du présent texte a choisi de ne pas y incorporer toutes les preuves des énoncés de l'article : ne sont données que celles des théorèmes 2.2, 2.3 et 3.6. Les démonstrations de l'auteur de l'article sont claires et nous n'aurions rien d'autre à apporter que de la paraphrase. Nous jugeons plus opportun de commenter ces dernières, ce que nous faisons dans des environnements intitulés \textit{Un mot sur la preuve}.
+Les preuves de certains énoncés de l'article sont redonnées (voire légèrement modifiées) dans ce mémoire. C'est le cas notamment des preuves des théorèmes fondamentaux 2.2, 2.3 et 3.6 de l'article. Certaines preuves non redonnées sont quant à elle commentées dans des environnements dédiés intitulés \textit{Un mot sur la preuve}.
