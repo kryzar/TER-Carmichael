@@ -27,6 +27,25 @@ Nous pouvons de plus mettre à bout ces deux résultats pour fournir cette déli
 
 Au delà de sa force théorique, cette énoncé semble porter une valeur historique majeure. Le test de primalité de Fermat était le seul test de primalité à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Cette absence de réciproque semblait bien être le prix à payer pour sa simplicité et son efficacité. Il aura certes fallu aller chercher la réciproque dans les corps de nombres, mais l'énoncé prouve que les corps quadratiques. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà. \\
 
+Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt. Le petit théorème de Fermat généralisé \ref{ptf} nous permet donc d'écrire le critère de composition suivant, basé sur le critère de Korselt.
+
+\vspace{1em}
+\begin{algorithm}[H]\label{test-primalite-korselt}
+\caption{Critère de composition de Korselt dans les corps de nombres galoisiens}
+\KwIn{$n$ (entier à tester) \\
+	$\mathscr{L}$ (liste de corps de nombres galoisiens)}
+\ForEach{$K$ dans $\mathscr{L}$}{
+	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
+		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
+			\KwRet{$n\OK$ n'est pas de Carmichael et $n$ est composé} \\
+			\textbf{arrêter le programme.}
+		}
+	}
+}
+\end{algorithm}
+\vspace{1em}
+
+
 Un autre résultat d'importance (démontré avant le petit théorème de Fermat généralisé dans l'article) est la généralisation du critère de Korselt \ref{korselt}. C'est ce résultat que l'on utilise en premier lieu pour déterminer si un entier est de Carmichael.
 
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
@@ -49,7 +68,7 @@ Un autre résultat d'importance (démontré avant le petit théorème de Fermat 
 \begin{remarque}
 	Il faut ici se montrer vigilant avec la nomenclature. Un idéal $I$ est de Carmichael dans un corps de nombres $K$ si $I$ est un idéal \textbf{composé} qui \emph{en plus de cela}, vérifie l'identité \ref{congruence-Carmichael} pour tout entier algébrique $\alpha \in \OK$. \\ 
 
-\noindent Si l'on a un corps de nombres $L$ et un idéal $J$ de $\OK$, montrer que $\Norm(\P) - 1\mid \Norm(J) - 1$ pour tout idéal premier $\P$ de $\OL$ divisant $J$ ne suffit pas. La preuve du critère de Korselt généralisé \ref{korselt-generalise} nous enseigne que si $J$ est premier, $J$ vérifie également cette identité. Il faut donc indépendamment montrer que $J$ est composé si l'on veut montrer que $J$ est un idéal de Carmichael. Là est le cœur du problème. L'auteur de l'article fait lui-même une petite erreur en oubliant cette hypothèse dans l'énoncé du théorème 2.7 : il doit y supposer $n$ composé.
+	Si l'on a un corps de nombres $L$ et un idéal $J$ de $\OK$, montrer que $\Norm(\P) - 1\mid \Norm(J) - 1$ pour tout idéal premier $\P$ de $\OL$ divisant $J$ ne suffit pas. La preuve du critère de Korselt généralisé \ref{korselt-generalise} nous enseigne que si $J$ est premier, $J$ vérifie également cette identité. Il faut donc indépendamment montrer que $J$ est composé si l'on veut montrer que $J$ est un idéal de Carmichael. Là est le cœur du problème. L'auteur de l'article fait lui-même une petite erreur en oubliant cette hypothèse dans l'énoncé du théorème 2.7 : il doit y supposer $n$ composé.
 \end{remarque}
 
 Avant de poursuivre, donnons un lemme qui permettra d'alléger les énoncés de l'article.
