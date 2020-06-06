@@ -41,13 +41,18 @@ Il peut enfin être tentant d'utiliser cet algorithme pour déterminer la primal
 
 \subsection{Un pas en arrière}
 
-Revenons un pas en arrière. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'énoncé suivant est faux~!
+Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ soient premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
 
-\begin{enoncefaux}[réciproque eronnée du petit théorème de Fermat généralisé]
-	Soit $n>2$ un entier. Alors $n$ est premier \ssi pour tout corps \emph{quadratique} $K$ vérifiant $\pgcd(n, \Disc(K)) = 1$ et tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(n)} \equiv \alpha \pmod{n\OK}.$$
-\end{enoncefaux}
+\begin{theoreme}[Howe, 200]
+	Il existe un entier $h$ qui soit à la fois \emph{composé} et de Carmichael dans tout corps quadratique de discriminant premier avec $h$.
+\end{theoreme}
 
-Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence précédente est vérifiée pour tous les corps quadratiques de discriminant premier avec $n$ ne suffit pas. Il faut s'assurer pour tous les corps quadratiques de discriminant non divisé par $n$. Même si ces notions sont les mêmes lorsque $n$ est effectivement premier, cette condition est beaucoup plus forte~! Il est même facile de démontrer le résultat suivant.
+En guise de preuve, Howe exhibe un tel nombre, l'entier 
+	\begin{equation}\label{Howe}
+		h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331 = 443372888629441.
+	\end{equation}
+
+Nous l'appellerons dans la suite \emph{entier de Howe}. L'existence de cet entier signifie que — comme dans $\Q$ — le test de Fermat \ref{test-Fermat-quadratiqeu} ne peut pas prouver qu'un entier est composé simplement parce qu'il n'a pas de témoins de Fermat. Plus généralement, l'auteur de l'article montre le théorème suivant.
 
 \begin{theoreme}[2.7 dans l'article]\label{theoreme-2.7}
 	Soient $n$ un entier composé sans facteur carré et $d\geq 1$ un entier. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans $\Q$ et tout corps de nombres de degré $d$ de discriminant premier avec $n$.
@@ -57,39 +62,4 @@ Si l'on veut prouver qu'un entier $n>2$ est premier, montrer que la congruence p
 	Un entier $n$ vérifiant les hypothèses du théorème \ref{theoreme-2.7} pour un certain entier $d\geq 1$ est appelé \emph{nombre de Carmichael rigide d'ordre $d$}.
 \end{definition}
 
-Chose troublante, de tels nombres existent.
-
-\begin{theoreme}[Howe, 2000]
-	Il existe un couple $(n, d)$ d'entiers tel que $n$ soit un entier de Carmichael rigide d'ordre $d$.
-\end{theoreme}
-
-En guise de preuve, E. W. Howe exhibe un entier de Carmichael rigide d'ordre $2$. Il est donné par 
-	\begin{equation}\label{Howe}
-		h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331 = 443372888629441
-	\end{equation}
-et est appelé \emph{entier de Howe}. \\
-
-À la lumière de ces troublants résultats, si l'on veut pouvoir trouver un test de primalité \emph{alla} Rabin-Miller comme évoqué dans la sous-section précédente, il faudra modifier l'algorithme (\ref{algo-quadratique-faible}) en la version suivante.
-
-
-\vspace{1em}
-\begin{algorithm}[H]\label{algo-quadratique-faible}
-\caption{Test de Fermat dans les corps quadratiques (version $n\nmid \Disc(K)$)}
-\KwIn{$I$ (intervalle d'entiers $d$ sans facteurs carrés), $b$ (borne coordonnées $\alpha$)}
-\ForEach{$d \in \N$ sans facteurs carrés dans $I$}{
-	$K \leftarrow \Q(\sqrt{d})$ \\
-	$\theta\leftarrow$ un générateur de $\OK$ \\
-	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
-		\ForEach{$\alpha = x+ y\theta$, $x, y\in [\![1, b]\!]$}{
-			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
-				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé}	\\
-				\textbf{fin du programme}
-			}
-		}
-	}
-}
-\KwRet{$n$ a une certitude morale d'être premier}
-\end{algorithm}
-\vspace{1em}
-
-Il y a de nouveau un travail substantiel à faire pour s'assurer de la viabilité de cette direction. Il ne faut pas non plus négliger d'autres pistes, c'est pourquoi nous partons explorer le royaume des corps cyclotomiques.
+L'entier de Howe \ref{Howe} est donc un nombre de Carmichael rigide d'ordre $2$. Ces troublants résultats nous enseignent que les corps quadratiques ne peuvent pas fournir un test de Fermat fiable. Forts de ce constant, nous partons étudier les corps cyclotomiques, dont l'étude s'avérera porteuse d'espoir.
