@@ -84,13 +84,13 @@ L'auteur du présent texte a — comme pour les corps quadratiques — implémen
 
 \paragraph{Résultats}
 
-Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael. Nous reprenons donc l'algorithme \ref{algo-Korselt} et l'utilisons avec les paramètres suivants.
+Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael. Nous reprenons donc l'algorithme \ref{test-primalite-korselt} et l'utilisons avec les paramètres suivants.
 
 \begin{figure}[h!]\label{param-korselt-cyclo}
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			corps testés & corps cyclotomiques de la forme $\Q(\zeta_q)$ \\ & où $q$ est un nombre premier dans $[\![3, 300]\!]$ \\\hline
+			corps testés & corps cyclotomiques de la forme $\Q(\zeta_q)$ \\ & où $q$ est un nombre premier dans $[\![3, 300]\!]$\footnote{Il y a 62 tels nombres premiers.} \\\hline
 			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael} \% \\\hline
 		\end{tabular}
 		\caption{Paramètres des simulations du critère de Korselt pour les corps cyclotomiques.}
@@ -98,7 +98,7 @@ Comme dans la section sur les corps quadratiques, nous cherchons ici — pour to
 \end{figure}
 
 
-Pour ces paramètres, le critère de Korselt est capable de donner très rapidement et pour \emph{tout} élément $n$ de la liste, plusieurs corps cyclotomiques dans lesquels $n$ n'est pas de Carmichael. Voici les résultats pour l'entier $n = 561$.
+Pour ces paramètres, le critère de Korselt est capable de donner pour tout élément $n$ de la liste, plusieurs corps cyclotomiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. Voici les résultats pour l'entier $n = 561$.
 
 \vspace{1em}
 \VerbatimInput[label=Fichier \normalsize561\_cyclotomic.txt]{561cyclotomic.txt}
@@ -125,15 +125,13 @@ Donnons aussi quelques statistiques.
 			\hline
 			nombre de corps testés & 1857 \\\hline
 			nombre d'idéaux de Carmichael trouvés dans ces corps & 18 \\\hline
-			proportion d'idéaux de Carmichael trouvés dans ces & 0.00969 \% \\\hline
+			proportion d'idéaux de Carmichael trouvés dans ces corps & 0,00969 \% \\\hline
 		\end{tabular}
 		\caption{Statistiques des simulations du critère de Korselt sur les corps cyclotomiques pour les paramètres \ref{param-korselt-cyclo}.}
 	\end{center}
 \end{figure}
 
-\paragraph{Performances}
-
-Les calculs sont cependant significativement plus longs dans le cas des corps cyclotomiques que dans le cas des corps quadratiques.  
+Quant aux performances, les calculs sont cependant significativement plus longs dans le cas des corps cyclotomiques que dans le cas des corps quadratiques.  
 
 \begin{figure}[h!]
 	\begin{center}
@@ -142,12 +140,12 @@ Les calculs sont cependant significativement plus longs dans le cas des corps cy
 			corps cyclotomique & temps de calcul \\
 			\hline
 			\hline
-			$\Q(\zeta_7)$ & 0.008 s \\\hline
-			$\Q(\zeta_{101})$ & 1.646 s \\\hline
-			$\Q(\zeta_{199})$ & 11.298 s \\\hline
-			$\Q(\zeta_{293})$ & 36.0221 s \\\hline
+			$\Q(\zeta_7)$ & 0.005 s \\\hline
+			$\Q(\zeta_{101})$ & 1.626 s \\\hline
+			$\Q(\zeta_{199})$ & 18.9 s \\\hline
+			$\Q(\zeta_{293})$ & 38.4 s \\\hline
 		\end{tabular}
-		\caption{Temps de calcul du critère Korselt dans les corps cyclotomiques donnés pour l'entier $n=561$.}
+		\caption{Temps de calcul du critère Korselt dans les corps cyclotomiques donnés pour l'entier $n=512461$.}
 	\end{center}
 \end{figure}
 
@@ -162,8 +160,8 @@ Pour l'entier de Howe, nous avons obtenu les temps suivants.
 			\hline
 			$\Q(\zeta_7)$ & 0.012 s \\\hline
 			$\Q(\zeta_{101})$ & 2.549 s \\\hline
-			$\Q(\zeta_{199})$ & 21.945 s \\\hline
-			$\Q(\zeta_{293})$ & 37.485 s \\\hline
+			$\Q(\zeta_{199})$ & 21.9 s \\\hline
+			$\Q(\zeta_{293})$ & 37.5 s \\\hline
 		\end{tabular}
 		\caption{Temps de calcul du critère Korselt dans les corps cyclotomiques donnés pour l'entier de Howe.}
 	\end{center}

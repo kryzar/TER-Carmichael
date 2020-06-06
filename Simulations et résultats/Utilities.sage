@@ -11,10 +11,20 @@ CARMICHAEL_NUMBERS_BELOW_512461 = [561, 1105, 1729, 2465, 2821, 6601, 8911,
 
 HOWE = 17 * 31 * 41 * 43 * 89 * 97 * 167 * 331
 
-LIST_CYCLOTOMIC_FIELDS = [CyclotomicField(7),
+LIST_CYCLOTOMIC_FIELDS = [
+        CyclotomicField(7),
         CyclotomicField(101),
         CyclotomicField(199),
         CyclotomicField(293)]
+
+LIST_QUADRATIC_FIELDS = [
+        QuadraticField(-4957),
+        QuadraticField(-2426),
+        QuadraticField(-2),
+        QuadraticField(2),
+        QuadraticField(2426),
+        QuadraticField(4957)]
+
 
 def KorseltCriterion_Ideal(I) :
     """

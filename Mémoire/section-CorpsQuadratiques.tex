@@ -2,8 +2,6 @@
 
 \subsection{Théorie}
 
-\subsubsection{Vers le test de Fermat}
-
 Entrons dès à présent dans le vif du sujet. L'un de nos objectifs principaux de répondre à la question \ref{question-centrale}. Le théorème 2.5 de l'article y apporte de premiers éléments de réponse.
 
 \begin{theoreme}[2.5 dans l'article]\label{theoreme-2.5}
@@ -36,9 +34,7 @@ Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle d
 \end{algorithm}
 \vspace{1em}
 
-Nous discutons plus en détails de cet algorithme dans la section suivante. Il peut enfin être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons voir dans la prochaine sous-section qu'un tel test ne peut exister.
-
-\subsubsection{Un pas en arrière}
+Nous discutons plus en détails de cet algorithme dans la section suivante. Il peut enfin être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm_{\Q(\sqrt{d})/\Q}} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons cependant voir qu'un tel test ne saurait exister. \\
 
 Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ sont premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
 
@@ -80,3 +76,52 @@ L'algorithme souffre néanmoins d'un gros problème de performances. Si les calc
 	
 
 \subsubsection{Critère de Korselt}
+
+Toujours dans l'objectif de numériquement prouver que les entiers de la liste \ref{liste-carmichael} sont effectivement composés, nous employons cette fois le critère de composition de Korselt \label{test-primalite-korselt} dans des corps quadratiques. Pour tout entier $n$, nous cherchons une liste de corps quadratiques dans lesquels $n$ n'est pas de Carmichael. Pour cela, nous lançons l'algorithme avec les paramètres suivant.
+
+\begin{figure}[h!]\label{param-korselt-quadra}
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			corps testés & corps quadratiques de la forme $\Q(\sqrt{d})$ \\ & où $d$ est un entier sans facteur carré \\ & dans $[\![-5000, +5000]\!]$\footnote{Il y a 6084 tels entiers.} \\\hline
+			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael} \% \\\hline
+		\end{tabular}
+		\caption{Paramètres des simulations du critère de Korselt pour les corps quadratiques.}
+	\end{center}
+\end{figure}
+
+Pour ces paramètres, le critère de Korselt est capable de donner pour tout élément $n$ de la liste, plusieurs corps quadratiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. En fait, il en exhibe des centaines. Il est donc impossible d'énoncer ici tous les résultats, mais citons à titre d'exemple que $561$ n'est pas de Carmichael dans $\Q(\sqrt{-4874})$ mais qu'il l'est dans $\Q(\sqrt{4877})$ ou que $172081$ n'est pas de Carmichael dans $\Q(\sqrt{766})$ mais qu'il l'est dans $\Q(\sqrt{-1459})$. En fait, pour la plupart des couples $(n, K)$ testés, $n$ n'est pas de Carmichael dans $K$. Nous avons tiré les statistiques suivantes de nos simulations.
+
+\begin{figure}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			nombre de corps testés & 143524 \\\hline
+			nombre d'idéaux de Carmichael trouvés dans ces corps & 34138 \\\hline
+			proportion d'idéaux de Carmichael trouvés dans ces corps & 0,23786 \% \\\hline
+		\end{tabular}
+		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
+	\end{center}
+\end{figure}
+
+Si l'on cherche donc à s'assurer de la composition d'un entier $n$ pour lequel il existe au moins un corps quadratique de discriminant premier avec $n$ dans lequel $n$ n'est pas de Carmichael, ces résultats semblent indiquer qu'on a de bonnes chances d'en trouver un rapidement. Bien sûr, ces sommaires statistiques ne prouvent rien et on ne sait pas déterminer a priori s'il existe un tel corps quadratique. \\
+
+Quant aux performances, les calculs sont extrêmement rapides dans tous les corps et semblent homogènes. On a par exemple les données suivantes.
+
+\begin{figure}[h!]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			corps cyclotomique & temps de calcul \\
+			\hline
+			\hline
+			$\Q(\sqrt{-4957})$ & 0.00303 s \\\hline
+			$\Q(\sqrt{-2426})$ & 0.00211 s \\\hline
+			$\Q(\sqrt{-2})$ & 0.0024 s \\\hline
+			$\Q(\sqrt{+2})$ & 0.0024 s \\\hline
+			$\Q(\sqrt{+2426})$ & 0.0031 s \\\hline
+			$\Q(\sqrt{+4957})$ & 0.0031 s \\\hline
+		\end{tabular}
+		\caption{Temps de calcul du critère Korselt dans les corps quadratiques donnés pour l'entier $n=512461$.}
+	\end{center}
+\end{figure}

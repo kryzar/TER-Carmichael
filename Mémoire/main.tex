@@ -11,6 +11,7 @@
 \usepackage{changepage}
 \usepackage{fancyvrb}
 \usepackage{fvextra} % https://tex.stackexchange.com/questions/14342/verbatim-environment-that-can-break-long-lines
+\usepackage{titlesec}
 
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{
 	fontsize=\footnotesize,
@@ -22,6 +23,8 @@
 \theoremstyle{remark}
 \newtheorem*{MotSurPreuve}{Un mot sur la preuve}
 
+\newcommand{\sectionbreak}{\clearpage} % saut de page à chaque section
+
 \addbibresource{bi.bib}
 
 \begin{document}
@@ -32,7 +35,6 @@
 	\stepcounter{page}
 	\input{Introduction}
 	\input{ListeCarmichael}
-	\newpage
 	\input{section-DelicesTheorie}
 	\input{section-CorpsQuadratiques}
 	\input{section-CorpsCyclotomiques}
