@@ -53,7 +53,7 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 	Dans les deux réciproques que nous venons de donner, l'hypothèse sur le discriminants est que $n$ et $K$ doivent être premiers entre eux. C'est une hypothèse bien plus forte que de demander à ce que $n$ ne divise pas le discriminant de $K$ comme dans les corps quadratiques (\ref{ptf-reciproque}). Cela permet de tester beaucoup moins de corps.
 \end{remarque}
 
-Passons désormais aux simulations numérique.
+Passons désormais aux simulations numériques.
 
 \subsection{Simulation}
 
@@ -62,19 +62,18 @@ Passons désormais aux simulations numérique.
 Revenons au théorème \ref{theoreme-3.6}, duquel nous voulons tirer un critère de primalité. Étant donné un entier de Carmichael $n$, la version \og cyclotomique \fg{} du test de Fermat serait la suivante.
 
 \vspace{1em}
-\begin{algorithm}[H]\label{test-Fermat-cyclotomique}\label{algo-1}
-\caption{Test de Fermat dans les corps cyclotomiques}
-\KwIn{$S_q$ (ensemble de nombres premiers $q$), $S_\alpha$ (ensemble coordonnées $\alpha$)}
-\ForEach{$q \in S_q$}{
-	\If{$n$ et $q$ sont premiers entre eux}{
-		$K \leftarrow \Q(\zeta_q)$ \;
-		\ForEach{$\alpha = x_0 + x_1\zeta + \dots + x_{p-1}\zeta^{p-1}$, $x_0, \dots, x_{p-1}\in S_\alpha$}{
-			\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
-				\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé} \\
-				\textbf{arrêter le programme}
-			}
-
+\begin{algorithm}[H]\label{test-Fermat-cyclotomique}
+\caption{Test de Fermat dans un corps cyclotomiqe}
+\KwIn{$n$ (entier à tester) \\
+	$K$ (corps cyclotomique de la forme $\Q(\zeta)$) \\
+	$S_\alpha$ (ensemble coordonnées $\alpha$)}
+\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
+	\ForEach{$\alpha = x_0 + x_1\zeta + \dots + x_{p-1}\zeta^{p-1}$, $x_0, \dots, x_{p-1}\in S_\alpha$}{
+		\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
+			\KwRet{$n$ n'est pas de Carmichael dans $\Q(\sqrt{d})$ et est composé} \\
+			\textbf{arrêter le programme}
 		}
+
 	}
 }
 \end{algorithm}
