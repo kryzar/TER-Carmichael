@@ -11,7 +11,9 @@
 \usepackage{changepage}
 \usepackage{fancyvrb}
 \usepackage{fvextra} % https://tex.stackexchange.com/questions/14342/verbatim-environment-that-can-break-long-lines
-\usepackage{titlesec}
+\usepackage{titlesec} % saut de page à chaque section
+\usepackage{float} % https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
+\usepackage{tabularx}
 
 \RecustomVerbatimCommand{\VerbatimInput}{VerbatimInput}{
 	fontsize=\footnotesize,
@@ -19,6 +21,9 @@
 	framesep=3mm,
 	numbers=left,
 }
+
+% https://tex.stackexchange.com/questions/89166/centering-in-tabularx-and-x-columns
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
 
 \theoremstyle{remark}
 \newtheorem*{MotSurPreuve}{Un mot sur la preuve}
@@ -37,6 +42,7 @@
 	\input{ListeCarmichael}
 	\input{section-DelicesTheorie}
 	\input{section-CorpsQuadratiques}
+	\input{section-InterludeIdeauxExtensions}
 	\input{section-CorpsCyclotomiques}
 	\input{Conclusion}
 

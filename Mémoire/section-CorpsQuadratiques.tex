@@ -14,7 +14,7 @@ Entrons dès à présent dans le vif du sujet.
 
 Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers, ce qui ne nous arrange pas. \NTS{sourcer}.}, certains nombres de Carmichael vérifient ces hypothèses : c'est même le cas de tous les nombres de Carmichael de la liste \ref{liste-carmichael}. Il existe donc pour chacun d'eux une infinité de corps quadratiques dans lesquels ils ne sont pas de Carmichael, prouvant qu'ils sont composés, grâce à l'énoncé \ref{ptf-contraposee}. \\
 
-Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle du test de Fermat dans les corps quadratiques. Il montre que $n = 561$ est composé en exhibant le corps quadratique $K = Q(\sqrt{13})$ puis le $K$-témoin de Fermat $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$, ce qui prouve la composition de $n$ d'après le théorème \ref{ptf-contraposee}. Bien qu'il ne donne pas les détails, cela laisse penser que plutôt que d'utiliser le critère de Korselt\footnote{Ce qui nécessiterait de décomposer l'idéal $561\mathcal{O}_{\Q(\sqrt{13})}$.}, ce dernier a directement cherché un entier algébrique $\alpha$ ne vérifiant pas la congruence \ref{congruence-Carmichael}. Cet algorithme est appelé \emph{test de Fermat dans les corps quadratiques} et est un critère de composition. Étant donné un entier $n$ dont on veut prouver la composition, une version simple du test est la suivante.
+Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle du test de Fermat dans les corps quadratiques. Il montre que $n = 561$ est composé en exhibant le corps quadratique $K = Q(\sqrt{13})$ puis le $K$-témoin de Fermat $\alpha = 2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right) \in \OK$, ce qui prouve la composition de $n$ d'après le théorème \ref{ptf-contraposee}. Bien qu'il ne donne pas les détails, ce dernier semble avoir directement cherché un entier algébrique $\alpha$ ne vérifiant pas la congruence \ref{congruence-Carmichael}. Cet algorithme est appelé \emph{test de Fermat dans les corps quadratiques} et est un critère de composition. Étant donné un entier $n$ dont on veut prouver la composition, une version simple du test est la suivante.
 
 \vspace{1em}
 \begin{algorithm}[H]\label{test-Fermat-quadratique}
@@ -34,7 +34,9 @@ Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle d
 \end{algorithm}
 \vspace{1em}
 
-Nous discutons plus en détails de cet algorithme dans la section suivante. Il peut être tentant d'utiliser cet algorithme pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm(n\OK)} \equiv \alpha \pmod{n\OK}$ pour un nombre suffisamment grand de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons cependant voir qu'un tel test ne saurait exister. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ sont premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
+Nous discutons plus en détails de cet algorithme dans la section suivante. \\
+
+Il par ailleurs peut être tentant d'utiliser ce test pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit du  test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm(n\OK)} \equiv \alpha \pmod{n\OK}$ pour un nombre \og suffisamment grand \fg{} de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers algébriques $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons cependant voir qu'un tel test ne saurait exister. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-reciproque}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ sont premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
 
 \begin{theoreme}[Howe, 2000]
 	Il existe un entier $h$ qui soit à la fois \emph{composé} et de Carmichael dans tout corps quadratique de discriminant premier avec $h$.
@@ -55,7 +57,7 @@ Nous l'appellerons dans la suite \emph{entier de Howe}. L'existence de cet entie
 	Un entier $n$ vérifiant les hypothèses du théorème \ref{theoreme-2.7} pour un certain entier $d\geq 1$ est appelé \emph{nombre de Carmichael rigide d'ordre $d$}.
 \end{definition}
 
-L'entier de Howe \ref{Howe} est donc un nombre de Carmichael rigide d'ordre $2$. Ces résultats nous enseignent que les corps quadratiques ne peuvent pas fournir un test de Fermat fiable. 
+L'entier de Howe \ref{Howe} est donc un nombre de Carmichael rigide d'ordre $2$. Ces résultats nous enseignent que les corps quadratiques ne peuvent pas fournir un test de Fermat fiable. Terminons avec un énoncé proche de l'arithmétique classique.
 
 \begin{corollaire}
 	Soit $n$ un entier. Si $n$ est sans facteur carré et composé, alors les propositions suivantes sont équivalentes :
@@ -69,88 +71,50 @@ L'entier de Howe \ref{Howe} est donc un nombre de Carmichael rigide d'ordre $2$.
 	C'est la conjonction des théorèmes \ref{theoreme-2.5} et \ref{theoreme-2.7}.
 \end{proof}
 
-Avant de passer aux simulations numériques, étudions brièvement les relations entre idéaux de Carmichael et extensions de corps.
+Passons désormais aux simulations numériques.
 
-\subsection{Interlude : idéaux de Carmichael et extensions de corps}
-
-Dans toute cette sous-section, nous nous donnons $$\Q\subset K \subset L$$ une tour de corps de nombres et
-\begin{itemize}
-	\item $I\subset \OK$ un idéal de Carmichael de $K$ ~;
-	\item $J \subset \OL$ un idéal de Carmichael de $L$.
-\end{itemize}
-
-\begin{question}
-	L'idéal étendu $I\OL$ est-il de Carmichael dans $L$ et l'idéal restreint $J\cap\OK$ est-il de Carmichael dans $K$ ?
-\end{question}
-
-L'auteur de l'article a déjà répondu à la première partie de la question dans l'exemple 2.6 de l'article, en utilisant le test de Fermat dans les corps quadratiques.
-
-\begin{proposition}\label{premier-ce}
-	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $I$ de $K$ pour lesquels l'idéal étendu $I\OL$ qui ne sont pas de Carmichael dans $L$.
-\end{proposition}
-
-\begin{proof}
-	L'exemple 2.6 de l'article montre que l'entier de Carmichael $561$ n'est pas de Carmichael dans $\Q(\sqrt{13})$. On a alors l'énoncé en prenant $K = \Q$, $I = 561\OK$ et $L = \Q(\sqrt{13})$.
-\end{proof}
-
-L'auteur du présent mémoire répond à la deuxième partie de la question en implémentant le critère de Korselt \ref{test-primalite-korselt} dans les corps quadratiques et donnant des exemples de tels idéaux corps de nombres.
-
-\begin{proposition}\label{deuxieme-ce}
-	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $J$ de $L$ pour lesquels l'idéal restreint $J\cap \OK$ n'est pas de Carmichael dans $K$.
-\end{proposition}
-
-\begin{proof}
-Donnons plusieurs exemples. On peut prendre :
-\begin{itemize}
-	\item $K = \Q$, $L = \Q(\sqrt{11})$ et $J = 35\OL$~;
-	\item $K = \Q$, $L = \Q(\sqrt{95})$ et $J = 8029\OL$.
-\end{itemize}
-\end{proof}
-
-\NTS{lien vers résultats complets}
-
-\begin{remarque}
-L'entier $n = 8029$ a la particularité d'être le produit de trois nombres premiers distincts : \[n = 8029 = 7 \cdot 31 \cdot 37.\] Le fait qu'il existe un corps quadratique dans lequel $n$ n'est pas de Carmichael peut se traduire dans le cadre de l'arithmétique classique grâce au critère de Korselt : existe-t-il un tripler de nombres premiers distincts $p$, $q$ et $r$ pour lesquels \[(pqr)^2 - 1\] est divisible à la fois par $p-1$, $q-1$ et $r-1$ ? Les diviseurs premiers de $8029$ sont un tel triplet.
-\end{remarque}
-
-Face à la généralité de l'énoncé de la question posée, il était tentant d'aller chercher une réponse ou bien théorique, ou bien dans des corps de nombres beaucoup plus compliqués. Le fait d'avoir trouvé une réponse avec deux algorithmes naïfs (test de Fermatet critère de Korselt) est symptomatique du fait que nous sommes largement ignorants sur le comportement d'un idéal de Carmichael lorsqu'on le restreint ou l'étend, et ce même dans le cas de corps aussi simples que les corps quadratiques. Nous verrons dès la prochaine sous-section de nombreux exemples de nombres de Carmichael qui le restent ou ne le restent pas dans tels ou tels corps quadratiques puis dans tels ou tels corps cyclotomiques.
-
-\subsection{Simulation}
+\subsection{Simulations}
 
 \subsubsection{Test de Fermat}
 
-Testons ici le test de Fermat dans les corps quadratiques, plus précisément, l'algorithme \ref{test-Fermat-quadratique}, que l'auteur du présent mémoire a implémenté. Nous le testons pour chaque entier de Carmichael de la liste \ref{liste-carmichael} et choisissons\footnote{L'entier $43$ est le premier nombre premier qui ne soit facteur d'aucun des éléments de la liste \ref{liste-carmichael}. Cela assure que chaque entier de ladite liste est premier avec le discriminant de $\Q(\sqrt{43})$.} le corps quadratique \[K = \Q(\sqrt{43})\] et l'ensemble de coordonnées \[S_\alpha = [\![-2, +2]\!].\] Résumons ici les résultats obtenus.
+Nous étudions ici le test de Fermat dans les corps quadratiques, plus précisément, l'algorithme \ref{test-Fermat-quadratique}, implémenté par l'auteur de ce mémoire. Nous le testons pour chaque entier de Carmichael de la liste \ref{liste-carmichael} et choisissons\footnote{L'entier $43$ est le premier nombre premier qui ne soit facteur d'aucun des éléments de la liste \ref{liste-carmichael}. Cela assure que chaque entier de ladite liste est premier avec le discriminant de $\Q(\sqrt{43})$.} pour paramètres de simulation le corps quadratique \[K = \Q(\sqrt{43})\] et l'ensemble de coordonnées \[S_\alpha = [\![-2, +2]\!].\] Résumons ici les résultats obtenus.
 \begin{itemize}
 	\item L'algorithme fournit des $K$-témoins de Fermat pour 561, 2465, 2821, 8911, 10585, 15841, 29341, 46657, 52633 et 62745.
 	\item L'algorithme ne fournit aucun $K$-témoin de Fermat pour 1729, 6601 et 41041.
-	\item Dès lors que l'algorithme a trouvé un $K$-témoin de Fermat pour un certain entier, il en a trouvé plusieurs. Pour l'entier $n = 10585$, l'algorithme fournit par exemple \[(-2, -2), \; (-2, -1), \; (-2, 1), \; (-1, -1), \; (-1, 1), \; (1, 1),\] où ces éléments sont donnés par leurs coordonnées dans la base canonique $(1, \sqrt{43})$ de $\OK$. Attention, $(1, 2)$ n'est pas un $K$-témoin de Fermat pour $n$.
+	\item Dès lors que l'algorithme a trouvé un $K$-témoin de Fermat pour un certain entier, il en a trouvé plusieurs. Pour l'entier $10585$, l'algorithme fournit par exemple \[(-2, -2), \; (-2, -1), \; (-2, 1), \; (-1, -1), \; (-1, 1), \; (1, 1),\] où ces éléments sont donnés par leurs coordonnées dans la base canonique $(1, \sqrt{43})$ de $\OK$. Attention, $(1, 2)$ n'est pas un $K$-témoin de Fermat pour $10585$.
 \end{itemize}
 
-En choisissant\footnote{Arbitrairement.} cette désormais le corps \[K = \Q(\sqrt{-7})\], l'algorithme fournit des $K$-témoins de Fermat pour $6601$ (qui n'en avait pas pour $\Q(\sqrt{43})$ mais pas pour $2425$ (qui en avait plusieurs pour $\Q(\sqrt{43})$. \\
+Changeons de corps quadratique. En choisissant\footnote{Arbitrairement.} le corps \[K = \Q(\sqrt{-7}),\] l'algorithme fournit des $K$-témoins de Fermat pour $6601$ (qui n'en avait pas pour $\Q(\sqrt{43})$) mais pas pour $2425$ (qui en avait plusieurs pour $\Q(\sqrt{43})$). \\
 
-L'algorithme souffre néanmoins d'un gros problème de performances. Si les calculs prennent une fraction de secondes pour les premiers entiers, il faut 5 min à l'algorithme pour terminer sur l'entier $15841$, 42 min pour $41041$ puis 2 h 48 pour 62745, avant de planter pour les entiers suivants. Cela s'explique par les calculs de puissances. Si $\alpha\in \OK$ est un $K$-témoin de Fermat potentiel, il faut calculer $\alpha^{n^2}$. Lorsque $n$ devient grand, le coût de calcul devient prohibitif, dépassant largement les capacités d'un ordinateur personnel standard. Si l'on pose $n = 10848$ et $\alpha = 1 + 1\cdot \sqrt{43}$, les coordonnées de $\alpha^{n^2}$ sont tout de même des nombres à plusieurs milliers de chiffres. Cet algorithme est donc inutilisable en l'état pour tester la primalité de grands nombres. Si l'on ajoute à cela le fait qu'il n'est pas capable de détecter tous les entiers composés — comme l'entier de Howe — (voir section précédente), son usage semble définitivement à proscrire.
+L'algorithme souffre néanmoins d'un gros problème de performances. Si les calculs prennent une fraction de secondes pour les premiers entiers, il faut 5 min à l'algorithme pour terminer sur l'entier $15841$, 42 min pour $41041$ puis 2 h 48 pour 62745, avant de planter pour les entiers suivants. Cela s'explique par les calculs intermédiaires de puissances. Si $\alpha\in \OK$ est un $K$-témoin de Fermat potentiel, il faut calculer $\alpha^{n^2}$. Lorsque $n$ devient grand, le coût de calcul devient prohibitif, dépassant largement les capacités d'un ordinateur personnel standard. Si l'on pose $n = 10848$ et $\alpha = 1 + 1\cdot \sqrt{43}$, les coordonnées de $\alpha^{n^2}$ sont des nombres à plusieurs milliers de chiffres. Cet algorithme est donc inutilisable en l'état pour tester la primalité de grands nombres. Si l'on ajoute à cela le fait qu'il n'est pas capable de détecter tous les entiers composés — comme l'entier de Howe — (voir section précédente), son usage semble définitivement à proscrire.
 	
 
 \subsubsection{Critère de Korselt}
 
-Toujours dans l'objectif de numériquement prouver que les entiers de la liste \ref{liste-carmichael} sont effectivement composés, nous employons cette fois le critère de composition de Korselt \label{test-primalite-korselt} dans des corps quadratiques. Pour tout entier $n$, nous cherchons une liste de corps quadratiques dans lesquels $n$ n'est pas de Carmichael. Pour cela, nous lançons l'algorithme avec les paramètres suivant.
+Nous étudions ici le critère de composition de Korselt \label{test-primalite-korselt} dans des corps quadratiques. Pour tout entier $n$, nous cherchons une liste de corps quadratiques dans lesquels $n$ n'est pas de Carmichael. Pour cela, nous lançons l'algorithme avec les paramètres suivant.
 
-\begin{figure}[h!]\label{param-korselt-quadra}
+\begin{table}[H]\label{param-korselt-quadra}
+	\begin{center}
+		\begin{tabularx}{\textwidth}{|Y|Y|}
+			\hline
+			paramètre & valeur \\
+			\hline
+			\hline
+			corps testés & corps quadratiques de la forme $\Q(\sqrt{d})$ où $d$ est un entier sans facteur carré dans $[\![-5000, +5000]\!]$\footnote{Il y a 6084 tels entiers.} \\\hline
+			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael}  \\\hline
+		\end{tabularx}
+		\caption{Paramètres des simulations du critère de Korselt pour les corps quadratiques.}
+	\end{center}
+\end{table}
+
+Le critère de Korselt a donné pour chaque élément $n$ de la liste, plusieurs corps quadratiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. En fait, il en exhibe des centaines. Il est donc impossible d'énoncer ici tous les résultats, mais citons à titre d'exemple que $561$ n'est pas de Carmichael dans $\Q(\sqrt{-4874})$ mais qu'il l'est dans $\Q(\sqrt{4877})$ ou que $172081$ n'est pas de Carmichael dans $\Q(\sqrt{766})$ mais qu'il l'est dans $\Q(\sqrt{-1459})$. Pour la plupart des couples $(n, K)$ testés, $n$ n'est pas de Carmichael dans $K$. Nous avons tiré les statistiques suivantes de nos simulations.
+
+\begin{table}[H]
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
-			corps testés & corps quadratiques de la forme $\Q(\sqrt{d})$ \\ & où $d$ est un entier sans facteur carré \\ & dans $[\![-5000, +5000]\!]$\footnote{Il y a 6084 tels entiers.} \\\hline
-			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael} \% \\\hline
-		\end{tabular}
-		\caption{Paramètres des simulations du critère de Korselt pour les corps quadratiques.}
-	\end{center}
-\end{figure}
-
-Pour ces paramètres, le critère de Korselt est capable de donner pour tout élément $n$ de la liste, plusieurs corps quadratiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. En fait, il en exhibe des centaines. Il est donc impossible d'énoncer ici tous les résultats, mais citons à titre d'exemple que $561$ n'est pas de Carmichael dans $\Q(\sqrt{-4874})$ mais qu'il l'est dans $\Q(\sqrt{4877})$ ou que $172081$ n'est pas de Carmichael dans $\Q(\sqrt{766})$ mais qu'il l'est dans $\Q(\sqrt{-1459})$. En fait, pour la plupart des couples $(n, K)$ testés, $n$ n'est pas de Carmichael dans $K$. Nous avons tiré les statistiques suivantes de nos simulations.
-
-\begin{figure}[h!]
-	\begin{center}
-		\begin{tabular}{|c|c|}
+			donnée évaluée & statistique \\
+			\hline
 			\hline
 			nombre de corps testés & 143524 \\\hline
 			nombre d'idéaux de Carmichael trouvés dans ces corps & 34138 \\\hline
@@ -158,13 +122,11 @@ Pour ces paramètres, le critère de Korselt est capable de donner pour tout él
 		\end{tabular}
 		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
 	\end{center}
-\end{figure}
+\end{table}
 
-Si l'on cherche donc à s'assurer de la composition d'un entier $n$ pour lequel il existe au moins un corps quadratique de discriminant premier avec $n$ dans lequel $n$ n'est pas de Carmichael, ces résultats semblent indiquer qu'on a de bonnes chances d'en trouver un rapidement. Bien sûr, ces sommaires statistiques ne prouvent rien et on ne sait pas déterminer a priori s'il existe un tel corps quadratique. \\
+S'il s'avère que l'entier $n$ que nous testons n'est pas comme l'entier de Howe et admet bien un $K$-témoin de Fermat dans un certains corps quadratique $K$ dont le discriminant lui est premier, ces résultats laissent penser qu'on a de bonnes chances de le trouver. Bien sûr, ces sommaires statistiques ne prouvent rien et on ne sait pas déterminer a priori s'il existe ou non un tel témoin. Pour les performances, les calculs sont extrêmement rapides dans tous les corps. D'après nos tests, ils sont sensiblement proches pour tout entier et tout corps quadratique testé.
 
-Quant aux performances, les calculs sont extrêmement rapides dans tous les corps et semblent homogènes. On a par exemple les données suivantes.
-
-\begin{figure}[h!]
+\begin{table}[H]
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -180,4 +142,4 @@ Quant aux performances, les calculs sont extrêmement rapides dans tous les corp
 		\end{tabular}
 		\caption{Temps de calcul du critère Korselt dans les corps quadratiques donnés pour l'entier $n=512461$.}
 	\end{center}
-\end{figure}
+\end{table}
