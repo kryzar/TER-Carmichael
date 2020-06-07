@@ -1,33 +1,11 @@
 \section{Délices de la théorie}
 
-Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Tout d'abord, le petit théorème de Fermat se généralise à certains corps de nombres.
-
-\begin{theoreme}[petit théorème de Fermat généralisé, 2.3 dans l'article]\label{ptf}
-	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne tels que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
-\end{theoreme}
-
-\begin{proof}
-	Comme $p\nmid \Disc(K)$, le nombre premier $p$ n'est pas ramifié dans $\OK$. Comme l'extension $K/\Q$ est galoisienne, les indices de ramifications et degrés résiduels des idéaux de $\OK$ au dessus de $\p$ sont égaux. L'idéal $p\OK$ est donc de la forme \[p\OK = \p_1\cdot \dots \p_r.\] Soit donc $f$ ce degré résiduel. On a $ef = [K : \Q]$ et surtout que $f$ divise $[ K : \Q ]$. Ainsi, pour tout indice $1\leq i \leq r$, il vient \[ \Norm(\p_i) - 1 = p^f - 1 \mid p^{[K : \Q]} - 1 = \Norm(p\OK) - 1.\] L'idéal $\OK$ vérifie donc le critère de Korselt généralisé \ref{korselt-generalise}. Il est donc soit premier, soit de Carmichael.
-\end{proof}
-
-Nous étendons alors la notion de témoin de Fermat.
-
-\begin{definition}
-	Soient $K/\Q$ une extension galoisienne, $I$ un idéal de $\OK$ et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $I$ si l'on a \[\alpha^{\Norm(I)} \not \equiv \alpha \pmod{n\OK}.\]
-\end{definition}
-
-Étant donnés $n$ un entier et $K$ un corps de nombres, nous appellerons $K$-témoin de Fermat pour $n$ tout $K$-témoin de Fermat pour l'idéal $n\OK$. Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}.
-
-\begin{theoreme}\label{ptf-contraposee}
-	Soient $n$ un entier et $K/\Q$ une extension galoisienne. Si $n$ admet un $K$-témoin de Fermat, alors $n$ est composé.
-\end{theoreme}
-
-Le critère de Korselt \ref{korselt} si utile pour l'étude des nombres de Carmichael dans $\Q$ trouve une généralisation dans ce nouveau cadre.
+Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Commençons par généraliser le critère de Korselt.
 
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
 	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Les assertions suivantes sont équivalentes :
 	\begin{itemize}
-		\item l'idéal $I$ n'a aucun $K$-témoin de Fermat~;
+		\item pour tout entier algébrique $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée\footnote{Lorsque cette notion sera définie dans la suite, le lecteur réalisera que cette condition signifie exactement que $I$ n'a aucun $K$-témoin de Fermat.} ~;
 		\item l'idéal $I$ est sans facteurs carrés et chacun de ses facteurs premier $\P$ vérifie l'identité \[\Norm(\P) - 1 \mid \Norm(I) - 1.\]
 	\end{itemize}
 \end{theoreme}
@@ -40,12 +18,11 @@ Le critère de Korselt \ref{korselt} si utile pour l'étude des nombres de Carmi
 	Démontrons désormais que $I$ est sans facteurs carrés. Supposons qu'il existe un idéal premier $\p$ de $\OK$ tel que $p^2\mid \OK$ et posons \[H = \left(\OK\big/\p^2\right)^\times.\] On a \[\left|H\right| = \Norm(\p)(\Norm(\p) - 1).\] Soit $p\in \Z$ l'unique nombre premier tel que $p\Z = \p\cap \Z$. L'entier $\Norm(\p)$ est une puissance de $\p$, d'où $p\mid \Norm(\p)$ et \[p\mid \left| H \right|.\] Le théorème de Cauchy abélien assure alors qu'il existe un élément $\alpha \in H$ d'ordre $p$. Comme $I$ est de Carmichael par hypothèse et que $\alpha\notin \p^2$, on a $\alpha^{\Norm(I)-1} \equiv 1 \pmod{\p^2}$ puis $\alpha^{\Norm(I) - 1} \equiv 1 \pmod{\p^2}$ et \[p \mid \Norm(I) - 1.\] Comme $p\mid \Norm(I)$, cela constitue une contradiction. L'idéal $I$ est donc sans facteur carré.
 \end{proof}
 
-
 \begin{remarque}
 	Le critère de Korselt que nous connaissons dans le cadre de l'arithmétique se déduit immédiatement du critère de Korselt généralisé en prenant $K=\Q$.
 \end{remarque}
 
-On a alors la caractérisation suivante.
+On a alors la (fondamentale) caractérisation suivante.
 
 \begin{corollaire}\label{carac-korselt}
 	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. Alors l'idéal $I$ est de Carmichael \ssi il est composé et vérifie les hypothèses du critère de Korselt \ref{korselt-generalise}.
@@ -54,6 +31,28 @@ On a alors la caractérisation suivante.
 \begin{remarque}
 	Il faut ici se montrer vigilant avec la nomenclature. Pour montrer qu'un idéal est de Carmichael, montrer qu'il vérifie le critère de Korselt ne suffit pas. Il faut aussi montrer qu'il est composé. Dans la littérature, on dit en général qu'un idéal vérifie le critère de Korselt s'il vérifie les hypothèses du théorème \ref{korselt-generalise} et en plus qu'il est composé. Nous choisissons ici de distinguer les notions pour éviter toute confusion sur la nature des objets que nous manipulerons.
 \end{remarque}
+
+Ce critère permet de généraliser le petit théorème de Fermat.
+
+\begin{theoreme}[petit théorème de Fermat généralisé, 2.3 dans l'article]\label{ptf}
+	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne tels que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
+\end{theoreme}
+
+\begin{proof}
+	Comme $p\nmid \Disc(K)$, le nombre premier $p$ n'est pas ramifié dans $\OK$. Comme l'extension $K/\Q$ est galoisienne, les indices de ramifications et degrés résiduels des idéaux de $\OK$ au dessus de $\p$ sont égaux. L'idéal $p\OK$ est donc de la forme \[p\OK = \p_1\cdot \dots \p_r.\] Soit donc $f$ ce degré résiduel. On a $ef = [K : \Q]$ et surtout que $f$ divise $[ K : \Q ]$. Ainsi, pour tout indice $1\leq i \leq r$, il vient \[ \Norm(\p_i) - 1 = p^f - 1 \mid p^{[K : \Q]} - 1 = \Norm(p\OK) - 1.\] L'idéal $\OK$ vérifie donc le critère de Korselt généralisé \ref{korselt-generalise}. Il est donc soit premier, soit de Carmichael.
+\end{proof}
+
+Nous étendons alors la notion de témoin de Fermat.
+
+\begin{definition}
+	Soient $n$ un entier, $K/\Q$ une extension galoisienne et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $n$ si l'on a \[\alpha^{\Norm(n\OK)} \not \equiv \alpha \pmod{n\OK}.\]
+\end{definition}
+
+Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}.
+
+\begin{theoreme}\label{ptf-contraposee}
+	Soient $n$ un entier et $K/\Q$ une extension galoisienne. Si $n$ admet un $K$-témoin de Fermat, alors $n$ est composé.
+\end{theoreme}
 
 Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
 
