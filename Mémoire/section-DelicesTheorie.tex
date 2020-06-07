@@ -1,9 +1,9 @@
 \section{Délices de la théorie}
 
-Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Tout d'abord, le petit théorème de Fermat se généralise aux corps de nombres galoisiens : dans une telle extension, un nombre premier engendre un idéal qui est soit premier, soit de Carmichael. Plus formellement, vient ceci.
+Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Tout d'abord, le petit théorème de Fermat se généralise à certains corps de nombres.
 
 \begin{theoreme}[petit théorème de Fermat généralisé, 2.3 dans l'article]\label{ptf}
-	Soient $p$ un nombre premier et $K$ un corps de nombre galoisien tel que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
+	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne tels que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
 \end{theoreme}
 
 \begin{proof}
@@ -13,19 +13,23 @@ Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vr
 Nous étendons alors la notion de témoin de Fermat.
 
 \begin{definition}
-	Soient $K$ un corps de nombres galoisien, $I$ un idéal de $\OK$ et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $I$ si l'on a \[\alpha^{\Norm(I)} \not \equiv \alpha \pmod{n\OK}.\]
+	Soient $K/\Q$ une extension galoisienne, $I$ un idéal de $\OK$ et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $I$ si l'on a \[\alpha^{\Norm(I)} \not \equiv \alpha \pmod{n\OK}.\]
 \end{definition}
 
-Étant donnés $n$ un entier et $K$ un corps de nombres, nous appellerons $K$-témoin de Fermat pour $n$ tout $K$-témoin de Fermat pour l'idéal $n\OK$. Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Galoisien et un idéal de Carmichael est un idéal n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. La réciproque du théorème \ref{ptf} s'énonce alors ainsi.
+Étant donnés $n$ un entier et $K$ un corps de nombres, nous appellerons $K$-témoin de Fermat pour $n$ tout $K$-témoin de Fermat pour l'idéal $n\OK$. Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}.
 
 \begin{theoreme}\label{ptf-contraposee}
-	Soient $n$ un entier et $K$ un corps de nombres galoisien. Si $n$ admet un $K$-témoin de Fermat, alors $n$ est composé.
+	Soient $n$ un entier et $K/\Q$ une extension galoisienne. Si $n$ admet un $K$-témoin de Fermat, alors $n$ est composé.
 \end{theoreme}
 
-le critère de korselt \ref{korselt} si utile pour l'étude des nombres de carmichael dans $\Q$ trouve une généralisation dans ce nouveau cadre.
+Le critère de Korselt \ref{korselt} si utile pour l'étude des nombres de Carmichael dans $\Q$ trouve une généralisation dans ce nouveau cadre.
 
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
-	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Alors $I$ n'a aucun $K$-témoin de Fermat \ssi $I$ est sans facteurs carrés et pour tout idéal premier $\P$ divisant $I$, on a $$\Norm(\P) - 1 \mid \Norm(I) - 1.$$
+	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Les assertions suivantes sont équivalentes :
+	\begin{itemize}
+		\item l'idéal $I$ n'a aucun $K$-témoin de Fermat~;
+		\item l'idéal $I$ est sans facteurs carrés et chacun de ses facteurs premier $\P$ vérifie l'identité \[\Norm(\P) - 1 \mid \Norm(I) - 1.\]
+	\end{itemize}
 \end{theoreme}
 
 \begin{proof}
@@ -43,12 +47,12 @@ le critère de korselt \ref{korselt} si utile pour l'étude des nombres de carmi
 
 On a alors la caractérisation suivante.
 
-\begin{corollaire}
-	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. Alors $I$ est de Carmichael \ssi $I$ est composé et $I$ vérifie les hypothèses du critère de Korselt.
+\begin{corollaire}\label{carac-korselt}
+	Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. Alors l'idéal $I$ est de Carmichael \ssi il est composé et vérifie les hypothèses du critère de Korselt \ref{korselt-generalise}.
 \end{corollaire}
 
 \begin{remarque}
-	Il faut ici se montrer vigilant avec la nomenclature. Pour montrer qu'un idéal est de Carmichael, montrer qu'il vérifie le critère de Korselt ne suffit pas. Il faut aussi montrer qu'il est composé. Dans la littérature, on dit en général qu'un idéal vérifie le critère de Korselt s'il vérifie les hypothèses du théorème \ref{korselt-generalise} et en plus qu'il est composé. 
+	Il faut ici se montrer vigilant avec la nomenclature. Pour montrer qu'un idéal est de Carmichael, montrer qu'il vérifie le critère de Korselt ne suffit pas. Il faut aussi montrer qu'il est composé. Dans la littérature, on dit en général qu'un idéal vérifie le critère de Korselt s'il vérifie les hypothèses du théorème \ref{korselt-generalise} et en plus qu'il est composé. Nous choisissons ici de distinguer les notions pour éviter toute confusion sur la nature des objets que nous manipulerons.
 \end{remarque}
 
 Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
@@ -58,24 +62,28 @@ Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au pe
 \end{theoreme}
 
 \begin{MotSurPreuve}
-	À l'instar de beaucoup d'autres résultats de l'article, la preuve de cet énoncé jouit à la fois d'une complexité technique raisonnable et d'une grande ingéniosité. Connaissant un diviseur $p$ premier de $n$, l'auteur construit un corps quadratique $K = \Q\left(\sqrt{(-1)^\frac{p-1}{2} p}\right)$ dans lequel $n$ n'est pas de Carmichael. Ce dernier point se démontre avec des techniques de base de la ramification. \\
+	La preuve de ce résultat est très ingénieuse. Connaissant un diviseur $p$ premier de $n$, l'auteur construit un corps quadratique $K = \Q\left(\sqrt{(-1)^\frac{p-1}{2} p}\right)$ dans lequel $n$ n'est pas de Carmichael. Ce dernier point se démontre avec des techniques de base de la ramification. \\
 \end{MotSurPreuve}
-
-Nous pouvons de plus mettre à bout ces deux résultats pour fournir cette délicieuse équivalence.
 
 \begin{theoreme}[petit théorème de Fermat généralisé et sa réciproque]\label{ptf-reciproque}
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi il n'a de $K$-témoin de Fermat dans aucun corps quadratique $K$ vérifiant $n\nmid \Disc(K)$.
 \end{theoreme}
 
-Au delà de sa force théorique, cette énoncé semble porter une valeur historique majeure. Le test de primalité de Fermat était le seul test de primalité à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Cette absence de réciproque semblait bien être le prix à payer pour sa simplicité et son efficacité. Il aura certes fallu aller chercher la réciproque dans les corps de nombres, mais l'énoncé prouve que les corps quadratiques. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà. \\
+\begin{proof}
+	C'est la conjonction des théorèmes \ref{ptf} et \ref{ptf-reciproque}.
+\end{proof}
 
-Nous avons déjà des outils suffisamment robustes pour fournir un test de primalité naïf. Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt. Le petit théorème de Fermat généralisé \ref{ptf} nous permet donc d'écrire le critère de composition suivant, basé sur le critère de Korselt.
+\begin{remarque}
+Au delà de sa force théorique, cette énoncé semble porter une valeur historique notable. Le test de primalité de Fermat était le seul test de primalité classique à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Cette absence de réciproque semblait bien être le prix à payer pour sa simplicité et son efficacité. Il aura certes fallu aller chercher la réciproque dans les corps de nombres, mais l'énoncé prouve que les corps quadratiques suffisent. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà.
+\end{remarque}
+
+Nous avons déjà des outils suffisamment robustes pour fournir un test de primalité naïf. Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt \ref{korselt-generalise}. La contraposée du petit théorème de Fermat généralisé \ref{ptf-contraposee} nous permet en suite d'écrire le critère de composition suivant.
 
 \vspace{1em}
 \begin{algorithm}[H]\label{test-primalite-korselt}
-\caption{Critère de composition de Korselt dans les corps de nombres galoisiens}
+\caption{Critère de composition de Korselt dans les extensions galoisiennes de $\Q$}
 \KwIn{$n$ (entier à tester) \\
-	$\mathscr{L}$ (liste de corps de nombres galoisiens)}
+	$\mathscr{L}$ (liste d'extensions galoisiennes de $\Q$)}
 \ForEach{$K$ dans $\mathscr{L}$}{
 	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
 		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
@@ -94,7 +102,7 @@ Avant de poursuivre, donnons un lemme qui permettra d'alléger les énoncés de 
 \end{lemme}
 
 \begin{proof}
-	Si $n$ et $\Disc(K)$ ne sont pas premiers entre eux, $n$ a un facteur premier qui se ramifie dans $\OK$. L'idéal $n\OK$ a donc un facteur carré, ce qui l'empêche d'être un idéal de Carmichael d'après le critère de Korselt généralisé \ref{korselt-generalise}.
+	Si les entiers $n$ et $\Disc(K)$ ne sont pas premiers entre eux, $n$ a un facteur premier qui divise $\Disc(K)$ et qui se ramifie dans $\OK$. L'idéal $n\OK$ a donc un facteur carré, ce qui l'empêche d'être un idéal de Carmichael d'après le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt}.
 \end{proof}
 
-Ces résultats fournissent un début de théorie confortable, qui nous laisse envisager l'avenir avec espoir. Nous pouvons dès à présent nous confronter à une étude plus spécifique, celle des corps quadratiques.
+Ces résultats fournissent un début de théorie confortable. Nous pouvons dès à présent nous confronter à une étude plus spécifique, celle des corps quadratiques.

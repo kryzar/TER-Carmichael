@@ -8,7 +8,7 @@ Le test de primalité non naïf le plus simple est le \emph{test de primalité d
 \begin{proposition}\label{korselt} Soit $n$ un entier. Les assertions suivantes sont équivalentes :
 	\begin{enumerate}[font=\normalshape]
 		\item $n$ est un entier de Carmichael ~;
-		\item $n$ est composé, sans facteur carré et pour tout nombre premier $p$ divisant $n$, l'identité \[p-1 \mid n-1 ~;\] est vérifiée
+		\item $n$ est composé, sans facteur carré et chacun de ses facteurs premier vérifie l'identité \[p-1 \mid n-1 ~.\]
 		\item l'identité \[\lambda(n) \mid n-1\] est vérifiée, la fonction $\lambda$ étant l'indicatrice de Carmichael.
 	\end{enumerate}
 \end{proposition}
@@ -21,6 +21,8 @@ L'assertion (b) de la proposition est appelée \textit{critère de Korselt} et e
 	\end{equation}
 est vérifiée.
 \end{definition}
+
+Étant donnés $n$ un entier et $K$ un corps de nombres, nous dirons que $n$ est de Carmichael dans $K$ si l'idéal $n\OK$ est de Carmichael.
 
 \begin{remarque}
 	Un entier de Carmichael peut donc être vu comme un idéal de Carmichael du corps de nombres $\Q$.
