@@ -24,8 +24,49 @@ Le résultat le plus à même d'aboutir à un test de primalité est le crucial 
 	Soit $n$ un entier composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ est premier avec $n$ et $n$ \emph{n'est pas de Carmichael dans $K$}.
 \end{theoreme}
 
+Nous avons de quelques résultats préliminaires.
+
+\begin{lemme}[3.3 dans l'article]
+	Soit $n$ un entier. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que l'identité \[p^d - 1 \nmid n^d - 1\] pour tout entier $d> d_0$.
+\end{lemme}
+
+\begin{lemme}[théorème de Heath-Brown, 2.5 dans l'article]
+	Tous les nombres premiers — à l'exception d'au plus deux d'entre eux — sont des racines primitives modulo $q$ pour une infinité de nombres premiers $q$.
+\end{lemme}
+
+\begin{lemme}\label{lemme-inerte}
+	Soient $K/\Q$ une extension \emph{abélienne} de degré fini, $p$ un nombre premier non ramifié en $K$ et $\P$ un idéal premier de $\OK$ au dessus de $p$. S'il existe un groupe \emph{cyclique} $H$ et un isomorphisme de groupes \[\Gal(K/\Q) \to H\] qui envoie la substitution de Frobenius de $\P$ en $L/K$ sur un générateur de $H$, alors $p$ est inerte dans $K$.
+\end{lemme}
+
 \begin{proof}
-	\NTS{placeholder}
+	Dans cette preuve, nous utilisons à volonté les résultats de \cite{Kraus}, ch. 3, § 4 et 5. Soient $f : \Gal(K/\Q) \to H$ un isomorphisme de groupes et $h$ un générateur de $h$ vérifiant $f(s_\p) = h$. Comme $h$ engendre $H$ et que $f$ est un isomorphisme et le Frobenius $s_\P$ (bien défini puisque $K/\Q$ est non ramifiée en $p$) est générateur de $\Gal(K/\Q)$. Mais $s_\P$ est par définition (\cite{Kraus}, ch. 3, § 5) générateur du groupe du sous-groupe de décomposition $D_\P$ de $\P$ dans $K/\Q$, qui est un sous-groupe de $\Gal(K/\Q)$. On a donc l'égalité \[D_\P = \Gal(K/\Q)\] et la sous-extension correspondant $D_\P$ dans la correspondance de Galois est donc $\Q$. D'après le lemme 3.9 de \cite{Kraus}, cela induit \[g_p = 1.\] L'idéal $\P$ est donc l'unique idéal premier de $\OK$ au dessus de $p$, et comme $p$ ne se ramifie pas dans $K$, cela prouve l'inertie de $p$.
+
+\end{proof}
+
+\begin{lemme}\label{iso-Z/nZ*}
+	Soient $n \leq 1$ un entier et $\zeta_n$ une racine primitive $n$-ième de l'unité. L'application 
+\vspace{-1em}
+\begin{center}
+	\begin{tabular}{ccc}
+		$\Gal(\Q(\zeta_n)/\Q)$ & $\longrightarrow$ & $\left(\Z/n\Z\right)^\times$ \\
+		$\sigma$	& $\longmapsto$ & $\overline{a}$,
+	\end{tabular}
+\end{center}
+où $a$ est un entier tel que $\sigma(\zeta_n) = \zeta_n^a$, est un isomorphisme de groupes.
+\end{lemme}
+
+\begin{proof}
+	Commençons par montrer que cette application est un morphisme de groupes bien défini. Notons la $\varphi$. Soit $\zeta\in \Gal(\Q(\zeta_n)/\Q)$. Comme $\zeta_n$ est une racine du polynôme cyclotomique $\Phi_n$ et que l'extension $\Q(\zeta_n)/\Q$ est le corps de décomposition de $\Phi_n$, l'automorphisme $\sigma$ envoie $\zeta_n$ sur une autre racine primitive de l'unité. Mais comme $\zeta_n$ est génératrice du groupe des racines $n$-ième de l'unité, il existe un entier $a$ tel que \[\sigma(\zeta_n) = \zeta_n^a.\] Comme cette racine est primitive, on a que $a$ et $n$ sont premiers entre eux, d'où \[\sigma(\zeta_n) = \zeta_n^a \in \left(\Z/n\Z\right)^\times.\] Si désormais $a$ et $b$ sont deux entiers tels que $\zeta_n^a = \zeta_n^b$, on a alors $\zeta_n^{a-b} = 1$. Comme $\zeta_n$ est primitive, cela implique \[\overline{a} = \overline{b}.\] Pour montrer que l'application est un morphisme, soient $\sigma_1, \sigma_2 \in \Gal(\Q(\zeta_n)/\Q)$ dont les images sont respectivement $a_1$ et $a_2$. On a \[\sigma_1\circ \sigma_2(\zeta_n) = \sigma_1(\zeta_n^{a_2}) = (\sigma_1(\zeta_n))^{a_2} = \zeta^{a_1 a_2}\] et donc \[\varphi(\sigma_1\circ\sigma_2) = a_1 a_2 = \varphi(\sigma_1)\varphi(\sigma_2).\] L'application $\varphi$ est donc un morphisme de groupes bien défini. \\
+
+	Montrons que c'est un isomorphisme. Comme les ensembles de départ et d'arrivée sont finis, il suffit de montrer l'injectivité. Soit $\sigma\in \Gal(\Q(\zeta_n)/\Q)$ un automorphisme d'image $\overline{1}$. On a alors \[\sigma(\zeta_n) = \zeta_n\] et étant un automorphisme, l'égalité \[\sigma = \Id.\] Cela termine la démonstration.
+\end{proof}
+
+
+Démontrons le théorème \ref{theoreme-3.6}.
+
+\begin{proof}[Démonstration (du théorème \ref{theoreme-3.6})]
+	L'entier $n$ a par hypothèse au moins trois facteurs premiers distincts. L'un d'entre eux, que nous notons $p$, est donc racine primitive modulo $q$ pour une infinité de nombres premiers $q$. Soit $d_0$ le rang à partir duquel on a \[p^d - 1 \nmid n^d - 1\] pour tout entier $d>d_0$. Vient alors l'existence d'une infinité de nombres premiers $q$ (premiers avec $n$) pour lesquels $p$ est une racine primitive et vérifiant $q>d_0$. Fixons un tel nombre $q$ et \[K = \Q(\zeta_q).\] Soit $\varphi$ l'isomorphisme donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après l'identité (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. Comme $q>d_0$, on a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} permet d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
+
 \end{proof}
 
 Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts (voir \cite{Demazure}, Proposition 3.35, p. 90), il vérifiera toujours les hypothèses du théorème. Ce résultat est donc en théorie bien plus puissant que le théorème \ref{theoreme-2.5} (2.5 dans l'article), puisque nous avons vu que le test de primalité naïf qui en découlait ne détectait pas tous les entiers de Carmichael, comme par exemple l'entier de Howe \ref{Howe}. 
