@@ -1,8 +1,6 @@
 \section{Interlude : idéaux de Carmichael et extensions de corps}
 
-Soit \[\Q\subset K \subset L\] une tour de corps de nombres, $I\subset \OK$ un idéal de Carmichael de $K$ et $J \subset \OL$ un idéal de Carmichael de $L$. L'idéal étendu $I\OL$ est-il de Carmichael dans $L$ et l'idéal restreint $J\cap\OK$ est-il de Carmichael dans $K$ ? \\
-
-L'auteur de l'article a déjà répondu à la première partie de la question dans l'exemple 2.6 de l'article, en utilisant le test de Fermat dans les corps quadratiques.
+Donnons nous \[\Q\subset K \subset L\] une tour de corps de nombres, $I\subset \OK$ un idéal de Carmichael de $K$ et $J \subset \OL$ un idéal de Carmichael de $L$. L'idéal étendu $I\OL$ est-il de Carmichael dans $L$ et l'idéal restreint $J\cap\OK$ est-il de Carmichael dans $K$ ? L'auteur de l'article a déjà répondu à la première partie de la question dans l'exemple 2.6 de l'article, en utilisant le test de Fermat dans les corps quadratiques.
 
 \begin{proposition}\label{premier-ce}
 	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $I$ de $K$ pour lesquels l'idéal étendu $I\OL$ qui ne sont pas de Carmichael dans $L$.
@@ -12,24 +10,49 @@ L'auteur de l'article a déjà répondu à la première partie de la question da
 	L'exemple 2.6 de l'article montre que l'entier de Carmichael $561$ n'est pas de Carmichael dans $\Q(\sqrt{13})$. On a alors l'énoncé en prenant $K = \Q$, $I = 561\OK$ et $L = \Q(\sqrt{13})$.
 \end{proof}
 
-L'auteur du présent mémoire répond à la deuxième partie de la question en implémentant le critère de Korselt \ref{test-primalite-korselt} dans les corps quadratiques et donnant des exemples de tels idéaux corps de nombres.
+L'algorithme de Korselt dans les corps quadratiques étudié à la section précédente permet de répondre à la deuxième partie de la question. Plus précisément, l'auteur du présent mémoire a implémenté l'algorithme suivant.
+
+\vspace{1em}
+\begin{algorithm}[H]\label{test-Fermat-quadratique}
+\caption{trouver un entier $n$ et un corps quadratique $K$ tels que $n$ ne soit pas de Carmichael dans $K$}
+\KwIn{$\mathscr{N}$ (liste d'entiers qui ne sont \emph{pas} de Carmichael), $\mathscr{K}$ (liste de corps quadratiques)}
+\KwOut{couples $(n, K)$ où $K$ est un corps quadratique de $\mathscr{K}$ et $n$ est est un entier de $\mathscr{N}$ de Carmichael dans $K$ mais pas dans $\Q$}
+\ForEach{$n$ dans $\mathscr{N}$}{
+	\ForEach{$K$ dans $\mathscr{K}$}{
+		\If{$n$ est de Carmichael dans $K$ (critère de Korselt)}{
+			\KwRet{$n$ n'est pas de Carmichael mais $n\OK$ l'est}	\\
+			\textbf{arrêter le programme}
+		}
+	}
+}
+\end{algorithm}
+\vspace{1em}
+
+Cette algorithme retourne de nombreux résultats. Par exemple $35$ est de Carmichael dans $\Q(\sqrt{11})$ et $8029$ est de Carmichael dans $\OL$. \NTS{lien vers résultats complets} Nous avons tiré les statistiques suivantes.
+
+\begin{table}[H]
+	\begin{center}
+		\begin{tabular}{|c|c|}
+			\hline
+			donnée évaluée & statistique \\
+			\hline
+			\hline
+			nombre de couples testés & 5723 \\\hline
+			nombre d'entiers qui sont de Carmichael dans un corps testé & 2930 \\\hline
+			proportion d'entiers qui sont de Carmichael dans un corps testé & 51,2 \% \\\hline
+		\end{tabular}
+		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
+	\end{center}
+\end{table}
+
+Enfin, nous avons donc démontré le résultat suivant.
 
 \begin{proposition}\label{deuxieme-ce}
 	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $J$ de $L$ pour lesquels l'idéal restreint $J\cap \OK$ n'est pas de Carmichael dans $K$.
 \end{proposition}
 
-\begin{proof}
-Donnons plusieurs exemples. On peut prendre :
-\begin{itemize}
-	\item $K = \Q$, $L = \Q(\sqrt{11})$ et $J = 35\OL$~;
-	\item $K = \Q$, $L = \Q(\sqrt{95})$ et $J = 8029\OL$.
-\end{itemize}
-\end{proof}
-
-\NTS{lien vers résultats complets}
-
 \begin{remarque}
 L'entier $n = 8029$ a la particularité d'être le produit de trois nombres premiers distincts : \[n = 8029 = 7 \cdot 31 \cdot 37.\] Le fait qu'il existe un corps quadratique dans lequel $n$ n'est pas de Carmichael peut se traduire dans le cadre de l'arithmétique classique grâce au critère de Korselt : existe-t-il un tripler de nombres premiers distincts $p$, $q$ et $r$ pour lesquels \[(pqr)^2 - 1\] est divisible à la fois par $p-1$, $q-1$ et $r-1$ ? Les diviseurs premiers de $8029$ sont un tel triplet.
 \end{remarque}
 
-Face à la généralité de l'énoncé de la question posée, il était tentant d'aller chercher une réponse ou bien théorique, ou bien dans des corps de nombres beaucoup plus compliqués. Le fait d'avoir trouvé une réponse avec deux algorithmes naïfs (test de Fermat et critère de Korselt) est symptomatique du fait que nous sommes largement ignorants sur le comportement d'un idéal de Carmichael lorsqu'on le restreint ou l'étend, et ce même dans le cas de corps aussi simples que les corps quadratiques. Nous verrons dès la prochaine sous-section de nombreux exemples de nombres de Carmichael qui le restent ou ne le restent pas dans tels ou tels corps quadratiques puis dans tels ou tels corps cyclotomiques.
+Face à la généralité de l'énoncé de la question posée, il était tentant d'aller chercher une réponse ou bien théorique, ou bien dans des corps de nombres beaucoup plus compliqués. En fin de compte, les corps quadratiques auront suffit. Nous avons vu à la section précédente que sur les entiers de Carmichael et les corps quadratiques testés, ceux-ci restaient de Carmichael dans environ 24 \% des cas. Ici, nous avons montré que sur les entiers n'étant pas de Carmichael et les corps quadratiques testés, ceux-ci engendraient un entier de Carmichael dans plus de 50 \% des cas. Ces statistiques \NTS{blabla puent la merde}. Elles sont néanmoins symptomatiques du fait que nous sommes a priori largement ignorants sur le comportement d'un idéal de Carmichael lorsqu'on l'étend ou le restreint, et ce même en restant dans le cadre des corps quadratiques, corps de nombres a priori parmi les moins compliqués.

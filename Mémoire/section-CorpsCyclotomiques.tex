@@ -64,9 +64,7 @@ Revenons au théorème \ref{theoreme-3.6}, duquel nous voulons tirer un critère
 \vspace{1em}
 \begin{algorithm}[H]\label{test-Fermat-cyclotomique}
 \caption{Test de Fermat dans un corps cyclotomique}
-\KwIn{$n$ (entier à tester) \\
-	$K$ (corps cyclotomique de la forme $\Q(\zeta)$) \\
-	$S_\alpha$ (ensemble coordonnées $\alpha$)}
+\KwIn{$n$ (entier à tester), $K$ (corps cyclotomique de la forme $\Q(\zeta)$), $S_\alpha$ (ensemble coordonnées $\alpha$)}
 \If{$n$ et $\Disc(K)$ sont premiers entre eux}{
 	\ForEach{$\alpha = x_0 + x_1\zeta + \dots + x_{p-1}\zeta^{p-1}$, $x_0, \dots, x_{p-1}\in S_\alpha$}{
 		\If{$\alpha^{n^2}\not\equiv \alpha \pmod{n\OK}$}{
@@ -89,7 +87,7 @@ Comme dans la section sur les corps quadratiques, nous cherchons ici — pour to
 		\begin{tabular}{|c|c|}
 			\hline
 			corps testés & corps cyclotomiques de la forme $\Q(\zeta_q)$ \\ & où $q$ est un nombre premier dans $[\![3, 300]\!]$\footnote{Il y a 62 tels nombres premiers.} \\\hline
-			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael} \% \\\hline
+			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael} \\\hline
 		\end{tabular}
 		\caption{Paramètres des simulations du critère de Korselt pour les corps cyclotomiques.}
 	\end{center}
@@ -123,7 +121,7 @@ Donnons aussi quelques statistiques.
 			\hline
 			nombre de corps testés & 1857 \\\hline
 			nombre d'idéaux de Carmichael trouvés dans ces corps & 18 \\\hline
-			proportion d'idéaux de Carmichael trouvés dans ces corps & 0,00969 \% \\\hline
+			proportion d'idéaux de Carmichael trouvés dans ces corps & 0,9 \% \\\hline
 		\end{tabular}
 		\caption{Statistiques des simulations du critère de Korselt sur les corps cyclotomiques pour les paramètres \ref{param-korselt-cyclo}.}
 	\end{center}

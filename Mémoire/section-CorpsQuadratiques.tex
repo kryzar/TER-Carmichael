@@ -19,9 +19,7 @@ Dans l'exemple 2.6 de l'article, l'auteur ouvre une voix intéressante : celle d
 \vspace{1em}
 \begin{algorithm}[H]\label{test-Fermat-quadratique}
 \caption{Test de Fermat dans un corps quadratique}
-\KwIn{$n$ (entier à tester) \\
-	$K$ (corps quadratique) \\ 
-	$S_\alpha$ (ensemble de coordonnées pour $\alpha$)}
+\KwIn{$n$ (entier à tester), $K$ (corps quadratique), $S_\alpha$ (ensemble de coordonnées pour $\alpha$)}
 \If{$n$ et $\Disc(K)$ sont premiers entre eux}{
 	$\theta\leftarrow$ un générateur de $\OK$ \\
 	\ForEach{$\alpha = x+ y\theta$, $x, y\in S_\alpha$}{
@@ -118,7 +116,7 @@ Le critère de Korselt a donné pour chaque élément $n$ de la liste, plusieurs
 			\hline
 			nombre de corps testés & 143524 \\\hline
 			nombre d'idéaux de Carmichael trouvés dans ces corps & 34138 \\\hline
-			proportion d'idéaux de Carmichael trouvés dans ces corps & 0,23786 \% \\\hline
+			proportion d'idéaux de Carmichael trouvés dans ces corps & 23,8 \% \\\hline
 		\end{tabular}
 		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
 	\end{center}

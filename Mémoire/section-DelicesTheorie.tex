@@ -83,9 +83,8 @@ Nous avons déjà des outils suffisamment robustes pour fournir un test de prima
 \vspace{1em}
 \begin{algorithm}[H]\label{test-primalite-korselt}
 \caption{Critère de composition de Korselt dans les extensions galoisiennes de $\Q$}
-\KwIn{$n$ (entier à tester) \\
-	$\mathscr{L}$ (liste d'extensions galoisiennes de $\Q$)}
-\ForEach{$K$ dans $\mathscr{L}$}{
+\KwIn{$n$ (entier à tester), $\mathscr{K}$ (liste d'extensions galoisiennes de $\Q$)}
+\ForEach{$K$ dans $\mathscr{K}$}{
 	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
 		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
 			\KwRet{$n\OK$ n'est pas de Carmichael et $n$ est composé} \\
