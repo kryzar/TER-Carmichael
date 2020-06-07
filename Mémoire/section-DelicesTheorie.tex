@@ -5,7 +5,7 @@ Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vr
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
 	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Les assertions suivantes sont équivalentes :
 	\begin{itemize}
-		\item pour tout entier algébrique $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée\footnote{Lorsque cette notion sera définie dans la suite, le lecteur réalisera que cette condition signifie exactement que $I$ n'a aucun $K$-témoin de Fermat.} ~;
+		\item pour tout entier algébrique $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée ~;
 		\item l'idéal $I$ est sans facteurs carrés et chacun de ses facteurs premier $\P$ vérifie l'identité \[\Norm(\P) - 1 \mid \Norm(I) - 1.\]
 	\end{itemize}
 \end{theoreme}
@@ -57,16 +57,18 @@ Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Gal
 Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
 
 \begin{theoreme}[réciproque du petit théorème de Fermat généralisé, 2.3 dans l'article]
-	Soit $n>2$ un entier composé. Alors il existe un corps \emph{quadratique} $K$ vérifiant $n\nmid \Disc(K)$ dans lequel $n$ admet un $K$-témoin de Fermat.
+	Soit $n>2$ un entier composé. Alors $n$ admet un témoin de Fermat dans tout corps quadratique de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right),\] l'entier $p$ étant un facteur premier impair de $n$.
 \end{theoreme}
 
-\begin{MotSurPreuve}
-	La preuve de ce résultat est très ingénieuse. Connaissant un diviseur $p$ premier de $n$, l'auteur construit un corps quadratique $K = \Q\left(\sqrt{(-1)^\frac{p-1}{2} p}\right)$ dans lequel $n$ n'est pas de Carmichael. Ce dernier point se démontre avec des techniques de base de la ramification. \\
-\end{MotSurPreuve}
+Vient alors l'équivalence suivante.
 
 \begin{theoreme}[petit théorème de Fermat généralisé et sa réciproque]\label{ptf-reciproque}
 	Soit $n>2$ un entier. Alors $n$ est premier \ssi il n'a de $K$-témoin de Fermat dans aucun corps quadratique $K$ vérifiant $n\nmid \Disc(K)$.
 \end{theoreme}
+
+\begin{proof}
+	Le sens direct correspond à \ref{ptf} et le sens réciproque s'obtient avec l'énoncé précédent en constatant que (en reprenant les notations de l'énoncé) $\Disc(K) = p$ et $n\nmid p$.
+\end{proof}
 
 \begin{proof}
 	C'est la conjonction des théorèmes \ref{ptf} et \ref{ptf-reciproque}.
