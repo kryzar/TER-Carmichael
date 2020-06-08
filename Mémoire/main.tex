@@ -19,6 +19,9 @@
 % modifier Output en Sorties dans algorithm2e
 \SetKwInput{KwOut}{Sorties}
 
+\let\oldref\ref
+\renewcommand{\ref}[1]{(\oldref{#1})}
+
 \theoremstyle{remark}
 \newtheorem*{MotSurPreuve}{Un mot sur la preuve}
 
