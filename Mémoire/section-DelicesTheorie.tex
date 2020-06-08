@@ -1,6 +1,16 @@
 \section{Délices de la théorie}
 
-Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Commençons par généraliser le critère de Korselt.
+Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Commençons par un lemme.
+
+\begin{lemme}[identité (1) dans l'article]\label{identite-1}
+	Soient $K$ un corps de nombres, $\p$ un idéal premier de $\OK$ et $\alpha \in \OK$ un entier algébrique. Alors la congruence \[\alpha^{\Norm(\p)} \equiv \alpha \pmod{\p}\] est vérifiée.
+\end{lemme}
+
+\begin{proof}
+	\NTS{placeholder}
+\end{proof}
+
+Nous pouvons dès à présent généraliser le critère de Korselt \ref{korselt}.
 
 \begin{theoreme}[critère de Korselt généralisé, 2.2 dans l'article]\label{korselt-generalise}
 	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Les assertions suivantes sont équivalentes :
@@ -11,11 +21,23 @@ Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vr
 \end{theoreme}
 
 \begin{proof}
-	Commençons par le sens réciproque. Soit $\alpha\in \OK$ un entier algébrique et $\p$ un idéal premier de $\OK$ divisant $I$. Si $\alpha \notin \OK$, viennent $\alpha^{\Norm(\p) - 1} \equiv \alpha \pmod{p}$ et donc $$\alpha^{\Norm(I) - 1} \equiv \alpha \pmod{p},$$ car $\Norm(\p) - 1\mid \Norm(I) - 1$ par hypothèse. Si désormais $\alpha\in \p$, la dernière congruence est toujours vérifiée. L'idéal $I$ étant de plus sans facteurs carrés (hypothèse), il est de la forme $I = \p_1 \cdots \p_r,$ les $\p_i$ étant des idéaux premiers distincts de $\OK$. Ces idéaux sont même maximaux (anneau de Dedekind) et donc comaximaux, d'où un isomorphisme d'anneaux $$\OK \big/\left(\p_1\cdot \dots \cdot \p_r\right) \simeq \OK\big/\p_1\times \dots \times \OK\big/ \p_r$$ et la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}.\]
+	Commençons par le sens réciproque. Soit $\alpha\in \OK$ un entier algébrique et $\p$ un idéal premier de $\OK$ divisant $I$.
+	\begin{itemize}
+		\item Si $\alpha \notin \p$, vient $\alpha^{\Norm(\p) - 1} \equiv 1 \pmod{p}$ d'après le lemme \ref{identite-1}. L'entier $\Norm(\p) - 1$ divisant $\Norm(I) - 1$ par hypothèse, cela entraîne $\alpha^{\Norm(I)-1}\equiv 1 \pmod{I}$ et donc \[\alpha^{\Norm(I)} \equiv \alpha \pmod{p}.\]
+		\item Si $\alpha\in \p$, la dernière congruence est toujours vérifiée.
+	\end{itemize}
+	L'idéal $I$ étant de plus sans facteurs carrés (hypothèse), il est de la forme $I = \p_1 \cdots \p_r,$ où les $\p_i$ des idéaux premiers distincts de $\OK$. Ces idéaux sont même maximaux (anneau de Dedekind) et donc comaximaux. Le théorème chinois affirme alors que l'application canonique
+\begin{center}
+	\begin{tabular}{ccc}
+		$\OK \big/I$ & $\longrightarrow$ & $\OK\big/\p_1\times \dots \times \OK\big/ \p_r$ \\
+		$a\pmod{I} $	& $\longmapsto$ & $\left(a\pmod{\p_1} , \dots, a\pmod{\p_r}\right)$,
+	\end{tabular}
+\end{center}
+est un isomorphisme d'anneaux. Comme nous avons montré $\alpha^{\Norm(I)} \equiv \alpha \pmod{\p_i}$ pour tout $1\leq i \leq r$, l'isomorphisme évoqué entraîne la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}.\]
 
-	Démontrons cette fois le sens direct. La preuve se fait en deux temps, on montre les relations de divisibilité puis que $I$ est sans facteur carré. Écrivons $I = \p_1^{e_1} \cdot \dots \cdot \p_r^{e_r}$, les $\p_i$ étant des idéaux premiers de $\OK$ distincts. Pour tout indice $1\leqslant i \leqslant r$ donnons nous $\alpha_i\in \OK$ un élément dont la classe modulo $\p_i$ engendre le groupe quotient $(\OK/\p_i)^\times$. Un tel élément existe car $\OK/\p_i$ est un corps fini et que le groupe des inversibles d'un corps fini est cyclique. En particulier, $\alpha_i$ n'est \emph{pas} dans $\p_i$. On a alors \[\alpha_i^{\Norm(I) - 1} \equiv \alpha_i \pmod{\p_i}\] (comme dans le paragraphe précédent) puis que l'ordre de $\alpha_i$ modulo $\p_i$ divise $\Norm(I) - 1$ (théorème de Lagrange). Cet ordre étant $\Norm(\p_i) - 1$, on en déduit la division désirée. 
+	Démontrons cette fois le sens direct. La preuve se fait en deux temps. Écrivons $I = \p_1^{e_1} \cdot \dots \cdot \p_r^{e_r}$, les $\p_i$ étant des idéaux premiers de $\OK$ distincts. Pour tout indice $1\leqslant i \leqslant r$ donnons nous $\alpha_i\in \OK$ un élément dont la classe modulo $\p_i$ engendre le groupe quotient $(\OK/\p_i)^\times$. Un tel élément existe car $\OK/\p_i$ est un corps fini et que le groupe des inversibles d'un corps fini est cyclique. En particulier, $\alpha_i$ n'est \emph{pas} dans $\p_i$. On a alors \[\alpha_i^{\Norm(I) - 1} \equiv 1 \pmod{\p_i}\] en reprenant le raisonnement précédent. D'après le théorème de Lagrange, l'ordre de $\alpha_i$ modulo $\p_i$ divise $\Norm(I) - 1$. Cet ordre étant $\Norm(\p_i) - 1$, on en déduit la division désirée. 
 
-	Démontrons désormais que $I$ est sans facteurs carrés. Supposons qu'il existe un idéal premier $\p$ de $\OK$ tel que $p^2\mid \OK$ et posons \[H = \left(\OK\big/\p^2\right)^\times.\] On a \[\left|H\right| = \Norm(\p)(\Norm(\p) - 1).\] Soit $p\in \Z$ l'unique nombre premier tel que $p\Z = \p\cap \Z$. L'entier $\Norm(\p)$ est une puissance de $\p$, d'où $p\mid \Norm(\p)$ et \[p\mid \left| H \right|.\] Le théorème de Cauchy abélien assure alors qu'il existe un élément $\alpha \in H$ d'ordre $p$. Comme $I$ est de Carmichael par hypothèse et que $\alpha\notin \p^2$, on a $\alpha^{\Norm(I)-1} \equiv 1 \pmod{\p^2}$ puis $\alpha^{\Norm(I) - 1} \equiv 1 \pmod{\p^2}$ et \[p \mid \Norm(I) - 1.\] Comme $p\mid \Norm(I)$, cela constitue une contradiction. L'idéal $I$ est donc sans facteur carré.
+	Démontrons désormais que $I$ est sans facteurs carrés. Supposons qu'il existe un idéal premier $\p$ de $\OK$ tel que $\p^2\mid \OK$ et posons \[H = \left(\OK\big/\p^2\right)^\times.\] On a \[\left|H\right| = \Norm(\p)(\Norm(\p) - 1).\] Soit $p\in \Z$ l'unique nombre premier tel que $p\Z = \p\cap \Z$. L'entier $\Norm(\p)$ est une puissance de $\p$, d'où $p\mid \Norm(\p)$ et \[p\mid \left| H \right|.\] Le théorème de Cauchy abélien assure alors qu'il existe un élément $\alpha \in H$ d'ordre $p$. Comme $I$ est de Carmichael par hypothèse, on a $\alpha^{\Norm(I)}\equiv \alpha \pmod{I}$ puis $\alpha^{\Norm(I)} \equiv \alpha \pmod{p^2}$, car $\p^2\mid I$. Comme en outre $\alpha\notin \p^2$ (faute de quoi il est d'ordre $1\neq p$), on en déduit $\alpha^{\Norm(I) - 1} \equiv 1 \pmod{\p^2}$ puis \[p \mid \Norm(I) - 1\] d'après le théorème de Lagrange. Comme $p\mid \Norm(I)$, cela constitue une contradiction. L'idéal $I$ est donc sans facteur carré.
 \end{proof}
 
 \begin{remarque}
