@@ -4,7 +4,7 @@
 \documentclass[a4paper, 12pt, oneside]{article}
 \usepackage{LoLaTeXpackage}
 \usepackage{csquotes}
-\usepackage{biblatex}
+\usepackage[backend=biber, style=alphabetic]{biblatex}
 \usepackage[linesnumbered, boxruled, vlined, onelanguage, french]{algorithm2e}
 \usepackage[french]{babel}
 \usepackage{pgfornament}
@@ -30,8 +30,10 @@
 		\input{titlepage}
 	\end{titlepage}
 	\stepcounter{page}
+	\renewcommand\thetheoremcounter{I.\arabic{theoremcounter}}
 	\input{Introduction}
 	\input{ListeCarmichael}
+	\renewcommand\thetheoremcounter{\arabic{section}.\arabic{theoremcounter}}
 	\input{section-DelicesTheorie}
 	\input{section-CorpsQuadratiques}
 	\input{section-InterludeIdeauxExtensions}
