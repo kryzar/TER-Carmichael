@@ -4,7 +4,7 @@
 
 Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $\Q(\zeta_q)$ où $q$ est un nombre premier. Commençons par un résultat théorique.
 
-\begin{theoreme}[3.1 dans l'article]
+\begin{theoreme}[3.1 dans l'article]\label{ptf}
 	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
 \end{theoreme}
 
@@ -18,6 +18,10 @@ Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorè
 	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abélien} $K$ de discriminant premier avec $n$, $n$ n'admet aucun $K$-témoin de Fermat.
 \end{theoreme}
 
+\begin{proof}
+	C'est la conjonction des théorèmes \ref{ptf} et \ref{theoreme-3.1}.
+\end{proof}
+
 Le résultat le plus à même d'aboutir à un test de primalité est le crucial théorème suivant. Il nous enseigne qu'il faut aller chercher du côté des corps cyclotomiques. Nous en donnons la démonstration.
 
 \begin{theoreme}[3.6 dans l'article]\label{theoreme-3.6}
@@ -26,7 +30,7 @@ Le résultat le plus à même d'aboutir à un test de primalité est le crucial 
 
 Nous avons de quelques résultats préliminaires.
 
-\begin{lemme}[3.3 dans l'article]
+\begin{lemme}[3.3 dans l'article]\label{lemme-3.3}
 	Soit $n$ un entier. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que l'identité \[p^d - 1 \nmid n^d - 1\] pour tout entier $d> d_0$.
 \end{lemme}
 
@@ -35,11 +39,11 @@ Nous avons de quelques résultats préliminaires.
 \end{lemme}
 
 \begin{lemme}\label{lemme-inerte}
-	Soient $K/\Q$ une extension \emph{abélienne} de degré fini, $p$ un nombre premier non ramifié en $K$ et $\P$ un idéal premier de $\OK$ au dessus de $p$. S'il existe un groupe \emph{cyclique} $H$ et un isomorphisme de groupes \[\Gal(K/\Q) \to H\] qui envoie la substitution de Frobenius de $\P$ en $L/K$ sur un générateur de $H$, alors $p$ est inerte dans $K$.
+	Soient $K/\Q$ une extension \emph{abélienne} de degré fini, $p$ un nombre premier non ramifié en $K$ et $\P$ un idéal premier de $\OK$ au dessus de $p$. S'il existe un groupe \emph{cyclique} $H$ et un isomorphisme de groupes \[\Gal(K/\Q) \to H\] qui envoie la substitution de Frobenius de $\P$ en $K/\Q$ sur un générateur de $H$, alors $p$ est inerte dans $K$.
 \end{lemme}
 
 \begin{proof}
-	Dans cette preuve, nous utilisons à volonté les résultats de \cite{Kraus}, ch. 3, § 4 et 5. Soient $f : \Gal(K/\Q) \to H$ un isomorphisme de groupes et $h$ un générateur de $h$ vérifiant $f(s_\p) = h$. Comme $h$ engendre $H$ et que $f$ est un isomorphisme et le Frobenius $s_\P$ (bien défini puisque $K/\Q$ est non ramifiée en $p$) est générateur de $\Gal(K/\Q)$. Mais $s_\P$ est par définition (\cite{Kraus}, ch. 3, § 5) générateur du groupe du sous-groupe de décomposition $D_\P$ de $\P$ dans $K/\Q$, qui est un sous-groupe de $\Gal(K/\Q)$. On a donc l'égalité \[D_\P = \Gal(K/\Q)\] et la sous-extension correspondant $D_\P$ dans la correspondance de Galois est donc $\Q$. D'après le lemme 3.9 de \cite{Kraus}, cela induit \[g_p = 1.\] L'idéal $\P$ est donc l'unique idéal premier de $\OK$ au dessus de $p$, et comme $p$ ne se ramifie pas dans $K$, cela prouve l'inertie de $p$.
+	Dans cette preuve, nous utilisons à volonté les résultats de \cite{Kraus}, ch. 3, § 4 et 5. Soient $f : \Gal(K/\Q) \to H$ un isomorphisme de groupes, $s_\P$ la substitution de Frobenius de $\P$ en $K/\Q$ et $h$ un générateur de $H$ vérifiant $f(s_\p) = h$. L'extension étant non ramifiée en $\P$, tout ceci a bien un sens. Comme $h$ engendre $H$, que $s_\P$ engendre le sous-groupe de décomposition de $\P$ et que $f$ est un isomorphisme entre $\Gal(K/\Q)$ et $H$, le Frobenius $s_\P$ est générateur de $\Gal(K/\Q)$. On a donc l'égalité \[D_\P = \Gal(K/\Q).\] La sous-extension de $K/\Q$ correspondant $D_\P$ dans la correspondance de Galois est donc $\Q$. D'après le lemme 3.9 de \cite{Kraus}, cela induit \[g_p = 1.\] L'idéal $\P$ est donc l'unique idéal premier de $\OK$ au dessus de $p$, et comme $p$ ne se ramifie pas dans $K$, cela prouve l'inertie de $p$.
 
 \end{proof}
 
@@ -55,16 +59,23 @@ où $a$ est un entier tel que $\sigma(\zeta_n) = \zeta_n^a$, est un isomorphisme
 \end{lemme}
 
 \begin{proof}
-	Commençons par montrer que cette application est un morphisme de groupes bien défini. Notons la $\varphi$. Soit $\zeta\in \Gal(\Q(\zeta_n)/\Q)$. Comme $\zeta_n$ est une racine du polynôme cyclotomique $\Phi_n$ et que l'extension $\Q(\zeta_n)/\Q$ est le corps de décomposition de $\Phi_n$, l'automorphisme $\sigma$ envoie $\zeta_n$ sur une autre racine primitive de l'unité. Mais comme $\zeta_n$ est génératrice du groupe des racines $n$-ième de l'unité, il existe un entier $a$ tel que \[\sigma(\zeta_n) = \zeta_n^a.\] Comme cette racine est primitive, on a que $a$ et $n$ sont premiers entre eux, d'où \[\sigma(\zeta_n) = \zeta_n^a \in \left(\Z/n\Z\right)^\times.\] Si désormais $a$ et $b$ sont deux entiers tels que $\zeta_n^a = \zeta_n^b$, on a alors $\zeta_n^{a-b} = 1$. Comme $\zeta_n$ est primitive, cela implique \[\overline{a} = \overline{b}.\] Pour montrer que l'application est un morphisme, soient $\sigma_1, \sigma_2 \in \Gal(\Q(\zeta_n)/\Q)$ dont les images sont respectivement $a_1$ et $a_2$. On a \[\sigma_1\circ \sigma_2(\zeta_n) = \sigma_1(\zeta_n^{a_2}) = (\sigma_1(\zeta_n))^{a_2} = \zeta^{a_1 a_2}\] et donc \[\varphi(\sigma_1\circ\sigma_2) = a_1 a_2 = \varphi(\sigma_1)\varphi(\sigma_2).\] L'application $\varphi$ est donc un morphisme de groupes bien défini. \\
+	Commençons par montrer que cette application est bien définie et que c'est un morphisme de groupes. Notons la $\varphi$. Soit $\zeta\in \Gal(\Q(\zeta_n)/\Q)$. Comme $\zeta_n$ est une racine du polynôme cyclotomique $\Phi_n$ et que l'extension $\Q(\zeta_n)/\Q$ est le corps de décomposition de $\Phi_n$, l'automorphisme $\sigma$ envoie $\zeta_n$ sur une autre racine primitive de l'unité. La racine $\zeta_n$ étant primitive $a$ premier avec $n$ tel que \[\sigma(\zeta_n) = \zeta_n^a.\] L'entier $a$ est donc bien inversible modulo $n$. Si désormais $a$ et $b$ sont deux entiers tels que $\zeta_n^a = \zeta_n^b$, on a alors $\zeta_n^{a-b} = 1$. Comme $\zeta_n$ est primitive, cela implique \[\overline{a} = \overline{b}.\] Enfin, cette application est un morphisme de groupes, soient $\sigma_1, \sigma_2 \in \Gal(\Q(\zeta_n)/\Q)$ dont les images respectives par $\varphi$ sont $a_1$ et $a_2$. On a \[\sigma_1\circ \sigma_2(\zeta_n) = \sigma_1(\zeta_n^{a_2}) = (\sigma_1(\zeta_n))^{a_2} = \zeta^{a_1 a_2}\] et donc \[\varphi(\sigma_1\circ\sigma_2) = a_1 a_2 = \varphi(\sigma_1)\varphi(\sigma_2).\] L'application $\varphi$ est donc un morphisme de groupes bien défini. \\
 
-	Montrons que c'est un isomorphisme. Comme les ensembles de départ et d'arrivée sont finis, il suffit de montrer l'injectivité. Soit $\sigma\in \Gal(\Q(\zeta_n)/\Q)$ un automorphisme d'image $\overline{1}$. On a alors \[\sigma(\zeta_n) = \zeta_n\] et étant un automorphisme, l'égalité \[\sigma = \Id.\] Cela termine la démonstration.
+	Montrons que c'est un isomorphisme. Comme les ensembles de départ et d'arrivée sont finis, il suffit de montrer l'injectivité. Soit $\sigma\in \Gal(\Q(\zeta_n)/\Q)$ un automorphisme d'image $\overline{1}$. On a alors \[\sigma(\zeta_n) = \zeta_n\] et $\sigma$ étant bijectif, l'égalité \[\sigma = \Id.\] Cela termine la démonstration.
 \end{proof}
 
 
 Démontrons le théorème \ref{theoreme-3.6}.
 
 \begin{proof}[Démonstration (du théorème \ref{theoreme-3.6})]
-	L'entier $n$ a par hypothèse au moins trois facteurs premiers distincts. L'un d'entre eux, que nous notons $p$, est donc racine primitive modulo $q$ pour une infinité de nombres premiers $q$. Soit $d_0$ le rang à partir duquel on a \[p^d - 1 \nmid n^d - 1\] pour tout entier $d>d_0$. Vient alors l'existence d'une infinité de nombres premiers $q$ (premiers avec $n$) pour lesquels $p$ est une racine primitive et vérifiant $q>d_0$. Fixons un tel nombre $q$ et \[K = \Q(\zeta_q).\] Soit $\varphi$ l'isomorphisme donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après l'identité (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. Comme $q>d_0$, on a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} permet d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
+	L'entier $n$ a par hypothèse au moins trois facteurs premiers distincts. L'un d'entre eux, que nous notons $p$, est donc racine primitive modulo $q$ pour une infinité de nombres premiers $q$. Soit $d_0$ le rang à partir duquel on a \[p^d - 1 \nmid n^d - 1\] pour tout entier $d>d_0$, donné par le lemme \ref{lemme-3.3}. Vient alors l'existence d'une infinité de nombres premiers $q$ (premiers avec $n$) pour lesquels $p$ est une racine primitive et vérifiant $q>d_0$. Fixons un tel nombre $q$ et \[K = \Q(\zeta_q).\] Soit $\varphi$ l'isomorphisme
+\begin{center}
+	\begin{tabular}{cccc}
+		$\varphi :$ & $\Gal(\Q(\zeta_q)/\Q)$ & $\longrightarrow$ & $\mathbb{F}_q^*$ \\
+		&$\sigma$	& $\longmapsto$ & $\overline{a}$,
+	\end{tabular}
+\end{center}
+où $a$ est un entier tel que $\sigma(\zeta_q) = \zeta_q^a$, donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après l'identité (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} appliqué à $K/\Q$ et $\varphi$ prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. Comme $q>d_0$, on a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{korselt-cara} permettent d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
 
 \end{proof}
 
@@ -88,6 +99,10 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 \begin{theoreme}[troisième réciproque]
 	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, $n$ n'admet aucun $K$-témoin de Fermat.
 \end{theoreme}
+
+\begin{proof}
+	C'est la conjonction du théorème \ref{ptf} et du corollaire \ref{corollaire-3.7}.
+\end{proof}
 
 \begin{remarque}
 	Dans les deux réciproques que nous venons de donner, l'hypothèse sur le discriminants est que $n$ et $K$ doivent être premiers entre eux. C'est une hypothèse bien plus forte que de demander à ce que $n$ ne divise pas le discriminant de $K$ comme dans les corps quadratiques (\ref{ptf-reciproque})et cela permet de tester beaucoup moins de corps.
@@ -118,7 +133,7 @@ Passons désormais aux simulations numériques.
 \end{algorithm}
 \vspace{1em}
 
-Cet algorithme s'est montré encore moins performant que sa version quadratique. En posant $n=561$, $K = \Q(\zeta_5)$ et $S_\alpha = \{-1, 0, +1\}$, l'algorithme n'a toujours pas terminé après avoir tourné pendant une heure sur l'ordinateur personnel de l'auteur. Ce n'est finalement pas si étonnant. On aura \[\Norm(n\OK) = 561^4 = 99049307841\] et si l'on prend par exemple l'entier algébrique de coordonnées $(1, 1, 0, 0)$ \[\alpha =1 + \zeta,\] l'ordinateur portable de l'auteur n'a toujours pas su calculer $\alpha^{\Norm(n\OK)}$ après trente minutes de calculs\footnote{Wolfram alpha n'a pas fait mieux.}. Les coordonnées ont pourtant été choisies pour être les plus petites possibles, mais le coût du calcul de $\alpha^{\Norm(n\OK)}$ est prohibitif. Plus généralement, le calcul de $\alpha^{\Norm(n\OK)} = \alpha^{n^{q-1}}$ sort rapidement des capacités d'un ordinateur personnel standard.
+Cet algorithme s'est montré encore moins performant que sa version quadratique. En posant $n=561$, $K = \Q(\zeta_5)$ et $S_\alpha = \{-1, 0, +1\}$, l'algorithme n'a toujours pas terminé après avoir tourné pendant une heure sur l'ordinateur personnel de l'auteur. Ce n'est finalement pas si étonnant. On aura \[\Norm(n\OK) = 561^4 = 99049307841\] et si l'on prend par exemple l'entier algébrique de coordonnées $(1, 1, 0, 0)$ \[\alpha =1 + \zeta,\] l'ordinateur portable de l'auteur n'a toujours pas su calculer $\alpha^{\Norm(n\OK)}$ après trente minutes de calculs\footnote{Wolfram alpha n'a pas fait mieux.}. Les coordonnées ont pourtant été choisies pour être les plus petites possibles, mais le coût du calcul de $\alpha^{\Norm(n\OK)}$ est prohibitif : chaque coordonnée a plusieurs milliers de chiffres. Plus généralement, le calcul de $\alpha^{\Norm(n\OK)} = \alpha^{n^{q-1}}$ sort rapidement des capacités d'un ordinateur personnel standard.
 
 \subsubsection{Critère de Korselt}
 
@@ -175,7 +190,7 @@ Voici les faits remarquables à retenir de ces simulations.
 	\begin{itemize}
 		\item Nous n'avons trouvé aucun corps cyclotomique parmi ceux testés dans lequel les entiers suivants sont de Carmichael : 561, 1105, 2465, 6601, 1085, 41041, 62745, 101101, 449065.
 		\item Les autres entiers sont de Carmichael dans $\Q(\zeta_3)$ ou $\Q(\zeta_5)$, mais dans aucun autre corps testé.
-		\item Les deux seuls entiers de Carmichael de la liste de Carmichael dans $\Q(\zeta_5)$ sont 252601 et 512461. Leurs facteurs premiers sont congrus à $1$ modulo $5$. À noter que nous avons exhibé des entiers qui ne sont pas de Carmichael, dont tous les facteurs premiers ne sont pas congrus à $1$ modulo $5$ et qui sont de Carmichael dans $\Q(\zeta_5)$. C'est par exemple le cas de $2047$ (qui n'est même pas congru à $1$ modulo $5$).. \NTS{lien vers liste complète}
+		\item Les deux seuls entiers de Carmichael de la liste de Carmichael dans $\Q(\zeta_5)$ sont 252601 et 512461. Leurs facteurs premiers sont congrus à $1$ modulo $5$. À noter que nous avons exhibé des entiers qui ne sont pas de Carmichael, dont tous les facteurs premiers ne sont pas congrus à $1$ modulo $5$ et qui sont de Carmichael dans $\Q(\zeta_5)$. C'est par exemple le cas de $2047$ (qui n'est même pas congru à $1$ modulo $5$). \NTS{lien vers liste complète}
 		\item L'entier 512461 est l'unique entier testé qui soit de Carmichael dans deux corps cyclotomiques à la fois.
 		\item L'entier de Howe est de Carmichael dans $\Q(\zeta_3)$ mais dans aucun autre corps testé.
 	\end{itemize}
