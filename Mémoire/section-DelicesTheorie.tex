@@ -51,22 +51,18 @@ On a alors la (fondamentale) caractérisation suivante.
 \end{corollaire}
 
 \begin{remarque}
-	Il faut ici se montrer vigilant avec la nomenclature. Pour montrer qu'un idéal est de Carmichael, montrer qu'il vérifie le critère de Korselt ne suffit pas. Il faut aussi montrer qu'il est composé. Dans la littérature, on dit en général qu'un idéal vérifie le critère de Korselt s'il vérifie les hypothèses du théorème \ref{korselt-generalise} et en plus qu'il est composé. Nous choisissons ici de distinguer les notions pour éviter toute confusion sur la nature des objets que nous manipulerons.
+	Il faut être vigilant avec la nomenclature. Pour établir qu'un idéal est de Carmichael, il faut montrer qu'il est composé, indépendamment du critère de Korselt.
 \end{remarque}
 
-Ce critère permet de généraliser le petit théorème de Fermat. Dans une extension galoisienne de $\Q$ de degré fini, un nombre premier est soit premier, soit de Carmichael.
+Ce critère permet de généraliser le petit théorème de Fermat. Dans une extension galoisienne $K$ de $Q$ de degré fini, un nombre premier est soit inerte, soit de Carmichael dans $K$. Plus précisément.
 
 \begin{theoreme}[petit théorème de Fermat généralisé, \cite{article} th. 2.2]\label{ptf}
 	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne de degré fini tels que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
 \end{theoreme}
 
 \begin{proof}
-	Comme $p\nmid \Disc(K)$, le nombre premier $p$ n'est pas ramifié dans $\OK$. Comme l'extension $K/\Q$ est galoisienne de degré fini, les indices de ramifications et degrés résiduels des idéaux de $\OK$ au dessus de $\p$ sont égaux. L'idéal $p\OK$ est donc de la forme \[p\OK = \p_1\cdot \dots \p_r.\] Soit donc $f$ ce degré résiduel. On a $ef = [K : \Q]$ et surtout que $f$ divise $[ K : \Q ]$. Ainsi, pour tout indice $1\leq i \leq r$, il vient \[ \Norm(\p_i) - 1 = p^f - 1 \mid p^{[K : \Q]} - 1 = \Norm(p\OK) - 1.\] L'idéal $\OK$ vérifie donc le critère de Korselt généralisé \ref{korselt-generalise}, d'où le résultat.
+	Comme $p\nmid \Disc(K)$, le nombre premier $p$ n'est pas ramifié dans $\OK$. Comme l'extension $K/\Q$ est galoisienne de degré fini, les indices de ramifications et degrés résiduels des idéaux de $\OK$ au dessus de $\p$ sont égaux. L'idéal $p\OK$ est donc de la forme \[p\OK = \p_1\cdot \dots \p_r.\] Soit donc $f$ ce degré résiduel. On a $rf = [K : \Q]$ et surtout que $f$ divise $[ K : \Q ]$. Ainsi, pour tout indice $1\leq i \leq r$, il vient \[ \Norm(\p_i) - 1 = p^f - 1 \mid p^{[K : \Q]} - 1 = \Norm(p\OK) - 1.\] L'idéal $\OK$ vérifie donc le critère de Korselt généralisé \ref{korselt-generalise}, d'où le résultat.
 \end{proof}
-
-\begin{remarque}
-	Ce résultat est beaucoup plus puissant que \ref{identite-1} et le généralise.
-\end{remarque}
 
 Nous étendons alors la notion de témoin de Fermat.
 
@@ -74,11 +70,16 @@ Nous étendons alors la notion de témoin de Fermat.
 	Soient $n$ un entier, $K/\Q$ une extension galoisienne de degré fini et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $n$ si l'on a \[\alpha^{\Norm(n\OK)} \not \equiv \alpha \pmod{n\OK}.\]
 \end{definition}
 
-Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres Galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}. Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
+Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}. Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
 
-\begin{theoreme}[réciproque du petit théorème de Fermat généralisé, \cite{article} th. 2.3]\label{ptf-reciproque}
-	Soit $n>2$ un entier composé. Alors $n$ admet un témoin de Fermat dans tout corps quadratique de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right)\] où $p$ est un facteur premier impair de $n$.
+\begin{theoreme}[réciproque du petit théorème de Fermat généralisé, \cite{article} th. 2.4]\label{ptf-reciproque}
+	Soit $n>2$ un entier composé. Alors $n$ admet un témoin de Fermat dans les corps quadratique de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right)\] où $p$ est un facteur premier impair de $n$.
 \end{theoreme}
+
+\begin{proof}
+	Soit $K$ un corps quadratique comme dans l'énoncé. Le nombre premier $p$ se ramifie dans $K$ et $n\OK$ a un facteur carré. Il n'est donc pas de Carmichael d'après le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt}.
+\end{proof}
+
 
 Vient alors l'équivalence suivante.
 
@@ -94,14 +95,14 @@ Vient alors l'équivalence suivante.
 Au delà de sa force théorique, cette énoncé semble porter une valeur historique notable. Le test de primalité de Fermat était le seul test de primalité classique à ne pas disposer d'une réciproque (pour le test d'Euler par exemple, c'est une équivalence). Cette absence de réciproque semblait bien être le prix à payer pour sa simplicité et son efficacité. Il aura certes fallu aller chercher la réciproque dans les corps de nombres, mais l'énoncé prouve que les corps quadratiques suffisent. Ces objets ne sont d'ailleurs pas si loin de l'arithmétique classique : Gauss les étudiait déjà.
 \end{remarque}
 
-Nous avons déjà des outils suffisamment robustes pour fournir un test de primalité naïf. Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt \ref{korselt-generalise}. La contraposée du petit théorème de Fermat généralisé \ref{ptf-contraposee} nous permet en suite d'écrire le critère de composition suivant.
+Nous avons déjà des outils suffisamment robustes pour fournir un test de primalité naïf. Comme certains outils de calcul formel sont capables de décomposer un idéal de l'anneau d'entiers d'un corps de nombres en produit d'idéaux premiers dudit anneau\footnote{C'est le cas par exemple de SageMath et PariGP \NTS{mettre liens}. L'auteur de ce texte a choisi d'utiliser Sage et s'en servira beaucoup par la suite.}, il est facile d'implémenter le critère de Korselt \ref{korselt-generalise}. La contraposée du petit théorème de Fermat généralisé \ref{ptf-equivalence} nous permet en suite d'écrire le critère de composition suivant.
 
 \vspace{1em}
 \begin{algorithm}[H]\label{test-primalite-korselt}
 \caption{Critère de composition de Korselt dans les extensions galoisiennes de degré fini de $\Q$}
 \KwIn{$n$ (entier à tester), $\mathscr{K}$ (liste d'extensions galoisiennes de degré fini de $\Q$)}
 \ForEach{$K$ dans $\mathscr{K}$}{
-	\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
+	\If{$n \nmid \Disc(K)$}{
 		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
 			\KwRet{$n\OK$ n'est pas de Carmichael et $n$ est composé} \\
 			\textbf{arrêter le programme.}
