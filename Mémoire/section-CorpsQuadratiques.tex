@@ -4,7 +4,7 @@
 
 Entrons dès à présent dans le vif du sujet. 
 
-\begin{theoreme}[2.5 dans l'article]\label{theoreme-2.5}
+\begin{theoreme}[\cite{article} th. 2.5]\label{theoreme-2.5}
 	Soit $n$ un entier impair sans facteurs carrés. S'il existe un diviseur premier $p$ de $n$ vérifiant $$p^2 - 1 \nmid n^2 - 1,$$ alors il existe une infinité de corps quadratiques $K$ dans lesquels $n$ \emph{n'est pas} de Carmichael.
 \end{theoreme}
 
@@ -45,10 +45,10 @@ En guise de preuve, Howe exhibe un tel nombre, défini par
 		h = 17 \cdot 31 \cdot 41 \cdot 43 \cdot 89 \cdot 97 \cdot 167 \cdot 331 = 443372888629441.
 	\end{equation}
 
-Nous l'appellerons dans la suite \emph{entier de Howe}. L'existence de cet entier signifie que — comme dans $\Q$ — le test de Fermat \ref{test-Fermat-quadratique} ne peut pas prouver qu'un entier est composé simplement parce qu'il n'a de $K$-témoins de Fermat dans aucun corps quadratique $K$ dont le discriminant lui est premier. Plus généralement, l'auteur de l'article montre le théorème suivant.
+Nous l'appellerons dans la suite \emph{entier de Howe}. Il est même de Carmichael dans $\Q$. L'existence de cet entier signifie que — comme dans $\Q$ — le test de Fermat \ref{test-Fermat-quadratique} ne peut pas prouver qu'un entier est composé simplement parce qu'il n'a de $K$-témoins de Fermat dans aucun corps quadratique $K$ dont le discriminant lui est premier. Plus généralement, l'auteur de l'article montre le théorème suivant.
 
-\begin{theoreme}[2.7 dans l'article]\label{theoreme-2.7}
-	Soient $n$ un entier composé sans facteur carré et $d\geq 1$ un entier. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans $\Q$ et tout corps de nombres de degré $d$ de discriminant premier avec $n$.
+\begin{theoreme}[\cite{article} th. 2.5]\label{theoreme-2.7}
+	Soient $n$ un entier composé sans facteurs carrés et $d\geq 1$ un entier. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans tout corps de nombres de degré $d$ de discriminant premier avec $n$.
 \end{theoreme}
 
 \begin{definition}
@@ -58,7 +58,7 @@ Nous l'appellerons dans la suite \emph{entier de Howe}. L'existence de cet entie
 L'entier de Howe \ref{Howe} est donc un nombre de Carmichael rigide d'ordre $2$. Ces résultats nous enseignent que les corps quadratiques — à l'instar de $\Q$ — ne peuvent pas détecter tous les entiers de Carmichael à l'aide avec le test de Fermat. Terminons avec un énoncé proche de l'arithmétique classique.
 
 \begin{corollaire}
-	Soit $n$ un entier. Si $n$ est sans facteur carré et composé, alors les propositions suivantes sont équivalentes :
+	Soit $n$ un entier. Si $n$ est sans facteurs carrés et composé, alors les propositions suivantes sont équivalentes :
 	\begin{itemize}
 		\item l'entier $n$ est de Carmichael dans tout corps quadratique de discriminant premier avec $n$~;
 		\item l'identité \[p^2 - 1 \mid n^2 - 1\] est vérifiée pour tout diviseur premier $p$ de $n$.
@@ -98,7 +98,7 @@ Nous étudions ici le critère de composition de Korselt \label{test-primalite-k
 			paramètre & valeur \\
 			\hline
 			\hline
-			corps testés & corps quadratiques de la forme $\Q(\sqrt{d})$ où $d$ est un entier sans facteur carré dans $[\![-5000, +5000]\!]$\footnote{Il y a 6084 tels entiers.} \\\hline
+			corps testés & corps quadratiques de la forme $\Q(\sqrt{d})$ où $d$ est un entier sans facteurs carrés dans $[\![-5000, +5000]\!]$\footnote{Il y a 6084 tels entiers.} \\\hline
 			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael}  \\\hline
 		\end{tabularx}
 		\caption{Paramètres des simulations du critère de Korselt pour les corps quadratiques.}

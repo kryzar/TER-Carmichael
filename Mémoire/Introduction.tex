@@ -3,19 +3,19 @@
 
 Ayant pour point de départ l'article \textit{Carmichael numbers in number rings} \cite{article} de G.A. Steele, ce mémoire s'applique à en redonner les résultats, les tester numériquement, répondre à quelques questions soulevées et essayer d'en tirer un critère de composition. \\
 
-Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. Un tel entier $a$ est appelé \emph{témoin de Fermat pour $n$}. Il existe cependant des entiers $n$ \textbf{composés} n'ayant aucun témoin de Fermat. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers, que l'on peut caractériser ainsi.
+Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. Un tel entier $a$ est appelé \emph{témoin de Fermat pour $n$}. Il existe cependant des entiers $n$ \textbf{composés} n'ayant aucun témoin de Fermat. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers \ref{ref vers [1] de l'article}, que l'on peut caractériser ainsi.
 
 \begin{proposition}\label{korselt} Soit $n$ un entier. Les assertions suivantes sont équivalentes :
 	\begin{enumerate}[font=\normalshape]
 		\item l'entier $n$ n'a aucun témoin de Fermat ~;
-		\item l'entier $n$ est sans facteur carré et chacun de ses facteurs premiers vérifie l'identité \[p-1 \mid n-1 ~.\] \label{korselt-b}
-		\item l'identité \[\lambda(n) \mid n-1\] est vérifiée, la fonction $\lambda$ étant l'indicatrice de Carmichael.
+		\item l'entier $n$ est sans facteurs carrés et chacun de ses facteurs premiers $p$ vérifie l'identité \[p-1 \mid n-1 ~.\] \label{korselt-b}
+		\item l'identité \[\lambda(n) \mid n-1\] est vérifiée, la fonction $\lambda$ étant l'indicatrice de Carmichael, définie comme la fonction $\N^* \to \N^*$ qui à tout entier $n$ associe l'exposant du groupe $\left(\Z/n\Z\right)^\times$.
 	\end{enumerate}
 \end{proposition}
 
-Un entier $n$ est de donc de Carmichael \ssi \textbf{il est composé} et vérifie l'une des assertions de \ref{korselt}. L'assertion \ref{korselt-b} de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer à \cite{Demazure} §3.3, p. 89. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres.
+Un entier $n$ est donc de Carmichael \ssi \textbf{il est composé} et vérifie l'une des assertions de \ref{korselt}. L'assertion \ref{korselt-b} de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer à \cite{Demazure} §3.3, p. 89. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres.
 
-\begin{definition} Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael si \textbf{$I$ est composé} et pour tout entier algébrique $\alpha \in \OK$, la congruence
+\begin{definition}[\cite{article} déf. 2.1] Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael si \textbf{$I$ est composé} et pour tout entier algébrique $\alpha \in \OK$, la congruence
 	\begin{equation}\label{congruence-Carmichael}
 		\alpha^{\Norm(I)} \equiv \alpha \pmod{I}
 	\end{equation}
@@ -26,9 +26,9 @@ est vérifiée.
 	Un entier de Carmichael peut donc être vu comme un idéal de Carmichael du corps de nombres $\Q$.
 \end{remarque}
 
-Étant donnés $n$ un entier et $K$ un corps de nombres, nous dirons que $n$ est de Carmichael dans $K$ si l'idéal $n\OK$ est de Carmichael. De tels idéaux existent et cette définition est le point de départ d'un formalisme fructueux. L'auteur de l'article commence par généraliser le critère de Korselt et le petit théorème de Fermat ~; il en donne notamment une fameuse réciproque. Il étudie en suite les corps quadratiques, puis cyclotomiques, cadres dans lesquels il démontre plusieurs résultats d'existence et non-existence d'idéaux de Carmichael. De nombreuses questions sont soulevées par l'article, notamment la suivante. 
+Étant donnés $n$ un entier et $K$ un corps de nombres, nous dirons que $n$ est de Carmichael dans $K$ si l'idéal $n\OK$ est de Carmichael dans $\OK$. De tels idéaux existent et cette définition est le point de départ d'un formalisme fructueux. L'auteur de l'article commence par généraliser le critère de Korselt et le petit théorème de Fermat ~; il en donne notamment une fameuse réciproque. Il étudie en suite les corps quadratiques, puis cyclotomiques, cadres dans lesquels il démontre plusieurs résultats d'existence et non-existence d'idéaux de Carmichael. De nombreuses questions sont soulevées par l'article, notamment la suivante. 
 
-\begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombre. Dans quel mesure $n$ est-il de Carmichael dans $K$ ?
+\begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombres. Dans quelle mesure $n$ est-il de Carmichael dans $K$ ?
 \end{question}
 
 Nous nous proposons de répondre à une partie de cette question au cours de ce mémoire, que nous abordons avec une vision aussi bien théorique que pratique. Au delà des résultats de l'article, l'auteur du présent texte a implémenté plusieurs algorithmes y étant suggérés, et en explique les résultats. Les preuves des énoncés fondamentaux de l'article sont redonnées (voire légèrement modifiées\footnote{Nous ajoutons deux lemmes à la preuve du théorème 3.6 de l'article (\ref{theoreme-3.6}).} dans ce mémoire. Nous ajoutons quelques corollaires et étendons la notion de \emph{témoin de Fermat}. Enfin certaines preuves non redonnées sont quant à elle commentées dans des environnements dédiés intitulés \textit{Un mot sur la preuve}.
