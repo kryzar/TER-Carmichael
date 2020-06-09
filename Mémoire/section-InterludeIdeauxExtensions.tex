@@ -26,9 +26,9 @@ Pour y répondre, l'auteur du présent mémoire a implémenté l'algorithme Suiv
 
 \vspace{1em}
 \begin{algorithm}[H]\label{test-Fermat-quadratique}
-\caption{trouver un entier $n$ et un corps quadratique $K$ tels que $n$ ne soit pas de Carmichael dans $K$}
+\caption{trouver un entier rationnel $n$ et un corps quadratique $K$ tels que $n$ ne soit pas de Carmichael dans $K$}
 \KwIn{$\mathscr{N}$ (liste d'entiers qui ne sont \emph{pas} de Carmichael), $\mathscr{K}$ (liste de corps quadratiques)}
-\KwOut{couples $(n, K)$ où $K$ est un corps quadratique de $\mathscr{K}$ et $n$ est est un entier de $\mathscr{N}$ de Carmichael dans $K$ mais pas dans $\Q$}
+\KwOut{couples $(n, K)$ où $K$ est un corps quadratique de $\mathscr{K}$ et $n$ est est un entier rationnel de $\mathscr{N}$ de Carmichael dans $K$ mais pas dans $\Q$}
 \ForEach{$n$ dans $\mathscr{N}$}{
 	\ForEach{$K$ dans $\mathscr{K}$}{
 		\If{$n$ est de Carmichael dans $K$ (critère de Korselt)}{
@@ -50,8 +50,8 @@ Cette algorithme retourne de nombreux résultats. Par exemple $35$ est de Carmic
 			\hline
 			\hline
 			nombre de couples testés & 5723 \\\hline
-			nombre d'entiers qui sont de Carmichael dans un corps testé & 2930 \\\hline
-			proportion d'entiers qui sont de Carmichael dans un corps testé & 51,2 \% \\\hline
+			nombre d'entiers rationnels qui sont de Carmichael dans un corps testé & 2930 \\\hline
+			proportion d'entiers rationnels qui sont de Carmichael dans un corps testé & 51,2 \% \\\hline
 		\end{tabular}
 		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
 	\end{center}

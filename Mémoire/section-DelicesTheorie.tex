@@ -3,7 +3,7 @@
 Certaines propriétés fondamentales des \emph{entiers} de Carmichael restent vraies dans le cadre plus général des \emph{idéaux} de Carmichael. Commençons par un lemme.
 
 \begin{lemme}\label{identite-1}
-	Soient $K$ un corps de nombres, $\p$ un idéal premier de $\OK$ et $\alpha \in \OK$ un entier algébrique. Alors la congruence \[\alpha^{\Norm(\p)} \equiv \alpha \pmod{\p}\] est vérifiée.
+	Soient $K$ un corps de nombres, $\p$ un idéal premier de $\OK$ et $\alpha \in \OK$ un entier. Alors la congruence \[\alpha^{\Norm(\p)} \equiv \alpha \pmod{\p}\] est vérifiée.
 \end{lemme}
 
 \begin{proof}
@@ -15,13 +15,13 @@ Nous pouvons dès à présent généraliser le critère de Korselt \ref{korselt}
 \begin{theoreme}[critère de Korselt généralisé, \cite{article} th. 2.2]\label{korselt-generalise}
 	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Les assertions suivantes sont équivalentes :
 	\begin{itemize}
-		\item pour tout entier algébrique $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée ~;
+		\item pour tout entier $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée ~;
 		\item l'idéal $I$ est sans facteurs carrés et chacun de ses facteurs premier $\p$ vérifie l'identité \[\Norm(\p) - 1 \mid \Norm(I) - 1.\]
 	\end{itemize}
 \end{theoreme}
 
 \begin{proof}
-	Commençons par le sens réciproque. Soit $\alpha\in \OK$ un entier algébrique et $\p$ un idéal premier de $\OK$ divisant $I$.
+	Commençons par le sens réciproque. Soit $\alpha\in \OK$ un entier et $\p$ un idéal premier de $\OK$ divisant $I$.
 	\begin{itemize}
 		\item Si $\alpha \notin \p$, vient $\alpha^{\Norm(\p) - 1} \equiv 1 \pmod{\p}$ d'après le lemme \ref{identite-1}. L'entier $\Norm(\p) - 1$ divisant $\Norm(I) - 1$ par hypothèse, cela entraîne $\alpha^{\Norm(I)-1}\equiv 1 \pmod{\p}$ et donc \[\alpha^{\Norm(I)} \equiv \alpha \pmod{\p}.\]
 		\item Si $\alpha\in \p$, la dernière congruence est toujours vérifiée.
@@ -57,7 +57,7 @@ On a alors la (fondamentale) caractérisation suivante.
 Ce critère permet de généraliser le petit théorème de Fermat. Dans une extension galoisienne $K$ de $Q$ de degré fini, un nombre premier est soit inerte, soit de Carmichael dans $K$. Plus précisément.
 
 \begin{theoreme}[petit théorème de Fermat généralisé, \cite{article} th. 2.2]\label{ptf}
-	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne de degré fini tels que $p\nmid \Disc(K)$. Alors, pour tout entier algébrique $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
+	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne de degré fini tels que $p\nmid \Disc(K)$. Alors, pour tout entier $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
 \end{theoreme}
 
 \begin{proof}
@@ -67,13 +67,13 @@ Ce critère permet de généraliser le petit théorème de Fermat. Dans une exte
 Nous étendons alors la notion de témoin de Fermat.
 
 \begin{definition}\label{def-K-temoin}
-	Soient $n$ un entier, $K/\Q$ une extension galoisienne de degré fini et $\alpha\in \OK$ un entier algébrique. On dit que $\alpha$ est un $K$-témoin de Fermat pour $n$ si l'on a \[\alpha^{\Norm(n\OK)} \not \equiv \alpha \pmod{n\OK}.\]
+	Soient $n$ un entier rationnel, $K/\Q$ une extension galoisienne de degré fini et $\alpha\in \OK$ un entier. On dit que $\alpha$ est un $K$-témoin de Fermat pour $n$ si l'on a \[\alpha^{\Norm(n\OK)} \not \equiv \alpha \pmod{n\OK}.\]
 \end{definition}
 
 Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}. Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
 
 \begin{theoreme}[réciproque du petit théorème de Fermat généralisé, \cite{article} th. 2.4]\label{ptf-reciproque}
-	Soit $n>2$ un entier composé. Alors $n$ admet un témoin de Fermat dans les corps quadratique de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right)\] où $p$ est un facteur premier impair de $n$.
+	Soit $n>2$ un entier rationnel composé. Alors $n$ admet un témoin de Fermat dans les corps quadratique de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right)\] où $p$ est un facteur premier impair de $n$.
 \end{theoreme}
 
 \begin{proof}
@@ -84,7 +84,7 @@ Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres gal
 Vient alors l'équivalence suivante.
 
 \begin{theoreme}[petit théorème de Fermat généralisé et sa réciproque]\label{ptf-equivalence}
-	Soit $n>2$ un entier. Alors $n$ est premier \ssi il n'a de $K$-témoin de Fermat dans aucun corps quadratique $K$ vérifiant $n\nmid \Disc(K)$.
+	Soit $n>2$ un entier rationnel. Alors $n$ est premier \ssi il n'a de $K$-témoin de Fermat dans aucun corps quadratique $K$ vérifiant $n\nmid \Disc(K)$.
 \end{theoreme}
 
 \begin{proof}
@@ -100,7 +100,7 @@ Nous avons déjà des outils suffisamment robustes pour fournir un test de prima
 \vspace{1em}
 \begin{algorithm}[H]\label{test-primalite-korselt}
 \caption{Critère de composition de Korselt dans les extensions galoisiennes de degré fini de $\Q$}
-\KwIn{$n$ (entier à tester), $\mathscr{K}$ (liste d'extensions galoisiennes de degré fini de $\Q$)}
+\KwIn{$n$ (entier rationnel à tester), $\mathscr{K}$ (liste d'extensions galoisiennes de degré fini de $\Q$)}
 \ForEach{$K$ dans $\mathscr{K}$}{
 	\If{$n \nmid \Disc(K)$}{
 		\If{$n\OK$ ne vérifie pas le critère de Korselt}{
@@ -115,7 +115,7 @@ Nous avons déjà des outils suffisamment robustes pour fournir un test de prima
 Avant de poursuivre, donnons un lemme qui permettra d'alléger les énoncés de l'article.
 
 \begin{lemme}
-	Soient $n$ un entier et $K$ un corps de nombres. Si $n$ est de Carmichael dans $K$, alors $n$ et $\Disc(K)$ sont premiers entre eux.
+	Soient $n$ un entier rationnel et $K$ un corps de nombres. Si $n$ est de Carmichael dans $K$, alors $n$ et $\Disc(K)$ sont premiers entre eux.
 \end{lemme}
 
 \begin{proof}
