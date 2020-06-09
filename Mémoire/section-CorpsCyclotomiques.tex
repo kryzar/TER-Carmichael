@@ -4,7 +4,7 @@
 
 Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $\Q(\zeta_q)$ où $q$ est un nombre premier. Commençons par un résultat théorique.
 
-\begin{theoreme}[\cite{article th. 3.1}]\label{ptf}
+\begin{theoreme}[\cite{article} th. 3.1]\label{theoreme-3.1}
 	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
 \end{theoreme}
 
@@ -12,14 +12,14 @@ Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $
 	Les preuves des énoncés sur les corps cyclotomiques sont autrement plus sophistiquées que celles sur les corps quadratiques et l'auteur y utilise à volonté des résultats de théorie analytique des nombres. Ces derniers assurent de l'existence d'objets mais ne les construisent pas, à l'image des lemmes 3.3 et 3.4 de l'article. Pour ce théorème, la construction des corps se fait avec la correspondance de Galois et la vérification et la vérification qu'ils vérifient les bonnes propriétés nécessite des arguments sophistiqués de ramification (groupes de décomposition et d'inertie, Frobenius d'un élément). Nous verrons ces arguments plus en détails dans la preuve du théorème 3.6 de l'article (n°\ref{theoreme-3.6} chez nous). \\
 \end{MotSurPreuve}
 
-Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
+Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème \ref{theoreme-3.1}. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
 
 \begin{theoreme}[deuxième réciproque]
-	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abélien} $K$ de discriminant premier avec $n$, $n$ n'admet aucun $K$-témoin de Fermat.
+	Soit $n$ un entier. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abéliens} $K$ de discriminant premier avec $n$, $n$ n'admet aucun $K$-témoin de Fermat.
 \end{theoreme}
 
 \begin{proof}
-	C'est la conjonction des théorèmes \ref{ptf} et \ref{theoreme-3.1}.
+	Supposons l'entier $n$ premier. Dans ce cas, d'après le théorème \ref{ptf} et la définition \ref{def-K-temoin}, de $K$-témoin de Fermat dans aucun corps de nombres abélien $K$ de discriminant premier avec $n$. L'application réciproque résulte directement du théorème \ref{theoreme-3.1}.
 \end{proof}
 
 Le résultat le plus à même d'aboutir à un test de primalité est le crucial théorème suivant. Il nous enseigne qu'il faut aller chercher du côté des corps cyclotomiques. Nous en donnons la démonstration.
