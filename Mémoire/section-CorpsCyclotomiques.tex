@@ -83,7 +83,7 @@ Démontrons le théorème \ref{theoreme-3.6}.
 		&$\sigma$	& $\longmapsto$ & $\overline{a}$,
 	\end{tabular}
 \end{center}
-où $a$ est un entier rationnel tel que $\sigma(\zeta_q) = \zeta_q^a$, donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après l'identité (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} appliqué à $K/\Q$ et $\varphi$ prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. On peut supposer $d_0 > q-1$. On a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{korselt-cara} permettent d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
+où $a$ est un entier rationnel tel que $\sigma(\zeta_q) = \zeta_q^a$, donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après l'identité (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} appliqué à $K/\Q$ et $\varphi$ prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. On peut supposer $d_0 > q-1$. On a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt} permettent d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
 
 \end{proof}
 
@@ -119,31 +119,6 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 Passons désormais aux simulations numériques.
 
 \subsection{Simulations}
-
-\subsubsection{Test de Fermat}
-
-Étant donné un entier de Carmichael $n$, la version \og cyclotomique \fg{} du test de Fermat serait la suivante.
-
-\vspace{1em}
-\begin{algorithm}[H]\label{test-Fermat-cyclotomique}
-\caption{Test de Fermat dans un corps cyclotomique}
-\KwIn{$n$ (entier rationnels à tester), $K$ (corps cyclotomique de la forme $\Q(\zeta_q)$ où $q$ est premier), $S_\alpha$ (ensemble coordonnées $\alpha$)}
-\If{$n$ et $\Disc(K)$ sont premiers entre eux}{
-	$\zeta \leftarrow$ une racine primitive $q$-ième de l'unité engendrant $K$, $q$ étant premier \\
-	\ForEach{$\alpha = x_0 + x_1\zeta + \dots + x_{p-1}\zeta^{p-1}$, $x_0, \dots, x_{p-1}\in S_\alpha$}{
-		\If{$\alpha^{n^{p-1}}\not\equiv \alpha \pmod{n\OK}$}{
-			\KwRet{$n$ n'est pas de Carmichael dans $K$ et est composé} \\
-			\textbf{arrêter le programme}
-		}
-
-	}
-}
-\end{algorithm}
-\vspace{1em}
-
-Cet algorithme s'est montré encore moins performant que sa version quadratique. En posant $n=561$, $K = \Q(\zeta_5)$ et $S_\alpha = \{-1, 0, +1\}$, l'algorithme n'a toujours pas terminé après avoir tourné pendant une heure sur l'ordinateur personnel de l'auteur. Ce n'est finalement pas si étonnant. On aura \[\Norm(n\OK) = 561^4 = 99049307841\] et si l'on prend par exemple l'entier de coordonnées $(1, 1, 0, 0)$ \[\alpha =1 + \zeta,\] l'ordinateur portable de l'auteur n'a toujours pas su calculer $\alpha^{\Norm(n\OK)}$ après trente minutes de calculs\footnote{Wolfram alpha n'a pas fait mieux.}. Les coordonnées ont pourtant été choisies pour être les plus petites possibles, mais le coût du calcul de $\alpha^{\Norm(n\OK)}$ est prohibitif : chaque coordonnée a plusieurs milliers de chiffres. Plus généralement, le calcul de $\alpha^{\Norm(n\OK)} = \alpha^{n^{q-1}}$ sort rapidement des capacités d'un ordinateur personnel standard.
-
-\subsubsection{Critère de Korselt}
 
 Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael et dont le discriminant est premier avec $n$. Nous reprenons donc l'algorithme \ref{test-primalite-korselt} et l'utilisons avec les paramètres suivants.
 
