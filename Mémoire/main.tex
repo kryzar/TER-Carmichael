@@ -4,28 +4,19 @@
 \documentclass[a4paper, 12pt, oneside]{article}
 \usepackage{LoLaTeXpackage}
 \usepackage{csquotes}
-\usepackage[backend=biber, style=alphabetic]{biblatex}
 \usepackage[linesnumbered, boxruled, vlined, onelanguage, french]{algorithm2e}
 \usepackage[french]{babel}
 \usepackage{pgfornament}
-\usepackage{changepage}
-% \usepackage{titlesec} % saut de page à chaque section
 \usepackage{float} % https://tex.stackexchange.com/questions/8625/force-figure-placement-in-text
 \usepackage{tabularx}
 
 % https://tex.stackexchange.com/questions/89166/centering-in-tabularx-and-x-columns
 \newcolumntype{Y}{>{\centering\arraybackslash}X}
-
-% https://tex.stackexchange.com/questions/9497/start-new-page-with-each-section
-% \newcommand{\sectionbreak}{\clearpage}
-
 % modifier Output en Sorties dans algorithm2e
 \SetKwInput{KwOut}{Sorties}
 
 \theoremstyle{remark}
 \newtheorem*{MotSurPreuve}{Un mot sur la preuve}
-
-\addbibresource{bi.bib}
 
 \begin{document}
 
@@ -39,13 +30,14 @@
 	\renewcommand\thetheoremcounter{\arabic{section}.\arabic{theoremcounter}}
 	\input{section-DelicesTheorie}
 	\input{section-CorpsQuadratiques}
-	\input{section-InterludeIdeauxExtensions}
+	\input{section-IdeauxExtensions}
 	\input{section-CorpsCyclotomiques}
 	\input{Conclusion}
 	\input{Remerciements}
 
 	\addcontentsline{toc}{section}{Bibliographie}
-	\printbibliography
+	\bibliographystyle{alpha-fr}
+	\bibliography{bi}
 
 	\input{Todo}
 
