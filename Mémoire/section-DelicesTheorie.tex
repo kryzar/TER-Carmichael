@@ -16,7 +16,7 @@ Nous pouvons dès à présent généraliser le critère de Korselt \ref{korselt}
 	Soient $K$ un corps de nombres et $I$ un idéal (premier ou composé) de $\OK$. Les assertions suivantes sont équivalentes :
 	\begin{itemize}
 		\item pour tout entier $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée ~;
-		\item l'idéal $I$ est sans facteurs carrés et chacun de ses facteurs premier $\p$ vérifie l'identité \[\Norm(\p) - 1 \mid \Norm(I) - 1.\]
+		\item l'idéal $I$ est sans facteurs carrés et chacun de ses facteurs premier $\p$ vérifie la relation \[\Norm(\p) - 1 \mid \Norm(I) - 1.\]
 	\end{itemize}
 \end{theoreme}
 
@@ -54,7 +54,7 @@ On a alors la (fondamentale) caractérisation suivante.
 	Il faut être vigilant avec la nomenclature. Pour établir qu'un idéal est de Carmichael, il faut montrer qu'il est composé, indépendamment du critère de Korselt.
 \end{remarque}
 
-Ce critère permet de généraliser le petit théorème de Fermat. Dans une extension galoisienne $K$ de $Q$ de degré fini, un nombre premier est soit inerte, soit de Carmichael dans $K$. Plus précisément.
+Ce critère permet de généraliser le petit théorème de Fermat. Dans une extension galoisienne $K$ de $\Q$ de degré fini, un nombre premier est soit inerte, soit de Carmichael dans $K$. Plus précisément.
 
 \begin{theoreme}[petit théorème de Fermat généralisé, \cite{article} th. 2.2]\label{ptf}
 	Soient $p$ un nombre premier et $K/\Q$ une extension galoisienne de degré fini tels que $p\nmid \Disc(K)$. Alors, pour tout entier $\alpha \in \OK$, on a $$\alpha^{\Norm_{K/\Q}(p)} \equiv \alpha \pmod{p\OK}.$$
@@ -70,10 +70,10 @@ Nous étendons alors la notion de témoin de Fermat.
 	Soient $n$ un entier rationnel, $K/\Q$ une extension galoisienne de degré fini et $\alpha\in \OK$ un entier. On dit que $\alpha$ est un $K$-témoin de Fermat pour $n$ si l'on a \[\alpha^{\Norm(n\OK)} \not \equiv \alpha \pmod{n\OK}.\]
 \end{definition}
 
-Un nombre premier n'a donc de témoins de Fermat dans aucun corps de nombres galoisien et un idéal de Carmichael est un idéal \textbf{composé} n'ayant aucun témoin de Fermat dans l'anneau d'entiers dans lequel il vit. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}. Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
+Un nombre premier n'a donc de témoins de $K$-Fermat dans aucun corps de nombres galoisien $K$ dont le discriminant lui est premier. Cette généralisation de la notion de témoin de Fermat apparaît naturellement dans la contraposée du théorème \ref{ptf}. Fait tout à fait remarquable, l'auteur de l'article donne une réciproque au petit théorème de Fermat généralisé \ref{ptf}.
 
 \begin{theoreme}[réciproque du petit théorème de Fermat généralisé, \cite{article} th. 2.4]\label{ptf-reciproque}
-	Soit $n>2$ un entier rationnel composé. Alors $n$ admet un témoin de Fermat dans les corps quadratique de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right)\] où $p$ est un facteur premier impair de $n$.
+	Soit $n>2$ un entier rationnel composé. Alors $n$ admet un témoin de Fermat dans les corps quadratiques de la forme \[K = \Q\left(\sqrt{(-1)^{\frac{p-1}{2}}p}\right)\] où $p$ est un facteur premier impair de $n$.
 \end{theoreme}
 
 \begin{proof}

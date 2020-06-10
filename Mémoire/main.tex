@@ -35,8 +35,8 @@
 	\stepcounter{page}
 	\renewcommand\thetheoremcounter{I.\arabic{theoremcounter}}
 	\input{Introduction}
+	\input{Notations}
 	\renewcommand\thetheoremcounter{\arabic{section}.\arabic{theoremcounter}}
-	\newpage
 	\input{section-DelicesTheorie}
 	\input{section-CorpsQuadratiques}
 	\input{section-InterludeIdeauxExtensions}
@@ -44,7 +44,7 @@
 	\input{Conclusion}
 	\input{Remerciements}
 
-	\nocite{*}
+	\addcontentsline{toc}{section}{Bibliographie}
 	\printbibliography
 
 	\input{Todo}

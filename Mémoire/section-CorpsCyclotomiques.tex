@@ -9,7 +9,7 @@ Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $
 \end{theoreme}
 
 \begin{MotSurPreuve}
-	Les preuves des énoncés sur les corps cyclotomiques sont autrement plus sophistiquées que celles sur les corps quadratiques et l'auteur y utilise à volonté des résultats de théorie analytique des nombres. Ces derniers assurent de l'existence d'objets mais ne les construisent pas, à l'image des lemmes 3.3 et 3.4 de l'article. Pour ce théorème, la construction des corps se fait avec la correspondance de Galois et la vérification qu'ils vérifient les bonnes propriétés nécessite des arguments sophistiqués de ramification (groupes de décomposition et d'inertie, Frobenius d'un élément). Nous verrons ces arguments plus en détails dans la preuve du théorème 3.6 de l'article (n°\ref{theoreme-3.6} chez nous). \\
+	Les preuves des énoncés sur les corps cyclotomiques sont autrement plus sophistiquées que celles sur les corps quadratiques et l'auteur y utilise des résultats de théorie analytique des nombres. Ces derniers assurent de l'existence d'objets mais ne les construisent pas, à l'image des lemmes 3.3 et 3.4 de l'article. Pour ce théorème, la construction des corps se fait avec la correspondance de Galois et la vérification qu'ils vérifient les bonnes propriétés nécessite des arguments sophistiqués de ramification (groupes de décomposition et d'inertie, Frobenius d'un élément). Nous verrons ces arguments plus en détails dans la preuve du théorème 3.6 de l'article (n°\ref{theoreme-3.6} chez nous). \\
 \end{MotSurPreuve}
 
 Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème \ref{theoreme-3.1}. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
@@ -31,7 +31,7 @@ Le résultat le plus à même d'aboutir à un test de primalité est le crucial 
 Nous avons de quelques résultats préliminaires.
 
 \begin{lemme}[\cite{article} lemme 3.3]\label{lemme-3.3}
-	Soit $n$ un entier rationnel. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que l'identité \[p^d - 1 \nmid n^d - 1\] pour tout entier rationnel $d> d_0$.
+	Soit $n$ un entier rationnel. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que la relation \[p^d - 1 \nmid n^d - 1\] pour tout entier rationnel $d> d_0$.
 \end{lemme}
 
 \begin{proof}
@@ -83,7 +83,7 @@ Démontrons le théorème \ref{theoreme-3.6}.
 		&$\sigma$	& $\longmapsto$ & $\overline{a}$,
 	\end{tabular}
 \end{center}
-où $a$ est un entier rationnel tel que $\sigma(\zeta_q) = \zeta_q^a$, donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après l'identité (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} appliqué à $K/\Q$ et $\varphi$ prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. On peut supposer $d_0 > q-1$. On a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt} permettent d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
+où $a$ est un entier rationnel tel que $\sigma(\zeta_q) = \zeta_q^a$, donné par le lemme \ref{iso-Z/nZ*} pour $n=q$. D'après la relation (23), p. 45 de \cite{Kraus}, $\varphi$ envoie le Frobenius de $p$ sur la classe de $p$ modulo $q$. Comme $p$ est une racine primitive modulo $q$, le lemme \ref{lemme-inerte} appliqué à $K/\Q$ et $\varphi$ prouve que $p$ est inerte dans $K$. En particulier, l'idéal $p\OK$ est un idéal premier de $\OK$ divisant $n\OK$. On peut supposer $d_0 > q-1$. On a alors \[ \Norm(p\OK) - 1 = \Norm_{K/Q}(p) - 1 = p^{q-1} - 1 \nmid n^{q-1} - 1 = \Norm_{K/\Q}(n) - 1 = \Norm(n\OK) - 1.\] Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt} permettent d'affirmer que $n$ n'est pas de Carmichael dans $K$, terminant la démonstration.
 
 \end{proof}
 
@@ -105,8 +105,12 @@ Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distinc
 Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 
 \begin{theoreme}[troisième réciproque]\label{reciproque-3}
-	Soit $n$ un entier rationnel. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, $n$ n'admet aucun $K$-témoin de Fermat.
+	Soit $n$ un entier rationnel. Alors $n$ est premier \ssi pour tout corps cyclotomique $K$ de la forme $K = \Q(\zeta_q)$, où $q$ est un nombre premier ne divisant par $n$, $n$ n'admet aucun $K$-témoin de Fermat.
 \end{theoreme}
+
+\begin{remarque}
+	L'énoncé est faux si $q$ divise $n$. Sous cette hypothèse, l'entier $q$ se ramifie dans $\Q(\zeta_q)$ et l'idéal $n\OK$ a un facteur carré, ce qui contredit le critère de Korselt \ref{korselt-generalise} et la caractérisation \ref{carac-korselt}.
+\end{remarque}
 
 \begin{proof}
 	C'est la conjonction du théorème \ref{ptf} et du corollaire \ref{corollaire-3.7}.

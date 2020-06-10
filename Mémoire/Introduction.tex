@@ -8,26 +8,26 @@ Le test de primalité non naïf le plus simple est le \emph{test de primalité d
 \begin{proposition}\label{korselt} Soit $n$ un entier rationnel. Les assertions suivantes sont équivalentes :
 	\begin{enumerate}[font=\normalshape]
 		\item l'entier $n$ n'a aucun témoin de Fermat ~;
-		\item l'entier $n$ est sans facteurs carrés et chacun de ses facteurs premiers $p$ vérifie l'identité \[p-1 \mid n-1 ~.\] \label{korselt-b}
-		\item l'identité \[\lambda(n) \mid n-1\] est vérifiée, la fonction $\lambda$ étant l'indicatrice de Carmichael, définie comme la fonction $\N^* \to \N^*$ qui à tout entier $n$ associe l'exposant du groupe $\left(\Z/n\Z\right)^\times$.
+		\item l'entier $n$ est sans facteurs carrés et chacun de ses facteurs premiers $p$ vérifie la relation \[p-1 \mid n-1 ~.\] \label{korselt-b}
+		\item la relation \[\lambda(n) \mid n-1\] est vérifiée, la fonction $\lambda$ étant l'indicatrice de Carmichael, définie comme la fonction $\N^* \to \N^*$ qui à tout entier $n$ associe l'exposant du groupe $\left(\Z/n\Z\right)^\times$.
 	\end{enumerate}
 \end{proposition}
 
-Un entier rationnel $n$ est donc de Carmichael \ssi \textbf{il est composé} et vérifie l'une des assertions de \ref{korselt}. L'assertion \ref{korselt-b} de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier rationnel donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer à \cite{Demazure} §3.3, p. 89. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres.
+Un entier rationnel $n$ est donc de Carmichael \ssi \textbf{il est composé} et vérifie l'une des assertions de \ref{korselt}. L'assertion \ref{korselt-b} de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier rationnel donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer à \cite{Demazure} §3.3, p. 89. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres. 
 
-\begin{definition}[\cite{article} déf. 2.1] Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael si \textbf{$I$ est composé} et pour tout entier $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée.
+\begin{definition}[\cite{article} déf. 2.1] Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael dans $\OK$ si \textbf{$I$ est composé} et pour tout entier $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée.
 \end{definition}
 
 \begin{remarque}
 	Un entier de Carmichael peut donc être vu comme un idéal de Carmichael du corps de nombres $\Q$.
 \end{remarque}
 
-Étant donnés $n$ un entier rationnel et $K$ un corps de nombres, nous dirons que $n$ est de Carmichael dans $K$ si l'idéal $n\OK$ est de Carmichael dans $\OK$. De tels idéaux existent et cette définition est le point de départ d'un formalisme fructueux. L'auteur de l'article commence par généraliser le critère de Korselt et le petit théorème de Fermat ~; il en donne notamment une fameuse réciproque. Il étudie en suite les corps quadratiques, puis cyclotomiques, cadres dans lesquels il démontre plusieurs résultats d'existence et non-existence d'idéaux de Carmichael. De nombreuses questions sont soulevées, notamment la suivante. 
+Étant donnés $n$ un entier rationnel et $K$ un corps de nombres, nous dirons que $n$ est de Carmichael dans $K$ si l'idéal $n\OK$ est de Carmichael dans $\OK$. De tels idéaux existent et cette définition est le point de départ d'un formalisme fructueux. L'auteur de l'article commence par généraliser le critère de Korselt et le petit théorème de Fermat ~; il en donne notamment une fameuse réciproque. Il étudie ensuite les corps quadratiques, puis cyclotomiques, cadres dans lesquels il démontre plusieurs résultats d'existence et non-existence d'idéaux de Carmichael. De nombreuses questions sont soulevées, notamment la suivante. 
 
 \begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombres. Dans quelle mesure $n$ est-il de Carmichael dans $K$ ?
 \end{question}
 
-Nous nous proposons de répondre à une partie de cette question au cours de ce mémoire, que nous abordons avec une vision aussi bien théorique que pratique. Au delà des résultats de l'article, l'auteur du présent mémoire a implémenté plusieurs algorithmes y étant suggéré et réalise des nombreuses simulations numériques avec l'outil SageMath\footnote{Voir \url{https://www.sagemath.org} et plus particulièrement la documentation des corps de nombres : \url{https://doc.sagemath.org/html/en/reference/number\_fields/index.html}.}. Algorithmes et résultats des simulations se trouvent sur la page GitHub de l'auteur de ce texte : \url{https://github.com/kryzar/TER-Carmichael}, au dossier \texttt{Simulations et résultats}. Le fichier \texttt{Utilities.sage} contient des fonctions et définitions de base ~; le fichier \texttt{Algorithms.sage} contient toutes les fonctions des simulations. Par ailleurs, donnons dès à présent la liste\footnote{C’est l'entrée A002997 de l'encyclopédie en ligne des séquences d’entiers : \url{https://oeis.org/A002997.}} des vinct-neuf premiers entiers de Carmichael. Nous l'étudierons beaucoup dans la suite de ce mémoire.
+Nous nous proposons de répondre à une partie de cette question au cours de ce mémoire, que nous abordons avec une vision aussi bien théorique que pratique. Au delà des résultats de l'article, l'auteur du présent mémoire a implémenté plusieurs algorithmes y étant suggéré et réalise des nombreuses simulations numériques avec l'outil SageMath\footnote{Voir \url{https://www.sagemath.org} et plus particulièrement la documentation des corps de nombres : \url{https://doc.sagemath.org/html/en/reference/number\_fields/index.html}.}. Algorithmes et résultats des simulations se trouvent sur la page GitHub de l'auteur de ce texte : \url{https://github.com/kryzar/TER-Carmichael}, au dossier \texttt{Simulations et résultats}. Le fichier \texttt{Utilities.sage} contient des fonctions et définitions de base ~; le fichier \texttt{Algorithms.sage} contient toutes les fonctions des simulations. Par ailleurs, donnons dès à présent la liste\footnote{C’est l'entrée A002997 de l'encyclopédie en ligne des séquences d’entiers : \url{https://oeis.org/A002997.}} des vingt-neuf premiers entiers de Carmichael. Nous l'étudierons beaucoup dans la suite de ce mémoire.
 
 \begin{equation}\tag{$\mathfrak{C}$}\label{liste-carmichael}
 	\begin{Bmatrix}
@@ -41,4 +41,4 @@ Nous nous proposons de répondre à une partie de cette question au cours de ce 
 
 
 \vspace{1em}
-Enfin, les preuves des énoncés fondamentaux sont redonnées et éventuellement modifiées. Nous donnons en plus quelques corollaires et étendons la notion de \emph{témoin de Fermat}. Enfin certaines preuves non redonnées sont quant à elle commentées dans des environnements dédiés intitulés \textit{Un mot sur la preuve}.
+Enfin, les preuves des énoncés fondamentaux sont redonnées et éventuellement modifiées. Nous donnons en plus quelques corollaires et étendons la notion de \emph{témoin de Fermat} dans l'anneau d'entiers d'un corps de nombres. Enfin certaines preuves non redonnées sont quant à elle commentées dans des environnements dédiés intitulés \textit{Un mot sur la preuve}.
