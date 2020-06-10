@@ -35,7 +35,7 @@ Nous avons de quelques résultats préliminaires.
 \end{lemme}
 
 \begin{proof}
-	\NTS{référence vers l'article}
+	Voir \cite{lemme33}.
 \end{proof}
 
 \begin{lemme}[théorème de Heath-Brown, \cite{article} th. 3.5]\label{heath-brown}
@@ -43,7 +43,7 @@ Nous avons de quelques résultats préliminaires.
 \end{lemme}
 
 \begin{proof}
-	\NTS{référence vers l'article}
+	Voir \cite{HeathBrown}.
 \end{proof}
 
 \begin{lemme}\label{lemme-inerte}
@@ -120,7 +120,7 @@ Passons désormais aux simulations numériques.
 
 \subsection{Simulations}
 
-Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael et dont le discriminant est premier avec $n$. Nous reprenons donc l'algorithme \ref{test-primalite-korselt} et l'utilisons avec les paramètres suivants.
+Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael et dont le discriminant est premier avec $n$. Nous reprenons donc l'algorithme \ref{test-primalite-korselt} et l'utilisons avec les paramètres suivants\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_cyclotomic} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}.
 
 \begin{table}[H]\label{param-korselt-cyclo}
 	\begin{center}
@@ -136,7 +136,7 @@ Comme dans la section sur les corps quadratiques, nous cherchons ici — pour to
 	\end{center}
 \end{table}
 
-Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ de la liste, plusieurs corps cyclotomiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. Pour l'entier $n = 561$, nous trouvons par exemple qu'il est de Carmichael dans $\Q(\zeta_3)$ mais dans aucun autre corps testé. Cet algorithme permet aussi de prouver que l'entier de Howe \ref{Howe} est composé~! Nous trouvons qu'il est de Carmichael dans $\Q(\zeta_3)$ mais dans aucun autre corps testé\footnote{Nous sommes en réalité allés plus loin pour l'entier de Howe et avons testé tous les corps cyclotomiques de la forme $\Q(\zeta_q)$ où $q$ est un nombre premier compris entre $3$ et $600$.} En fait, nous avons trouvé très peu de couples $(n, K)$ où $n$ est un entier de Carmichael de la liste et $K$ un corps cyclotomique dans lequel $n$ est de Carmichael. La liste exhaustive de tels couples est la suivante.
+Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ de la liste, plusieurs corps cyclotomiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael\footnote{Les résultats se trouvent tous dans \url{https://github.com/kryzar/TER-Carmichael/tree/master/Simulations\%20et\%20resultats}, sous la forme d'un fichier par entier testé. Par exemple, les résultats pour l'entier $561$ se trouvent dans le fichier \texttt{561\_cylotomic.txt}.}. Pour l'entier $n = 561$, nous trouvons par exemple qu'il est de Carmichael dans $\Q(\zeta_3)$ mais dans aucun autre corps testé. Cet algorithme permet aussi de prouver que l'entier de Howe \ref{Howe} est composé~! Nous trouvons qu'il est de Carmichael dans $\Q(\zeta_3)$ mais dans aucun autre corps testé\footnote{Nous sommes en réalité allés plus loin pour l'entier de Howe et avons testé tous les corps cyclotomiques de la forme $\Q(\zeta_q)$ où $q$ est un nombre premier compris entre $3$ et $600$.} En fait, nous avons trouvé très peu de couples $(n, K)$ où $n$ est un entier de Carmichael de la liste et $K$ un corps cyclotomique dans lequel $n$ est de Carmichael. La liste exhaustive de tels couples est la suivante.
 
 \begin{table}[H]
 	\begin{center}
@@ -166,21 +166,21 @@ Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ 
 			entier de Howe	& $\Q(\zeta_3)$ \\\hline
 		\end{tabular}
 	\end{center}
-	\caption{Liste exhaustive des couples trouvés $(n, K)$ où $n$ est un entier de Carmichael et $K$ un corps cyclotomique dans lequel $n$ reste de Carmichael, pour les paramètres \ref{param-korselt-cyclo}.}
+	\caption{Liste exhaustive des couples trouvés $(n, K)$ où $n$ est un entier de Carmichael et $K$ un corps cyclotomique dans lequel $n$ reste de Carmichael.}
 \end{table}
 
 Voici les faits remarquables à retenir de ces simulations.
 	\begin{itemize}
 		\item Nous n'avons trouvé aucun corps cyclotomique parmi ceux testés dans lequel les entiers suivants sont de Carmichael : 561, 1105, 2465, 6601, 1085, 41041, 62745, 101101, 449065.
 		\item Les autres entiers sont de Carmichael dans $\Q(\zeta_3)$ ou $\Q(\zeta_5)$, mais dans aucun autre corps testé.
-		\item Les deux seuls entiers de Carmichael de la liste de Carmichael dans $\Q(\zeta_5)$ sont 252601 et 512461. Leurs facteurs premiers sont congrus à $1$ modulo $5$. À noter que nous avons exhibé des entiers rationnels qui ne sont pas de Carmichael, dont tous les facteurs premiers ne sont pas congrus à $1$ modulo $5$ et qui sont de Carmichael dans $\Q(\zeta_5)$. C'est par exemple le cas de $2047$ (qui n'est même pas congru à $1$ modulo $5$). \NTS{lien vers liste complète}
+		\item Les deux seuls entiers de Carmichael de la liste de Carmichael dans $\Q(\zeta_5)$ sont 252601 et 512461. Leurs facteurs premiers sont congrus à $1$ modulo $5$. À noter que nous avons exhibé des entiers rationnels qui ne sont pas de Carmichael, dont tous les facteurs premiers ne sont pas congrus à $1$ modulo $5$ et qui sont de Carmichael dans $\Q(\zeta_5)$. C'est par exemple\footnote{Nous avons exhibé de nombreux tels autres entiers, tous donnés dans le fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/CarmichaelInQzeta5\_NotCarmichaelInt\_PrimeFactorsNot1mod5.txt}.} le cas de $2047$ (qui n'est même pas congru à $1$ modulo $5$).
 		\item L'entier 512461 est l'unique testé qui soit de Carmichael dans deux corps cyclotomiques à la fois.
 		\item L'entier de Howe est de Carmichael dans $\Q(\zeta_3)$ (qui est égal au corps quadratique $\Q(\sqrt{-3})$) mais dans aucun autre corps testé.
 	\end{itemize}
 
 Donnons aussi quelques statistiques.
 
-\begin{table}[H]
+\begin{table}[H]\label{statistiques-cyclo}
 	\begin{center}
 		\begin{tabular}{|c|c|}
 			\hline
@@ -192,7 +192,7 @@ Donnons aussi quelques statistiques.
 	\end{center}
 \end{table}
 
-Quant aux performances, les calculs sont cependant significativement plus longs dans le cas des corps cyclotomiques que dans le cas des corps quadratiques. On retrouve néanmoins le fait que lesdits temps restent sensiblement proches pour tout entier rationnel (y compris l'entier de Howe) et tout corps cyclotomique testé. \NTS{expliquer mieux le tableau, pareil pour quadratiques}
+Quant aux performances, les calculs sont cependant significativement plus longs dans le cas des corps cyclotomiques que dans le cas des corps quadratiques. Nous donnons ici le temps nécessaire au critère de Korselt pour déterminer si l'entier $n = 512461$ est de Carmichael dans les corps donnés. On retrouve néanmoins le fait que lesdits temps restent sensiblement proches pour tout entier rationnel (y compris l'entier de Howe) et tout corps cyclotomique testé. 
 
 \begin{table}[H]
 	\begin{center}

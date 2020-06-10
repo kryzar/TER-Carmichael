@@ -121,7 +121,7 @@ def Carmichael_quadratic(n, gen_range) :
     outfile.close()
 
 
-def IntBelow512461IsNotCarmichael_nOKIsCarmichael(gen_range, bound, condition) :
+def Carmichael_ideal_restricted(gen_range, bound, condition) :
     """
     Find all couples (d, n) such that n is not a Carmichael number but generates
     a Carmichael ideal in the integer ring of the quadratic field Q(\sqrt{d}).
@@ -144,7 +144,7 @@ def IntBelow512461IsNotCarmichael_nOKIsCarmichael(gen_range, bound, condition) :
         raise Exception("n must be <= 512461")
 
     # write meta stuff in the outfile
-    outfile = open("IntBelow512461IsNotCarmichael_nOKIsCarmichael.txt", "w")
+    outfile = open("Carmichael_ideal_restricted.txt", "w")
     meta = ("d in [" + str(gen_range[0]) + ", " + str(gen_range[-1]) + "]\n")
     meta += ("n in [2, " + str(bound - 1) + "]\n")  
     meta += ("Condition on n : " + condition.__name__ + "\n\n")

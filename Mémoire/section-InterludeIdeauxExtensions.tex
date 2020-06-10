@@ -22,7 +22,7 @@ L'algorithme de Korselt \ref{test-primalite-korselt} dans les corps quadratiques
 	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $J$ de $L$ pour lesquels l'idéal restreint $J\cap \OK$ n'est pas de Carmichael dans $K$.
 \end{proposition}
 
-Pour y répondre, l'auteur du présent mémoire a implémenté l'algorithme Suivant.
+Pour y répondre, l'auteur du présent mémoire a implémenté l'algorithme suivant\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_ideal\_restricted} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}.
 
 \vspace{1em}
 \begin{algorithm}[H]\label{test-Fermat-quadratique}
@@ -40,7 +40,7 @@ Pour y répondre, l'auteur du présent mémoire a implémenté l'algorithme Suiv
 \end{algorithm}
 \vspace{1em}
 
-Cette algorithme retourne de nombreux résultats. Par exemple $35$ est de Carmichael dans $\Q(\sqrt{11})$ et $8029$ est de Carmichael dans $\Q(\sqrt{-73})$ ~; aucun de ces deux nombres n'est de Carmichael dans $\Q$. \NTS{lien vers résultats complets} Nous avons tiré les statistiques suivantes.
+Cette algorithme retourne de nombreux résultats\footnote{Les résultats se trouvent tous dans l'unique fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Carmichael\_ideal\_restricted\_1.txt}. Chaque couple $(d, n)$ vérifie que l'entier rationnel $n$ n'est pas de Carmichael dans $\Q$ mais l'est dans le corps quadratique $Q(\sqrt{d})$.}. Par exemple $35$ est de Carmichael dans $\Q(\sqrt{11})$ et $8029$ est de Carmichael dans $\Q(\sqrt{-73})$ ~; aucun de ces deux nombres n'est de Carmichael dans $\Q$. Nous avons tiré les statistiques suivantes.
 
 \begin{table}[H]
 	\begin{center}
@@ -58,7 +58,7 @@ Cette algorithme retourne de nombreux résultats. Par exemple $35$ est de Carmic
 \end{table}
 
 \begin{remarque}
-L'entier $n = 8029$ a la particularité d'être le produit de trois nombres premiers distincts : \[n = 8029 = 7 \cdot 31 \cdot 37.\] Le fait qu'il existe un corps quadratique dans lequel $n$ n'est pas de Carmichael peut se traduire dans le cadre de l'arithmétique classique grâce au critère de Korselt : existe-t-il un tripler de nombres premiers distincts $p$, $q$ et $r$ pour lesquels \[(pqr)^2 - 1\] est divisible à la fois par $p-1$, $q-1$ et $r-1$ ? Les diviseurs premiers de $8029$ sont un tel triplet.
+	L'entier $n = 8029$ a la particularité d'être le produit de trois nombres premiers distincts : \[n = 8029 = 7 \cdot 31 \cdot 37.\] Le fait qu'il existe un corps quadratique dans lequel $n$ n'est pas de Carmichael peut se traduire dans le cadre de l'arithmétique classique grâce au critère de Korselt : existe-t-il un tripler de nombres premiers distincts $p$, $q$ et $r$ pour lesquels \[(pqr)^2 - 1\] est divisible à la fois par $p-1$, $q-1$ et $r-1$ ? Les diviseurs premiers de $8029$ sont un tel triplet\footnote{Nous avons exhibé de nombreux autres entiers $n$ produits de trois nombres premiers comme dans cette remarque. Voir la liste d'entiers $n$ donnée dans le fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Carmichael\_ideal\_restricted\_2.txt}.}.
 \end{remarque}
 
 Face à la généralité de l'énoncé de la question posée, il était tentant d'aller chercher une réponse ou bien théorique, ou bien dans des corps de nombres beaucoup plus compliqués. En fin de compte, les corps quadratiques auront suffit. Nous avons vu à la section précédente que sur les entiers de Carmichael et les corps quadratiques testés, ceux-ci restaient de Carmichael dans environ 24 \% des cas. Ici, nous avons montré que sur les entiers n'étant pas de Carmichael et les corps quadratiques testés, ceux-ci engendraient un entier de Carmichael dans plus de 50 \% des cas. Ces statistiques sont symptomatiques du fait que nous sommes a priori largement ignorants sur le comportement d'un idéal de Carmichael lorsqu'on l'étend ou le restreint, et ce même en restant dans le cadre des corps quadratiques, corps de nombres a priori parmi les moins compliqués.
