@@ -27,4 +27,18 @@ Un entier rationnel $n$ est donc de Carmichael \ssi \textbf{il est composé} et 
 \begin{question}\label{question-centrale}Soient $n$ un entier de Carmichael et $K$ un corps de nombres. Dans quelle mesure $n$ est-il de Carmichael dans $K$ ?
 \end{question}
 
-Nous nous proposons de répondre à une partie de cette question au cours de ce mémoire, que nous abordons avec une vision aussi bien théorique que pratique. Au delà des résultats de l'article, l'auteur du présent mémoire a implémenté plusieurs algorithmes y étant suggéré et réalise des nombreuses simulations numériques. Les preuves des énoncés fondamentaux sont redonnées et éventuellement modifiées ~; nous quelques corollaires et étendons la notion de \emph{témoin de Fermat}. Enfin certaines preuves non redonnées sont quant à elle commentées dans des environnements dédiés intitulés \textit{Un mot sur la preuve}.
+Nous nous proposons de répondre à une partie de cette question au cours de ce mémoire, que nous abordons avec une vision aussi bien théorique que pratique. Au delà des résultats de l'article, l'auteur du présent mémoire a implémenté plusieurs algorithmes y étant suggéré et réalise des nombreuses simulations numériques avec l'outil SageMath\footnote{Voir \url{https://www.sagemath.org} et plus particulièrement la documentation des corps de nombres : \url{https://doc.sagemath.org/html/en/reference/number\_fields/index.html}.}. Algorithmes et résultats des simulations se trouvent sur la page GitHub de l'auteur de ce texte : \url{https://github.com/kryzar/TER-Carmichael}, au dossier \texttt{Simulations et résultats}. Le fichier \texttt{Utilities.sage} contient des fonctions et définitions de base ~; le fichier \texttt{Algorithms.sage} contient toutes les fonctions des simulations. Par ailleurs, donnons dès à présent la liste\footnote{C’est l'entrée A002997 de l'encyclopédie en ligne des séquences d’entiers : \url{https://oeis.org/A002997.}} des vinct-neuf premiers entiers de Carmichael. Nous l'étudierons beaucoup dans la suite de ce mémoire.
+
+\begin{equation}\tag{$\mathfrak{C}$}\label{liste-carmichael}
+	\begin{Bmatrix}
+		561,1105,1729,2465,2821,6601,8911,10585, \\
+		15841, 29341, 41041, 46657, 52633, 62745, 63973, \\
+		75361, 101101, 115921, 126217, 162401, 172081, \\
+		188461, 252601, 278545, 294409, 314821, 334153, \\
+		340561, 399001, 410041, 449065, 488881, 512461
+	\end{Bmatrix}
+\end{equation}
+
+
+\vspace{1em}
+Enfin, les preuves des énoncés fondamentaux sont redonnées et éventuellement modifiées. Nous donnons en plus quelques corollaires et étendons la notion de \emph{témoin de Fermat}. Enfin certaines preuves non redonnées sont quant à elle commentées dans des environnements dédiés intitulés \textit{Un mot sur la preuve}.
