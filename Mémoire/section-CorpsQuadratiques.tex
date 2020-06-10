@@ -4,7 +4,7 @@
 
 Entrons dès à présent dans le vif du sujet. 
 
-\begin{theoreme}[\cite{article} th. 2.5]\label{theoreme-2.5}
+\begin{theoreme}[{\cite[th. 2.5]{article}}]\label{theoreme-2.5}
 	Soit $n$ un entier rationnel impair sans facteurs carrés. S'il existe un diviseur premier $p$ de $n$ vérifiant $$p^2 - 1 \nmid n^2 - 1,$$ alors il existe une infinité de corps quadratiques $K$ dans lesquels $n$ \emph{n'est pas} de Carmichael.
 \end{theoreme}
 
@@ -15,7 +15,7 @@ Entrons dès à présent dans le vif du sujet.
 Bien que cet énoncé ne semble pas optimal en pratique\footnote{Il n'y a à ce jour (3 juin 2020) pas d'algorithme efficace pour déterminer si un entier rationnel est sans facteurs carrés. Les algorithmes passent souvent par la décomposition en produit de facteurs premiers (voir \cite{SquareFree}), ce qui ne nous arrange pas.}, certains nombres de Carmichael vérifient ces hypothèses : c'est même le cas de tous les nombres de Carmichael de la liste \ref{liste-carmichael}. Il existe donc pour chacun d'eux une infinité de corps quadratiques dans lesquels ils ne sont pas de Carmichael, prouvant qu'ils sont composés (énoncé \ref{ptf-equivalence}). Dans l'exemple 2.6, l'auteur trouve le $\Q(\sqrt{13})$-témoin de Fermat $2 + 1\cdot \left(\frac{1 + \sqrt{13}}{2}\right)$ pour $n=561$, prouvant sa composition. C'est le \emph{test de Fermat dans les corps quadratiques}. Étant donné un entier rationnel $n$ on se donne une liste de corps quadratiques $K$ de discriminant premier avec $n$ et l'on cherche dans chacun d'eux un $K$-témoin de Fermat. \\
 
 
-Il par ailleurs tentant d'utiliser ce test pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit du  test de primalité de Rabin-Miller (voir \cite{Demazure}, §3.3.7, p. 68). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm(n\OK)} \equiv \alpha \pmod{n\OK}$ pour un nombre \og suffisamment grand \fg{} de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons cependant voir qu'un tel test ne saurait exister. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-equivalence}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier rationnel et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ sont premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
+Il par ailleurs tentant d'utiliser ce test pour déterminer la primalité de $n$ \emph{avec une certitude morale}, dans l'esprit du  test de primalité de Rabin-Miller (voir \cite[§ 3.3.7 p. 68]{Demazure}). L'idée serait que si $n$ vérifie la congruence $\alpha^{\Norm(n\OK)} \equiv \alpha \pmod{n\OK}$ pour un nombre \og suffisamment grand \fg{} de corps quadratiques $K = \Q(\sqrt{d})$ de discriminant premier avec $n$ et d'entiers $\alpha \in \OK$, nous aurions une certitude morale de la primalité de $n$. Nous allons cependant voir qu'un tel test ne saurait exister. Nous avons évoqué la réciproque du petit théorème de Fermat (\ref{ptf-equivalence}). Il faut bien faire attention au fait que l'on ne peut pas remplacer l'hypothèse \og $n \nmid \Disc(K)$\fg par l'hypothèse \og $n$ et $\Disc(K)$ sont premiers entre eux \fg \footnote{Cela peut être contre intuitif : si $n$ est un entier rationnel et $K$ un corps de nombres, le fait que $n$ soit de Carmichael dans $K$ implique que $n$ et $\Disc(K)$ sont premiers entre eux.}~! Le mathématicien E.W. Howe montre en effet le résultat suivant.
 
 \begin{theoreme}[Howe, 2000]
 	Il existe un entier rationnel $h$ qui soit à la fois \emph{composé} et de Carmichael dans tout corps quadratique de discriminant premier avec $h$.
@@ -28,7 +28,7 @@ En guise de preuve, Howe exhibe un tel nombre, défini par
 
 Nous l'appellerons dans la suite \emph{entier de Howe}. Il est même de Carmichael dans $\Q$. L'existence de cet entier rationnel signifie que — comme dans $\Q$ — le test de Fermat quadratique ne peut pas prouver qu'un entier rationnel est composé simplement parce qu'il n'a de $K$-témoins de Fermat dans aucun corps quadratique $K$ dont le discriminant lui est premier. Plus généralement, l'auteur de l'article montre le théorème suivant.
 
-\begin{theoreme}[\cite{article} th. 2.7]\label{theoreme-2.7}
+\begin{theoreme}[{\cite[th. 2.7]{article}}]\label{theoreme-2.7}
 	Soient $n$ un entier rationnel composé sans facteurs carrés et $d\geq 1$ un entier rationnel. Si pour tout diviseur $p$ de $n$ et tout enter $1\leq i \leq d$ la division $$p^i - 1\mid n^d - 1$$ est vérifiée, alors $n$ est de Carmichael dans tout corps de nombres de degré $d$ de discriminant premier avec $n$.
 \end{theoreme}
 
@@ -56,7 +56,7 @@ L'entier de Howe est donc un nombre de Carmichael rigide d'ordre $2$. Ces résul
 
 Passons désormais aux simulations numériques.
 
-\subsection{Simulations}
+\subsection{Simulations numériques}
 
 Nous étudions ici le critère de composition de Korselt \label{test-primalite-korselt} dans des corps quadratiques\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_quadratic} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}. Pour tout entier rationnel $n$, nous cherchons une liste de corps quadratiques dans lesquels $n$ n'est pas de Carmichael. Pour cela, nous lançons l'algorithme avec les paramètres suivants.
 
