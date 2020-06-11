@@ -95,17 +95,17 @@ S'il s'avère que l'entier rationnel $n$ que nous testons n'est pas comme l'enti
 
 \begin{table}[H]
 	\begin{center}
-		\begin{tabular}{|c|c|}
+		\begin{tabular}{|c|c|c|}
 			\hline
-			corps quadratiques & temps de calcul \\
+			corps quadratiques & $512461$ reste de Carmichael dans ce corps & temps de calcul \\
 			\hline
 			\hline
-			$\Q(\sqrt{-4957})$ & 0.00303 s \\\hline
-			$\Q(\sqrt{-2426})$ & 0.00211 s \\\hline
-			$\Q(\sqrt{-2})$ & 0.0024 s \\\hline
-			$\Q(\sqrt{+2})$ & 0.0024 s \\\hline
-			$\Q(\sqrt{+2426})$ & 0.0031 s \\\hline
-			$\Q(\sqrt{+4957})$ & 0.0031 s \\\hline
+			$\Q(\sqrt{-4957})$ & non & 0.00303 s \\\hline
+			$\Q(\sqrt{-2426})$ & oui &0.00211 s \\\hline
+			$\Q(\sqrt{-2})$ & non & 0.0024 s \\\hline
+			$\Q(\sqrt{+2})$ & non & 0.0024 s \\\hline
+			$\Q(\sqrt{+2426})$ & oui & 0.0031 s \\\hline
+			$\Q(\sqrt{+4957})$ & oui & 0.0031 s \\\hline
 		\end{tabular}
 		\caption{Temps de calcul du critère Korselt dans les corps quadratiques donnés pour l'entier $n=512461$.}
 	\end{center}

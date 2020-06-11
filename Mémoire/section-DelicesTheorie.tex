@@ -35,7 +35,7 @@ Nous pouvons dès à présent généraliser le critère de Korselt \ref{korselt}
 \end{center}
 est un isomorphisme d'anneaux. Comme nous avons montré $\alpha^{\Norm(I)} \equiv \alpha \pmod{\p_i}$ pour tout $1\leq i \leq r$, l'isomorphisme évoqué entraîne la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}.\]
 
-	Démontrons cette fois le sens direct. La preuve se fait en deux temps. Écrivons $I = \p_1^{e_1} \cdot \dots \cdot \p_r^{e_r}$, les $\p_i$ étant des idéaux premiers de $\OK$ distincts. Pour tout indice $1\leqslant i \leqslant r$ donnons nous $\alpha_i\in \OK$ un élément dont la classe modulo $\p_i$ engendre le groupe quotient $(\OK/\p_i)^\times$. Un tel élément existe car $\OK/\p_i$ est un corps fini et que le groupe des inversibles d'un corps fini est cyclique. En particulier, $\alpha_i$ n'est \emph{pas} dans $\p_i$. On a alors \[\alpha_i^{\Norm(I) - 1} \equiv 1 \pmod{\p_i}\] en reprenant le raisonnement précédent. D'après le théorème de Lagrange, l'ordre de $\alpha_i$ modulo $\p_i$ divise $\Norm(I) - 1$. Cet ordre étant $\Norm(\p_i) - 1$, on en déduit la division désirée. 
+	Démontrons cette fois le sens direct. La preuve se fait en deux temps. Écrivons $I = \p_1^{e_1} \cdot \dots \cdot \p_r^{e_r}$, les $\p_i$ étant des idéaux premiers de $\OK$ distincts. Pour tout indice $1\leqslant i \leqslant r$ donnons nous $\alpha_i\in \OK$ un élément dont la classe modulo $\p_i$ engendre le groupe quotient $(\OK/\p_i)^\times$. Un tel élément existe car $\OK/\p_i$ est un corps fini et que le groupe des inversibles d'un corps fini est cyclique. En particulier, $\alpha_i$ n'est \emph{pas} dans $\p_i$. On a alors \[\alpha_i^{\Norm(I) - 1} \equiv 1 \pmod{\p_i}\] en reprenant le raisonnement précédent. D'après le théorème de Lagrange, l'ordre de $\alpha_i$ modulo $\p_i$ divise $\Norm(I) - 1$. Cet ordre étant $\Norm(\p_i) - 1$, on en déduit la relation de divisibilité désirée.
 
 	Démontrons désormais que $I$ est sans facteurs carrés. Supposons qu'il existe un idéal premier $\p$ de $\OK$ tel que $\p^2\mid I$ et posons \[H = \left(\OK\big/\p^2\right)^\times.\] On a \[\left|H\right| = \Norm(\p)(\Norm(\p) - 1).\] Soit $p\in \Z$ l'unique nombre premier tel que $p\Z = \p\cap \Z$. L'entier $\Norm(\p)$ est une puissance de $\p$, d'où $p\mid \Norm(\p)$ et \[p\mid \left| H \right|.\] Le théorème de Cauchy abélien assure alors qu'il existe un élément $\alpha \in H$ d'ordre $p$. Comme $I$ est de Carmichael par hypothèse, on a $\alpha^{\Norm(I)}\equiv \alpha \pmod{I}$ puis $\alpha^{\Norm(I)} \equiv \alpha \pmod{\p^2}$, car $\p^2\mid I$. Comme en outre $\alpha\notin \p^2$, on en déduit $\alpha^{\Norm(I) - 1} \equiv 1 \pmod{\p^2}$ puis \[p \mid \Norm(I) - 1\] d'après le théorème de Lagrange. Comme $p\mid \Norm(I)$, cela constitue une contradiction. L'idéal $I$ est donc sans facteurs carrés.
 \end{proof}
@@ -88,7 +88,7 @@ Vient alors l'équivalence suivante.
 \end{theoreme}
 
 \begin{proof}
-	Le sens direct correspond à \ref{ptf} et le sens réciproque s'obtient avec l'énoncé précédent en constatant que $\Disc(K) = p$ et $n\nmid p$.
+	Le sens direct correspond à \ref{ptf} et le sens réciproque s'obtient avec l'énoncé précédent en constatant que $\Disc(K) = p$ et que $n$ ne divise pas $p$ si $n$ est composé.
 \end{proof}
 
 \begin{remarque}

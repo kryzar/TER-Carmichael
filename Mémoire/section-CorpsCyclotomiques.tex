@@ -12,7 +12,7 @@ Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $
 	Les preuves des énoncés sur les corps cyclotomiques sont autrement plus sophistiquées que celles sur les corps quadratiques et l'auteur y utilise des résultats de théorie analytique des nombres. Ces derniers assurent de l'existence d'objets mais ne les construisent pas, à l'image des lemmes 3.3 et 3.4 de l'article. Pour ce théorème, la construction des corps se fait avec la correspondance de Galois et la vérification qu'ils vérifient les bonnes propriétés nécessite des arguments sophistiqués de ramification (groupes de décomposition et d'inertie, Frobenius d'un élément). Nous verrons ces arguments plus en détails dans la preuve du théorème 3.6 de l'article (n°\ref{theoreme-3.6} chez nous). \\
 \end{MotSurPreuve}
 
-Un nombre de Carmichael étant composé, il vérifie les hypothèses du théorème \ref{theoreme-3.1}. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
+Un nombre de Carmichael $n$ étant composé, le théorème \ref{theoreme-3.1} assure qu'il existe une infinité de corps de nombres abéliens de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. Cela fournit une nouvelle réciproque au petit théorème de Fermat, plus contraignante que la précédente.
 
 \begin{theoreme}[deuxième réciproque]\label{reciproque-2}
 	Soit $n$ un entier rationnel. Alors $n$ est premier \ssi pour tout corps de nombres \emph{abéliens} $K$ de discriminant premier avec $n$, $n$ n'admet aucun $K$-témoin de Fermat.
@@ -28,7 +28,7 @@ Le résultat le plus à même d'aboutir à un test de primalité est le crucial 
 	Soit $n$ un entier rationnel composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ soit premier avec $n$, et que $n$ \emph{ne soit pas de Carmichael dans $K$}.
 \end{theoreme}
 
-Nous avons de quelques résultats préliminaires.
+Nous avons de quelques résultats préliminaires. Remarquons d'abord que $\Disc(K) = (-1)^{\frac{q-1}{2}} q^{q-1}$.
 
 \begin{lemme}[{\cite[lemme 3.3]{article}}]\label{lemme-3.3}
 	Soit $n$ un entier rationnel. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que la relation \[p^d - 1 \nmid n^d - 1\] soit vérifiée pour tout entier rationnel $d> d_0$.
@@ -39,7 +39,7 @@ Nous avons de quelques résultats préliminaires.
 \end{proof}
 
 \begin{lemme}[théorème de Heath-Brown, {\cite[th. 3.5]{article}}]\label{heath-brown}
-	Tous les nombres premiers — à l'exception d'au plus deux d'entre eux — sont des racines primitives modulo $q$ pour une infinité de nombres premiers $q$.
+	Tous les nombres premiers, à l'exception d'au plus deux d'entre eux, sont des racines primitives modulo $q$ pour une infinité de nombres premiers $q$.
 \end{lemme}
 
 \begin{proof}
@@ -51,12 +51,12 @@ Nous avons de quelques résultats préliminaires.
 \end{lemme}
 
 \begin{proof}
-	Dans cette preuve, nous utilisons les résultats de \cite[ch. 3 § 4 et 5]{Kraus}. Soient $f : \Gal(K/\Q) \to H$ un isomorphisme de groupes, $s_p$ la substitution de Frobenius de $p$ en $K/\Q$ et $h$ un générateur de $H$ vérifiant $f(s_p) = h$. L'extension étant non ramifiée en $p$, tout ceci a bien un sens. Comme $h$ engendre $H$, que $s_p$ engendre le sous-groupe de décomposition de $p$\footnote{Bien défini dans le cas abélien.} et que $f$ est un isomorphisme entre $\Gal(K/\Q)$ et $H$, le Frobenius $s_p$ est générateur de $\Gal(K/\Q)$. On a donc l'égalité \[D_p = \Gal(K/\Q).\] La sous-extension de $K/\Q$ correspondant $D_p$ dans la correspondance de Galois est donc $\Q$. D'après \cite[lemme 3.9]{Kraus}, cela induit que $p$ n'a qu'un seul idéal premier au dessus de lui. L'idéal $p$ est donc l'unique idéal premier de $\OK$ au dessus de $p$, et comme $p$ ne se ramifie pas dans $K$, cela prouve l'inertie de $p$.
+	Dans cette preuve, nous utilisons les résultats de \cite[ch. 3 § 4 et 5]{Kraus}. Soient $f : \Gal(K/\Q) \to H$ un isomorphisme de groupes, $s_p$ la substitution de Frobenius de $p$ en $K/\Q$ et $h$ un générateur de $H$ vérifiant $f(s_p) = h$. L'extension étant non ramifiée en $p$, tout ceci a bien un sens. Comme $h$ engendre $H$, que $s_p$ engendre le sous-groupe de décomposition de $p$\footnote{Bien défini dans le cas abélien.} et que $f$ est un isomorphisme entre $\Gal(K/\Q)$ et $H$, le Frobenius $s_p$ est générateur de $\Gal(K/\Q)$. On a donc l'égalité \[D_p = \Gal(K/\Q).\] La sous-extension de $K/\Q$ correspondant $D_p$ dans la correspondance de Galois est donc $\Q$. D'après \cite[lemme 3.9]{Kraus}, cela induit que $p$ n'a qu'un seul idéal premier au-dessus de lui. L'idéal $p$ est donc l'unique idéal premier de $\OK$ au-dessus de $p$, et comme $p$ ne se ramifie pas dans $K$, cela prouve l'inertie que $p$ est inerte dans $K$..
 
 \end{proof}
 
 \begin{lemme}\label{iso-Z/nZ*}
-	Soient $n \leq 1$ un entier rationnel et $\zeta_n$ une racine primitive $n$-ième de l'unité. L'application 
+	Soient $n \geq 1$ un entier rationnel et $\zeta_n$ une racine primitive $n$-ième de l'unité. L'application 
 \begin{center}
 	\begin{tabular}{ccc}
 		$\Gal(\Q(\zeta_n)/\Q)$ & $\longrightarrow$ & $\left(\Z/n\Z\right)^\times$ \\
@@ -200,15 +200,15 @@ Quant aux performances, les calculs sont cependant significativement plus longs 
 
 \begin{table}[H]
 	\begin{center}
-		\begin{tabular}{|c|c|}
+		\begin{tabular}{|c|c|c|}
 			\hline
-			corps cyclotomique & temps de calcul \\
+			corps cyclotomique & $512461$ reste de Carmichael dans ce corps & temps de calcul \\
 			\hline
 			\hline
-			$\Q(\zeta_7)$ & 0.005 s \\\hline
-			$\Q(\zeta_{101})$ & 1.626 s \\\hline
-			$\Q(\zeta_{199})$ & 18.9 s \\\hline
-			$\Q(\zeta_{293})$ & 38.4 s \\\hline
+			$\Q(\zeta_7)$ & non &0.005 s \\\hline
+			$\Q(\zeta_{101})$ & non & 1.626 s \\\hline
+			$\Q(\zeta_{199})$ & non & 18.9 s \\\hline
+			$\Q(\zeta_{293})$ & non & 38.4 s \\\hline
 		\end{tabular}
 		\caption{Temps de calcul du critère Korselt dans les corps cyclotomiques donnés pour l'entier $n=512461$.}
 	\end{center}
