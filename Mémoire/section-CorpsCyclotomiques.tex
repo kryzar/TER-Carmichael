@@ -5,7 +5,7 @@
 Dans cette section, nous nous intéressons aux corps cyclotomiques de la forme $\Q(\zeta_q)$ où $q$ est un nombre premier. Commençons par un résultat théorique.
 
 \begin{theoreme}[{\cite[th. 3.1]{article}}]\label{theoreme-3.1}
-	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} de discriminant premier avec $n$ dans lesquels $n$ \emph{n'est pas de Carmichael}.
+	Pour tout entier naturel $n$ composé, il existe une infinité de corps de nombres \emph{abéliens} de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael.
 \end{theoreme}
 
 \begin{MotSurPreuve}
@@ -25,10 +25,10 @@ Un nombre de Carmichael $n$ étant composé, le théorème \ref{theoreme-3.1} as
 Le résultat le plus à même d'aboutir à un test de primalité est le crucial théorème suivant. Il nous enseigne qu'il faut aller chercher du côté des corps cyclotomiques. Nous en donnons la démonstration.
 
 \begin{theoreme}[{\cite[th. 3.6]{article}}]\label{theoreme-3.6}
-	Soit $n$ un entier rationnel composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ soit premier avec $n$, et que $n$ \emph{ne soit pas de Carmichael dans $K$}.
+	Soit $n$ un entier rationnel composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ soit premier avec $n$, et que $n$ ne soit pas de Carmichael dans $K$.
 \end{theoreme}
 
-Nous avons de quelques résultats préliminaires. Remarquons d'abord que $\Disc(K) = (-1)^{\frac{q-1}{2}} q^{q-1}$.
+Nous avons de quelques résultats préliminaires. Remarquons d'abord que $\Disc(K) = (-1)^{\frac{q-1}{2}} q^{q-2}$.
 
 \begin{lemme}[{\cite[lemme 3.3]{article}}]\label{lemme-3.3}
 	Soit $n$ un entier rationnel. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que la relation \[p^d - 1 \nmid n^d - 1\] soit vérifiée pour tout entier rationnel $d> d_0$.
@@ -87,7 +87,7 @@ Démontrons le théorème \ref{theoreme-3.6}.
 
 \end{proof}
 
-Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts (voir \cite[p.90 prop. 3.35]{Demazure}), il vérifiera toujours les hypothèses du théorème. Ce résultat est donc en théorie bien plus puissant que le théorème \ref{theoreme-2.5} (\cite[th. 2.5]{article}), puisque nous avons vu que le test de primalité naïf qui en découlait ne détectait pas tous les entiers de Carmichael, comme par exemple l'entier de Howe \ref{Howe}. 
+Un nombre de Carmichael ayant toujours au moins trois diviseurs premiers distincts (voir \cite[p. 90 prop. 3.35]{Demazure}), il vérifiera toujours les hypothèses du théorème. Ce résultat est donc en théorie bien plus puissant que le théorème \ref{theoreme-2.5} (\cite[th. 2.5]{article}), puisque nous avons vu que le test de primalité naïf qui en découlait ne détectait pas tous les entiers de Carmichael, comme par exemple l'entier de Howe \ref{Howe}. 
 
 \begin{corollaire}[{\cite[cor. 3.7]{article}}]\label{corollaire-3.7}
 	Soit $n$ un entier rationnel composé. Il existe au moins un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, de discriminant premier avec $n$ dans lequel $n$ n'est pas de Carmichael.

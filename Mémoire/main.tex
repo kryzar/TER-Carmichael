@@ -18,6 +18,11 @@
 \theoremstyle{remark}
 \newtheorem*{MotSurPreuve}{Un mot sur la preuve}
 
+\newcounter{rappelcounter}[section]
+\renewcommand\therappelcounter{\Alph{rappelcounter}}
+\theoremstyle{definition}
+\newtheorem{rappel}[rappelcounter]{Rappel}
+
 \begin{document}
 
 	\begin{titlepage}

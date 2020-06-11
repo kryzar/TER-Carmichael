@@ -6,16 +6,16 @@ Ayant pour point de départ l'article \textit{Carmichael numbers in number rings
 Le test de primalité non naïf le plus simple est le \emph{test de primalité de Fermat}. Étant donné un entier rationnel $n$ dont on veut tester la primalité, ce dernier affirme que s'il existe un entier rationnel $a$ vérifiant $a^n \not \equiv a \pmod{n}$, alors $n$ est composé. On dit alors que $a$ est un \emph{témoin de Fermat pour $n$}. Il existe cependant des entiers rationnels $n$ \textbf{composés} n'ayant aucun témoin de Fermat. On les appelle \emph{entiers de Carmichael} et le test de Fermat est incapable de prouver leur composition. Pire encore, il existe une infinité de tels entiers (voir \cite{InfiniteCarmichael}), que l'on peut caractériser ainsi.
 
 \begin{proposition}\label{korselt} Soit $n$ un entier rationnel. Les assertions suivantes sont équivalentes :
-	\begin{enumerate}[font=\normalshape]
+	\begin{enumerate}
 		\item l'entier $n$ n'a aucun témoin de Fermat ~;
 		\item l'entier $n$ est sans facteurs carrés et chacun de ses facteurs premiers $p$ vérifie la relation \[p-1 \mid n-1 ~.\] \label{korselt-b}
-		\item la relation \[\lambda(n) \mid n-1\] est vérifiée, où $\lambda$ est l'indicatrice de Carmichael, qui à tout entier $m\geq1$ associe l'exposant du groupe $\left(\Z/m\Z\right)^\times$.
+		\item la relation \[\lambda(n) \mid n-1\] est vérifiée, où $\lambda$ est la fonction \emph{indicatrice de Carmichael}, qui à tout entier $m\geq1$ associe l'exposant du groupe $\left(\Z/m\Z\right)^\times$.
 	\end{enumerate}
 \end{proposition}
 
 Un entier rationnel $n$ est donc de Carmichael \ssi \textbf{il est composé} et vérifie l'une des assertions de \ref{korselt}. L'assertion \ref{korselt-b} de la proposition est appelée \textit{critère de Korselt} et est l'outil théorique le plus couramment utilisé pour démontrer qu'un entier rationnel donné est de Carmichael. Le lecteur désireux d'une preuve de cette proposition pourra se référer à \cite[§3.3 p. 89]{Demazure}. Dans l'article susnommé \cite{article}, la notion d'entier de Carmichael est étendue à la notion d'\emph{idéal de Carmichael} dans l'anneau d'entiers d'un corps de nombres. 
 
-\begin{definition}[{\cite[déf. 2.1]{article}}] Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael dans $\OK$ si \textbf{$I$ est composé} et pour tout entier $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée, où $\Norm(I)$ est la norme de $I$ comme définie en \ref{section-notations}.
+\begin{definition}[{\cite[déf. 2.1]{article}}] Soient $K$ un corps de nombres et $I$ un idéal de $\OK$. On dit que $I$ est un idéal de Carmichael dans $\OK$ si \textbf{$I$ est composé} et pour tout entier $\alpha \in \OK$, la congruence \[\alpha^{\Norm(I)} \equiv \alpha \pmod{I}\] est vérifiée, où $\Norm(I)$ est la norme d'idéal de $I$ comme définie au rappel \ref{rappel-NormeIdeaux}.
 \end{definition}
 
 \begin{remarque}

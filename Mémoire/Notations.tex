@@ -1,13 +1,17 @@
-\section*{Rappel de notations, définitions et résultats}\label{section-notations}
-\addcontentsline{toc}{section}{Rappel de notations, définitions et résultats}
+\section*{Rappels de définitions et notations}\label{section-notations}
+\addcontentsline{toc}{section}{Rappels de définitions et notations}
 
 Les prérequis pour ce texte (ainsi que pour \cite{article}) sont les bases de la théorie algébrique des nombres et quelques éléments de théorie de Galois. Pour la théorie algébrique des nombres, le lecteur pourra se référer à \cite[ch. II, III, V et VI]{Samuel} ou \cite[ch. II, III et IV]{Kraus}. Pour la théorie de Galois, le lecteur pourra se référer à \cite[ch. XXIII à XVII]{GrandCombat}. Rappelons à présent des notations cruciales.
 
-\paragraph{Corps de nombres} On appelle \emph{corps de nombres} toute extension finie de $\Q$. Les corps de nombres sont le plus souvent désignés par $K$ ou $L$. Voir \cite[ch. II § 8]{Samuel}.
+\begin{rappel}[Corps de nombres {\cite[ch. II § 8]{Samuel}}]
+	On appelle \emph{corps de nombres} toute extension finie de $\Q$. Les corps de nombres sont le plus souvent désignés par $K$ ou $L$.
+\end{rappel}
 
-\paragraph{Anneaux d'entiers d'un corps de nombres} Soit $K$ un corps de nombres. On appelle \emph{anneau d'entiers de $K$} et l'on note $\OK$ l'anneau formé des éléments de $K$ annulés par un polynôme unitaire à coefficients dans $\Z$. Voir \cite[ch. II]{Samuel}.
+\begin{rappel}[Anneaux d'entiers d'un corps de nombres {\cite[ch. II]{Samuel}}]
+	Soit $K$ un corps de nombres. On appelle \emph{anneau d'entiers de $K$} et l'on note $\OK$ l'anneau formé des éléments de $K$ annulés par un polynôme unitaire à coefficients dans $\Z$.
+\end{rappel}
 
-\paragraph{Trace et norme d'un élément relativement à une extension} Soient $K$ un corps de nombres, $\alpha\in K$ et $\mu_\alpha$ l'endomorphisme $\Q$-linéaire de multiplication par $\alpha$ 
+\begin{rappel}[Trace et norme d'un élément relativement à une extension {\cite[ch. II § 6]{Samuel}}] Soient $K$ un corps de nombres, $\alpha\in K$ et $\mu_\alpha$ l'endomorphisme $\Q$-linéaire de multiplication par $\alpha$ 
 \begin{center}
 	\begin{tabular}{rccc}
 		$\mu_\alpha : $ & $K$ & $\longrightarrow$ & $K$ \\
@@ -20,9 +24,14 @@ Les prérequis pour ce texte (ainsi que pour \cite{article}) sont les bases de l
 	\item On appelle \emph{trace de $K$ sur $\Q$ de $\alpha$} et l'on note $\mathrm{Tr}_{K/\Q}(\alpha)$ la trace de $\mu_\alpha$. Si $\alpha= n$ est un entier rationnel, on a notamment \[\mathrm{Tr}_{K/\Q}(n) = n\cdot{[K : \Q]}.\]
 \end{itemize}
 
-	Ce sont des cas particuliers de traces et normes relativement à une algèbre sur un anneau. Voir \cite[ch. II § 6]{Samuel}.
+	Ce sont des cas particuliers de traces et normes relativement à une algèbre sur un anneau.
+\end{rappel}
 
 
-\paragraph{Discriminant d'un corps de nombres} Soient $K$ un corps de nombres de degré $d$ sur $\Q$ et $(x_1, \dots, x_d)$ une $\Z$-base de $\OK$. On appelle \emph{discriminant de $K$} et l'on note $\Disc(K)$ le déterminant \[\Disc(K) = \det\left(\left(\mathrm{Tr}_{K/\Q}(x_i x_j)\right)_{1\leq i, j \leq d}\right).\] C'est une quantité bien définie qui ne dépend pas du choix de la base. Voir \cite[ch. II § 7]{Samuel}. Cela nous servira car un nombre premier $p$ se ramifie dans $K$ (i.e. l'idéal $p\OK$ admet un facteur carré) \ssi $p$ divise $\Disc(K)$. Voir \cite[ch. V § 3]{Samuel}.
+\begin{rappel}[Discriminant d'un corps de nombres {\cite[ch. II § 3, ch. V § 3]{Samuel}}]
+	Soient $K$ un corps de nombres de degré $d$ sur $\Q$ et $(x_1, \dots, x_d)$ une $\Z$-base de $\OK$. On appelle \emph{discriminant de $K$} et l'on note $\Disc(K)$ le déterminant \[\Disc(K) = \det\left(\left(\mathrm{Tr}_{K/\Q}(x_i x_j)\right)_{1\leq i, j \leq d}\right).\] C'est une quantité bien définie qui ne dépend pas du choix de la base. Cela nous servira car un nombre premier $p$ se ramifie dans $K$ (i.e. l'idéal $p\OK$ admet un facteur carré) \ssi $p$ divise $\Disc(K)$.
+\end{rappel}
 
-\paragraph{Norme d'idéaux} Soient $K$ un corps de nombres et $I$ un idéal \emph{non nul} de $\OK$. On appelle \emph{norme de l'idéal $I$} et l'on note $\Norm(I)$ le cardinal \[\Norm(I) = \left|\OK\big/I\right|.\] Si $n$ est un entier rationnel, on a notamment \[|\Norm_{K/\Q}(n)| = \Norm(n\OK).\] Voir \cite[ch. III § 5]{Samuel}.
+\begin{rappel}[Norme d'idéaux {\cite[ch. III § 5]{Samuel}}]\label{rappel-NormeIdeaux}
+	Soient $K$ un corps de nombres et $I$ un idéal \emph{non nul} de $\OK$. On appelle \emph{norme de l'idéal $I$} et l'on note $\Norm(I)$ le cardinal \[\Norm(I) = \left|\OK\big/I\right|.\] Si $n$ est un entier rationnel, on a notamment \[|\Norm_{K/\Q}(n)| = \Norm(n\OK).\]
+\end{rappel}
