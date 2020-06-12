@@ -24,12 +24,12 @@ L'algorithme de Korselt \ref{test-primalite-korselt} dans les corps quadratiques
 	Il existe des tours de corps de nombres $\Q\subset K \subset L$ et des idéaux de Carmichael $J$ de $L$ pour lesquels l'idéal restreint $J\cap \OK$ n'est pas de Carmichael dans $\OK$.
 \end{proposition}
 
-Pour y répondre, l'auteur du présent mémoire a implémenté l'algorithme suivant\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_ideal\_restricted} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}. On se donne une liste d'entiers $d$ sans facteurs carrés et pour tout entier rationnel $n$ \emph{qui n'est pas de Carmichael} dans un intervalle donné, on teste si $n$ est de Carmichael dans $K$ avec le critère de Korselt. Plus précisément, on a l'algorithme suivant.
+Pour y répondre, l'auteur du présent mémoire a implémenté l'algorithme suivant\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_ideal\_restricted} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}. On se donne une liste d'entiers $d$ sans facteurs carrés et pour tout entier rationnel $n$ qui n'est pas de Carmichael dans un intervalle donné, on teste si $n$ est de Carmichael dans $K$ avec le critère de Korselt. Plus précisément, on a l'algorithme suivant.
 
 \vspace{1em}
 \begin{algorithm}[H]
 \caption{trouver un entier rationnel $n$ et un corps quadratique $K$ tels que $n$ ne soit pas de Carmichael dans $K$, avec le critère de Korselt}
-\KwIn{$\mathscr{N}$ (liste d'entiers \emph{qui ne sont pas de Carmichael}), $\mathscr{K}$ (liste de corps quadratiques)}
+\KwIn{$\mathscr{N}$ (liste d'entiers qui ne sont pas de Carmichael), $\mathscr{K}$ (liste de corps quadratiques)}
 \KwOut{couples $(n, K)$ où $K$ est un corps quadratique de $\mathscr{K}$ et $n$ est est un entier rationnel de $\mathscr{N}$ de Carmichael dans $K$ mais pas dans $\Q$}
 \ForEach{$n$ dans $\mathscr{N}$}{
 	\ForEach{$K$ dans $\mathscr{K}$}{
