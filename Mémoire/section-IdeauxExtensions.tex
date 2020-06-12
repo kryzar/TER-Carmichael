@@ -54,7 +54,7 @@ Cette algorithme retourne de nombreux résultats\footnote{Les résultats se trou
 			nombre d'entiers qui sont de Carmichael dans un corps testé & 2930 \\\hline
 			proportion d'entiers qui sont de Carmichael dans un corps testé & 51,2 \% \\\hline
 		\end{tabular}
-		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
+		\caption{Statistiques des expérimentations du critère de Korselt sur les corps quadratiques pour les paramètres \ref{param-korselt-quadra}.}
 	\end{center}
 \end{table}
 
@@ -75,7 +75,7 @@ Alors, l'entier $n$ est de Carmichael dans $\Q(\sqrt{d})$ mais ne l'est pas dans
 \end{proposition}
 
 \begin{proof}
-	Posons $K=\Q(\sqrt{d})$. L'hypothèse \ref{pqr-a} implique que $n\OK$ est sans facteurs carrés et que les $p_i$ sont décomposés dans $K$ pour tout indice $1\leq i \leq r$. Fixons $1\leq l \leq r$ un tel indice. Il existe alors deux idéaux premiers distincts $\p_l$ et $\p_l'$ de $\OK$ tels que \[p_l\OK = \p_l\p_l'.\] Soit $\P$ un idéal premier de $\OK$ au dessus de $n$. Supposons sans perdre de généralité que $\P = \p_l$. On a alors \[\Norm(\P) - 1 = \Norm(\p_l) - 1 = p_l - 1\mid n^2 - 1 = \Norm(n\OK) - 1,\] d'après l'hypothèse \ref{pqr-b}. Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt} impliquent alors que $n$ est de Carmichael dans $K$. Le critère de Korselt \ref{korselt} et l'hypothèse \ref{pqr-c} impliquent que $n$ n'est pas de Carmichael dans $\Q$, d'où le résultat.
+	Posons $K=\Q(\sqrt{d})$. L'hypothèse \ref{pqr-a} implique que $n\OK$ est sans facteurs carrés et que les $p_i$ sont décomposés dans $K$ pour tout indice $1\leq i \leq r$. Fixons $1\leq l \leq r$ un tel indice. Il existe alors deux idéaux premiers distincts $\p_l$ et $\p_l'$ de $\OK$ tels que \[p_l\OK = \p_l\p_l'.\] Soit $\P$ un idéal premier de $\OK$ divisant $n$. Supposons sans perdre de généralité que $\P = \p_l$. On a alors \[\Norm(\P) - 1 = \Norm(\p_l) - 1 = p_l - 1\mid n^2 - 1 = \Norm(n\OK) - 1,\] d'après l'hypothèse \ref{pqr-b}. Le critère de Korselt généralisé \ref{korselt-generalise} et la caractérisation \ref{carac-korselt} impliquent alors que $n$ est de Carmichael dans $K$. Le critère de Korselt \ref{korselt} et l'hypothèse \ref{pqr-c} impliquent que $n$ n'est pas de Carmichael dans $\Q$, d'où le résultat.
 \end{proof}
 
 \begin{remarque}\label{pqr-ContreExemple}

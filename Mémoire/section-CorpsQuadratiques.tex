@@ -5,7 +5,7 @@
 Entrons dès à présent dans le vif du sujet. 
 
 \begin{theoreme}[{\cite[th. 2.5]{article}}]\label{theoreme-2.5}
-	Soit $n$ un entier rationnel impair sans facteurs carrés. S'il existe un diviseur premier $p$ de $n$ vérifiant $$p^2 - 1 \nmid n^2 - 1,$$ alors il existe une infinité de corps quadratiques $K$ dans lesquels $n$ \emph{n'est pas} de Carmichael.
+	Soit $n$ un entier rationnel impair sans facteurs carrés. S'il existe un diviseur premier $p$ de $n$ vérifiant $$p^2 - 1 \nmid n^2 - 1,$$ alors il existe une infinité de corps quadratiques $K$, de discriminants premiers avec $n$, dans lesquels $n$ \emph{n'est pas} de Carmichael.
 \end{theoreme}
 
 \begin{MotSurPreuve}
@@ -40,10 +40,10 @@ L'entier de Howe est donc un nombre de Carmichael rigide d'ordre $2$. Ces résul
 
 \begin{corollaire}
 	Soit $n$ un entier rationnel. Si $n$ est sans facteurs carrés et composé, alors les propositions suivantes sont équivalentes :
-	\begin{itemize}
+	\begin{enumerate}
 		\item l'entier $n$ est de Carmichael dans tout corps quadratique de discriminant premier avec $n$~;
 		\item la relation \[p^2 - 1 \mid n^2 - 1\] est vérifiée pour tout diviseur premier $p$ de $n$.
-	\end{itemize}
+	\end{enumerate}
 \end{corollaire}
 
 \begin{proof}
@@ -54,9 +54,9 @@ L'entier de Howe est donc un nombre de Carmichael rigide d'ordre $2$. Ces résul
 	L'énoncé est faux si $n$ n'est pas composé. Sous cette hypothèse, notons $p=n$. Soit $K$ un corps quadratique dans lequel $p$ est inerte. Un idéal de Carmichael étant composé, $p$ n'est pas de Carmichael dans $K$. L'identité $p^2 - 1 | n^2 - 1 = p^2 - 1$ est cependant vérifiée.
 \end{remarque}
 
-Passons désormais aux simulations numériques.
+Passons désormais aux expérimentations numériques.
 
-\subsection{Simulations numériques}
+\subsection{Expérimentations numériques}
 
 Nous étudions ici le critère de composition de Korselt \label{test-primalite-korselt} dans des corps quadratiques\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_quadratic} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}. Pour tout entier rationnel $n$, nous cherchons une liste de corps quadratiques dans lesquels $n$ n'est pas de Carmichael. Pour cela, nous lançons l'algorithme avec les paramètres suivants.
 
@@ -70,11 +70,11 @@ Nous étudions ici le critère de composition de Korselt \label{test-primalite-k
 			corps testés & corps quadratiques de la forme $\Q(\sqrt{d})$ où $d$ est un entier rationnel sans facteurs carrés dans $[\![-5000, +5000]\!]$\footnote{Il y a 6084 tels entiers.} \\\hline
 			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael}  \\\hline
 		\end{tabularx}
-		\caption{Paramètres des simulations du critère de Korselt pour les corps quadratiques.}
+		\caption{Paramètres des expérimentations du critère de Korselt pour les corps quadratiques.}
 	\end{center}
 \end{table}
 
-Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ de la liste, plusieurs corps quadratiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. En fait, il en exhibe des centaines. Il est donc impossible d'énoncer ici tous les résultats\footnote{Les résultats se trouvent tous dans \url{https://github.com/kryzar/TER-Carmichael/tree/master/Simulations\%20et\%20resultats}, sous la forme d'un fichier par entier testé. Par exemple, les résultats pour l'entier $561$ se trouvent dans le fichier \texttt{561\_quadratic.txt}.}, mais citons à titre d'exemple que $561$ n'est pas de Carmichael dans $\Q(\sqrt{-4874})$ mais qu'il l'est dans $\Q(\sqrt{4877})$ ou que $172081$ n'est pas de Carmichael dans $\Q(\sqrt{766})$ mais qu'il l'est dans $\Q(\sqrt{-1459})$.  Pour la plupart des couples $(n, K)$ testés, $n$ n'est pas de Carmichael dans $K$. Nous avons tiré les statistiques suivantes de nos simulations.
+Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ de la liste, plusieurs corps quadratiques de discriminant premier avec $n$ dans lesquels $n$ n'est pas de Carmichael. En fait, il en exhibe des centaines. Il est donc impossible d'énoncer ici tous les résultats\footnote{Les résultats se trouvent tous dans \url{https://github.com/kryzar/TER-Carmichael/tree/master/Simulations\%20et\%20resultats}, sous la forme d'un fichier par entier testé. Par exemple, les résultats pour l'entier $561$ se trouvent dans le fichier \texttt{561\_quadratic.txt}.}, mais citons à titre d'exemple que $561$ n'est pas de Carmichael dans $\Q(\sqrt{-4874})$ mais qu'il l'est dans $\Q(\sqrt{4877})$ ou que $172081$ n'est pas de Carmichael dans $\Q(\sqrt{766})$ mais qu'il l'est dans $\Q(\sqrt{-1459})$.  Pour la plupart des couples $(n, K)$ testés, $n$ n'est pas de Carmichael dans $K$. Nous avons tiré les statistiques suivantes de nos expérimentations.
 
 \begin{table}[H]\label{statistiques-quadra}
 	\begin{center}
@@ -87,7 +87,7 @@ Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ 
 			nombre d'idéaux de Carmichael trouvés dans ces corps & 34138 \\\hline
 			proportion d'idéaux de Carmichael trouvés dans ces corps & 23,8 \% \\\hline
 		\end{tabular}
-		\caption{Statistiques des simulations du critère de Korselt sur les corps quadratiques.}
+		\caption{Statistiques des expérimentations du critère de Korselt sur les corps quadratiques.}
 	\end{center}
 \end{table}
 

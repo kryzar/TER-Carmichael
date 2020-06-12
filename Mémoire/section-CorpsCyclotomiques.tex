@@ -28,7 +28,7 @@ Le résultat le plus à même d'aboutir à un test de primalité est le crucial 
 	Soit $n$ un entier rationnel composé ayant au moins trois facteurs premiers distincts. Alors il existe une infinité de corps cyclotomiques $K$ de la forme $K = \Q(\zeta_q)$, $q$ étant premier, tels que $\Disc(K)$ soit premier avec $n$, et que $n$ ne soit pas de Carmichael dans $K$.
 \end{theoreme}
 
-Nous avons de quelques résultats préliminaires. Remarquons d'abord que $\Disc(K) = (-1)^{\frac{q-1}{2}} q^{q-2}$.
+Remarquons d'abord que $\Disc(K) = (-1)^{\frac{q-1}{2}} q^{q-2}$. Nous avons en suite besoin de quelques résultats préliminaires. 
 
 \begin{lemme}[{\cite[lemme 3.3]{article}}]\label{lemme-3.3}
 	Soit $n$ un entier rationnel. Si $n$ n'est pas la puissance d'un nombre premier, alors pour tout diviseur premier $p$ de $n$, il existe un rang $d_0$ tel que la relation \[p^d - 1 \nmid n^d - 1\] soit vérifiée pour tout entier rationnel $d> d_0$.
@@ -120,9 +120,9 @@ Ce corollaire a bien entendu droit à sa réciproque du théorème de Fermat.
 	Dans les deux réciproques (théorèmes \ref{reciproque-2} et \ref{reciproque-3}) que nous venons de donner, l'hypothèse sur le discriminants est que $n$ et $K$ doivent être premiers entre eux. C'est une hypothèse bien plus forte que de demander à ce que $n$ ne divise pas le discriminant de $K$ comme dans les corps quadratiques (\ref{ptf-reciproque})et cela permet de tester beaucoup moins de corps.
 \end{remarque}
 
-Passons désormais aux simulations numériques.
+Passons désormais aux expérimentations numériques.
 
-\subsection{Simulations numériques}
+\subsection{Expérimentations numériques}
 
 Comme dans la section sur les corps quadratiques, nous cherchons ici — pour tout entier $n$ de la liste \ref{liste-carmichael} — un corps cyclotomique de la forme $\Q(\zeta_q)$, $q$ étant premier, dans lequel il n'est pas de Carmichael et dont le discriminant est premier avec $n$. Nous reprenons donc l'algorithme \ref{test-primalite-korselt} et l'utilisons avec les paramètres suivants\footnote{Pour l'implémentation, voir la fonction \texttt{Carmichael\_cyclotomic} du fichier \url{https://github.com/kryzar/TER-Carmichael/blob/master/Simulations\%20et\%20resultats/Algorithms.sage}.}.
 
@@ -136,7 +136,7 @@ Comme dans la section sur les corps quadratiques, nous cherchons ici — pour to
 			corps testés & corps cyclotomiques de la forme $\Q(\zeta_q)$ où $q$ est un nombre premier dans $[\![3, 300]\!]$\footnote{Il y a 62 tels nombres premiers.} \\\hline
 			entiers de Carmichael testés & tous ceux de la liste \ref{liste-carmichael} \\\hline
 		\end{tabularx}
-		\caption{Paramètres des simulations du critère de Korselt pour les corps cyclotomiques.}
+		\caption{Paramètres des expérimentations du critère de Korselt pour les corps cyclotomiques.}
 	\end{center}
 \end{table}
 
@@ -173,7 +173,7 @@ Avec ces paramètres, le critère de Korselt a donné pour chaque élément $n$ 
 	\caption{Liste exhaustive des couples trouvés $(n, K)$ où $n$ est un entier de Carmichael et $K$ un corps cyclotomique dans lequel $n$ reste de Carmichael.}
 \end{table}
 
-Voici les faits remarquables à retenir de ces simulations.
+Voici les faits remarquables à retenir de ces expérimentations.
 	\begin{itemize}
 		\item Nous n'avons trouvé aucun corps cyclotomique parmi ceux testés dans lequel les entiers suivants sont de Carmichael : 561, 1105, 2465, 6601, 1085, 41041, 62745, 101101, 449065.
 		\item Les autres entiers sont de Carmichael dans $\Q(\zeta_3)$ ou $\Q(\zeta_5)$, mais dans aucun autre corps testé.
@@ -192,7 +192,7 @@ Donnons aussi quelques statistiques.
 			nombre d'idéaux de Carmichael trouvés dans ces corps & 18 \\\hline
 			proportion d'idéaux de Carmichael trouvés dans ces corps & 0,9 \% \\\hline
 		\end{tabular}
-		\caption{Statistiques des simulations du critère de Korselt sur les corps cyclotomiques pour les paramètres \ref{param-korselt-cyclo}.}
+		\caption{Statistiques des expérimentations du critère de Korselt sur les corps cyclotomiques pour les paramètres \ref{param-korselt-cyclo}.}
 	\end{center}
 \end{table}
 
