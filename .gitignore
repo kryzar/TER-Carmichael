@@ -1,4 +1,5 @@
 # Fichiers perso
+.DS_Store
 À\ retenir\ pour\ ta\ thèse.md
 Liste\ des\ TER.pdf
 Mails\ pour\ trouver\ un\ sujet/
@@ -6,8 +7,7 @@ Mails/
 Mémoire/
 Quelques\ questions.pdf
 Question/
-Resources/
-.DS_Store
+Resources/Théorème\ 3.1\ rédaction\ Kraus.pdf
 
 # Created by https://www.gitignore.io/api/tex
 # Edit at https://www.gitignore.io/?templates=tex
